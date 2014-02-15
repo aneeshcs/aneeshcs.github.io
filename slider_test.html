@@ -10,15 +10,22 @@
 <!-- bxSlider CSS file -->
 <link href="/lib/jquery.bxslider.css" rel="stylesheet" />
 <body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+$('.bxslider').bxSlider({
+  mode: 'fade',
+  captions: true
+});
+  });
+</script>
+<div class="slider">
 <ul class="bxslider">
   <li><img src="/images/image-slider-1.jpg" /></li>
   <li><img src="/images/image-slider-2.jpg" /></li>
   <li><img src="/images/image-slider-3.jpg" /></li>
   <li><img src="/images/image-slider-4.jpg" /></li>
-</ul>
-$(document).ready(function(){
-  $('.bxslider').bxSlider();
-});
+</ul></div>
 
 </body>
 </html>
