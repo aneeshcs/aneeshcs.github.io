@@ -2,15 +2,13 @@
 <html>
 <head>
     <title>Slider Test</title>
-</head>
-<!-- jQuery library (served from Google) -->
+  <!-- jQuery library (served from Google) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <!-- bxSlider Javascript file -->
 <script src="jquery.bxslider.min.js"></script>
 <!-- bxSlider CSS file -->
 <link href="jquery.bxslider.css" rel="stylesheet" />
-</script>
-<body>
+
 <div class="slider">
 <ul class="bxslider">
   <li><img src="/images/image-slider-1.jpg" /></li>
@@ -19,6 +17,21 @@
   <li><img src="/images/image-slider-4.jpg" /></li>
 </ul></div>
 
+    <script type="text/javascript">
+  $(document).ready(function(){
+    $('.bxslider').bxSlider({
+        mode: 'fade',
+        captions: 'true',
+        auto: 'true',
+        autoControls: 'false',
+    });
+  });
+</script>
+</head>
+
+<body>
+
+<!-- 
 <script type="text/javascript">
   $(document).ready(function(){
     
@@ -28,6 +41,7 @@ $('.bxslider').bxSlider({
 });
   });
 </script>
+ -->
 
 </body>
 </html>
