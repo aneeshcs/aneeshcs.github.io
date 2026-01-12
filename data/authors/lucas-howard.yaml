@@ -1,0 +1,20 @@
+schema: "hugoblox/author/v1"
+slug: "lucas-howard"
+name:
+  display: "Lucas Howard"
+  given: "Lucas"
+  family: "Howard"
+role: "PhD Student"
+bio: "Background in Physics and Civil/Environmental Engineering. Interested in machine learning applications to data assimilation."
+affiliations:
+  - name: "CU Boulder, Atmospheric and Oceanic Science"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Lucas.Howard@colorado.edu"
+    label: "E-mail"
+  - icon: "hero/globe-alt"
+    url: "https://lucasjhoward.com"
+    label: "Website"
+user_groups:
+  - "PhD Students"

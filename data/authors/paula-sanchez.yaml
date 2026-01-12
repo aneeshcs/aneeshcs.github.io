@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "paula-sanchez"
+name:
+  display: "Paula Lorenzo Sanchez"
+  given: "Paula"
+  family: "Sanchez"
+role: "Visiting Scholar (July-October 2023)"
+bio: "Physics degree from University of Valencia; Master's in Renewable Energies from University of Barcelona. PhD student at University of Bologna/CMCC. Research on machine learning applications to climate variability and forecasting."
+affiliations:
+  - name: "University of Bologna/CMCC"
+    url: "https://www.cmcc.it/"
+user_groups:
+  - "Visitors"

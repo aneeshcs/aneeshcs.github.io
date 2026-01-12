@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "sean-heslin"
+name:
+  display: "Sean Heslin"
+  given: "Sean"
+  family: "Heslin"
+role: "PhD Student"
+bio: "Primary Advisor: Will Chapman; Co-advisor: Aneesh Subramanian. Evaluates predictive skill of extreme atmospheric rivers in machine-learning weather models."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:sean.heslin@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Students"

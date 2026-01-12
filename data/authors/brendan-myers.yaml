@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "brendan-myers"
+name:
+  display: "Brendan Myers"
+  given: "Brendan"
+  family: "Myers"
+role: "Undergraduate Researcher"
+bio: "Working on downslope winds in Front Range, collaborating with Gerald Meehl and Christine Shields at NCAR."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+user_groups:
+  - "Undergraduate Researchers"

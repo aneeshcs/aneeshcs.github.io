@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "rajashree-datta"
+name:
+  display: "Rajashree Tri Datta"
+  given: "Rajashree"
+  family: "Datta"
+role: "Research Associate (Alumni)"
+bio: "Currently Faculty at TU Delft. Research on ice sheet and ice shelf surface mass balance; variable-resolution CESM2 modeling; extreme precipitation over Antarctica."
+affiliations:
+  - name: "TU Delft"
+    url: "https://www.tudelft.nl/"
+links:
+  - icon: "hero/globe-alt"
+    url: "https://rtridatta.squarespace.com"
+    label: "Website"
+user_groups:
+  - "Research Scientists Alumni"

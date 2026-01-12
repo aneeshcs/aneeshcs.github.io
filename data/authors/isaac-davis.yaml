@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "isaac-davis"
+name:
+  display: "Isaac Davis"
+  given: "Isaac"
+  family: "Davis"
+role: "PhD Student"
+bio: "Studies extreme weather prediction using machine learning, focusing on US West Coast atmospheric rivers."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:isaac.davis@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Students"

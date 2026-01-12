@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "ulla-heede"
+name:
+  display: "Ulla Heede"
+  given: "Ulla"
+  family: "Heede"
+role: "NOAA CVP Postdoctoral Researcher"
+bio: "PhD in Earth & Planetary Sciences from Yale. Co-mentored by Kris Karnauskas. Research on tropical climate dynamics, tropical Pacific coupled ocean-atmosphere response to anthropogenic forcing. NASA FINESST fellowship recipient."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Ulla.Heede@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "Postdoctoral Alumni"

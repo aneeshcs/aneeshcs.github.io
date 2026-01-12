@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "yingli-zhu"
+name:
+  display: "Yingli Zhu"
+  given: "Yingli"
+  family: "Zhu"
+role: "Postdoc Associate (Alumni)"
+bio: "Co-mentored by Weiqing Han. BS and MS from Ocean University of China; PhD from University of South Florida (2019). Research on sea level variability, ocean mesoscale dynamics, internal waves, and decadal ocean/climate variability."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Yingli.Zhu@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "Postdoctoral Alumni"

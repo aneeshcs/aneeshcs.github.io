@@ -1,0 +1,20 @@
+schema: "hugoblox/author/v1"
+slug: "devon-dunmire"
+name:
+  display: "Devon Dunmire"
+  given: "Devon"
+  family: "Dunmire"
+role: "Postdoctoral Researcher (2022-2023)"
+bio: "Research on meltwater in polar regions using climate/snow models, satellite observations, and machine learning."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Devon.Dunmire@colorado.edu"
+    label: "E-mail"
+  - icon: "hero/globe-alt"
+    url: "https://devondunmire.com"
+    label: "Website"
+user_groups:
+  - "Postdoctoral Alumni"

@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "tim-higgins"
+name:
+  display: "Tim Higgins"
+  given: "Tim"
+  family: "Higgins"
+role: "PhD Graduate (May 2025)"
+bio: "BS in Meteorology/Atmospheric Sciences and Applied Mathematics from University of Miami. Dissertation focus: Predictability and numerical weather prediction improvements at subseasonal through seasonal timescales; atmospheric river dynamics."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:timothy.higgins@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Alumni"

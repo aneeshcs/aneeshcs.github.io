@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "aidan-janney"
+name:
+  display: "Aidan Janney"
+  given: "Aidan"
+  family: "Janney"
+role: "Undergraduate Student"
+bio: "Major in Physics, minoring in Computer Science and Art. Interests include oceanography, ocean modeling, and nonlinear dynamics."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+user_groups:
+  - "Undergraduate Researchers"

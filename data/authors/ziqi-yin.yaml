@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "ziqi-yin"
+name:
+  display: "Ziqi Yin"
+  given: "Ziqi"
+  family: "Yin"
+role: "PhD Student"
+bio: "Focuses on ice sheet-climate interactions and high-resolution Greenland Ice Sheet modeling."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:ziqi.yin@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Students"

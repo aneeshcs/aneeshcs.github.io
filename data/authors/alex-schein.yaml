@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "alex-schein"
+name:
+  display: "Alex Schein"
+  given: "Alex"
+  family: "Schein"
+role: "Master's Graduate"
+bio: "Research on atmospheric river modeling and data assimilation for earth system models."
+affiliations:
+  - name: "Department of Applied Mathematics, CU Boulder"
+    url: "https://www.colorado.edu/amath/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:alexander.schein@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "Masters Alumni"

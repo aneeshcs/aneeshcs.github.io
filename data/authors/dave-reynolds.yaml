@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "dave-reynolds"
+name:
+  display: "Dave Reynolds"
+  given: "Dave"
+  family: "Reynolds"
+role: "Consultant"
+bio: "Former Meteorologist in Charge at NWS San Francisco Bay Area; Chief of Operations at Hydrometeorological Prediction Center. Interests include Quantitative Precipitation Forecasting and climate change impacts in California."
+affiliations:
+  - name: "CW3E @ SIO/UCSD"
+    url: "https://cw3e.ucsd.edu/"
+user_groups:
+  - "Research Scientists Alumni"

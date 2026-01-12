@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "frederico-diogo"
+name:
+  display: "Frederico Tiago Diogo"
+  given: "Frederico"
+  family: "Diogo"
+role: "Undergraduate Researcher (Summer 2019)"
+bio: "BS in Geophysical Engineering. Interests in remote sensing, digital signal processing, and machine learning."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+user_groups:
+  - "Undergraduate Alumni"

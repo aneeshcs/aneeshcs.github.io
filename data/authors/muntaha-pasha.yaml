@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "muntaha-pasha"
+name:
+  display: "Muntaha Pasha"
+  given: "Muntaha"
+  family: "Pasha"
+role: "Undergraduate Researcher (2020)"
+bio: "Computer Science major at CU Boulder. Anemometer Project (collaborated with Christine Shields and Gerald Meehl at NCAR). Interests in severe thunderstorm formation, cloud dynamics, and extreme weather."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+user_groups:
+  - "Undergraduate Alumni"

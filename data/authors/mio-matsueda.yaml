@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "mio-matsueda"
+name:
+  display: "Mio Matsueda"
+  given: "Mio"
+  family: "Matsueda"
+role: "Visiting Scholar (Fall 2019)"
+bio: "Associate Professor at University of Tsukuba. Research on ensemble forecasting, weather/climate predictability, weather regimes, and high-resolution climate modeling. Created and hosts TIGGE and S2S museums for forecast diagnostics."
+affiliations:
+  - name: "University of Tsukuba, Japan"
+    url: "https://www.tsukuba.ac.jp/en/"
+links:
+  - icon: "hero/globe-alt"
+    url: "https://gpvjma.ccs.hpcc.jp/~mio/"
+    label: "Website"
+user_groups:
+  - "Visitors"

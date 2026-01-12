@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "jithendra-nadimpalli"
+name:
+  display: "Jithendra Raju Nadimpalli"
+  given: "Jithendra"
+  family: "Nadimpalli"
+role: "Visiting Scholar (Spring 2022)"
+bio: "Postdoctoral Scholar at Indian Institute of Technology Madras. Research on internal waves, ocean mixing, ocean modeling, and remote sensing."
+affiliations:
+  - name: "Indian Institute of Technology Madras, Chennai"
+    url: "https://www.iitm.ac.in/"
+user_groups:
+  - "Visitors"

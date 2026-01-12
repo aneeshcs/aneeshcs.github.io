@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "lucy-recchia"
+name:
+  display: "Lucy Recchia"
+  given: "Lucy"
+  family: "Recchia"
+role: "Postdoctoral Researcher"
+bio: "PhD in Applied Mathematics from University of Leeds. Expertise in mathematical models for fluid dynamics; applies mathematical tools to atmospheric and oceanic processes."
+affiliations:
+  - name: "CU Boulder"
+    url: "https://www.colorado.edu/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:lucy.recchia@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "Postdoctoral Researchers"

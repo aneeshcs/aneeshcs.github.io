@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "mike-macferrin"
+name:
+  display: "Mike MacFerrin"
+  given: "Mike"
+  family: "MacFerrin"
+role: "Research Associate"
+bio: "Specializes in Greenland ice sheet meltwater interactions and machine learning applications to satellite/airborne remote sensing. Discovered new meltwater runoff mechanism in Greenland (published in Nature). Also teaches Remote Sensing and Introduction to Climate Change at CU Boulder."
+affiliations:
+  - name: "Cooperative Institute for Research in Environmental Sciences (CIRES), CU Boulder"
+    url: "https://cires.colorado.edu/"
+user_groups:
+  - "Research Scientists"

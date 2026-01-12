@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "alison-jarvis"
+name:
+  display: "Alison Jarvis"
+  given: "Alison"
+  family: "Jarvis"
+role: "Undergraduate Researcher (Fall 2019)"
+bio: "Aerospace Engineering major at CU Boulder. Research on ocean biogeochemistry using machine learning. Interests in ocean biogeochemistry, space physics, exoplanets, and space biology. Currently at CIRES, CU Boulder."
+affiliations:
+  - name: "CIRES, CU Boulder"
+    url: "https://cires.colorado.edu/"
+user_groups:
+  - "Undergraduate Alumni"

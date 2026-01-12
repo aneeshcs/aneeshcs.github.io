@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "emily-martinez"
+name:
+  display: "Emily Martinez"
+  given: "Emily"
+  family: "Martinez"
+role: "SOARS Protege (2021)"
+bio: "BA in Engineering Sciences and Environmental Earth Sciences from Dartmouth College. Research on changes in atmospheric river activity over Northeast Pacific. Interests in geophysical fluid dynamics, climate variability, and numerical modeling."
+affiliations:
+  - name: "Dartmouth College"
+    url: "https://home.dartmouth.edu/"
+user_groups:
+  - "Undergraduate Alumni"

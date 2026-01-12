@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "jose-chapa"
+name:
+  display: "Jose Chapa"
+  given: "Jose"
+  family: "Chapa"
+role: "Undergraduate Researcher (Summer 2021)"
+bio: "Mechanical Engineering major at University of Texas Rio Grande Valley. Project on Tropical Instability Waves variability (collaborated with Dr. Eddebbar and Danni Du). Interests in machine learning, nanotechnology, eddy behavior, and fluid dynamics."
+affiliations:
+  - name: "University of Texas Rio Grande Valley"
+    url: "https://www.utrgv.edu/"
+user_groups:
+  - "Undergraduate Alumni"

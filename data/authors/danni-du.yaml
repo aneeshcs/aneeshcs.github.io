@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "danni-du"
+name:
+  display: "Danni Du"
+  given: "Danni"
+  family: "Du"
+role: "PhD Graduate (August 2024)"
+bio: "Co-advised by Weiqing Han. Research on air-sea interaction and Indian Ocean's role in monsoon dynamics. Currently a Postdoctoral researcher at Princeton University/GFDL."
+affiliations:
+  - name: "Princeton University/GFDL"
+    url: "https://www.gfdl.noaa.gov/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Danni.Du@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Alumni"

@@ -1,0 +1,13 @@
+schema: "hugoblox/author/v1"
+slug: "zaria-cast"
+name:
+  display: "Zaria Cast"
+  given: "Zaria"
+  family: "Cast"
+role: "SOARS Protege"
+bio: "BS in Geoscience with Meteorology concentration from University of Tennessee - Martin (2023). Interests include polar climate, climate warming impacts, and sea level rise. Currently at CIRES, CU Boulder."
+affiliations:
+  - name: "CIRES, CU Boulder"
+    url: "https://cires.colorado.edu/"
+user_groups:
+  - "Undergraduate Alumni"

@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "chaehyeong-lee"
+name:
+  display: "Chaehyeong Lee"
+  given: "Chaehyeong"
+  family: "Lee"
+role: "PhD Student"
+bio: "Primary Advisor: Donata Giglio; Co-advisor: Aneesh Subramanian. Investigates air-sea interaction and marine heatwave evolution."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:chaehyeong.lee@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Students"

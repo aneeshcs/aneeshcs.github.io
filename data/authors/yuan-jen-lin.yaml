@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "yuan-jen-lin"
+name:
+  display: "Yuan-Jen Lin"
+  given: "Yuan-Jen"
+  family: "Lin"
+role: "Postdoctoral Associate"
+bio: "PhD from National Taiwan University (2022). Research focuses on large-scale climate dynamics and climate change."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:yuan-jen.lin@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "Postdoctoral Researchers"
