@@ -1,0 +1,18 @@
+/* Custom styles for full-width hero section */
+#hero .prose {
+  max-width: none !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  padding: 0 !important;
+}
+
+#hero .prose > div {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.hero-fullwidth {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  min-height: 85vh !important;
+}
