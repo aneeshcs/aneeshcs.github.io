@@ -3,7 +3,7 @@ title: People
 type: landing
 
 sections:
-  - block: people
+  - block: team-showcase
     content:
       title: Meet the Team
       user_groups:
