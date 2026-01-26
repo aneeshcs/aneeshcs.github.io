@@ -8,14 +8,14 @@ sections:
       title: Meet the Team
       user_groups:
         - Principal Investigator
-        - Research Scientists
-        - Postdoctoral Researchers
         - PhD Students
+        - Postdoctoral Researchers
+        - Research Scientists
         - Undergraduate Researchers
         - Visitors
-        - Research Scientists Alumni
-        - Postdoctoral Alumni
         - PhD Alumni
+        - Postdoctoral Alumni
+        - Research Scientists Alumni
         - Masters Alumni
         - Undergraduate Alumni
       sort_by: Params.last_name
