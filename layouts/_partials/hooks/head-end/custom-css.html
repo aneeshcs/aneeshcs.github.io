@@ -1,0 +1,130 @@
+<style>
+/* ========================================
+   People Page Styling - Match Reference Design
+   ======================================== */
+
+/* Light background for people section */
+.blox-team-showcase {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%) !important;
+}
+
+/* Force light background in dark mode too */
+.dark .blox-team-showcase {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%) !important;
+}
+
+/* Section group headers - centered, no border */
+.blox-team-showcase .col-span-full h3 {
+  text-align: center !important;
+  border: none !important;
+  color: #2d3748 !important;
+  font-weight: 600 !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 0 !important;
+}
+
+/* Center the grid container */
+.blox-team-showcase .grid {
+  justify-items: center !important;
+}
+
+/* Person cards - remove background, center content */
+.blox-team-showcase .group.relative > div.relative {
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+/* Circular avatars */
+.blox-team-showcase .group.relative img {
+  border-radius: 50% !important;
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  margin: 0 auto !important;
+  border: 4px solid #3182ce !important;
+}
+
+/* Avatar container - centered, no overflow */
+.blox-team-showcase .group.relative a.block {
+  height: auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Text content container */
+.blox-team-showcase .group.relative .p-6 {
+  text-align: center !important;
+  padding-top: 1rem !important;
+}
+
+/* Name styling */
+.blox-team-showcase .group.relative h3.text-xl {
+  text-align: center !important;
+}
+
+.blox-team-showcase .group.relative h3.text-xl a {
+  color: #3182ce !important;
+  font-weight: 600 !important;
+}
+
+/* Role/title and text styling */
+.blox-team-showcase .group.relative .text-gray-600,
+.blox-team-showcase .group.relative .text-gray-400 {
+  text-align: center !important;
+  color: #4a5568 !important;
+}
+
+.blox-team-showcase .group.relative .text-gray-900 {
+  color: #1a202c !important;
+}
+
+/* Bio text */
+.blox-team-showcase .group.relative p.text-sm {
+  text-align: center !important;
+  color: #718096 !important;
+}
+
+/* Social icons - center them */
+.blox-team-showcase .group.relative .flex.gap-3 {
+  justify-content: center !important;
+  border-top: none !important;
+}
+
+.blox-team-showcase .group.relative .flex.gap-3 a {
+  color: #4a5568 !important;
+}
+
+.blox-team-showcase .group.relative .flex.gap-3 a:hover {
+  color: #3182ce !important;
+}
+
+/* Remove hover transform effects */
+.blox-team-showcase .group.relative > div:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove gradient overlay on images */
+.blox-team-showcase .group.relative a.block > div {
+  display: none !important;
+}
+
+/* Force light text colors in dark mode override */
+.dark .blox-team-showcase .text-white {
+  color: #1a202c !important;
+}
+
+.dark .blox-team-showcase h2 {
+  color: #1a202c !important;
+}
+
+.dark .blox-team-showcase .group.relative .text-gray-400 {
+  color: #4a5568 !important;
+}
+
+.dark .blox-team-showcase .group.relative > div.relative {
+  background: transparent !important;
+}
+</style>
