@@ -23,10 +23,19 @@
     padding-bottom: 0 !important;
   }
 
-  /* Center the grid container */
+  /* Center the grid container - convert to flexbox for true centering */
   .blox-team-showcase .grid {
-    justify-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
     justify-content: center !important;
+    gap: 2rem !important;
+  }
+
+  /* Person cards - set consistent width */
+  .blox-team-showcase .grid>.group {
+    max-width: 300px !important;
+    width: 100% !important;
+    flex: 0 1 auto !important;
   }
 
   /* Person cards - remove background, center ALL content */
