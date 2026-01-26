@@ -16,3 +16,114 @@
   margin-left: calc(-50vw + 50%) !important;
   min-height: 85vh !important;
 }
+
+/* ========================================
+   People Page Styling - Match Reference Design
+   ======================================== */
+
+/* Light background for people section */
+[id*="team-showcase"] {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%) !important;
+}
+
+/* Center the main heading */
+[id*="team-showcase"] h2.text-3xl,
+[id*="team-showcase"] h2.text-4xl,
+[id*="team-showcase"] h2.text-5xl {
+  text-align: center !important;
+  color: #1a202c !important;
+}
+
+/* Section group headers - centered, no border */
+[id*="team-showcase"] h3.text-2xl {
+  text-align: center !important;
+  border: none !important;
+  color: #2d3748 !important;
+  font-weight: 600 !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 0 !important;
+}
+
+/* Center the grid container */
+[id*="team-showcase"] .grid {
+  justify-items: center !important;
+}
+
+/* Person cards - remove background, center content */
+[id*="team-showcase"] .group.relative > div {
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+/* Circular avatars */
+[id*="team-showcase"] .group.relative img {
+  border-radius: 50% !important;
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  margin: 0 auto !important;
+  border: 4px solid #3182ce !important;
+}
+
+/* Avatar container - remove overflow styles */
+[id*="team-showcase"] .group.relative a.block {
+  height: auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Text content container */
+[id*="team-showcase"] .group.relative .p-6 {
+  text-align: center !important;
+  padding-top: 1rem !important;
+}
+
+/* Name styling */
+[id*="team-showcase"] .group.relative h3.text-xl {
+  text-align: center !important;
+}
+
+[id*="team-showcase"] .group.relative h3.text-xl a {
+  color: #3182ce !important;
+  font-weight: 600 !important;
+}
+
+/* Role/title styling */
+[id*="team-showcase"] .group.relative .text-gray-600,
+[id*="team-showcase"] .group.relative .dark\:text-gray-400 {
+  text-align: center !important;
+  color: #4a5568 !important;
+}
+
+/* Bio text */
+[id*="team-showcase"] .group.relative p.text-sm {
+  text-align: center !important;
+  color: #718096 !important;
+}
+
+/* Social icons - center them */
+[id*="team-showcase"] .group.relative .flex.gap-3 {
+  justify-content: center !important;
+  border-top: none !important;
+}
+
+[id*="team-showcase"] .group.relative .flex.gap-3 a {
+  color: #4a5568 !important;
+}
+
+[id*="team-showcase"] .group.relative .flex.gap-3 a:hover {
+  color: #3182ce !important;
+}
+
+/* Remove hover transform effects */
+[id*="team-showcase"] .group.relative > div:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove gradient overlay on images */
+[id*="team-showcase"] .group.relative a.block > div {
+  display: none !important;
+}
