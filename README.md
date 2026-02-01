@@ -36,7 +36,7 @@ Most CVs are static PDFs that get lost in the pile. This is an **intelligent por
 
 <p align="center">
   <a href="https://hugoblox.com/templates/academic-cv/start?utm_source=github&utm_medium=readme">
-    <img src="https://img.shields.io/badge/⚡️%20Get%20Your%20CV%20in%2060s-ff4655?style=for-the-badge" 
+    <img src="https://img.shields.io/badge/⚡️%20Get%20Your%20CV%20in%2060s-ff4655?style=for-the-badge"
     alt="Deploy this template" width="400">
   </a>
 </p>
@@ -109,21 +109,37 @@ Learn more: docs on [Notebooks](https://docs.hugoblox.com/reference/markdown/#-n
 ## Get Started
 
 ### Option 1: No-Code (Fastest)
+
 Launch a fully hosted site in your browser. No software to install.
 
 👉 [**Launch in Browser (Free)**](https://hugoblox.com/templates/academic-cv/start?utm_source=github&utm_medium=readme)
 
 ### Option 2: Studio (Visual Editor)
+
 1) Install [HugoBlox Studio](https://marketplace.visualstudio.com/items?itemName=hugoblox.hugoblox-studio) for VS Code  
 2) Open this project and edit visually
 
 ### Option 3: CLI (Developers)
+
 1) Install [Hugo](https://docs.hugoblox.com/start/cli/)
 2) Create your site with the CLI:
 
 ```bash
 npx hugoblox create site --template academic-cv
 ```
+
+---
+
+## Updating Publications
+
+To add new publications:
+
+1. Update the BibTeX file (`publication/ReadCube_export.bib`)
+2. Run the update script:
+
+   ```bash
+   ./scripts/update_publications.sh
+   ```
 
 ---
 
