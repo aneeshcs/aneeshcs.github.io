@@ -30,17 +30,41 @@ sections:
             opacity: 0;
             transition: opacity 0.6s ease-in-out;
             pointer-events: none;
+            background-repeat: no-repeat;
+            background-size: cover;
           }
           .tour-slide.active {
             opacity: 1;
             pointer-events: auto;
           }
-          .slide-1 { background: linear-gradient(135deg, #1a365d 0%, #2d5a87 50%, #3d7ab5 100%); justify-content: center; }
-          .slide-2 { background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #445566 100%); justify-content: flex-start; }
-          .slide-3 { background: linear-gradient(135deg, #1e3a5f 0%, #2d5478 50%, #3c6e91 100%); justify-content: flex-end; }
+          .slide-1 { 
+            background-image: url('/media/crepuscular_rays_ocean.jpg');
+            background-position: right;
+            justify-content: center; 
+          }
+          .slide-2 { 
+            background-image: url('/media/clouds_over_ocean.jpg');
+            background-position: center;
+            justify-content: flex-start; 
+          }
+          .slide-3 { 
+            background-image: url('/media/clouds_over_ocean_2.jpg');
+            background-position: center;
+            justify-content: flex-end; 
+          }
+          .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.35);
+          }
           .slide-content {
             max-width: 700px;
             padding: 3rem;
+            position: relative;
+            z-index: 2;
           }
           .slide-content h2 {
             font-size: 3rem;
@@ -112,13 +136,15 @@ sections:
 
         <div class="tour-slideshow">
           <div class="tour-slide slide-1 active">
-            <div class="slide-content" style="text-align: center;">
+            <div class="slide-overlay"></div>
+            <div class="slide-content" style="text-align: center; margin: 0 auto;">
               <h2>👋 Welcome to the group</h2>
               <p>Take a look at what we're working on…</p>
             </div>
           </div>
           
           <div class="tour-slide slide-2">
+            <div class="slide-overlay"></div>
             <div class="slide-content" style="margin-left: 4rem; text-align: left;">
               <h2>our group</h2>
               <p>Based in Boulder, CO, our group collaborates globally and works on problems from pole to pole!</p>
@@ -127,7 +153,8 @@ sections:
           </div>
           
           <div class="tour-slide slide-3">
-            <div class="slide-content" style="margin-right: 4rem; text-align: right;">
+            <div class="slide-overlay"></div>
+            <div class="slide-content" style="margin-right: 4rem; margin-left: auto; text-align: right;">
               <h2>Climate Processes and Predictability Lab</h2>
               <a href="/projects" class="btn">Discover our projects</a>
             </div>
