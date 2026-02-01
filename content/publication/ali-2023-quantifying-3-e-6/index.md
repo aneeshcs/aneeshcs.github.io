@@ -2,7 +2,7 @@
 title: Quantifying Causes of Arctic Amplification via Deep Learning based Time-series
   Causal Inference
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:44.115774Z'
 authors:
 - Sahara Ali

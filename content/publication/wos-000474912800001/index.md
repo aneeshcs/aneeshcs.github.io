@@ -2,7 +2,7 @@
 title: Observational Needs for Improving Ocean and Coupled Reanalysis, S2S    Prediction,
   and Decadal Prediction
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:17.809033Z'
 authors:
 - Stephen G. Penny

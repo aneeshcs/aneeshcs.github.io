@@ -1,7 +1,7 @@
 ---
 title: 'Earth, Wind, and Fire: Are Boulder’s Extreme Downslope Winds Changing?'
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:54.203269Z'
 authors:
 - Gerald A Meehl

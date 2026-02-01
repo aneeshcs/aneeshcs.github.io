@@ -2,7 +2,7 @@
 title: Four Atmospheric Circulation Regimes Over the North Pacific and Their    Relationship
   to California Precipitation on Daily to Seasonal Timescales
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:58.937930Z'
 authors:
 - Kristen Guirguis

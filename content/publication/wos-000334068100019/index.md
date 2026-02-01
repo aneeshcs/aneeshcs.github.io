@@ -1,7 +1,7 @@
 ---
 title: 'The MJO and global warming: a study in CCSM4'
 date: '2014-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:26.117252Z'
 authors:
 - Aneesh Subramanian

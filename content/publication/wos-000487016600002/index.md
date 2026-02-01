@@ -2,7 +2,7 @@
 title: Composite physical-biological El Nino and La Nina conditions in the    California
   Current System in CESM1-POP2-BEC
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:15.786462Z'
 authors:
 - Nathali Cordero-Quiros

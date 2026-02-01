@@ -2,7 +2,7 @@
 title: 'SKRIPS v1.0: a regional coupled ocean-atmosphere modeling framework    (MITgcm-WRF)
   using ESMF/NUOPC, description and preliminary results for the Red Sea'
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:06.790152Z'
 authors:
 - Rui Sun

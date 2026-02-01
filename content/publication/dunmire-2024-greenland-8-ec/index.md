@@ -2,7 +2,7 @@
 title: 'Greenland Ice Sheet wide supraglacial lake evolution and dynamics: insights
   from the 2018 and 2019 melt seasons'
 date: '2024-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:49.692808Z'
 authors:
 - Devon Dunmire

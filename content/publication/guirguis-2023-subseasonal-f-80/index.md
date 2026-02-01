@@ -2,7 +2,7 @@
 title: Subseasonal prediction of impactful California weather in a hybrid dynamical-statistical
   framework
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:52:00.353330Z'
 authors:
 - Kristen Guirguis

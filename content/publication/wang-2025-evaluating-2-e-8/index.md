@@ -2,7 +2,7 @@
 title: Evaluating a Hybrid Ensemble Data Assimilative coupled Physical-Biogeochemical
   Ecosystem Model of the Red Sea
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:43.142742Z'
 authors:
 - Yixin Wang

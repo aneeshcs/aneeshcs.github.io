@@ -1,7 +1,7 @@
 ---
 title: A Machine Learning Augmented Data Assimilation Method for High-Resolution Observation
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:37.118006Z'
 authors:
 - Lucas Howard

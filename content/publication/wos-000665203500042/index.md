@@ -2,7 +2,7 @@
 title: Tropical Pacific Air-Sea Interaction Processes and Biases in CESM2 and    Their
   Relation to El Nino Development
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:57.585036Z'
 authors:
 - Ho-Hsuan Wei

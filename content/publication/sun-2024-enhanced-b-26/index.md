@@ -2,7 +2,7 @@
 title: Enhanced Regional Ocean Ensemble Data Assimilation Through Atmospheric Coupling
   in the SKRIPS Model
 date: '2024-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:52.958202Z'
 authors:
 - Rui Sun

@@ -2,7 +2,7 @@
 title: 'Towards implementing artificial intelligence post-processing in weather    and
   climate: proposed actions from the Oxford 2019 workshop'
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:54.854734Z'
 authors:
 - Sue Ellen Haupt

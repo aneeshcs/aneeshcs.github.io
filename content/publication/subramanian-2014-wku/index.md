@@ -2,7 +2,7 @@
 title: Diagnosing MJO hindcast biases in NCAR CAM3 using nudging during the DYNAMO
   field campaign
 date: '2014-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:41.486654Z'
 authors:
 - Aneesh C. Subramanian

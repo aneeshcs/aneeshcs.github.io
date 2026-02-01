@@ -2,7 +2,7 @@
 title: Time Series Classification of Supraglacial Lakes Evolution over Greenland Ice
   Sheet
 date: '2024-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:40.121819Z'
 authors:
 - Emam Hossain

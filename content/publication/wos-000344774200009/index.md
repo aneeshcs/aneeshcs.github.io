@@ -2,7 +2,7 @@
 title: Coupled Impacts of the Diurnal Cycle of Sea Surface Temperature on the    Madden-Julian
   Oscillation
 date: '2014-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:27.158229Z'
 authors:
 - Hyodae Seo

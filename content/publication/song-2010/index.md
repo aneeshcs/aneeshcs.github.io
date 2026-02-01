@@ -2,7 +2,7 @@
 title: An Adaptive Approach to Mitigate Background Covariance Limitations in the Ensemble
   Kalman Filter
 date: '2010-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:37.771509Z'
 authors:
 - Hajoon Song

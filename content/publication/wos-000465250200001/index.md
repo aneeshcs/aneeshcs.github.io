@@ -1,7 +1,7 @@
 ---
 title: El Nino-Like Physical and Biogeochemical Ocean Response to Tropical    Eruptions
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:18.881360Z'
 authors:
 - Yassir A. Eddebbar

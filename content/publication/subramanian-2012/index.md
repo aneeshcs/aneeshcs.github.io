@@ -2,7 +2,7 @@
 title: Linear versus Nonlinear Filtering with Scale-Selective Corrections for Balanced
   Dynamics in a Simple Atmospheric Model
 date: '2012-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:39.301667Z'
 authors:
 - Aneesh C. Subramanian

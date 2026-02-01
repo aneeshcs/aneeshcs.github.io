@@ -1,7 +1,7 @@
 ---
 title: Maintaining Momentum in Climate Model Development
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:33.327426Z'
 authors:
 - Caroline Ummenhofer

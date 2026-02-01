@@ -1,7 +1,7 @@
 ---
 title: Engaging K-12 Learners in Data Annotation for AI Climate Models
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:47.274203Z'
 authors:
 - Michael MacFerrin

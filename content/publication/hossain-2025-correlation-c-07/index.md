@@ -2,7 +2,7 @@
 title: 'Correlation to Causation: A Causal Deep Learning Framework for Arctic Sea
   Ice Prediction'
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:55.205189Z'
 authors:
 - Emam Hossain

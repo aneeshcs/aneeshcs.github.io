@@ -1,7 +1,7 @@
 ---
 title: A Stochastic Representation of Subgrid Uncertainty for Dynamical Core    Development
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:12.913793Z'
 authors:
 - Aneesh Subramanian

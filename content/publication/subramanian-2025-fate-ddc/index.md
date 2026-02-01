@@ -1,7 +1,7 @@
 ---
 title: The fate of Greenland Ice Sheet supraglacial lakes in a warm and cool year
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:58.456143Z'
 authors:
 - Aneesh Subramanian

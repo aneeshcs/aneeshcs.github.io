@@ -1,7 +1,7 @@
 ---
 title: Impacts of Northeastern Pacific Buoy Surface Pressure Observations
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:49.400860Z'
 authors:
 - Carolyn A. Reynolds

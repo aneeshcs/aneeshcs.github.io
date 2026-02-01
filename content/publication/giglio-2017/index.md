@@ -1,7 +1,7 @@
 ---
 title: The role of wind gusts in upper ocean diurnal variability
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:37.192238Z'
 authors:
 - Donata Giglio

@@ -2,7 +2,7 @@
 title: Causal Time Series Modeling of Supraglacial Lake Evolution in Greenland under
   Distribution Shift
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:51.947783Z'
 authors:
 - Emam Hossain

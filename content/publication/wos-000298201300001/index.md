@@ -1,7 +1,7 @@
 ---
 title: The Madden-Julian Oscillation in CCSM4
 date: '2011-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:32.343342Z'
 authors:
 - Aneesh C. Subramanian

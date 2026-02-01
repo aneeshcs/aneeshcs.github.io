@@ -2,7 +2,7 @@
 title: Towards an End-to-End Analysis and Prediction System for Weather,    Climate,
   and Marine Applications in the Red Sea
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:54.223671Z'
 authors:
 - Ibrahim Hoteit

@@ -2,7 +2,7 @@
 title: How Does El Nino-Southern Oscillation Change Under Global Warming-A    First
   Look at CMIP6
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:53.580181Z'
 authors:
 - Hege-Beate Fredriksen

@@ -1,7 +1,7 @@
 ---
 title: West Coast Forecast Challenges and Development of Atmospheric River    Reconnaissance
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:01.484571Z'
 authors:
 - F. Martin Ralph

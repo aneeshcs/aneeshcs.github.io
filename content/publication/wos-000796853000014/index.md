@@ -2,7 +2,7 @@
 title: Atmospheric River Reconnaissance Workshop Promotes Research and    Operations
   Partnership
 date: '2022-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:50.370755Z'
 authors:
 - Anna M. Wilson

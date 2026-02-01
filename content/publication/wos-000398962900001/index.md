@@ -2,7 +2,7 @@
 title: 'Climate SPHINX: evaluating the impact of resolution and stochastic    physics
   parameterisations in the EC-Earth global climate model'
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:25.115366Z'
 authors:
 - Paolo Davini

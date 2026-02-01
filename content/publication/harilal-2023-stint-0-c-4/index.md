@@ -1,7 +1,7 @@
 ---
 title: 'STint: Self-supervised Temporal Interpolation for Geospatial Data'
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:38.143442Z'
 authors:
 - Nidhin Harilal

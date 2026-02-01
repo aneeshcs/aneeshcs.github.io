@@ -2,7 +2,7 @@
 title: 'Seasonal-to-interannual prediction of North American coastal marine    ecosystems:
   Forecast methods, mechanisms of predictability, and priority developments'
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:00.003471Z'
 authors:
 - Michael G. Jacox

@@ -1,7 +1,7 @@
 ---
 title: A Limited Role for Unforced Internal Variability in Twentieth-Century    Warming
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:12.053095Z'
 authors:
 - Karsten Haustein

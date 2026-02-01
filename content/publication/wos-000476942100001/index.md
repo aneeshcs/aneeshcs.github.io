@@ -2,7 +2,7 @@
 title: 'Integrated Observations of Global Surface Winds, Currents, and Waves:    Requirements
   and Challenges for the Next Decade'
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:08.456361Z'
 authors:
 - Ana B. Villas Boas

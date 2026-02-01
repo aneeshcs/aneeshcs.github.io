@@ -1,7 +1,7 @@
 ---
 title: Koopman operator theory for enhanced Pacific SST forecasting
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:42.165081Z'
 authors:
 - Paula Lorenzo Sánchez

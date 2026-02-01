@@ -2,7 +2,7 @@
 title: 'New Climate Change Center of Saudi Arabia: Advancing Understanding and Prediction
   for the Arabian Peninsula Climate'
 date: '2025-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:41.146544Z'
 authors:
 - Ibrahim Hoteit

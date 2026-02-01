@@ -1,7 +1,7 @@
 ---
 title: An Adjoint-Based Adaptive Ensemble Kalman Filter
 date: '2013-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:36.908639Z'
 authors:
 - Hajoon Song

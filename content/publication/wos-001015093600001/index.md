@@ -2,7 +2,7 @@
 title: 'Waves in SKRIPS: WAVEWATCH III coupling implementation and a case study    of
   Tropical Cyclone Mekunu'
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:42.515267Z'
 authors:
 - Rui Sun

@@ -2,7 +2,7 @@
 title: Assessing the Impact of Ocean In Situ Observations on MJO Propagation    Across
   the Maritime Continent in ECMWF Subseasonal Forecasts
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:44.516599Z'
 authors:
 - Danni Du

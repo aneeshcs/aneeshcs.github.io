@@ -1,7 +1,7 @@
 ---
 title: 'Eddies in the Red Sea: A statistical and dynamical study'
 date: '2014-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:42.028636Z'
 authors:
 - Peng Zhan

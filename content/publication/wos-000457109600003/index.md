@@ -2,7 +2,7 @@
 title: Statistical Characteristics of Long-Term High-Resolution Precipitable    Water
   Vapor Data at Darwin
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:07.595196Z'
 authors:
 - Kimberly Leung

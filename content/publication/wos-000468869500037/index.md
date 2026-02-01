@@ -1,7 +1,7 @@
 ---
 title: ENSO Bimodality and Extremes
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:14.720341Z'
 authors:
 - Regina R. Rodrigues

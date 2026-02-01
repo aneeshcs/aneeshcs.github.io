@@ -2,7 +2,7 @@
 title: 'Reducing Uncertainty in Sea-level Rise Prediction: A Spatial-variability-aware
   Approach'
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:46.140101Z'
 authors:
 - Subhankar Ghosh

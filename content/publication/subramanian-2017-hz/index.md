@@ -2,7 +2,7 @@
 title: 'Ensemble superparameterization versus stochastic parameterization: A comparison
   of model uncertainty representation in tropical weather prediction'
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:36.201209Z'
 authors:
 - Aneesh C. Subramanian

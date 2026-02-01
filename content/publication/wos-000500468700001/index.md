@@ -2,7 +2,7 @@
 title: 'Tropical climate variability in the Community Earth System Model: Data    Assimilation
   Research Testbed'
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:02.955126Z'
 authors:
 - Jonathan Eliashiv

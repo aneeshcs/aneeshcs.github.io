@@ -2,7 +2,7 @@
 title: 'Atmospheric River Tracking Method Intercomparison Project (ARTMIP): Project
   Goals and Experimental Design'
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:39.890794Z'
 authors:
 - Christine A. Shields

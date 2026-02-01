@@ -2,7 +2,7 @@
 title: Uncertainty Quantification and Bayesian Inference of Cloud    Parameterization
   in the NCAR Single Column Community Atmosphere Model (SCAM6)
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:56.872528Z'
 authors:
 - Raju Pathak

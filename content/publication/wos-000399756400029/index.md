@@ -2,7 +2,7 @@
 title: A study of reduced numerical precision to make superparameterization    more
   competitive using a hardware emulator in the OpenIFS model
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:28.148630Z'
 authors:
 - Peter D. Duben

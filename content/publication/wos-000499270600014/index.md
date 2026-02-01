@@ -2,7 +2,7 @@
 title: Experimental Subseasonal-to-Seasonal (S2S) Forecasting of Atmospheric    Rivers
   Over the Western United States
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:03.689285Z'
 authors:
 - Michael J. DeFlorio

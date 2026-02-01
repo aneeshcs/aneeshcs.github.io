@@ -2,7 +2,7 @@
 title: 'Remote and local influences in forecasting Pacific SST: a linear inverse    model
   and a multimodel ensemble study'
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:19.176358Z'
 authors:
 - Daniela Faggiani Dias

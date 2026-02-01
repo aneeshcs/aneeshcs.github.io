@@ -1,7 +1,7 @@
 ---
 title: Estimation and prediction of the upper ocean circulation in the Bay of    Bengal
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:00.817322Z'
 authors:
 - Ganesh Gopalakrishnan

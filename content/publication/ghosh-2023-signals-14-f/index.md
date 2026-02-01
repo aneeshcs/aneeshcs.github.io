@@ -2,7 +2,7 @@
 title: Signals of northward propagating monsoon intraseasonal oscillations (MISOs)
   in the RegCM4.7 CORDEX-CORE simulation over South Asia domain
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:35.187661Z'
 authors:
 - Soumik Ghosh

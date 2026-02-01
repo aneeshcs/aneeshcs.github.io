@@ -1,7 +1,7 @@
 ---
 title: Improving Weather Forecast Skill through Reduced-Precision Data    Assimilation
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:22.099720Z'
 authors:
 - Sam Hatfield

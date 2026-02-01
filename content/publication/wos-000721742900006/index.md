@@ -1,7 +1,7 @@
 ---
 title: Bay of Bengal Intraseasonal Oscillations and the 2018 Monsoon Onset
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:55.565120Z'
 authors:
 - Emily Shroyer

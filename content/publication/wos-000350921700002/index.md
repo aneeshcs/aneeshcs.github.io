@@ -2,7 +2,7 @@
 title: 'The physical oceanographic environment during the CCE-LTER Years:    Changes
   in climate and concepts'
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:29.296589Z'
 authors:
 - Arthur J. Miller

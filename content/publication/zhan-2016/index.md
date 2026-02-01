@@ -1,7 +1,7 @@
 ---
 title: The eddy kinetic energy budget in the Red Sea
 date: '2016-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:40.585095Z'
 authors:
 - Peng Zhan

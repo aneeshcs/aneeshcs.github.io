@@ -2,7 +2,7 @@
 title: Winter wet-dry weather patterns driving atmospheric rivers and Santa Ana    winds
   provide evidence for increasing wildfire hazard in California
 date: '2022-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:48.930719Z'
 authors:
 - Kristen Guirguis

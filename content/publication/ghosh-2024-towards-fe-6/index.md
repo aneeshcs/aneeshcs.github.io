@@ -2,7 +2,7 @@
 title: 'Towards Kriging-informed Conditional Diffusion for Regional Sea-Level Data
   Downscaling: A Summary of Results'
 date: '2024-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:39.128200Z'
 authors:
 - Subhankar Ghosh

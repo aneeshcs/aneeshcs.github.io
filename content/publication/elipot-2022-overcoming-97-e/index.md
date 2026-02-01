@@ -1,7 +1,7 @@
 ---
 title: Overcoming the Challenges of Ocean Data Uncertainty
 date: '2022-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:34.250642Z'
 authors:
 - Shane Elipot

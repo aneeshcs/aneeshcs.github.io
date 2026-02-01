@@ -1,7 +1,7 @@
 ---
 title: Data Gaps within Atmospheric Rivers over the Northeastern Pacific
 date: '2021-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:52.946983Z'
 authors:
 - Minghua Zheng

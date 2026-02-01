@@ -2,7 +2,7 @@
 title: 'Machine Learning for Stochastic Parameterization: Generative Adversarial    Networks
   in the Lorenz `96 Model'
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:05.222987Z'
 authors:
 - II Gagne

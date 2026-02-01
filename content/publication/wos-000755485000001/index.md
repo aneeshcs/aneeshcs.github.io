@@ -1,7 +1,7 @@
 ---
 title: Annual Modulation of Diurnal Winds in the Tropical Oceans
 date: '2022-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:47.993145Z'
 authors:
 - Donata Giglio

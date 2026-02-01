@@ -1,7 +1,7 @@
 ---
 title: Sensitivity Studies of the Red Sea Eddies Using Adjoint Method
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:41.000742Z'
 authors:
 - Peng Zhan

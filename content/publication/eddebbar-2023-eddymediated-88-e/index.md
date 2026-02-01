@@ -1,7 +1,7 @@
 ---
 title: Eddy-Mediated Mixing of Oxygen in the Equatorial Pacific
 date: '2023-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:48.648111Z'
 authors:
 - Yassir A Eddebbar

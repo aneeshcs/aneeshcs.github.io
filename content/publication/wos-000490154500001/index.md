@@ -2,7 +2,7 @@
 title: 'Observational Needs Supporting Marine Ecosystems Modeling and    Forecasting:
   From the Global Ocean to Regional and Coastal Systems'
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:20.094257Z'
 authors:
 - Antonietta Capotondi

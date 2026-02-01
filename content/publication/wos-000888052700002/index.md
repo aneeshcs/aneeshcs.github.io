@@ -2,7 +2,7 @@
 title: 'Focused Observations for Expanded Comprehension: Advancing Tropical    Pacific
   Coupled Modeling and Process Understanding'
 date: '2022-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:50:46.927717Z'
 authors:
 - Charlotte A. DeMott

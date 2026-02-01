@@ -2,7 +2,7 @@
 title: Advancing Atmospheric River Science and Inspiring Future Development of the
   Atmospheric River Reconnaissance Program
 date: '2024-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:57.452668Z'
 authors:
 - David A Lavers

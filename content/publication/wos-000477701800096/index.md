@@ -1,7 +1,7 @@
 ---
 title: Predictability of US West Coast Ocean Temperatures is not solely due to    ENSO
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:05.938508Z'
 authors:
 - Antonietta Capotondi

@@ -2,7 +2,7 @@
 title: 'Coupled effects of ocean current on wind stress in the Bay of Bengal:    Eddy
   energetics and upper ocean stratification'
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:11.144541Z'
 authors:
 - Hyodae Seo

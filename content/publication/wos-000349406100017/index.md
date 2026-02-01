@@ -2,7 +2,7 @@
 title: The skill of atmospheric linear inverse models in hindcasting the    Madden-Julian
   Oscillation
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:21.098798Z'
 authors:
 - Nicholas R. Cavanaugh

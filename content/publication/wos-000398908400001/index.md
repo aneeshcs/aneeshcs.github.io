@@ -2,7 +2,7 @@
 title: Simulation of High-Resolution Precipitable Water Data by a Stochastic    Model
   with a Random Trigger
 date: '2016-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:24.123678Z'
 authors:
 - Kimberly Leung

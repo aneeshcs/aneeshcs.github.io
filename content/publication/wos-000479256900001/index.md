@@ -2,7 +2,7 @@
 title: Ocean Observations to Improve Our Understanding, Modeling, and    Forecasting
   of Subseasonal-to-Seasonal Variability
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:10.342317Z'
 authors:
 - Aneesh C. Subramanian

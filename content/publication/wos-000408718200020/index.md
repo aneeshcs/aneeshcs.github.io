@@ -2,7 +2,7 @@
 title: Seasonal and decadal forecasts of Atlantic Sea surface temperatures    using
   a linear inverse model
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2026-02-01T16:51:31.304673Z'
 authors:
 - Benjamin Huddart
