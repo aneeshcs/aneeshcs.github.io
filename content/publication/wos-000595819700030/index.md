@@ -1,0 +1,31 @@
+---
+title: How Does El Nino-Southern Oscillation Change Under Global Warming-A    First
+  Look at CMIP6
+date: '2020-01-01'
+draft: true
+publishDate: '2026-02-01T16:50:53.580181Z'
+authors:
+- Hege-Beate Fredriksen
+- Judith Berner
+- Aneesh C. Subramanian
+- Antonietta Capotondi
+publication_types:
+- '2'
+abstract: The latest generation of coupled models, the sixth Coupled Models    Intercomparison
+  Project (CMIP6), is used to study the changes in the El Nino-Southern Oscillation
+  (ENSO) in a warming climate. For the four future scenarios studied, the sea surface
+  temperature variability increases in most CMIP6 models, but to varying degrees.
+  This increase is linked to a weakening of the east-west temperature gradient in
+  the tropical Pacific Ocean, which is evident across all models. Just as in previous
+  generations of climate models, we find that many characteristics of future ENSO
+  remain uncertain. This includes changes in dominant time scale, extratropical teleconnection
+  patterns, and amplitude of El Nino and La Nina events. For models with the strongest
+  increase in future variability, the majority of the increase happens in the Eastern
+  Pacific, where the strongest El Nino events usually occur.
+featured: false
+publication: '*GEOPHYSICAL RESEARCH LETTERS*'
+tags:
+- ENSO; CMIP6
+doi: 10.1029/2020gl090640
+---
+

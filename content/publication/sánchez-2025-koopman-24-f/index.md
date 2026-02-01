@@ -1,0 +1,44 @@
+---
+title: Koopman operator theory for enhanced Pacific SST forecasting
+date: '2025-01-01'
+draft: true
+publishDate: '2026-02-01T16:51:42.165081Z'
+authors:
+- Paula Lorenzo Sánchez
+- Matt Newman
+- Antonio Navarra
+- John Albers
+- Aneesh Subramanian
+publication_types:
+- '2'
+abstract: El Ni&#241;o-Southern Oscillation (ENSO) is a complex climatic phenomenon
+  with significant impacts on global weather patterns and ecosystems. Improving ENSO
+  predictability is therefore an issue of high societal value. However, Global Circulation
+  Models present severe biases when predicting ENSO, and their skill remains comparable
+  to that of vastly simpler empirical models such as Linear Inverse Models (LIMs).
+  LIMs, however, rely on linear dynamics, and they have inherent limitations in capturing
+  the behavior of non-linear phenomena. In this context, Koopman operator theory has
+  emerged as a powerful mathematical framework, offering a novel perspective for analyzing
+  complex non-linear systems, such as ENSO. In this study, we investigate the potential
+  of Koopman operator theory to enhance ENSO forecasting accuracy. Leveraging 2000
+  years of tropical SST pre-industrial CESM data, we have assessed the skill of the
+  Ni&#241;o 3.4 index forecasts using the Koopman framework, and compared it to the
+  benchmark set by LIMs. Our analysis includes sensitivity testing of both methods
+  across various parameters, such as retained variability and data length used for
+  operator computations. Our findings reveal nuances in the robustness of Koopman
+  Operator estimates, particularly evident when using shorter training periods, contrasting
+  with more stable LIM counterparts. However, a notable breakthrough emerges as we
+  demonstrate the higher skill of Koopman multimodel ensembles, showcasing consistent
+  improvements over linear models. The comparative analysis highlights the potential
+  of Koopman operator theory in advancing ENSO forecasting beyond linear models. The
+  utilization of Koopman multimodel ensembles emerges as a promising strategy, demonstrating
+  enhanced forecasting capabilities. Yet, challenges in robustness persist, particularly
+  in shorter data spans, signaling avenues for further refinement. Overall, these
+  findings underscore the significance of the Koopman framework and lay the groundwork
+  for future research aimed at refining methodologies for more accurate predictions
+  in complex climatic systems.
+featured: false
+publication: ''
+doi: 10.5194/egusphere-egu24-2554
+---
+

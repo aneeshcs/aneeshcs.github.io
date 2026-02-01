@@ -1,0 +1,39 @@
+---
+title: Linear versus Nonlinear Filtering with Scale-Selective Corrections for Balanced
+  Dynamics in a Simple Atmospheric Model
+date: '2012-01-01'
+draft: true
+publishDate: '2026-02-01T16:50:39.301667Z'
+authors:
+- Aneesh C. Subramanian
+- Ibrahim Hoteit
+- Bruce Cornuelle
+- Arthur J. Miller
+- Hajoon Song
+publication_types:
+- '2'
+abstract: This paper investigates the role of the linear analysis step of the ensemble
+  Kalman filters (EnKF) in disrupting the balanced dynamics in a simple atmospheric
+  model and compares it to a fully nonlinear particle-based filter (PF). The filters
+  have a very similar forecast step but the analysis step of the PF solves the full
+  Bayesian filtering problem while the EnKF analysis only applies to Gaussian distributions.
+  The EnKF is compared to two flavors of the particle filter with different sampling
+  strategies, the sequential importance resampling filter (SIRF) and the sequential
+  kernel resampling filter (SKRF). The model admits a chaotic vortical mode coupled
+  to a comparatively fast gravity wave mode. It can also be configured either to evolve
+  on a so-called slow manifold, where the fast motion is suppressed, or such that
+  the fast-varying variables are diagnosed from the slow-varying variables as slaved
+  modes. Identical twin experiments show that EnKF and PF capture the variables on
+  the slow manifold well as the dynamics is very stable. PFs, especially the SKRF,
+  capture slaved modes better than the EnKF, implying that a full Bayesian analysis
+  estimates the nonlinear model variables better. The PFs perform significantly better
+  in the fully coupled nonlinear model where fast and slow variables modulate each
+  other. This suggests that the analysis step in the PFs maintains the balance in
+  both variables much better than the EnKF. It is also shown that increasing the ensemble
+  size generally improves the performance of the PFs but has less impact on the EnKF
+  after a sufficient number of members have been used.
+featured: false
+publication: '*Journal of the Atmospheric Sciences*'
+doi: 10.1175/jas-d-11-0332.1
+---
+

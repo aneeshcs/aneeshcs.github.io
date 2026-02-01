@@ -1,0 +1,42 @@
+---
+title: 'Remote and local influences in forecasting Pacific SST: a linear inverse    model
+  and a multimodel ensemble study'
+date: '2019-01-01'
+draft: true
+publishDate: '2026-02-01T16:51:19.176358Z'
+authors:
+- Daniela Faggiani Dias
+- Aneesh Subramanian
+- Laure Zanna
+- Arthur J. Miller
+publication_types:
+- '2'
+abstract: A suite of statistical linear inverse models (LIMs) are used to    understand
+  the remote and local SST variability that influences SST predictions over the North
+  Pacific region. Observed monthly SST anomalies in the Pacific are used to construct
+  different regional LIMs for seasonal to decadal predictions. The seasonal forecast
+  skills of the LIMs are compared to that from three operational forecast systems
+  in the North American Multi-Model Ensemble (NMME), revealing that the LIM has better
+  skill in the Northeastern Pacific than NMME models. The LIM is also found to have
+  comparable forecast skill for SST in the Tropical Pacific with NMME models. This
+  skill, however, is highly dependent on the initialization month, with forecasts
+  initialized during the summer having better skill than those initialized during
+  the winter. The data are also bandpass filtered into seasonal, interannual and decadal
+  time scales to identify the relationships between time scales using the structure
+  of the propagator matrix. Moreover, we investigate the influence of the tropics
+  and extra-tropics in the predictability of the SST over the region. The Extratropical
+  North Pacific seems to be a source of predictability for the tropics on seasonal
+  to interannual time scales, while the tropics enhance the forecast skill for the
+  decadal component. These results indicate the importance of temporal scale interactions
+  in improving the predictions on decadal timescales. Hence, we show that LIMs are
+  not only useful as benchmarks for estimates of statistical skill, but also to isolate
+  contributions to the forecast skills from different timescales, spatial scales or
+  even model components.
+featured: false
+publication: '*CLIMATE DYNAMICS*'
+tags:
+- Linear inverse model; Predictability; Sea surface temperature; Timescale    interactions;
+  NMME
+doi: 10.1007/s00382-018-4323-z
+---
+
