@@ -16,6 +16,9 @@ main:
   - name: Projects
     url: /projects
     weight: 40
+  - name: GFD
+    url: /gfd
+    weight: 45
   - name: Publications
     url: /publication
     weight: 50
