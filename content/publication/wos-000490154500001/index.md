@@ -1,9 +1,11 @@
 ---
 title: 'Observational Needs Supporting Marine Ecosystems Modeling and    Forecasting:
   From the Global Ocean to Regional and Coastal Systems'
-date: '2019-01-01'
-draft: false
-publishDate: '2026-02-01T16:51:20.094257Z'
+
+# Authors
+# A YAML list of author names
+# If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
+# write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Antonietta Capotondi
 - Michael Jacox
@@ -15,29 +17,29 @@ authors:
 - Samuel Chaffron
 - Wei Cheng
 - Daniela F. Dias
-- Damien Eveillard
-- Lionel Guidi
-- Daniele Iudicone
-- Nicole S. Lovenduski
-- Janet A. Nye
-- Ivonne Ortiz
-- Douglas Pirhalla
-- Mercedes Pozo Buil
-- Vincent Saba
-- Scott Sheridan
-- Samantha Siedlecki
 - Aneesh Subramanian
-- Colomban de Vargas
-- Emanuele Di Lorenzo
-- Scott C. Doney
-- Albert J. Hermann
-- Terrence Joyce
-- Mark Merrifield
-- Arthur J. Miller
-- Fabrice Not
-- Stephane Pesant
+- ' others'
+
+# Author notes (such as 'Equal Contribution')
+# A YAML list of notes for each author in the above `authors` list
+author_notes: []
+
+date: '2019-01-01'
+
+# Date to publish webpage (NOT necessarily Bibtex publication's date).
+publishDate: '2026-02-06T05:57:01.368848Z'
+
+# Publication type.
+# A single CSL publication type but formatted as a YAML list (for Hugo requirements).
 publication_types:
-- '2'
+- article-journal
+
+# Publication name and optional abbreviated publication name.
+publication: '*FRONTIERS IN MARINE SCIENCE*'
+publication_short: ''
+
+doi: 10.3389/fmars.2019.00623
+
 abstract: 'Many coastal areas host rich marine ecosystems and are also centers of    economic
   activities, including fishing, shipping and recreation. Due to the socioeconomic
   and ecological importance of these areas, predicting relevant indicators of the
@@ -62,10 +64,44 @@ abstract: 'Many coastal areas host rich marine ecosystems and are also centers o
   e.g., approaches based on acoustics, inspired by Tara Oceans or by landscape ecology,
   which have the potential to support and expand ecosystem modeling and forecasting
   activities by bridging global and local observations.'
-featured: false
-publication: '*FRONTIERS IN MARINE SCIENCE*'
+
+# Summary. An optional shortened abstract.
+summary: ''
+
 tags:
 - marine ecosystems; modeling and forecasting; seascapes; genetics;    acoustics
-doi: 10.3389/fmars.2019.00623
+
+# Display this page in a list of Featured pages?
+featured: false
+
+# Links
+url_pdf: ''
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
+
+# Custom links (uncomment lines below)
+# links:
+# - name: Custom Link
+#   url: http://example.org
+
+# Publication image
+# Add an image named `featured.jpg/png` to your page's folder then add a caption below.
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
+
+# Associated Projects (optional).
+#   Associate this publication with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
+#   Otherwise, set `projects: []`.
+projects: []
 ---
 
+Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

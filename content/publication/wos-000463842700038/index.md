@@ -1,16 +1,37 @@
 ---
 title: 'Remote and local influences in forecasting Pacific SST: a linear inverse    model
   and a multimodel ensemble study'
-date: '2019-01-01'
-draft: false
-publishDate: '2026-02-01T16:51:19.176358Z'
+
+# Authors
+# A YAML list of author names
+# If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
+# write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Daniela Faggiani Dias
 - Aneesh Subramanian
 - Laure Zanna
 - Arthur J. Miller
+
+# Author notes (such as 'Equal Contribution')
+# A YAML list of notes for each author in the above `authors` list
+author_notes: []
+
+date: '2019-01-01'
+
+# Date to publish webpage (NOT necessarily Bibtex publication's date).
+publishDate: '2026-02-06T05:57:01.364205Z'
+
+# Publication type.
+# A single CSL publication type but formatted as a YAML list (for Hugo requirements).
 publication_types:
-- '2'
+- article-journal
+
+# Publication name and optional abbreviated publication name.
+publication: '*CLIMATE DYNAMICS*'
+publication_short: ''
+
+doi: 10.1007/s00382-018-4323-z
+
 abstract: A suite of statistical linear inverse models (LIMs) are used to    understand
   the remote and local SST variability that influences SST predictions over the North
   Pacific region. Observed monthly SST anomalies in the Pacific are used to construct
@@ -32,11 +53,45 @@ abstract: A suite of statistical linear inverse models (LIMs) are used to    und
   not only useful as benchmarks for estimates of statistical skill, but also to isolate
   contributions to the forecast skills from different timescales, spatial scales or
   even model components.
-featured: false
-publication: '*CLIMATE DYNAMICS*'
+
+# Summary. An optional shortened abstract.
+summary: ''
+
 tags:
 - Linear inverse model; Predictability; Sea surface temperature; Timescale    interactions;
   NMME
-doi: 10.1007/s00382-018-4323-z
+
+# Display this page in a list of Featured pages?
+featured: false
+
+# Links
+url_pdf: ''
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
+
+# Custom links (uncomment lines below)
+# links:
+# - name: Custom Link
+#   url: http://example.org
+
+# Publication image
+# Add an image named `featured.jpg/png` to your page's folder then add a caption below.
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
+
+# Associated Projects (optional).
+#   Associate this publication with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
+#   Otherwise, set `projects: []`.
+projects: []
 ---
 
+Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

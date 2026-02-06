@@ -1,16 +1,37 @@
 ---
 title: 'Coupled effects of ocean current on wind stress in the Bay of Bengal:    Eddy
   energetics and upper ocean stratification'
-date: '2019-01-01'
-draft: false
-publishDate: '2026-02-01T16:51:11.144541Z'
+
+# Authors
+# A YAML list of author names
+# If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
+# write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Hyodae Seo
 - Aneesh C. Subramanian
 - Hajoon Song
 - Jasti S. Chowdary
+
+# Author notes (such as 'Equal Contribution')
+# A YAML list of notes for each author in the above `authors` list
+author_notes: []
+
+date: '2019-01-01'
+
+# Date to publish webpage (NOT necessarily Bibtex publication's date).
+publishDate: '2026-02-06T05:57:01.320698Z'
+
+# Publication type.
+# A single CSL publication type but formatted as a YAML list (for Hugo requirements).
 publication_types:
-- '2'
+- article-journal
+
+# Publication name and optional abbreviated publication name.
+publication: '*DEEP-SEA RESEARCH PART II-TOPICAL STUDIES IN OCEANOGRAPHY*'
+publication_short: ''
+
+doi: 10.1016/j.dsr2.2019.07.005
+
 abstract: This study examines the effect of surface current in the bulk formula    for
   the wind stress, referred to as the relative wind (RW) effect, on the energetics
   of the geostrophic circulation and the upper ocean stratification in the Bay of
@@ -34,8 +55,43 @@ abstract: This study examines the effect of surface current in the bulk formula 
   this southwestern part of the BoB is a hot spot for the momentum exchange between
   the surface circulation and the monsoonal winds, thus a potential area for focused
   field measurements for the ocean circulation energetics and air-sea interaction.
+
+# Summary. An optional shortened abstract.
+summary: ''
+
+tags: []
+
+# Display this page in a list of Featured pages?
 featured: false
-publication: '*DEEP-SEA RESEARCH PART II-TOPICAL STUDIES IN OCEANOGRAPHY*'
-doi: 10.1016/j.dsr2.2019.07.005
+
+# Links
+url_pdf: ''
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
+
+# Custom links (uncomment lines below)
+# links:
+# - name: Custom Link
+#   url: http://example.org
+
+# Publication image
+# Add an image named `featured.jpg/png` to your page's folder then add a caption below.
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
+
+# Associated Projects (optional).
+#   Associate this publication with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
+#   Otherwise, set `projects: []`.
+projects: []
 ---
 
+Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

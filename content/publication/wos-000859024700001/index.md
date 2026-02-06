@@ -1,16 +1,37 @@
 ---
 title: Weakening of Indian Summer Monsoon Synoptic Activity in Response to    Polar
   Sea Ice Melt Induced by Albedo Reduction in a Climate Model
-date: '2022-01-01'
-draft: false
-publishDate: '2026-02-01T16:50:50.917641Z'
+
+# Authors
+# A YAML list of author names
+# If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
+# write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Varunesh Chandra
 - S. Sandeep
 - E. Suhas
 - Aneesh C. Subramanian
+
+# Author notes (such as 'Equal Contribution')
+# A YAML list of notes for each author in the above `authors` list
+author_notes: []
+
+date: '2022-01-01'
+
+# Date to publish webpage (NOT necessarily Bibtex publication's date).
+publishDate: '2026-02-06T05:57:01.154942Z'
+
+# Publication type.
+# A single CSL publication type but formatted as a YAML list (for Hugo requirements).
 publication_types:
-- '2'
+- article-journal
+
+# Publication name and optional abbreviated publication name.
+publication: '*EARTH AND SPACE SCIENCE*'
+publication_short: ''
+
+doi: 10.1029/2021ea002185
+
 abstract: The effect of polar sea ice melt on low latitude climate is little    known.
   To understand the response of the Indian summer monsoon (ISM) synoptic activity
   to the sea ice melt, we have run a suite of coupled and uncoupled climate model
@@ -39,8 +60,43 @@ abstract: The effect of polar sea ice melt on low latitude climate is little    
   the monsoon circulation declined by about 22 % in the sea ice melt experiments.
   Our results suggest that the Arctic and Antarctic sea ice melt could have severe
   implications for the water security of South Asia.
+
+# Summary. An optional shortened abstract.
+summary: ''
+
+tags: []
+
+# Display this page in a list of Featured pages?
 featured: false
-publication: '*EARTH AND SPACE SCIENCE*'
-doi: 10.1029/2021ea002185
+
+# Links
+url_pdf: ''
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
+
+# Custom links (uncomment lines below)
+# links:
+# - name: Custom Link
+#   url: http://example.org
+
+# Publication image
+# Add an image named `featured.jpg/png` to your page's folder then add a caption below.
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
+
+# Associated Projects (optional).
+#   Associate this publication with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
+#   Otherwise, set `projects: []`.
+projects: []
 ---
 
+Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
