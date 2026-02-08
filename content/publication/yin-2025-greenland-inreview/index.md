@@ -20,10 +20,10 @@ authors:
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2025-01-01'
+date: '2026-01-01'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
-publishDate: '2026-02-08T15:46:10.130804Z'
+publishDate: '2026-02-08T16:26:32.926916Z'
 
 # Publication type.
 # A single CSL publication type but formatted as a YAML list (for Hugo requirements).
@@ -41,8 +41,7 @@ abstract: ''
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags:
-  - in-review
+tags: []
 
 # Display this page in a list of Featured pages?
 featured: false
