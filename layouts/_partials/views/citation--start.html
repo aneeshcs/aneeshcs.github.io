@@ -1,0 +1,24 @@
+{{/* Left alignment / width is set so that multiple blocks with this view & variable length content all left align. */}}
+<div class="mt-16 sm:mt-20 container max-w-3xl w-full">
+
+  {{/* Publication search/filter UI */}}
+  <div id="pub-filters" style="margin-bottom: 2rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #f7fafc;">
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+      <div style="flex: 1; min-width: 200px;">
+        <label for="pub-author-search" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; color: #4a5568;">Search by Author</label>
+        <input type="text" id="pub-author-search" placeholder="e.g. Subramanian" style="width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #cbd5e0; border-radius: 0.375rem; font-size: 0.875rem;">
+      </div>
+      <div style="min-width: 140px;">
+        <label for="pub-year-filter" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; color: #4a5568;">Filter by Year</label>
+        <select id="pub-year-filter" style="width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #cbd5e0; border-radius: 0.375rem; font-size: 0.875rem; background: white;">
+          <option value="">All Years</option>
+        </select>
+      </div>
+      <div>
+        <button id="pub-clear-filters" type="button" style="padding: 0.5rem 1rem; border: 1px solid #cbd5e0; border-radius: 0.375rem; font-size: 0.875rem; background: white; cursor: pointer; color: #4a5568;">Clear</button>
+      </div>
+    </div>
+    <div id="pub-filter-count" style="margin-top: 0.5rem; font-size: 0.8rem; color: #718096;"></div>
+  </div>
+
+  <div class="flex flex-col space-y-3">
