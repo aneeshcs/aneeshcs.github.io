@@ -1,10 +1,7 @@
 {{ $item := .item }}
 {{ $year_value := $item.Params.event_start | default $item.Date }}
 {{ $year := (time $year_value).Format "2006" }}
-{{ $displayYear := $year }}
-{{ if in $item.Params.tags "in-review" }}
-{{ $displayYear = "Sub Judice" }}
-{{ end }}
+{{ $displayYear := cond (in $item.Params.tags "in-review") "Sub Judice" $year }}
 {{ $has_attachments := partial "functions/has_attachments" $item }}
 
 {{/* Build author string for data attribute */}}
