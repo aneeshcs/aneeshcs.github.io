@@ -1,0 +1,63 @@
+</div>
+</div>
+
+<script>
+(function() {
+  const yearSelect = document.getElementById('pub-year-filter');
+  const authorInput = document.getElementById('pub-author-search');
+  const clearBtn = document.getElementById('pub-clear-filters');
+  const countDiv = document.getElementById('pub-filter-count');
+  if (!yearSelect || !authorInput) return;
+
+  const items = document.querySelectorAll('.pub-list-item.view-citation');
+
+  // Populate year dropdown from data attributes
+  const years = new Set();
+  items.forEach(function(item) {
+    const y = item.getAttribute('data-year');
+    if (y) years.add(y);
+  });
+  Array.from(years).sort().reverse().forEach(function(y) {
+    const opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y;
+    yearSelect.appendChild(opt);
+  });
+
+  function filterPubs() {
+    const selectedYear = yearSelect.value;
+    const authorQuery = authorInput.value.trim().toLowerCase();
+    let shown = 0;
+    let total = items.length;
+
+    items.forEach(function(item) {
+      const itemYear = item.getAttribute('data-year') || '';
+      const itemAuthors = (item.getAttribute('data-authors') || '').toLowerCase();
+
+      const matchYear = !selectedYear || itemYear === selectedYear;
+      const matchAuthor = !authorQuery || itemAuthors.indexOf(authorQuery) !== -1;
+
+      if (matchYear && matchAuthor) {
+        item.style.display = '';
+        shown++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (selectedYear || authorQuery) {
+      countDiv.textContent = 'Showing ' + shown + ' of ' + total + ' publications';
+    } else {
+      countDiv.textContent = '';
+    }
+  }
+
+  yearSelect.addEventListener('change', filterPubs);
+  authorInput.addEventListener('input', filterPubs);
+  clearBtn.addEventListener('click', function() {
+    yearSelect.value = '';
+    authorInput.value = '';
+    filterPubs();
+  });
+})();
+</script>
