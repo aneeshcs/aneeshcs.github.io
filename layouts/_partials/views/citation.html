@@ -23,9 +23,10 @@
   ({{- $year -}}).
   <a href="{{ $item.RelPermalink }}" class="underline">{{ $item.Title }}</a>.
   {{ if $item.Params.publication_short }}
-  {{- $item.Params.publication_short | markdownify -}}.
+  {{- $item.Params.publication_short | markdownify -}}.{{ if in $item.Params.tags "in-review" }} <em>Sub judice</em>.{{
+  end }}
   {{ else if $item.Params.publication }}
-  {{- $item.Params.publication | markdownify -}}.
+  {{- $item.Params.publication | markdownify -}}.{{ if in $item.Params.tags "in-review" }} <em>Sub judice</em>.{{ end }}
   {{ end }}
 
   {{ if $has_attachments }}
@@ -42,9 +43,10 @@
   </span>
   <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>.
   {{ if $item.Params.publication_short }}
-  {{- $item.Params.publication_short | markdownify -}},
+  {{- $item.Params.publication_short | markdownify -}},{{ if in $item.Params.tags "in-review" }} <em>Sub judice</em>,{{
+  end }}
   {{ else if $item.Params.publication }}
-  {{- $item.Params.publication | markdownify -}},
+  {{- $item.Params.publication | markdownify -}},{{ if in $item.Params.tags "in-review" }} <em>Sub judice</em>,{{ end }}
   {{ end }}
   {{- $year -}}.
 
