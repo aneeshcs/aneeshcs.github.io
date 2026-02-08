@@ -1,15 +1,20 @@
 {{ $item := .item }}
 {{ $year_value := $item.Params.event_start | default $item.Date }}
 {{ $year := (time $year_value).Format "2006" }}
+{{ $displayYear := $year }}
+{{ if in $item.Params.tags "in-review" }}
+{{ $displayYear = "Sub Judice" }}
+{{ end }}
 {{ $has_attachments := partial "functions/has_attachments" $item }}
 
 {{/* Build author string for data attribute */}}
 {{- $authorStr := "" -}}
 {{- if $item.Params.authors -}}
-  {{- $authorStr = delimit $item.Params.authors ", " -}}
+{{- $authorStr = delimit $item.Params.authors ", " -}}
 {{- end -}}
 
-<div class="pub-list-item view-citation" style="margin-bottom: 1rem" data-year="{{ $year }}" data-authors="{{ $authorStr | htmlEscape }}">
+<div class="pub-list-item view-citation" style="margin-bottom: 1rem" data-year="{{ $displayYear }}"
+  data-authors="{{ $authorStr | htmlEscape }}">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
 
   {{/* APA Style */}}
@@ -21,9 +26,9 @@
   ({{- $year -}}).
   <a href="{{ $item.RelPermalink }}" class="underline">{{ $item.Title }}</a>.
   {{ if $item.Params.publication_short }}
-    {{- $item.Params.publication_short | markdownify -}}.
+  {{- $item.Params.publication_short | markdownify -}}.
   {{ else if $item.Params.publication }}
-    {{- $item.Params.publication | markdownify -}}.
+  {{- $item.Params.publication | markdownify -}}.
   {{ end }}
 
   {{ if $has_attachments }}
@@ -40,9 +45,9 @@
   </span>
   <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>.
   {{ if $item.Params.publication_short }}
-    {{- $item.Params.publication_short | markdownify -}},
+  {{- $item.Params.publication_short | markdownify -}},
   {{ else if $item.Params.publication }}
-    {{- $item.Params.publication | markdownify -}},
+  {{- $item.Params.publication | markdownify -}},
   {{ end }}
   {{- $year -}}.
 
