@@ -39,7 +39,8 @@ abstract: ''
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: []
+tags:
+  - in-review
 
 # Display this page in a list of Featured pages?
 featured: false
