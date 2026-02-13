@@ -290,16 +290,16 @@ sections:
         const models = {
           'rayleigh-benard': {
             name: 'Rayleigh-Bénard Convection',
-            description: 'Demonstrates thermal convection when fluid is heated from below. Hot fluid rises, cools at the top, and sinks, forming convection cells.',
-            concept: 'Hot fluid is less dense and rises, while cool fluid sinks. This creates circulation patterns called convection cells, fundamental to plate tectonics and atmospheric circulation.',
+            description: 'Lattice Boltzmann simulation of thermal convection. Fluid heated from below becomes buoyant and rises, forming convection cells — the same physics that drives plate tectonics and atmospheric circulation.',
+            concept: 'This uses the Lattice Boltzmann Method (D2Q9) with a double distribution function for thermal coupling. The Rayleigh number controls buoyancy strength; the Prandtl number sets the ratio of momentum to thermal diffusivity. Convection cells emerge spontaneously from tiny perturbations.',
             params: [
-              { id: 'heatingRate', label: 'Heating Rate', min: 0, max: 1, step: 0.1, default: 0.5 },
-              { id: 'viscosity', label: 'Viscosity', min: 0, max: 1, step: 0.1, default: 0.3 },
-              { id: 'thermalDiffusivity', label: 'Thermal Diffusivity', min: 0, max: 1, step: 0.1, default: 0.2 }
+              { id: 'rayleighNumber', label: 'Rayleigh Number', min: 1000, max: 50000, step: 1000, default: 10000 },
+              { id: 'prandtlNumber', label: 'Prandtl Number', min: 0.5, max: 7.0, step: 0.5, default: 1.0 },
+              { id: 'stepsPerFrame', label: 'Simulation Speed', min: 1, max: 20, step: 1, default: 5 }
             ],
             legend: [
-              { color: 'rgb(255, 100, 0)', label: 'Hot fluid' },
-              { color: 'rgb(0, 100, 255)', label: 'Cool fluid' },
+              { color: 'rgb(255, 60, 30)', label: 'Hot fluid (T=1)' },
+              { color: 'rgb(30, 60, 255)', label: 'Cool fluid (T=0)' },
               { color: 'rgba(255, 255, 255, 0.5)', label: 'Velocity vectors' }
             ]
           },
@@ -377,7 +377,7 @@ sections:
           params = {};
           const paramsHtml = model.params.map(p => {
             params[p.id] = p.default;
-            return '<div class="gfd-slider-group"><label class="gfd-slider-label">' + p.label + ': <span id="val-' + p.id + '">' + p.default.toFixed(2) + '</span></label><input type="range" class="gfd-slider" id="param-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.default + '" oninput="updateParam(\'' + p.id + '\', this.value)"></div>';
+            return '<div class="gfd-slider-group"><label class="gfd-slider-label">' + p.label + ': <span id="val-' + p.id + '">' + (Number.isInteger(p.default) ? p.default : p.default.toFixed(2)) + '</span></label><input type="range" class="gfd-slider" id="param-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.default + '" oninput="updateParam(\'' + p.id + '\', this.value)"></div>';
           }).join('');
           document.getElementById('params-container').innerHTML = paramsHtml;
           const legendHtml = model.legend.map(item => '<div class="gfd-legend-item"><div class="gfd-legend-color" style="background: ' + item.color + '"></div><span class="gfd-legend-text">' + item.label + '</span></div>').join('');
@@ -386,7 +386,7 @@ sections:
         }
         function updateParam(id, value) {
           params[id] = parseFloat(value);
-          document.getElementById('val-' + id).textContent = params[id].toFixed(2);
+          document.getElementById('val-' + id).textContent = Number.isInteger(params[id]) ? params[id] : params[id].toFixed(2);
         }
         function togglePlay() {
           isPlaying = !isPlaying;
@@ -398,21 +398,143 @@ sections:
           initSimState();
           animate();
         }
+        // ── LBM D2Q9 infrastructure ──
+        const LBM_NX = 200, LBM_NY = 100, LBM_SIZE = LBM_NX * LBM_NY;
+        const Q = 9;
+        const ex = [0, 1, 0, -1, 0, 1, -1, -1, 1];
+        const ey = [0, 0, 1, 0, -1, 1, 1, -1, -1];
+        const w  = [4/9, 1/9, 1/9, 1/9, 1/9, 1/36, 1/36, 1/36, 1/36];
+        const opp = [0, 3, 4, 1, 2, 7, 8, 5, 6];
+        let lbm_f = new Float64Array(LBM_SIZE * Q);
+        let lbm_fTemp = new Float64Array(LBM_SIZE * Q);
+        let lbm_g = new Float64Array(LBM_SIZE * Q);
+        let lbm_gTemp = new Float64Array(LBM_SIZE * Q);
+        let lbm_rho = new Float64Array(LBM_SIZE);
+        let lbm_ux = new Float64Array(LBM_SIZE);
+        let lbm_uy = new Float64Array(LBM_SIZE);
+        let lbm_T = new Float64Array(LBM_SIZE);
+        let lbm_offCanvas = null;
+        let lbm_imageData = null;
+        function idx(x, y) { return y * LBM_NX + x; }
+        function cidx(x, y, i) { return (y * LBM_NX + x) * Q + i; }
+        function feq(i, rho, ux, uy) {
+          const eu = ex[i] * ux + ey[i] * uy;
+          const usq = ux * ux + uy * uy;
+          return w[i] * rho * (1 + 3 * eu + 4.5 * eu * eu - 1.5 * usq);
+        }
+        function geq(i, T, ux, uy) {
+          const eu = ex[i] * ux + ey[i] * uy;
+          const usq = ux * ux + uy * uy;
+          return w[i] * T * (1 + 3 * eu + 4.5 * eu * eu - 1.5 * usq);
+        }
+        function initLBM() {
+          if (!lbm_offCanvas) {
+            lbm_offCanvas = document.createElement('canvas');
+            lbm_offCanvas.width = LBM_NX;
+            lbm_offCanvas.height = LBM_NY;
+            lbm_imageData = lbm_offCanvas.getContext('2d').createImageData(LBM_NX, LBM_NY);
+          }
+          for (let y = 0; y < LBM_NY; y++) {
+            for (let x = 0; x < LBM_NX; x++) {
+              const n = idx(x, y);
+              const T0 = 1.0 - y / (LBM_NY - 1) + (Math.random() - 0.5) * 0.01;
+              lbm_T[n] = T0;
+              lbm_rho[n] = 1.0;
+              lbm_ux[n] = 0;
+              lbm_uy[n] = 0;
+              for (let i = 0; i < Q; i++) {
+                lbm_f[cidx(x, y, i)] = feq(i, 1.0, 0, 0);
+                lbm_g[cidx(x, y, i)] = geq(i, T0, 0, 0);
+              }
+            }
+          }
+        }
+        function lbmStep(tau_f, tau_g, g_beta) {
+          // Macroscopic quantities
+          for (let y = 0; y < LBM_NY; y++) {
+            for (let x = 0; x < LBM_NX; x++) {
+              const n = idx(x, y);
+              let r = 0, vx = 0, vy = 0, t = 0;
+              for (let i = 0; i < Q; i++) {
+                const fi = lbm_f[cidx(x, y, i)];
+                const gi = lbm_g[cidx(x, y, i)];
+                r += fi;
+                vx += fi * ex[i];
+                vy += fi * ey[i];
+                t += gi;
+              }
+              // Guo force correction: add half-force to velocity
+              const Fy = g_beta * (t - 0.5);
+              vx /= r;
+              vy = vy / r + Fy * 0.5 / r;
+              lbm_rho[n] = r;
+              lbm_ux[n] = vx;
+              lbm_uy[n] = vy;
+              lbm_T[n] = t;
+            }
+          }
+          // Collision
+          for (let y = 0; y < LBM_NY; y++) {
+            for (let x = 0; x < LBM_NX; x++) {
+              const n = idx(x, y);
+              const r = lbm_rho[n], vx = lbm_ux[n], vy = lbm_uy[n], t = lbm_T[n];
+              const Fy = g_beta * (t - 0.5);
+              for (let i = 0; i < Q; i++) {
+                const c = cidx(x, y, i);
+                // Guo forcing term
+                const eu = ex[i] * vx + ey[i] * vy;
+                const Si = (1 - 0.5 / tau_f) * w[i] * (3 * (ey[i] - vy) + 9 * eu * ey[i]) * Fy;
+                lbm_fTemp[c] = lbm_f[c] - (lbm_f[c] - feq(i, r, vx, vy)) / tau_f + Si;
+                lbm_gTemp[c] = lbm_g[c] - (lbm_g[c] - geq(i, t, vx, vy)) / tau_g;
+              }
+            }
+          }
+          // Streaming with boundary conditions
+          for (let y = 0; y < LBM_NY; y++) {
+            for (let x = 0; x < LBM_NX; x++) {
+              for (let i = 0; i < Q; i++) {
+                // periodic in x
+                let xn = (x + ex[i] + LBM_NX) % LBM_NX;
+                let yn = y + ey[i];
+                const cDst = cidx(x, y, i);
+                if (yn < 0 || yn >= LBM_NY) {
+                  // Bounce-back for flow
+                  lbm_f[cidx(x, y, opp[i])] = lbm_fTemp[cDst];
+                  // Anti-bounce-back for temperature (Dirichlet)
+                  const Twall = (yn < 0) ? 1.0 : 0.0; // bottom hot, top cold
+                  lbm_g[cidx(x, y, opp[i])] = -lbm_gTemp[cDst] + 2 * w[opp[i]] * Twall;
+                } else {
+                  lbm_f[cidx(xn, yn, i)] = lbm_fTemp[cDst];
+                  lbm_g[cidx(xn, yn, i)] = lbm_gTemp[cDst];
+                }
+              }
+            }
+          }
+        }
+        function tempToColor(t) {
+          // blue -> white -> red
+          t = t < 0 ? 0 : (t > 1 ? 1 : t);
+          let r, g, b;
+          if (t < 0.5) {
+            const s = t * 2;
+            r = Math.floor(s * 255);
+            g = Math.floor(s * 255);
+            b = 255;
+          } else {
+            const s = (t - 0.5) * 2;
+            r = 255;
+            g = Math.floor((1 - s) * 255);
+            b = Math.floor((1 - s) * 255);
+          }
+          return [r, g, b];
+        }
         function initSimState() {
           const canvas = document.getElementById('gfd-canvas');
           const width = canvas.width;
           const height = canvas.height;
           if (currentModel === 'rayleigh-benard') {
-            const gridWidth = 80, gridHeight = 60;
-            const temperature = [], velocityX = [], velocityY = [];
-            for (let y = 0; y < gridHeight; y++) {
-              temperature[y] = []; velocityX[y] = []; velocityY[y] = [];
-              for (let x = 0; x < gridWidth; x++) {
-                temperature[y][x] = (gridHeight - y) / gridHeight;
-                velocityX[y][x] = 0; velocityY[y][x] = 0;
-              }
-            }
-            simState = { temperature, velocityX, velocityY, gridWidth, gridHeight, frameCount: 0 };
+            initLBM();
+            simState = { frameCount: 0 };
           } else if (currentModel === 'coriolis') {
             const particles = [];
             for (let i = 0; i < 8; i++) particles.push(createCoriolisParticle(width, height));
@@ -449,25 +571,16 @@ sections:
           const canvas = document.getElementById('gfd-canvas');
           const width = canvas.width, height = canvas.height;
           if (currentModel === 'rayleigh-benard') {
-            const { temperature, velocityX, velocityY, gridWidth, gridHeight } = simState;
-            for (let y = 1; y < gridHeight - 1; y++) {
-              for (let x = 1; x < gridWidth - 1; x++) {
-                const buoyancy = (temperature[y][x] - 0.5) * params.heatingRate;
-                velocityY[y][x] += buoyancy * 0.1;
-                const avgTemp = (temperature[y-1][x] + temperature[y+1][x] + temperature[y][x-1] + temperature[y][x+1]) / 4;
-                temperature[y][x] += (avgTemp - temperature[y][x]) * params.thermalDiffusivity;
-                velocityX[y][x] *= (1 - params.viscosity * 0.1);
-                velocityY[y][x] *= (1 - params.viscosity * 0.1);
-              }
-            }
-            for (let y = 1; y < gridHeight - 1; y++) {
-              for (let x = 1; x < gridWidth - 1; x++) {
-                temperature[y][x] -= (velocityX[y][x] * 0.5 + velocityY[y][x] * 0.5) * 0.01;
-              }
-            }
-            for (let x = 0; x < gridWidth; x++) {
-              temperature[gridHeight - 1][x] = 1.0;
-              temperature[0][x] = 0.0;
+            const Ra = params.rayleighNumber;
+            const Pr = params.prandtlNumber;
+            const nu = Math.sqrt(Pr / Ra) * 0.1;
+            const kappa = nu / Pr;
+            const tau_f = 3 * nu + 0.5;
+            const tau_g = 3 * kappa + 0.5;
+            const g_beta = Ra * nu * kappa / (LBM_NY * LBM_NY * LBM_NY);
+            const steps = Math.round(params.stepsPerFrame);
+            for (let s = 0; s < steps; s++) {
+              lbmStep(tau_f, tau_g, g_beta);
             }
             simState.frameCount++;
           } else if (currentModel === 'coriolis') {
@@ -505,24 +618,36 @@ sections:
           ctx.fillStyle = '#000';
           ctx.fillRect(0, 0, width, height);
           if (currentModel === 'rayleigh-benard') {
-            const { temperature, velocityX, velocityY, gridWidth, gridHeight, frameCount } = simState;
-            const cellWidth = width / gridWidth, cellHeight = height / gridHeight;
-            for (let y = 0; y < gridHeight; y++) {
-              for (let x = 0; x < gridWidth; x++) {
-                const temp = temperature[y][x];
-                const r = Math.floor(255 * temp), b = Math.floor(255 * (1 - temp));
-                ctx.fillStyle = 'rgb(' + r + ', 100, ' + b + ')';
-                ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
+            const data = lbm_imageData.data;
+            for (let y = 0; y < LBM_NY; y++) {
+              for (let x = 0; x < LBM_NX; x++) {
+                const n = idx(x, y);
+                const [r, g, b] = tempToColor(lbm_T[n]);
+                const p = (y * LBM_NX + x) * 4;
+                data[p] = r; data[p + 1] = g; data[p + 2] = b; data[p + 3] = 255;
               }
             }
-            if (frameCount % 2 === 0) {
-              ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            const offCtx = lbm_offCanvas.getContext('2d');
+            offCtx.putImageData(lbm_imageData, 0, 0);
+            ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(lbm_offCanvas, 0, 0, width, height);
+            // Velocity vectors every 3rd frame
+            if (simState.frameCount % 3 === 0) {
+              ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
               ctx.lineWidth = 1;
-              for (let y = 0; y < gridHeight; y += 3) {
-                for (let x = 0; x < gridWidth; x += 3) {
-                  const vx = velocityX[y][x], vy = velocityY[y][x];
-                  const px = (x + 0.5) * cellWidth, py = (y + 0.5) * cellHeight;
-                  ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + vx * 10, py + vy * 10); ctx.stroke();
+              const sx = width / LBM_NX, sy = height / LBM_NY;
+              for (let y = 5; y < LBM_NY; y += 10) {
+                for (let x = 5; x < LBM_NX; x += 10) {
+                  const n = idx(x, y);
+                  const vx = lbm_ux[n], vy = lbm_uy[n];
+                  const mag = Math.sqrt(vx * vx + vy * vy);
+                  if (mag < 1e-6) continue;
+                  const scale = 800;
+                  const px = (x + 0.5) * sx, py = (y + 0.5) * sy;
+                  ctx.beginPath();
+                  ctx.moveTo(px, py);
+                  ctx.lineTo(px + vx * scale, py + vy * scale);
+                  ctx.stroke();
                 }
               }
             }
