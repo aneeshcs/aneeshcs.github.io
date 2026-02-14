@@ -253,7 +253,7 @@ sections:
         <div class="gfd-main">
         <div class="gfd-layout">
         <div class="gfd-canvas-container">
-        <canvas id="gfd-canvas" class="gfd-canvas" width="800" height="600"></canvas>
+        <canvas id="gfd-canvas" class="gfd-canvas" width="800" height="450"></canvas>
         </div>
         <div class="gfd-sidebar">
         <div class="gfd-panel">
@@ -293,7 +293,7 @@ sections:
             description: 'Lattice Boltzmann simulation of thermal convection. Fluid heated from below becomes buoyant and rises, forming convection cells — the same physics that drives plate tectonics and atmospheric circulation.',
             concept: 'This uses the Lattice Boltzmann Method (D2Q9) with a double distribution function for thermal coupling. The Rayleigh number controls buoyancy strength; the Prandtl number sets the ratio of momentum to thermal diffusivity. Convection cells emerge spontaneously from tiny perturbations.',
             params: [
-              { id: 'rayleighNumber', label: 'Rayleigh Number', min: 1000, max: 50000, step: 1000, default: 10000 },
+              { id: 'rayleighExp', label: 'Rayleigh Number (10^x)', min: 10, max: 20, step: 0.5, default: 13, format: 'rayleigh' },
               { id: 'prandtlNumber', label: 'Prandtl Number', min: 0.5, max: 7.0, step: 0.5, default: 1.0 },
               { id: 'stepsPerFrame', label: 'Simulation Speed', min: 1, max: 20, step: 1, default: 5 }
             ],
@@ -377,16 +377,25 @@ sections:
           params = {};
           const paramsHtml = model.params.map(p => {
             params[p.id] = p.default;
-            return '<div class="gfd-slider-group"><label class="gfd-slider-label">' + p.label + ': <span id="val-' + p.id + '">' + (Number.isInteger(p.default) ? p.default : p.default.toFixed(2)) + '</span></label><input type="range" class="gfd-slider" id="param-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.default + '" oninput="updateParam(\'' + p.id + '\', this.value)"></div>';
+            const displayVal = p.format === 'rayleigh' ? formatRayleigh(p.default) : (Number.isInteger(p.default) ? p.default : p.default.toFixed(2));
+            return '<div class="gfd-slider-group"><label class="gfd-slider-label">' + p.label + ': <span id="val-' + p.id + '">' + displayVal + '</span></label><input type="range" class="gfd-slider" id="param-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.default + '" oninput="updateParam(\'' + p.id + '\', this.value, \'' + (p.format || '') + '\')"></div>';
           }).join('');
           document.getElementById('params-container').innerHTML = paramsHtml;
           const legendHtml = model.legend.map(item => '<div class="gfd-legend-item"><div class="gfd-legend-color" style="background: ' + item.color + '"></div><span class="gfd-legend-text">' + item.label + '</span></div>').join('');
           document.getElementById('legend-container').innerHTML = legendHtml;
           resetSimulation();
         }
-        function updateParam(id, value) {
+        function formatRayleigh(exp) {
+          if (Number.isInteger(exp)) return '10' + String(exp).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('');
+          return '10' + String(Math.floor(exp)).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('') + '·⁵';
+        }
+        function updateParam(id, value, format) {
           params[id] = parseFloat(value);
-          document.getElementById('val-' + id).textContent = Number.isInteger(params[id]) ? params[id] : params[id].toFixed(2);
+          if (format === 'rayleigh') {
+            document.getElementById('val-' + id).textContent = formatRayleigh(params[id]);
+          } else {
+            document.getElementById('val-' + id).textContent = Number.isInteger(params[id]) ? params[id] : params[id].toFixed(2);
+          }
         }
         function togglePlay() {
           isPlaying = !isPlaying;
@@ -399,7 +408,7 @@ sections:
           animate();
         }
         // ── LBM D2Q9 infrastructure ──
-        const LBM_NX = 200, LBM_NY = 100, LBM_SIZE = LBM_NX * LBM_NY;
+        const LBM_NX = 256, LBM_NY = 144, LBM_SIZE = LBM_NX * LBM_NY;
         const Q = 9;
         const ex = [0, 1, 0, -1, 0, 1, -1, -1, 1];
         const ey = [0, 0, 1, 0, -1, 1, 1, -1, -1];
@@ -571,15 +580,14 @@ sections:
           const canvas = document.getElementById('gfd-canvas');
           const width = canvas.width, height = canvas.height;
           if (currentModel === 'rayleigh-benard') {
-            const Ra = params.rayleighNumber;
+            const logRa = params.rayleighExp;  // 3 to 13
             const Pr = params.prandtlNumber;
-            // Fix nu to give stable tau_f ≈ 0.8, derive kappa and g_beta from Ra, Pr
+            // Map log Ra [3,13] to effective g_beta [1e-5, 1e-3] for stable simulation
             const nu = 0.1;
             const kappa = nu / Pr;
-            const tau_f = 3 * nu + 0.5;   // 0.8
+            const tau_f = 3 * nu + 0.5;
             const tau_g = 3 * kappa + 0.5;
-            const H = LBM_NY;
-            const g_beta = Ra * nu * kappa / (H * H * H);
+            const g_beta = 1e-5 * Math.pow(10, (logRa - 10) * 0.2);
             const steps = Math.round(params.stepsPerFrame);
             for (let s = 0; s < steps; s++) {
               lbmStep(tau_f, tau_g, g_beta);
