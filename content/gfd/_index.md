@@ -573,11 +573,13 @@ sections:
           if (currentModel === 'rayleigh-benard') {
             const Ra = params.rayleighNumber;
             const Pr = params.prandtlNumber;
-            const nu = Math.sqrt(Pr / Ra) * 0.1;
+            // Fix nu to give stable tau_f ≈ 0.8, derive kappa and g_beta from Ra, Pr
+            const nu = 0.1;
             const kappa = nu / Pr;
-            const tau_f = 3 * nu + 0.5;
+            const tau_f = 3 * nu + 0.5;   // 0.8
             const tau_g = 3 * kappa + 0.5;
-            const g_beta = Ra * nu * kappa / (LBM_NY * LBM_NY * LBM_NY);
+            const H = LBM_NY;
+            const g_beta = Ra * nu * kappa / (H * H * H);
             const steps = Math.round(params.stepsPerFrame);
             for (let s = 0; s < steps; s++) {
               lbmStep(tau_f, tau_g, g_beta);
