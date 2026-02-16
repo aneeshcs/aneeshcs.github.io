@@ -304,16 +304,19 @@ sections:
             ]
           },
           'coriolis': {
-            name: 'Coriolis Effect',
-            description: 'Shows how rotation deflects moving fluid. Critical for understanding atmospheric and oceanic circulation patterns.',
-            concept: 'Particles deflect to the right in the Northern Hemisphere and to the left in the Southern Hemisphere. This is why hurricanes rotate counterclockwise in the north!',
+            name: 'Shallow Water on Rotating Sphere',
+            description: 'Linearized shallow water equations on a rotating sphere. A Gaussian height perturbation triggers geostrophic adjustment: fast gravity waves radiate outward while slower Rossby waves propagate westward.',
+            concept: 'Geostrophic adjustment partitions energy between fast gravity waves and a balanced geostrophic flow. The Coriolis force (f = 2\u03A9 sin\u03C6) deflects motion, creating rotational asymmetry. Rossby waves arise from the variation of f with latitude (\u03B2-effect).',
             params: [
-              { id: 'rotationRate', label: 'Rotation Rate', min: 0, max: 1, step: 0.1, default: 0.5 },
-              { id: 'initialSpeed', label: 'Initial Speed', min: 0, max: 1, step: 0.1, default: 0.5 }
+              { id: 'rotationRate', label: 'Rotation Rate \u03A9', min: 0, max: 2, step: 0.05, default: 1.0 },
+              { id: 'waveSpeed', label: 'Wave Speed (gH)', min: 0.01, max: 0.3, step: 0.01, default: 0.1 },
+              { id: 'perturbAmp', label: 'Perturbation Amplitude', min: 0.01, max: 0.5, step: 0.01, default: 0.15 },
+              { id: 'viewLat', label: 'View Latitude', min: -80, max: 80, step: 5, default: 25 }
             ],
             legend: [
-              { color: 'rgb(0, 255, 255)', label: 'Particle trails' },
-              { color: 'rgba(100, 100, 100, 0.5)', label: 'Rotating reference frame' }
+              { color: 'rgb(220, 60, 60)', label: 'Height excess (high)' },
+              { color: 'rgb(255, 255, 255)', label: 'Mean height' },
+              { color: 'rgb(60, 60, 220)', label: 'Height deficit (low)' }
             ]
           },
           'geostrophic': {
@@ -537,6 +540,150 @@ sections:
           }
           return [r, g, b];
         }
+        // ── SWE on rotating sphere infrastructure ──
+        const SWE_NX = 180, SWE_NY = 90, SWE_SIZE = SWE_NX * SWE_NY;
+        const SWE_DLAM = 2 * Math.PI / SWE_NX;
+        const SWE_DPHI = Math.PI / SWE_NY;
+        let swe_h = new Float64Array(SWE_SIZE);
+        let swe_u = new Float64Array(SWE_SIZE);
+        let swe_v = new Float64Array(SWE_SIZE);
+        let swe_h2 = new Float64Array(SWE_SIZE);
+        let swe_u2 = new Float64Array(SWE_SIZE);
+        let swe_v2 = new Float64Array(SWE_SIZE);
+        let swe_sinLat = new Float64Array(SWE_NY);
+        let swe_cosLat = new Float64Array(SWE_NY);
+        let swe_fcor = new Float64Array(SWE_NY);
+        const SWE_PW = 800, SWE_PH = 450, SWE_PSIZE = SWE_PW * SWE_PH;
+        let swe_projLonIdx = new Int16Array(SWE_PSIZE);
+        let swe_projLatIdx = new Int16Array(SWE_PSIZE);
+        let swe_projMask = new Uint8Array(SWE_PSIZE);
+        let swe_projShade = new Float32Array(SWE_PSIZE);
+        let swe_offCanvas = null;
+        let swe_imageData = null;
+        let swe_viewLon = 0;
+        function swe_idx(i, j) { return j * SWE_NX + i; }
+        function swe_initLatArrays(Omega) {
+          for (let j = 0; j < SWE_NY; j++) {
+            const phi = -Math.PI / 2 + (j + 0.5) * SWE_DPHI;
+            swe_sinLat[j] = Math.sin(phi);
+            swe_cosLat[j] = Math.cos(phi);
+            swe_fcor[j] = 2 * Omega * swe_sinLat[j];
+          }
+        }
+        function swe_initFields(amp, latDeg, lonDeg) {
+          const lat0 = latDeg * Math.PI / 180;
+          const lon0 = lonDeg * Math.PI / 180;
+          const sigma = 0.15;
+          for (let j = 0; j < SWE_NY; j++) {
+            const phi = -Math.PI / 2 + (j + 0.5) * SWE_DPHI;
+            for (let i = 0; i < SWE_NX; i++) {
+              const lam = i * SWE_DLAM;
+              const dlam = lam - lon0;
+              const dphi = phi - lat0;
+              const dist2 = dlam * dlam + dphi * dphi;
+              const n = swe_idx(i, j);
+              swe_h[n] = amp * Math.exp(-dist2 / (2 * sigma * sigma));
+              swe_u[n] = 0;
+              swe_v[n] = 0;
+            }
+          }
+        }
+        function swe_buildProjection(lon0, lat0) {
+          const cosLat0 = Math.cos(lat0);
+          const sinLat0 = Math.sin(lat0);
+          const R = Math.min(SWE_PW, SWE_PH) * 0.47;
+          const cx = SWE_PW / 2, cy = SWE_PH / 2;
+          for (let py = 0; py < SWE_PH; py++) {
+            for (let px = 0; px < SWE_PW; px++) {
+              const pidx = py * SWE_PW + px;
+              const xn = (px - cx) / R;
+              const yn = -(py - cy) / R;
+              const rho2 = xn * xn + yn * yn;
+              if (rho2 > 1) { swe_projMask[pidx] = 0; continue; }
+              swe_projMask[pidx] = 1;
+              const zn = Math.sqrt(1 - rho2);
+              swe_projShade[pidx] = 0.3 + 0.7 * zn;
+              const lat = Math.asin(yn * cosLat0 + zn * sinLat0);
+              const lon = lon0 + Math.atan2(xn, zn * cosLat0 - yn * sinLat0);
+              let lonN = ((lon % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+              let li = Math.floor(lonN / SWE_DLAM);
+              if (li >= SWE_NX) li = 0;
+              let lj = Math.floor((lat + Math.PI / 2) / SWE_DPHI);
+              if (lj < 0) lj = 0; if (lj >= SWE_NY) lj = SWE_NY - 1;
+              swe_projLonIdx[pidx] = li;
+              swe_projLatIdx[pidx] = lj;
+            }
+          }
+        }
+        function swe_step(dt, gH, Omega, friction) {
+          const a = 1.0;
+          // Forward step: update u, v using current h
+          for (let j = 1; j < SWE_NY - 1; j++) {
+            const f = 2 * Omega * swe_sinLat[j];
+            const cosPhi = swe_cosLat[j];
+            const r = friction + (Math.abs(swe_sinLat[j]) > Math.sin(70 * Math.PI / 180) ? 0.5 : 0);
+            for (let i = 0; i < SWE_NX; i++) {
+              const n = swe_idx(i, j);
+              const ip = (i + 1) % SWE_NX;
+              const im = (i - 1 + SWE_NX) % SWE_NX;
+              const dhdlam = (swe_h[swe_idx(ip, j)] - swe_h[swe_idx(im, j)]) / (2 * SWE_DLAM);
+              const dhdphi = (swe_h[swe_idx(i, j + 1)] - swe_h[swe_idx(i, j - 1)]) / (2 * SWE_DPHI);
+              swe_u2[n] = swe_u[n] + dt * (f * swe_v[n] - gH / (a * cosPhi) * dhdlam - r * swe_u[n]);
+              swe_v2[n] = swe_v[n] + dt * (-f * swe_u[n] - gH / a * dhdphi - r * swe_v[n]);
+            }
+          }
+          // Poles: v=0, u=0
+          for (let i = 0; i < SWE_NX; i++) {
+            swe_u2[swe_idx(i, 0)] = 0; swe_v2[swe_idx(i, 0)] = 0;
+            swe_u2[swe_idx(i, SWE_NY - 1)] = 0; swe_v2[swe_idx(i, SWE_NY - 1)] = 0;
+          }
+          // Backward step: update h using new u, v
+          for (let j = 1; j < SWE_NY - 1; j++) {
+            const cosPhi = swe_cosLat[j];
+            const cosPhiP = swe_cosLat[j + 1];
+            const cosPhiM = swe_cosLat[j - 1];
+            for (let i = 0; i < SWE_NX; i++) {
+              const n = swe_idx(i, j);
+              const ip = (i + 1) % SWE_NX;
+              const im = (i - 1 + SWE_NX) % SWE_NX;
+              const dudlam = (swe_u2[swe_idx(ip, j)] - swe_u2[swe_idx(im, j)]) / (2 * SWE_DLAM);
+              const dvcosphi_dphi = (swe_v2[swe_idx(i, j + 1)] * cosPhiP - swe_v2[swe_idx(i, j - 1)] * cosPhiM) / (2 * SWE_DPHI);
+              swe_h2[n] = swe_h[n] - dt / (a * cosPhi) * (dudlam + dvcosphi_dphi);
+            }
+          }
+          // Polar h: average of adjacent ring
+          let hSP = 0, hNP = 0;
+          for (let i = 0; i < SWE_NX; i++) {
+            hSP += swe_h2[swe_idx(i, 1)];
+            hNP += swe_h2[swe_idx(i, SWE_NY - 2)];
+          }
+          hSP /= SWE_NX; hNP /= SWE_NX;
+          for (let i = 0; i < SWE_NX; i++) {
+            swe_h2[swe_idx(i, 0)] = hSP;
+            swe_h2[swe_idx(i, SWE_NY - 1)] = hNP;
+          }
+          // Swap
+          let tmp;
+          tmp = swe_h; swe_h = swe_h2; swe_h2 = tmp;
+          tmp = swe_u; swe_u = swe_u2; swe_u2 = tmp;
+          tmp = swe_v; swe_v = swe_v2; swe_v2 = tmp;
+        }
+        function swe_heightToColor(h, hRange) {
+          const t = hRange > 0 ? h / hRange : 0;
+          const tc = t < -1 ? -1 : (t > 1 ? 1 : t);
+          let r, g, b;
+          if (tc < 0) {
+            const s = 1 + tc;
+            r = Math.floor(s * 255);
+            g = Math.floor(s * 255);
+            b = 255;
+          } else {
+            r = 255;
+            g = Math.floor((1 - tc) * 255);
+            b = Math.floor((1 - tc) * 255);
+          }
+          return [r, g, b];
+        }
         function initSimState() {
           const canvas = document.getElementById('gfd-canvas');
           const width = canvas.width;
@@ -545,9 +692,17 @@ sections:
             initLBM();
             simState = { frameCount: 0 };
           } else if (currentModel === 'coriolis') {
-            const particles = [];
-            for (let i = 0; i < 8; i++) particles.push(createCoriolisParticle(width, height));
-            simState = { particles, angle: 0 };
+            if (!swe_offCanvas) {
+              swe_offCanvas = document.createElement('canvas');
+              swe_offCanvas.width = SWE_PW;
+              swe_offCanvas.height = SWE_PH;
+              swe_imageData = swe_offCanvas.getContext('2d').createImageData(SWE_PW, SWE_PH);
+            }
+            swe_initLatArrays(params.rotationRate);
+            swe_initFields(params.perturbAmp, 30, 0);
+            swe_viewLon = 0;
+            swe_buildProjection(0, params.viewLat * Math.PI / 180);
+            simState = { frameCount: 0, time: 0 };
           } else if (currentModel === 'geostrophic') {
             simState = { time: 0 };
           } else if (currentModel === 'stratified') {
@@ -565,11 +720,6 @@ sections:
             for (let i = 0; i < 100; i++) particles.push({ x: Math.random() * width, phase: Math.random() * Math.PI * 2 });
             simState = { particles, time: 0, jetStreamY: height / 2 };
           }
-        }
-        function createCoriolisParticle(width, height) {
-          const centerX = width / 2, centerY = height / 2;
-          const angleOffset = Math.random() * Math.PI * 2;
-          return { x: centerX, y: centerY, vx: Math.cos(angleOffset) * params.initialSpeed * 3, vy: Math.sin(angleOffset) * params.initialSpeed * 3, trail: [] };
         }
         function animate() {
           if (isPlaying) update();
@@ -594,18 +744,15 @@ sections:
             }
             simState.frameCount++;
           } else if (currentModel === 'coriolis') {
-            const centerX = width / 2, centerY = height / 2;
-            simState.angle += params.rotationRate * 0.02;
-            simState.particles.forEach(p => {
-              const coriolisX = -p.vy * params.rotationRate * 0.1;
-              const coriolisY = p.vx * params.rotationRate * 0.1;
-              p.vx += coriolisX; p.vy += coriolisY;
-              p.x += p.vx; p.y += p.vy;
-              p.trail.push({ x: p.x, y: p.y });
-              if (p.trail.length > 100) p.trail.shift();
-              const dist = Math.sqrt((p.x - centerX) ** 2 + (p.y - centerY) ** 2);
-              if (dist > Math.min(width, height) / 2 || p.trail.length > 95) Object.assign(p, createCoriolisParticle(width, height));
-            });
+            swe_initLatArrays(params.rotationRate);
+            const substeps = 8;
+            const dt = 0.003;
+            for (let s = 0; s < substeps; s++) {
+              swe_step(dt, params.waveSpeed, params.rotationRate, 0.01);
+            }
+            swe_viewLon += 0.003;
+            simState.frameCount++;
+            simState.time += substeps * dt;
           } else if (currentModel === 'geostrophic') {
             simState.time += 0.02;
           } else if (currentModel === 'stratified') {
@@ -662,29 +809,93 @@ sections:
               }
             }
           } else if (currentModel === 'coriolis') {
-            const centerX = width / 2, centerY = height / 2;
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, width, height);
-            ctx.save();
-            ctx.translate(centerX, centerY);
-            ctx.rotate(simState.angle);
-            ctx.strokeStyle = 'rgba(100, 100, 100, 0.3)';
-            ctx.lineWidth = 1;
-            for (let i = -400; i <= 400; i += 50) {
-              ctx.beginPath(); ctx.moveTo(i, -400); ctx.lineTo(i, 400); ctx.stroke();
-              ctx.beginPath(); ctx.moveTo(-400, i); ctx.lineTo(400, i); ctx.stroke();
+            // Rebuild projection for current view
+            swe_buildProjection(swe_viewLon, params.viewLat * Math.PI / 180);
+            // Find symmetric height range
+            let hMax = 0;
+            for (let n = 0; n < SWE_SIZE; n++) {
+              const ah = Math.abs(swe_h[n]);
+              if (ah > hMax) hMax = ah;
             }
-            ctx.restore();
-            simState.particles.forEach(p => {
-              ctx.strokeStyle = 'rgba(0, 255, 255, 0.5)'; ctx.lineWidth = 2;
+            if (hMax < 1e-10) hMax = 1e-10;
+            // Fill ImageData
+            const data = swe_imageData.data;
+            for (let py = 0; py < SWE_PH; py++) {
+              for (let px = 0; px < SWE_PW; px++) {
+                const pidx = py * SWE_PW + px;
+                const p4 = pidx * 4;
+                if (!swe_projMask[pidx]) {
+                  data[p4] = 0; data[p4 + 1] = 0; data[p4 + 2] = 0; data[p4 + 3] = 255;
+                  continue;
+                }
+                const li = swe_projLonIdx[pidx];
+                const lj = swe_projLatIdx[pidx];
+                const h = swe_h[swe_idx(li, lj)];
+                const [r, g, b] = swe_heightToColor(h, hMax);
+                const shade = swe_projShade[pidx];
+                data[p4] = Math.floor(r * shade);
+                data[p4 + 1] = Math.floor(g * shade);
+                data[p4 + 2] = Math.floor(b * shade);
+                data[p4 + 3] = 255;
+              }
+            }
+            const offCtx = swe_offCanvas.getContext('2d');
+            offCtx.putImageData(swe_imageData, 0, 0);
+            ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(swe_offCanvas, 0, 0, width, height);
+            // Draw grid lines (30-degree intervals)
+            const R = Math.min(width, height) * 0.47;
+            const cxS = width / 2, cyS = height / 2;
+            const viewLatR = params.viewLat * Math.PI / 180;
+            const cosV = Math.cos(viewLatR), sinV = Math.sin(viewLatR);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.lineWidth = 0.5;
+            // Latitude lines
+            for (let latD = -60; latD <= 60; latD += 30) {
+              const phi = latD * Math.PI / 180;
               ctx.beginPath();
-              p.trail.forEach((pt, i) => { if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); });
+              let started = false;
+              for (let lonD = 0; lonD <= 360; lonD += 2) {
+                const lam = (lonD * Math.PI / 180) - swe_viewLon;
+                const sinPhi = Math.sin(phi), cosPhi = Math.cos(phi);
+                const cosLam = Math.cos(lam), sinLam = Math.sin(lam);
+                const vis = sinPhi * sinV + cosPhi * cosV * cosLam;
+                if (vis < 0) { started = false; continue; }
+                const sx = cxS + R * cosPhi * sinLam;
+                const sy = cyS - R * (cosPhi * cosLam * sinV - sinPhi * cosV) * (-1);
+                const xp = cosPhi * sinLam;
+                const yp = cosV * sinPhi - sinV * cosPhi * cosLam;
+                const sxP = cxS + R * xp;
+                const syP = cyS - R * yp;
+                if (!started) { ctx.moveTo(sxP, syP); started = true; } else { ctx.lineTo(sxP, syP); }
+              }
               ctx.stroke();
-              ctx.fillStyle = 'rgb(0, 255, 255)';
-              ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill();
-            });
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.beginPath(); ctx.arc(centerX, centerY, 8, 0, Math.PI * 2); ctx.fill();
+            }
+            // Longitude lines
+            for (let lonD = 0; lonD < 360; lonD += 30) {
+              const lam = (lonD * Math.PI / 180) - swe_viewLon;
+              ctx.beginPath();
+              let started = false;
+              for (let latD = -90; latD <= 90; latD += 2) {
+                const phi = latD * Math.PI / 180;
+                const sinPhi = Math.sin(phi), cosPhi = Math.cos(phi);
+                const cosLam = Math.cos(lam), sinLam = Math.sin(lam);
+                const vis = sinPhi * sinV + cosPhi * cosV * cosLam;
+                if (vis < 0) { started = false; continue; }
+                const xp = cosPhi * sinLam;
+                const yp = cosV * sinPhi - sinV * cosPhi * cosLam;
+                const sxP = cxS + R * xp;
+                const syP = cyS - R * yp;
+                if (!started) { ctx.moveTo(sxP, syP); started = true; } else { ctx.lineTo(sxP, syP); }
+              }
+              ctx.stroke();
+            }
+            // Sphere limb
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(cxS, cyS, R, 0, Math.PI * 2);
+            ctx.stroke();
           } else if (currentModel === 'geostrophic') {
             const gridSize = 40, cellWidth = width / gridSize, cellHeight = height / gridSize, time = simState.time;
             for (let y = 0; y < gridSize; y++) {
