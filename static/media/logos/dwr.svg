@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#003366"/>
+  <text x="100" y="70" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">CALIFORNIA</text>
+  <text x="100" y="95" font-family="Arial,sans-serif" font-size="11" fill="#87ceeb" text-anchor="middle">DEPARTMENT OF</text>
+  <text x="100" y="115" font-family="Arial,sans-serif" font-size="11" fill="#87ceeb" text-anchor="middle">WATER RESOURCES</text>
+  <path d="M40,145 Q70,125 100,145 Q130,165 160,145" stroke="#87ceeb" stroke-width="3" fill="none"/>
+  <path d="M40,158 Q70,138 100,158 Q130,178 160,158" stroke="#87ceeb" stroke-width="2" fill="none" opacity="0.6"/>
+</svg>
