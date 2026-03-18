@@ -241,7 +241,7 @@ sections:
         <div class="gfd-nav-buttons">
         <button class="gfd-nav-btn active" onclick="selectModel('rayleigh-benard')">Rayleigh-Bénard</button>
         <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Coriolis Effect</button>
-        <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">Geostrophic Balance</button>
+        <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">2D Navier-Stokes</button>
         <button class="gfd-nav-btn" onclick="selectModel('stratified')">Stratified Flow</button>
         <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves</button>
         </div>
@@ -254,6 +254,7 @@ sections:
         <div class="gfd-layout">
         <div class="gfd-canvas-container">
         <canvas id="gfd-canvas" class="gfd-canvas" width="800" height="450"></canvas>
+        <iframe id="gfd-notebook-frame" style="display:none; width:100%; min-height:700px; border:none; border-radius:8px; background:#fff;" src="" allow="cross-origin-isolated"></iframe>
         </div>
         <div class="gfd-sidebar">
         <div class="gfd-panel">
@@ -320,18 +321,11 @@ sections:
             ]
           },
           'geostrophic': {
-            name: 'Geostrophic Balance',
-            description: 'Balance between pressure gradient and Coriolis force. Fundamental to large-scale ocean and atmospheric currents.',
-            concept: 'Wind flows parallel to pressure contours (isobars), not from high to low pressure, due to the balance between pressure gradient force and Coriolis force.',
-            params: [
-              { id: 'pressureGradient', label: 'Pressure Gradient', min: 0, max: 1, step: 0.1, default: 0.5 },
-              { id: 'coriolisParameter', label: 'Coriolis Parameter', min: 0, max: 1, step: 0.1, default: 0.5 }
-            ],
-            legend: [
-              { color: 'rgb(200, 100, 0)', label: 'High pressure' },
-              { color: 'rgb(0, 100, 200)', label: 'Low pressure' },
-              { color: 'white', label: 'Geostrophic wind' }
-            ]
+            name: '2D Navier-Stokes Turbulence',
+            description: 'Interactive pseudo-spectral simulation of 2D decaying turbulence, following McWilliams (1984). Adjust parameters and run the solver directly in your browser.',
+            concept: 'In 2D turbulence, energy cascades inversely — from small vortices to large-scale coherent structures — while enstrophy cascades forward. This is the opposite of 3D turbulence and explains the persistence of large ocean eddies and atmospheric jets.',
+            params: [],
+            legend: []
           },
           'stratified': {
             name: 'Stratified Flow',
@@ -386,7 +380,21 @@ sections:
           document.getElementById('params-container').innerHTML = paramsHtml;
           const legendHtml = model.legend.map(item => '<div class="gfd-legend-item"><div class="gfd-legend-color" style="background: ' + item.color + '"></div><span class="gfd-legend-text">' + item.label + '</span></div>').join('');
           document.getElementById('legend-container').innerHTML = legendHtml;
-          resetSimulation();
+          const _frame = document.getElementById('gfd-notebook-frame');
+          const _canvas = document.getElementById('gfd-canvas');
+          const _sidebar = document.querySelector('.gfd-sidebar');
+          if (modelId === 'geostrophic') {
+            _canvas.style.display = 'none';
+            _frame.style.display = 'block';
+            _frame.src = '/gfd/twodnavierstokes.html';
+            if (_sidebar) _sidebar.style.display = 'none';
+          } else {
+            _canvas.style.display = 'block';
+            _frame.style.display = 'none';
+            _frame.src = '';
+            if (_sidebar) _sidebar.style.display = '';
+            resetSimulation();
+          }
         }
         function formatRayleigh(exp) {
           if (Number.isInteger(exp)) return '10' + String(exp).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('');
@@ -722,8 +730,10 @@ sections:
           }
         }
         function animate() {
-          if (isPlaying) update();
-          draw();
+          if (currentModel !== 'geostrophic') {
+            if (isPlaying) update();
+            draw();
+          }
           animationId = requestAnimationFrame(animate);
         }
         function update() {
