@@ -386,7 +386,7 @@ sections:
           if (modelId === 'geostrophic') {
             _canvas.style.display = 'none';
             _frame.style.display = 'block';
-            _frame.src = '/gfd/twodnavierstokes.html?v=4';
+            _frame.src = '/gfd/twodnavierstokes.html?v=5';
             if (_sidebar) _sidebar.style.display = 'none';
           } else {
             _canvas.style.display = 'block';
