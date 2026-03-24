@@ -1,0 +1,22 @@
+name: Monthly broken-link check
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'   # 09:00 UTC on the 1st of every month
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Check links
+        run: |
+          uvx linkchecker https://aneeshcs.github.io \
+            --check-extern \
+            --ignore-url "linkedin\." \
+            --ignore-url "twitter\." \
+            --ignore-url "x\.com" \
+            --output failures
