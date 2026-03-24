@@ -243,7 +243,7 @@ sections:
         <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Geostrophic Adjustment</button>
         <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">2D Navier-Stokes</button>
         <button class="gfd-nav-btn" onclick="selectModel('stratified')">Stratified Flow</button>
-        <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves</button>
+        <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves (Globe)</button>
         </div>
         </div>
         <div class="gfd-info" id="gfd-info">
@@ -325,18 +325,19 @@ sections:
             ]
           },
           'rossby': {
-            name: 'Rossby Waves',
-            description: 'Large-scale meandering patterns in atmosphere and ocean caused by rotation and latitude variations.',
-            concept: 'Large-scale meanders in the jet stream caused by planetary rotation and latitude variations. These waves influence weather patterns and transport heat poleward.',
+            name: 'Geostrophic Adjustment on a Rotating Sphere',
+            description: 'Shallow water equations on a rotating sphere. A Gaussian height perturbation triggers geostrophic adjustment: fast gravity waves radiate outward while slower Rossby waves propagate westward.',
+            concept: 'Geostrophic adjustment partitions energy between fast gravity waves and a balanced geostrophic flow. The Coriolis force (f = 2Ω sinφ) deflects motion, creating rotational asymmetry. Rossby waves arise from the variation of f with latitude (β-effect).',
             params: [
-              { id: 'wavelength', label: 'Wavelength', min: 0, max: 1, step: 0.1, default: 0.5 },
-              { id: 'amplitude', label: 'Amplitude', min: 0, max: 1, step: 0.1, default: 0.5 }
+              { id: 'rotationRate', label: 'Rotation Rate Ω', min: 0, max: 2, step: 0.05, default: 1.0 },
+              { id: 'waveSpeed', label: 'Wave Speed (gH)', min: 0.01, max: 0.3, step: 0.01, default: 0.1 },
+              { id: 'perturbAmp', label: 'Perturbation Amplitude', min: 0.01, max: 0.5, step: 0.01, default: 0.15 },
+              { id: 'viewLat', label: 'View Latitude', min: -80, max: 80, step: 5, default: 25 }
             ],
             legend: [
-              { color: 'rgb(0, 255, 255)', label: 'Jet stream path' },
-              { color: 'rgb(255, 200, 0)', label: 'Air parcels' },
-              { color: 'rgb(255, 100, 100)', label: 'High pressure (H)' },
-              { color: 'rgb(100, 100, 255)', label: 'Low pressure (L)' }
+              { color: 'rgb(220, 60, 60)', label: 'Height excess (high)' },
+              { color: 'rgb(255, 255, 255)', label: 'Mean height' },
+              { color: 'rgb(60, 60, 220)', label: 'Height deficit (low)' }
             ]
           }
         };
@@ -712,9 +713,17 @@ sections:
             }
             simState = { particles, layers, time: 0 };
           } else if (currentModel === 'rossby') {
-            const particles = [];
-            for (let i = 0; i < 100; i++) particles.push({ x: Math.random() * width, phase: Math.random() * Math.PI * 2 });
-            simState = { particles, time: 0, jetStreamY: height / 2 };
+            if (!swe_offCanvas) {
+              swe_offCanvas = document.createElement('canvas');
+              swe_offCanvas.width = SWE_PW;
+              swe_offCanvas.height = SWE_PH;
+              swe_imageData = swe_offCanvas.getContext('2d').createImageData(SWE_PW, SWE_PH);
+            }
+            swe_initLatArrays(params.rotationRate);
+            swe_initFields(params.perturbAmp, 30, 0);
+            swe_viewLon = 0;
+            swe_buildProjection(0, params.viewLat * Math.PI / 180);
+            simState = { frameCount: 0, time: 0 };
           }
         }
         const _notebookModels = new Set(['geostrophic', 'rayleigh-benard', 'coriolis']);
@@ -763,8 +772,15 @@ sections:
               p.y = p.baseY + Math.sin(p.x * 0.02 + simState.time + p.layer) * waveAmp;
             });
           } else if (currentModel === 'rossby') {
-            simState.time += 0.02;
-            simState.particles.forEach(p => { p.x += 2; if (p.x > width) p.x = 0; });
+            swe_initLatArrays(params.rotationRate);
+            const substeps = 8;
+            const dt = 0.003;
+            for (let s = 0; s < substeps; s++) {
+              swe_step(dt, params.waveSpeed, params.rotationRate, 0.01);
+            }
+            swe_viewLon += 0.003;
+            simState.frameCount++;
+            simState.time += substeps * dt;
           }
         }
         function draw() {
@@ -949,40 +965,50 @@ sections:
             ctx.fillText('Less Dense (lighter)', 10, 25);
             ctx.fillText('More Dense (heavier)', 10, height - 10);
           } else if (currentModel === 'rossby') {
-            const { particles, time, jetStreamY } = simState;
-            ctx.strokeStyle = 'rgba(100, 100, 100, 0.3)'; ctx.lineWidth = 1;
-            for (let y = 0; y < height; y += height / 8) {
-              ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+            swe_buildProjection(swe_viewLon, params.viewLat * Math.PI / 180);
+            let hMax = 0;
+            for (let n = 0; n < SWE_SIZE; n++) { const ah = Math.abs(swe_h[n]); if (ah > hMax) hMax = ah; }
+            if (hMax < 1e-10) hMax = 1e-10;
+            const data = swe_imageData.data;
+            for (let py = 0; py < SWE_PH; py++) {
+              for (let px = 0; px < SWE_PW; px++) {
+                const pidx = py * SWE_PW + px;
+                const p4 = pidx * 4;
+                if (!swe_projMask[pidx]) { data[p4] = 0; data[p4+1] = 0; data[p4+2] = 0; data[p4+3] = 255; continue; }
+                const li = swe_projLonIdx[pidx], lj = swe_projLatIdx[pidx];
+                const h = swe_h[swe_idx(li, lj)];
+                const [r, g, b] = swe_heightToColor(h, hMax);
+                const shade = swe_projShade[pidx];
+                data[p4] = Math.floor(r*shade); data[p4+1] = Math.floor(g*shade); data[p4+2] = Math.floor(b*shade); data[p4+3] = 255;
+              }
             }
-            const getWaveY = (x) => { const k = (1 - params.wavelength) * 0.05 + 0.01; return jetStreamY + Math.sin(k * x - time) * params.amplitude * 150; };
-            ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)'; ctx.lineWidth = 4;
-            ctx.beginPath();
-            for (let x = 0; x <= width; x += 5) { const y = getWaveY(x); if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
-            ctx.stroke();
-            ctx.fillStyle = 'rgba(0, 255, 255, 0.1)';
-            ctx.beginPath(); ctx.moveTo(0, jetStreamY);
-            for (let x = 0; x <= width; x += 5) ctx.lineTo(x, getWaveY(x));
-            ctx.lineTo(width, jetStreamY); ctx.closePath(); ctx.fill();
-            particles.forEach(p => {
-              ctx.fillStyle = 'rgba(255, 200, 0, 0.8)';
-              ctx.beginPath(); ctx.arc(p.x, getWaveY(p.x), 3, 0, Math.PI * 2); ctx.fill();
-            });
-            ctx.fillStyle = 'white'; ctx.font = '14px sans-serif';
-            ctx.fillText('North', 10, 25); ctx.fillText('South', 10, height - 10);
-            ctx.fillText('Jet Stream Meanders →', width - 200, 25);
-            const waveLength = Math.PI * 2 / ((1 - params.wavelength) * 0.05 + 0.01);
-            for (let i = 0; i < 3; i++) {
-              const x = (i * waveLength + time * 40) % width;
-              ctx.fillStyle = 'rgba(255, 100, 100, 0.3)';
-              ctx.beginPath(); ctx.arc(x, getWaveY(x), 40, 0, Math.PI * 2); ctx.fill();
-              ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
-              ctx.fillText('H', x, getWaveY(x) + 5);
-              const x2 = (x + waveLength / 2) % width;
-              ctx.fillStyle = 'rgba(100, 100, 255, 0.3)';
-              ctx.beginPath(); ctx.arc(x2, getWaveY(x2), 40, 0, Math.PI * 2); ctx.fill();
-              ctx.fillStyle = 'white'; ctx.fillText('L', x2, getWaveY(x2) + 5);
+            const offCtx = swe_offCanvas.getContext('2d');
+            offCtx.putImageData(swe_imageData, 0, 0);
+            ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(swe_offCanvas, 0, 0, width, height);
+            const R = Math.min(width, height) * 0.47, cxS = width/2, cyS = height/2;
+            const viewLatR = params.viewLat * Math.PI/180, cosV = Math.cos(viewLatR), sinV = Math.sin(viewLatR);
+            ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 0.5;
+            for (let latD = -60; latD <= 60; latD += 30) {
+              const phi = latD*Math.PI/180; ctx.beginPath(); let started = false;
+              for (let lonD = 0; lonD <= 360; lonD += 2) {
+                const lam = (lonD*Math.PI/180)-swe_viewLon, sinPhi=Math.sin(phi), cosPhi=Math.cos(phi), cosLam=Math.cos(lam), sinLam=Math.sin(lam);
+                if (sinPhi*sinV+cosPhi*cosV*cosLam < 0) { started=false; continue; }
+                const xp=cosPhi*sinLam, yp=cosV*sinPhi-sinV*cosPhi*cosLam;
+                if (!started) { ctx.moveTo(cxS+R*xp, cyS-R*yp); started=true; } else ctx.lineTo(cxS+R*xp, cyS-R*yp);
+              } ctx.stroke();
             }
-            ctx.textAlign = 'left';
+            for (let lonD = 0; lonD < 360; lonD += 30) {
+              const lam = (lonD*Math.PI/180)-swe_viewLon; ctx.beginPath(); let started=false;
+              for (let latD = -90; latD <= 90; latD += 2) {
+                const phi=latD*Math.PI/180, sinPhi=Math.sin(phi), cosPhi=Math.cos(phi), cosLam=Math.cos(lam), sinLam=Math.sin(lam);
+                if (sinPhi*sinV+cosPhi*cosV*cosLam < 0) { started=false; continue; }
+                const xp=cosPhi*sinLam, yp=cosV*sinPhi-sinV*cosPhi*cosLam;
+                if (!started) { ctx.moveTo(cxS+R*xp, cyS-R*yp); started=true; } else ctx.lineTo(cxS+R*xp, cyS-R*yp);
+              } ctx.stroke();
+            }
+            ctx.strokeStyle='rgba(255,255,255,0.3)'; ctx.lineWidth=1.5;
+            ctx.beginPath(); ctx.arc(cxS, cyS, R, 0, Math.PI*2); ctx.stroke();
           }
         }
         document.addEventListener('DOMContentLoaded', init);
