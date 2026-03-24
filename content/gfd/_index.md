@@ -290,19 +290,11 @@ sections:
         let params = {};
         const models = {
           'rayleigh-benard': {
-            name: 'Rayleigh-Bénard Convection',
-            description: 'Lattice Boltzmann simulation of thermal convection. Fluid heated from below becomes buoyant and rises, forming convection cells — the same physics that drives plate tectonics and atmospheric circulation.',
-            concept: 'This uses the Lattice Boltzmann Method (D2Q9) with a double distribution function for thermal coupling. The Rayleigh number controls buoyancy strength; the Prandtl number sets the ratio of momentum to thermal diffusivity. Convection cells emerge spontaneously from tiny perturbations.',
-            params: [
-              { id: 'rayleighExp', label: 'Rayleigh Number (10^x)', min: 10, max: 20, step: 0.5, default: 13, format: 'rayleigh' },
-              { id: 'prandtlNumber', label: 'Prandtl Number', min: 0.5, max: 7.0, step: 0.5, default: 1.0 },
-              { id: 'stepsPerFrame', label: 'Simulation Speed', min: 1, max: 20, step: 1, default: 5 }
-            ],
-            legend: [
-              { color: 'rgb(255, 60, 30)', label: 'Hot fluid (T=1)' },
-              { color: 'rgb(30, 60, 255)', label: 'Cool fluid (T=0)' },
-              { color: 'rgba(255, 255, 255, 0.5)', label: 'Velocity vectors' }
-            ]
+            name: 'Rayleigh–Bénard Convection & Lorenz 1963',
+            description: 'Interactive pseudo-spectral simulation of 2D Rayleigh–Bénard convection, with a full derivation of the Lorenz 1963 chaotic three-variable model from the Boussinesq equations.',
+            concept: 'Fluid heated from below convects when Ra exceeds the critical value 27π⁴/4 ≈ 657. Lorenz (1963) showed that truncating the governing equations to three Fourier modes yields a deterministic chaotic system — the butterfly attractor — setting the foundation of chaos theory.',
+            params: [],
+            legend: []
           },
           'coriolis': {
             name: 'Shallow Water on Rotating Sphere',
@@ -383,10 +375,14 @@ sections:
           const _frame = document.getElementById('gfd-notebook-frame');
           const _canvas = document.getElementById('gfd-canvas');
           const _sidebar = document.querySelector('.gfd-sidebar');
-          if (modelId === 'geostrophic') {
+          const _notebookUrls = {
+            'geostrophic':    '/gfd/twodnavierstokes.html?v=5',
+            'rayleigh-benard': '/gfd/rayleighbenard.html?v=1',
+          };
+          if (modelId in _notebookUrls) {
             _canvas.style.display = 'none';
             _frame.style.display = 'block';
-            _frame.src = '/gfd/twodnavierstokes.html?v=5';
+            _frame.src = _notebookUrls[modelId];
             if (_sidebar) _sidebar.style.display = 'none';
           } else {
             _canvas.style.display = 'block';
@@ -729,8 +725,9 @@ sections:
             simState = { particles, time: 0, jetStreamY: height / 2 };
           }
         }
+        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard']);
         function animate() {
-          if (currentModel !== 'geostrophic') {
+          if (!_notebookModels.has(currentModel)) {
             if (isPlaying) update();
             draw();
           }
