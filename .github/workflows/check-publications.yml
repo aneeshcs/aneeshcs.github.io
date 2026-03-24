@@ -1,0 +1,53 @@
+name: Monthly publication check
+
+on:
+  schedule:
+    - cron: '0 10 1 * *'   # 10:00 UTC on the 1st of every month
+  workflow_dispatch:         # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: check-publications
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests "academic>=0.10.0"
+
+      - name: Check for new publications
+        id: check
+        run: python .github/scripts/check_publications.py
+
+      - name: Import bibtex → Hugo pages
+        if: steps.check.outputs.new_count != '0'
+        run: |
+          academic import publications.bib content/publication/ --compact
+        continue-on-error: true   # don't fail if academic has parse issues
+
+      - name: Open pull request
+        if: steps.check.outputs.new_count != '0'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: publications/monthly-update
+          delete-branch: true
+          commit-message: "publications: add ${{ steps.check.outputs.new_count }} new paper(s) from Semantic Scholar"
+          title: "📚 ${{ steps.check.outputs.new_count }} new publication(s) found — please review"
+          body: ${{ steps.check.outputs.summary }}
+          labels: publications, automated-pr
+          base: master
