@@ -242,7 +242,7 @@ sections:
         <button class="gfd-nav-btn active" onclick="selectModel('rayleigh-benard')">Rayleigh-Bénard</button>
         <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Geostrophic Adjustment</button>
         <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">2D Navier-Stokes</button>
-        <button class="gfd-nav-btn" onclick="selectModel('stratified')">Stratified Flow</button>
+        <button class="gfd-nav-btn" onclick="selectModel('stratified')">Internal Waves</button>
         <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves (Globe)</button>
         </div>
         </div>
@@ -311,17 +311,11 @@ sections:
             legend: []
           },
           'stratified': {
-            name: 'Stratified Flow',
-            description: 'Layers of fluid with different densities. Shows internal waves and mixing behavior.',
-            concept: 'Different density layers resist mixing. Internal waves form at layer boundaries. Common in oceans (thermocline) and atmosphere (temperature inversions).',
-            params: [
-              { id: 'densityDifference', label: 'Density Stratification', min: 0, max: 1, step: 0.1, default: 0.5 },
-              { id: 'flowSpeed', label: 'Flow Speed', min: 0, max: 1, step: 0.1, default: 0.5 }
-            ],
+            name: 'Internal Waves',
+            description: 'Interactive notebook: internal waves in a stratified fluid — from two-layer interface waves to continuously stratified wave beams and vertical modes.',
+            concept: 'Density stratification (measured by the Brunt-Väisälä frequency N) supports internal gravity waves. Unlike surface waves, internal waves propagate at a fixed angle set by their frequency, forming distinctive beam patterns. They are critical for ocean mixing and momentum transport.',
+            params: [],
             legend: [
-              { color: 'rgb(50, 75, 200)', label: 'Dense (heavy) fluid' },
-              { color: 'rgb(150, 175, 255)', label: 'Light fluid' },
-              { color: 'rgba(255, 255, 255, 0.5)', label: 'Layer interfaces' }
             ]
           },
           'rossby': {
@@ -371,6 +365,7 @@ sections:
             'geostrophic':    '/gfd/twodnavierstokes.html?v=5',
             'rayleigh-benard': '/gfd/rayleighbenard.html?v=1',
             'coriolis':        '/gfd/shallowwater.html?v=1',
+            'stratified':      '/gfd/internalwaves.html?v=1',
           };
           if (modelId in _notebookUrls) {
             _canvas.style.display = 'none';
@@ -726,7 +721,7 @@ sections:
             simState = { frameCount: 0, time: 0 };
           }
         }
-        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard', 'coriolis']);
+        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard', 'coriolis', 'stratified']);
         function animate() {
           if (!_notebookModels.has(currentModel)) {
             if (isPlaying) update();

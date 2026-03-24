@@ -96,6 +96,9 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode edit \
           notebooks/shallowwater.py \
           -o static/gfd/shallowwater.html
+        uvx marimo export html-wasm --sandbox --mode edit \
+          notebooks/internalwaves.py \
+          -o static/gfd/internalwaves.html
 
     - name: Setup Pages
       id: pages
