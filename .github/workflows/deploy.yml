@@ -90,6 +90,9 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode edit \
           notebooks/twodnavierstokes.py \
           -o static/gfd/twodnavierstokes.html
+        uvx marimo export html-wasm --sandbox --mode edit \
+          notebooks/rayleighbenard.py \
+          -o static/gfd/rayleighbenard.html
 
     - name: Setup Pages
       id: pages
