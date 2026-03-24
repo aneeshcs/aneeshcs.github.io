@@ -240,7 +240,7 @@ sections:
         <h2>SELECT MODEL</h2>
         <div class="gfd-nav-buttons">
         <button class="gfd-nav-btn active" onclick="selectModel('rayleigh-benard')">Rayleigh-Bénard</button>
-        <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Coriolis Effect</button>
+        <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Geostrophic Adjustment</button>
         <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">2D Navier-Stokes</button>
         <button class="gfd-nav-btn" onclick="selectModel('stratified')">Stratified Flow</button>
         <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves</button>
@@ -297,20 +297,11 @@ sections:
             legend: []
           },
           'coriolis': {
-            name: 'Shallow Water on Rotating Sphere',
-            description: 'Linearized shallow water equations on a rotating sphere. A Gaussian height perturbation triggers geostrophic adjustment: fast gravity waves radiate outward while slower Rossby waves propagate westward.',
-            concept: 'Geostrophic adjustment partitions energy between fast gravity waves and a balanced geostrophic flow. The Coriolis force (f = 2\u03A9 sin\u03C6) deflects motion, creating rotational asymmetry. Rossby waves arise from the variation of f with latitude (\u03B2-effect).',
-            params: [
-              { id: 'rotationRate', label: 'Rotation Rate \u03A9', min: 0, max: 2, step: 0.05, default: 1.0 },
-              { id: 'waveSpeed', label: 'Wave Speed (gH)', min: 0.01, max: 0.3, step: 0.01, default: 0.1 },
-              { id: 'perturbAmp', label: 'Perturbation Amplitude', min: 0.01, max: 0.5, step: 0.01, default: 0.15 },
-              { id: 'viewLat', label: 'View Latitude', min: -80, max: 80, step: 5, default: 25 }
-            ],
-            legend: [
-              { color: 'rgb(220, 60, 60)', label: 'Height excess (high)' },
-              { color: 'rgb(255, 255, 255)', label: 'Mean height' },
-              { color: 'rgb(60, 60, 220)', label: 'Height deficit (low)' }
-            ]
+            name: 'Geostrophic Adjustment & Shallow Water Waves',
+            description: 'Pseudo-spectral simulation of the linearised shallow water equations on a rotating beta-plane. A Gaussian height perturbation triggers geostrophic adjustment: fast inertia-gravity waves radiate outward while slower Rossby waves drift westward.',
+            concept: 'The Rossby deformation radius L_R = √(gH)/f₀ controls the adjustment: scales larger than L_R reach geostrophic balance; smaller scales radiate as gravity waves. The β-effect adds slow westward Rossby wave propagation on top of the balanced state.',
+            params: [],
+            legend: []
           },
           'geostrophic': {
             name: '2D Navier-Stokes Turbulence',
@@ -378,6 +369,7 @@ sections:
           const _notebookUrls = {
             'geostrophic':    '/gfd/twodnavierstokes.html?v=5',
             'rayleigh-benard': '/gfd/rayleighbenard.html?v=1',
+            'coriolis':        '/gfd/shallowwater.html?v=1',
           };
           if (modelId in _notebookUrls) {
             _canvas.style.display = 'none';
@@ -725,7 +717,7 @@ sections:
             simState = { particles, time: 0, jetStreamY: height / 2 };
           }
         }
-        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard']);
+        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard', 'coriolis']);
         function animate() {
           if (!_notebookModels.has(currentModel)) {
             if (isPlaying) update();
