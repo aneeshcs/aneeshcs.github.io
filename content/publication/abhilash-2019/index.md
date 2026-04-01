@@ -1,0 +1,102 @@
+---
+title: Contributors
+authors:
+- S. Abhilash
+- Min-Seop Ahn
+- Walter E. Baethgen
+- Gianpaolo Balsamo
+- Juan Bazo
+- Barbara Brown
+- Gilbert Brunet
+- Roberto Buizza
+- Amy Butler
+- Barbara Casati
+- P. Chang
+- Andrew Charlton-Perez
+- Rajib Chattopadhyay
+- Matthieu Chevallier
+- Caio A.S. Coelho
+- Erin Coughlan de Perez
+- Christopher Cunningham
+- Rutger Dankers
+- Michael DeFlorio
+- Matthew DeGennaro
+- Mathieu Destrooper
+- Paul A. Dirmeyer
+- Giovanni Dolif
+- Daniela I.V. Domeisen
+- Robyn Duell
+- Emanuel Dutra
+- Michael B. Ek
+- Laura Ferranti
+- Jorgen Frederiksen
+- Chaim Garfinkel
+- Pierre Gentine
+- Edwin P. Gerber
+- Michael Ghil
+- Helge Goessling
+- Brian Golding
+- Andreas Groth
+- Virginie Guémas
+- Peter Hitchcock
+- Debra Hudson
+- Charles Jones
+- Susmitha Joseph
+- Thomas Jung
+- In-Sik Kang
+- Alexey Yu. Karpechko
+- Dmitri Kondrashov
+- Phani M. Krishna
+- Christophe Lavaysse
+- Hai Lin
+- Rachel Lowe
+- Victor Marchezini
+- Nadège Martiny
+- François Massonnet
+- Amanda C. Maycock
+- John Methven
+- Brian Mills
+- Marion Mittermaier
+- Hiroaki Miura
+- Vincent Moron
+- Tetsuo Nakazawa
+- Hannah Nissan
+- D.R. Pattanaik
+- Joanne Robbins
+- Andrew W. Robertson
+- Pascal Roucou
+- A.K. Sahai
+- R. Saravanan
+- Juan Pablo Sarmiento
+- Stefan Siegert
+- Michael Sigmond
+- Amber Silver
+- Isla Simpson
+- Roop Singh
+- Seok-Woo Son
+- Cristiana Stan
+- David B. Stephenson
+- David Straus
+- Aneesh Subramanian
+- Yuhei Takaya
+- Rafael Terra
+- Madeleine C. Thomson
+- Michael K. Tippett
+- Adrian M. Tompkins
+- Zoltan Toth
+- Rachel Trajber
+- Frédéric Vitart
+- Lei Wang
+- Andrew Watkins
+- Laurie Wilson
+- Steven J. Woolnough
+date: '2019-01-01'
+publishDate: '2026-04-01T10:54:28.485999Z'
+publication_types:
+- chapter
+publication: '*Sub-Seasonal to Seasonal Prediction*'
+doi: 10.1016/b978-0-12-811714-9.09994-0
+links:
+- name: URL
+  url: http://dx.doi.org/10.1016/b978-0-12-811714-9.09994-0
+---
