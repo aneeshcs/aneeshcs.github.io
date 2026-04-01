@@ -52,8 +52,7 @@ abstract: 'A new regional coupled ocean-atmosphere model is developed and its   
   the coupled model code scales well and the ESMF/NUOPC coupler accounts for less
   than 5% of the total computational resources in the Red Sea test case. The coupled
   model and documentation are available at https://library.ucsd.edu/dc/collection/bb1847661c
-  (last access: 26 September 2019), and the source code is maintained at https://github.com/iurnus/scripps_kaust
-  _model (last access: 26 September 2019).'
+  (last access: 26 September 2019), and the source code is maintained at https://github.com/iurnus/scripps_kaust_model (last access: 26 September 2019).'
 
 # Summary. An optional shortened abstract.
 summary: ''

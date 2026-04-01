@@ -1,0 +1,10 @@
+# DOI links - often blocked by automated checkers (false positives)
+https://doi.org/
+
+# Deleted/private external GitHub repos
+https://github.com/iurnus/scripps_kaust_model
+
+# Internal RSS feeds and pagination that may not resolve in link checking
+http://aneeshcs.github.io/authors/b.-hadri/index.xml
+https://aneeshcs.github.io/authors/b.-hadri/index.xml
+/authors/aneesh-subramanian/page/
