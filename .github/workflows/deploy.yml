@@ -87,16 +87,16 @@ jobs:
 
     - name: Export marimo notebooks
       run: |
-        uvx marimo export html-wasm --sandbox --mode edit \
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/twodnavierstokes.py \
           -o static/gfd/twodnavierstokes.html
-        uvx marimo export html-wasm --sandbox --mode edit \
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/rayleighbenard.py \
           -o static/gfd/rayleighbenard.html
-        uvx marimo export html-wasm --sandbox --mode edit \
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/shallowwater.py \
           -o static/gfd/shallowwater.html
-        uvx marimo export html-wasm --sandbox --mode edit \
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/internalwaves.py \
           -o static/gfd/internalwaves.html
 
