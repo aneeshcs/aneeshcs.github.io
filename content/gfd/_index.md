@@ -9,1007 +9,282 @@ sections:
       title: ""
       text: |
         <style>
-        .gfd-container {
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .gfd-wrap {
           width: 100vw;
           position: relative;
           left: 50%;
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          min-height: calc(100vh - 70px);
-          background: linear-gradient(135deg, #1e3a5f 0%, #1e4d6f 50%, #0d4f5f 100%);
-          color: white;
-          padding: 2rem;
-          box-sizing: border-box;
+          background: linear-gradient(160deg, #0f2744 0%, #0e3d5c 50%, #082f45 100%);
+          color: #e2e8f0;
+          padding: 3rem 1.5rem 4rem;
+          font-family: "Inter var", "Inter", system-ui, sans-serif;
         }
-        .gfd-header {
-          max-width: 1400px;
-          margin: 0 auto 1.5rem auto;
-          padding: 1rem 1.5rem;
-          background: rgba(0,0,0,0.3);
-          backdrop-filter: blur(8px);
-          border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.2);
-        }
-        .gfd-header h1 {
-          font-size: 2rem;
-          font-weight: bold;
-          margin: 0;
-          color: white;
-        }
-        .gfd-header p {
-          color: #93c5fd;
-          font-size: 0.9rem;
-          margin: 0.25rem 0 0 0;
-        }
-        .gfd-nav {
-          max-width: 1400px;
-          margin: 0 auto 1.5rem auto;
-          padding: 1rem;
-          background: rgba(0,0,0,0.3);
-          backdrop-filter: blur(8px);
-          border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.2);
-        }
-        .gfd-nav h2 {
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: #93c5fd;
-          margin: 0 0 0.75rem 0;
-        }
-        .gfd-nav-buttons {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-          gap: 0.75rem;
-        }
-        .gfd-nav-btn {
-          padding: 0.75rem 1rem;
-          border-radius: 8px;
-          font-weight: 500;
-          font-size: 0.9rem;
-          cursor: pointer;
-          transition: all 0.3s;
-          border: none;
-          background: rgba(255,255,255,0.1);
-          color: #dbeafe;
-        }
-        .gfd-nav-btn:hover {
-          background: rgba(255,255,255,0.2);
-        }
-        .gfd-nav-btn.active {
-          background: #06b6d4;
-          color: white;
-          box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
-        }
-        .gfd-info {
-          max-width: 1400px;
-          margin: 0 auto 1.5rem auto;
-          padding: 1rem;
-          background: rgba(6, 182, 212, 0.2);
-          backdrop-filter: blur(8px);
-          border-radius: 12px;
-          border: 1px solid rgba(6, 182, 212, 0.3);
-        }
-        .gfd-info h3 {
-          font-weight: bold;
-          color: #a5f3fc;
-          margin: 0 0 0.5rem 0;
-          font-size: 1.1rem;
-        }
-        .gfd-info p {
-          color: #ecfeff;
-          font-size: 0.9rem;
-          margin: 0;
-          line-height: 1.5;
-        }
-        .gfd-main {
-          max-width: 1400px;
+
+        .gfd-inner {
+          max-width: 900px;
           margin: 0 auto;
-          padding: 1.5rem;
-          background: rgba(0,0,0,0.3);
-          backdrop-filter: blur(8px);
-          border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.2);
         }
-        .gfd-layout {
-          display: flex;
-          flex-direction: column;
+
+        /* ── Header ── */
+        .gfd-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        .gfd-hero h1 {
+          font-size: 2.2rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: #7dd3fc;
+          margin-bottom: 0.75rem;
+        }
+        .gfd-hero p {
+          font-size: 1rem;
+          color: #94a3b8;
+          line-height: 1.7;
+          max-width: 620px;
+          margin: 0 auto;
+        }
+
+        /* ── Card grid ── */
+        .gfd-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
           gap: 1.5rem;
         }
-        @media (min-width: 1024px) {
-          .gfd-layout {
-            flex-direction: row;
-          }
-        }
-        .gfd-canvas-container {
-          flex: 1;
-        }
-        .gfd-canvas {
-          width: 100%;
+
+        .gfd-card {
+          background: rgba(10, 25, 47, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 12px;
-          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-          border: 1px solid rgba(255,255,255,0.2);
-          background: black;
-        }
-        .gfd-sidebar {
-          width: 100%;
-        }
-        @media (min-width: 1024px) {
-          .gfd-sidebar {
-            width: 320px;
-            flex-shrink: 0;
-          }
-        }
-        .gfd-panel {
-          background: rgba(255,255,255,0.1);
-          border-radius: 12px;
-          padding: 1rem;
-          margin-bottom: 1rem;
-        }
-        .gfd-panel h3 {
-          font-weight: bold;
-          color: #a5f3fc;
-          margin: 0 0 0.75rem 0;
-          font-size: 1rem;
-        }
-        .gfd-controls {
+          padding: 1.75rem;
           display: flex;
-          gap: 0.75rem;
+          flex-direction: column;
+          gap: 1rem;
+          transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+          backdrop-filter: blur(6px);
         }
-        .gfd-btn {
-          flex: 1;
-          padding: 0.625rem 1rem;
-          border-radius: 8px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.2s;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          font-size: 0.9rem;
+        .gfd-card:hover {
+          border-color: #06b6d4;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 30px rgba(6, 182, 212, 0.15);
         }
-        .gfd-btn-primary {
-          background: #06b6d4;
-          color: white;
-        }
-        .gfd-btn-primary:hover {
-          background: #0891b2;
-        }
-        .gfd-btn-secondary {
-          background: rgba(255,255,255,0.2);
-          color: white;
-        }
-        .gfd-btn-secondary:hover {
-          background: rgba(255,255,255,0.3);
-        }
-        .gfd-slider-group {
-          margin-bottom: 1rem;
-        }
-        .gfd-slider-label {
-          font-size: 0.875rem;
-          color: #bfdbfe;
-          display: block;
-          margin-bottom: 0.5rem;
-        }
-        .gfd-slider {
-          width: 100%;
-          height: 6px;
-          border-radius: 3px;
-          background: rgba(255,255,255,0.2);
-          outline: none;
-          -webkit-appearance: none;
-        }
-        .gfd-slider::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: #06b6d4;
-          cursor: pointer;
-        }
-        .gfd-legend-item {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 0.5rem;
-        }
-        .gfd-legend-color {
-          width: 16px;
-          height: 16px;
+
+        /* ── Card tag ── */
+        .gfd-tag {
+          font-family: monospace;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          color: #06b6d4;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.35);
           border-radius: 4px;
+          padding: 2px 9px;
+          display: inline-block;
+          width: fit-content;
         }
-        .gfd-legend-text {
-          font-size: 0.875rem;
-          color: #dbeafe;
+
+        /* ── Card title ── */
+        .gfd-card h2 {
+          font-size: 1.15rem;
+          font-weight: 600;
+          color: #e2e8f0;
+          line-height: 1.3;
         }
-        .gfd-concept p {
-          font-size: 0.875rem;
-          color: #dbeafe;
+
+        /* ── Description ── */
+        .gfd-card p.gfd-desc {
+          font-size: 0.9rem;
+          color: #94a3b8;
+          line-height: 1.65;
+          flex-grow: 1;
+        }
+
+        /* ── Equation box ── */
+        .gfd-eq {
+          font-family: "Courier New", Courier, monospace;
+          font-size: 0.85rem;
+          color: #67e8f9;
+          background: rgba(6, 182, 212, 0.06);
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          border-radius: 6px;
+          padding: 0.6rem 0.9rem;
           line-height: 1.5;
-          margin: 0;
+          letter-spacing: 0.01em;
+        }
+
+        /* ── Highlights list ── */
+        .gfd-card ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+        .gfd-card ul li {
+          font-size: 0.875rem;
+          color: #94a3b8;
+          padding-left: 1.1rem;
+          position: relative;
+          line-height: 1.5;
+        }
+        .gfd-card ul li::before {
+          content: "✦";
+          position: absolute;
+          left: 0;
+          color: #06b6d4;
+          font-size: 0.6rem;
+          top: 0.25rem;
+        }
+
+        /* ── Button ── */
+        .gfd-card .gfd-btn-link {
+          display: inline-block;
+          text-align: center;
+          padding: 0.6rem 1.3rem;
+          background: #0369a1;
+          color: #e0f2fe;
+          border-radius: 7px;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 500;
+          transition: background 0.2s ease;
+          align-self: flex-start;
+          margin-top: auto;
+        }
+        .gfd-btn-link:hover {
+          background: #0284c7;
+          color: #fff;
+          text-decoration: none;
+        }
+
+        /* ── Footer ── */
+        .gfd-footer {
+          margin-top: 3.5rem;
+          text-align: center;
+          font-size: 0.8rem;
+          color: #475569;
+          line-height: 1.8;
+        }
+        .gfd-footer a {
+          color: #475569;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .gfd-footer a:hover { color: #7dd3fc; }
+
+        @media (max-width: 600px) {
+          .gfd-cards { grid-template-columns: 1fr; }
+          .gfd-hero h1 { font-size: 1.6rem; }
         }
         </style>
-        <div class="gfd-container">
-        <div class="gfd-header">
-        <h1>Geophysical Fluid Dynamics Portal</h1>
-        <p>Interactive Educational Simulations</p>
+
+        <div class="gfd-wrap">
+          <div class="gfd-inner">
+
+            <header class="gfd-hero">
+              <h1>Geophysical Fluid Dynamics</h1>
+              <p>Interactive pedagogical notebooks exploring the mathematics and physics
+              of rotating, stratified geophysical flows. Each notebook runs entirely in
+              your browser via WebAssembly — no installation required.</p>
+            </header>
+
+            <div class="gfd-cards">
+
+              <!-- Card 1: Rayleigh-Bénard -->
+              <div class="gfd-card">
+                <span class="gfd-tag">Convection</span>
+                <h2>Rayleigh-Bénard Convection &amp; Lorenz Chaos</h2>
+                <p class="gfd-desc">
+                  2D thermal convection in a Boussinesq fluid heated from below.
+                  Truncating the governing equations to three Fourier amplitudes
+                  yields the Lorenz (1963) system — the canonical model of
+                  deterministic chaos and the original "butterfly effect."
+                </p>
+                <div class="gfd-eq">Ra = g α ΔT H³ / (ν κ)</div>
+                <ul>
+                  <li>Lattice-Boltzmann D2Q9 solver with real-time rendering</li>
+                  <li>Lorenz attractor: sensitive dependence on initial conditions</li>
+                  <li>Bifurcation from conduction → steady rolls → chaos</li>
+                  <li>Nusselt number as a function of Rayleigh number</li>
+                </ul>
+                <a href="/gfd/rayleighbenard.html" class="gfd-btn-link" target="_blank">▶ Open Notebook</a>
+              </div>
+
+              <!-- Card 2: Geostrophic Adjustment -->
+              <div class="gfd-card">
+                <span class="gfd-tag">Rotating Fluids</span>
+                <h2>Geostrophic Adjustment &amp; Shallow Water Waves</h2>
+                <p class="gfd-desc">
+                  Linearised shallow water equations on a rotating beta-plane.
+                  A Gaussian height perturbation simultaneously radiates fast
+                  inertia-gravity waves and slowly adjusts toward geostrophic
+                  balance, with Rossby waves drifting westward via the β-effect.
+                </p>
+                <div class="gfd-eq">ω² = f² + c²(k² + l²) &nbsp;·&nbsp; L_R = c / f₀</div>
+                <ul>
+                  <li>Pseudo-spectral RK4 solver on a doubly-periodic domain</li>
+                  <li>Inertia-gravity vs. Rossby wave dispersion relations</li>
+                  <li>Rossby deformation radius controls adjustment scale</li>
+                  <li>KE / PE energy partition during geostrophic adjustment</li>
+                </ul>
+                <a href="/gfd/shallowwater.html" class="gfd-btn-link" target="_blank">▶ Open Notebook</a>
+              </div>
+
+              <!-- Card 3: 2D Navier-Stokes -->
+              <div class="gfd-card">
+                <span class="gfd-tag">Turbulence</span>
+                <h2>2D Navier-Stokes Turbulence</h2>
+                <p class="gfd-desc">
+                  Decaying turbulence governed by the 2D incompressible
+                  Navier-Stokes equations in vorticity-streamfunction form.
+                  Unlike 3D turbulence, energy cascades <em>upscale</em> while
+                  enstrophy cascades to small scales — a consequence of the
+                  additional conservation law in two dimensions.
+                </p>
+                <div class="gfd-eq">∂ω/∂t + J(ψ, ω) = ν ∇²ω</div>
+                <ul>
+                  <li>Pseudo-spectral solver with 2/3-rule dealiasing</li>
+                  <li>Inverse energy cascade: k⁻⁵/³ power-law spectrum</li>
+                  <li>Forward enstrophy cascade: k⁻³ spectrum</li>
+                  <li>Vortex merging and coherent structure formation</li>
+                </ul>
+                <a href="/gfd/twodnavierstokes.html" class="gfd-btn-link" target="_blank">▶ Open Notebook</a>
+              </div>
+
+              <!-- Card 4: Internal Waves -->
+              <div class="gfd-card">
+                <span class="gfd-tag">Stratification</span>
+                <h2>Internal Gravity Waves</h2>
+                <p class="gfd-desc">
+                  Internal waves propagate through a stably stratified fluid,
+                  carrying energy at angles set by the ratio of wave frequency
+                  to the Brunt-Väisälä frequency. Their peculiar dispersion
+                  relation — energy and phase propagate perpendicular to each
+                  other — makes them unlike any surface wave.
+                </p>
+                <div class="gfd-eq">N² = -(g/ρ₀)(∂ρ/∂z) &nbsp;·&nbsp; ω = N cos θ</div>
+                <ul>
+                  <li>Brunt-Väisälä (buoyancy) frequency and stable stratification</li>
+                  <li>Angle-dependent dispersion: group velocity ⊥ phase velocity</li>
+                  <li>Saint Andrews Cross wave-beam pattern</li>
+                  <li>Wave reflection, focusing, and critical layers</li>
+                </ul>
+                <a href="/gfd/internalwaves.html" class="gfd-btn-link" target="_blank">▶ Open Notebook</a>
+              </div>
+
+            </div><!-- /.gfd-cards -->
+
+            <footer class="gfd-footer">
+              Built with <a href="https://marimo.io" target="_blank">marimo</a> &amp;
+              <a href="https://numpy.org" target="_blank">NumPy</a> ·
+              Runs in-browser via <a href="https://pyodide.org" target="_blank">Pyodide</a> WebAssembly ·
+              <a href="https://github.com/aneeshcs/aneeshcs.github.io" target="_blank">Source on GitHub</a>
+            </footer>
+
+          </div>
         </div>
-        <div class="gfd-nav">
-        <h2>SELECT MODEL</h2>
-        <div class="gfd-nav-buttons">
-        <button class="gfd-nav-btn active" onclick="selectModel('rayleigh-benard')">Rayleigh-Bénard</button>
-        <button class="gfd-nav-btn" onclick="selectModel('coriolis')">Geostrophic Adjustment</button>
-        <button class="gfd-nav-btn" onclick="selectModel('geostrophic')">2D Navier-Stokes</button>
-        <button class="gfd-nav-btn" onclick="selectModel('stratified')">Internal Waves</button>
-        <button class="gfd-nav-btn" onclick="selectModel('rossby')">Rossby Waves (Globe)</button>
-        </div>
-        </div>
-        <div class="gfd-info" id="gfd-info">
-        <h3 id="model-title">Rayleigh-Bénard Convection</h3>
-        <p id="model-description">Demonstrates thermal convection when fluid is heated from below. Hot fluid rises, cools at the top, and sinks, forming convection cells.</p>
-        </div>
-        <div class="gfd-main">
-        <div class="gfd-layout">
-        <div class="gfd-canvas-container">
-        <canvas id="gfd-canvas" class="gfd-canvas" width="800" height="450"></canvas>
-        <iframe id="gfd-notebook-frame" style="display:none; width:100%; min-height:700px; border:none; border-radius:8px; background:#fff;" src="" allow="cross-origin-isolated"></iframe>
-        </div>
-        <div class="gfd-sidebar">
-        <div class="gfd-panel">
-        <h3>Controls</h3>
-        <div class="gfd-controls">
-        <button class="gfd-btn gfd-btn-primary" id="play-btn" onclick="togglePlay()">
-        <span id="play-icon">⏸</span>
-        <span id="play-text">Pause</span>
-        </button>
-        <button class="gfd-btn gfd-btn-secondary" onclick="resetSimulation()">↺ Reset</button>
-        </div>
-        </div>
-        <div class="gfd-panel" id="params-panel">
-        <h3>Parameters</h3>
-        <div id="params-container"></div>
-        </div>
-        <div class="gfd-panel" id="legend-panel">
-        <h3>Legend</h3>
-        <div id="legend-container"></div>
-        </div>
-        <div class="gfd-panel gfd-concept" id="concept-panel">
-        <h3>Key Concept</h3>
-        <p id="concept-text"></p>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        <script>
-        let currentModel = 'rayleigh-benard';
-        let isPlaying = true;
-        let animationId = null;
-        let params = {};
-        const models = {
-          'rayleigh-benard': {
-            name: 'Rayleigh–Bénard Convection & Lorenz 1963',
-            description: 'Interactive pseudo-spectral simulation of 2D Rayleigh–Bénard convection, with a full derivation of the Lorenz 1963 chaotic three-variable model from the Boussinesq equations.',
-            concept: 'Fluid heated from below convects when Ra exceeds the critical value 27π⁴/4 ≈ 657. Lorenz (1963) showed that truncating the governing equations to three Fourier modes yields a deterministic chaotic system — the butterfly attractor — setting the foundation of chaos theory.',
-            params: [],
-            legend: []
-          },
-          'coriolis': {
-            name: 'Geostrophic Adjustment & Shallow Water Waves',
-            description: 'Pseudo-spectral simulation of the linearised shallow water equations on a rotating beta-plane. A Gaussian height perturbation triggers geostrophic adjustment: fast inertia-gravity waves radiate outward while slower Rossby waves drift westward.',
-            concept: 'The Rossby deformation radius L_R = √(gH)/f₀ controls the adjustment: scales larger than L_R reach geostrophic balance; smaller scales radiate as gravity waves. The β-effect adds slow westward Rossby wave propagation on top of the balanced state.',
-            params: [],
-            legend: []
-          },
-          'geostrophic': {
-            name: '2D Navier-Stokes Turbulence',
-            description: 'Interactive pseudo-spectral simulation of 2D decaying turbulence, following McWilliams (1984). Adjust parameters and run the solver directly in your browser.',
-            concept: 'In 2D turbulence, energy cascades inversely — from small vortices to large-scale coherent structures — while enstrophy cascades forward. This is the opposite of 3D turbulence and explains the persistence of large ocean eddies and atmospheric jets.',
-            params: [],
-            legend: []
-          },
-          'stratified': {
-            name: 'Internal Waves',
-            description: 'Interactive notebook: internal waves in a stratified fluid — from two-layer interface waves to continuously stratified wave beams and vertical modes.',
-            concept: 'Density stratification (measured by the Brunt-Väisälä frequency N) supports internal gravity waves. Unlike surface waves, internal waves propagate at a fixed angle set by their frequency, forming distinctive beam patterns. They are critical for ocean mixing and momentum transport.',
-            params: [],
-            legend: [
-            ]
-          },
-          'rossby': {
-            name: 'Geostrophic Adjustment on a Rotating Sphere',
-            description: 'Shallow water equations on a rotating sphere. A Gaussian height perturbation triggers geostrophic adjustment: fast gravity waves radiate outward while slower Rossby waves propagate westward.',
-            concept: 'Geostrophic adjustment partitions energy between fast gravity waves and a balanced geostrophic flow. The Coriolis force (f = 2Ω sinφ) deflects motion, creating rotational asymmetry. Rossby waves arise from the variation of f with latitude (β-effect).',
-            params: [
-              { id: 'rotationRate', label: 'Rotation Rate Ω', min: 0, max: 2, step: 0.05, default: 1.0 },
-              { id: 'waveSpeed', label: 'Wave Speed (gH)', min: 0.01, max: 0.3, step: 0.01, default: 0.1 },
-              { id: 'perturbAmp', label: 'Perturbation Amplitude', min: 0.01, max: 0.5, step: 0.01, default: 0.15 },
-              { id: 'viewLat', label: 'View Latitude', min: -80, max: 80, step: 5, default: 25 }
-            ],
-            legend: [
-              { color: 'rgb(220, 60, 60)', label: 'Height excess (high)' },
-              { color: 'rgb(255, 255, 255)', label: 'Mean height' },
-              { color: 'rgb(60, 60, 220)', label: 'Height deficit (low)' }
-            ]
-          }
-        };
-        let simState = {};
-        function init() {
-          selectModel('rayleigh-benard');
-        }
-        function selectModel(modelId) {
-          currentModel = modelId;
-          const model = models[modelId];
-          document.querySelectorAll('.gfd-nav-btn').forEach(btn => btn.classList.remove('active'));
-          const buttons = document.querySelectorAll('.gfd-nav-btn');
-          const modelKeys = Object.keys(models);
-          buttons[modelKeys.indexOf(modelId)].classList.add('active');
-          document.getElementById('model-title').textContent = model.name;
-          document.getElementById('model-description').textContent = model.description;
-          document.getElementById('concept-text').textContent = model.concept;
-          params = {};
-          const paramsHtml = model.params.map(p => {
-            params[p.id] = p.default;
-            const displayVal = p.format === 'rayleigh' ? formatRayleigh(p.default) : (Number.isInteger(p.default) ? p.default : p.default.toFixed(2));
-            return '<div class="gfd-slider-group"><label class="gfd-slider-label">' + p.label + ': <span id="val-' + p.id + '">' + displayVal + '</span></label><input type="range" class="gfd-slider" id="param-' + p.id + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.default + '" oninput="updateParam(\'' + p.id + '\', this.value, \'' + (p.format || '') + '\')"></div>';
-          }).join('');
-          document.getElementById('params-container').innerHTML = paramsHtml;
-          const legendHtml = model.legend.map(item => '<div class="gfd-legend-item"><div class="gfd-legend-color" style="background: ' + item.color + '"></div><span class="gfd-legend-text">' + item.label + '</span></div>').join('');
-          document.getElementById('legend-container').innerHTML = legendHtml;
-          const _frame = document.getElementById('gfd-notebook-frame');
-          const _canvas = document.getElementById('gfd-canvas');
-          const _sidebar = document.querySelector('.gfd-sidebar');
-          const _notebookUrls = {
-            'geostrophic':    '/gfd/twodnavierstokes.html?v=5',
-            'rayleigh-benard': '/gfd/rayleighbenard.html?v=1',
-            'coriolis':        '/gfd/shallowwater.html?v=1',
-            'stratified':      '/gfd/internalwaves.html?v=1',
-          };
-          if (modelId in _notebookUrls) {
-            _canvas.style.display = 'none';
-            _frame.style.display = 'block';
-            _frame.src = _notebookUrls[modelId];
-            if (_sidebar) _sidebar.style.display = 'none';
-          } else {
-            _canvas.style.display = 'block';
-            _frame.style.display = 'none';
-            _frame.src = '';
-            if (_sidebar) _sidebar.style.display = '';
-            resetSimulation();
-          }
-        }
-        function formatRayleigh(exp) {
-          if (Number.isInteger(exp)) return '10' + String(exp).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('');
-          return '10' + String(Math.floor(exp)).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('') + '·⁵';
-        }
-        function updateParam(id, value, format) {
-          params[id] = parseFloat(value);
-          if (format === 'rayleigh') {
-            document.getElementById('val-' + id).textContent = formatRayleigh(params[id]);
-          } else {
-            document.getElementById('val-' + id).textContent = Number.isInteger(params[id]) ? params[id] : params[id].toFixed(2);
-          }
-        }
-        function togglePlay() {
-          isPlaying = !isPlaying;
-          document.getElementById('play-icon').textContent = isPlaying ? '⏸' : '▶';
-          document.getElementById('play-text').textContent = isPlaying ? 'Pause' : 'Play';
-        }
-        function resetSimulation() {
-          if (animationId) cancelAnimationFrame(animationId);
-          initSimState();
-          animate();
-        }
-        // ── LBM D2Q9 infrastructure ──
-        const LBM_NX = 256, LBM_NY = 144, LBM_SIZE = LBM_NX * LBM_NY;
-        const Q = 9;
-        const ex = [0, 1, 0, -1, 0, 1, -1, -1, 1];
-        const ey = [0, 0, 1, 0, -1, 1, 1, -1, -1];
-        const w  = [4/9, 1/9, 1/9, 1/9, 1/9, 1/36, 1/36, 1/36, 1/36];
-        const opp = [0, 3, 4, 1, 2, 7, 8, 5, 6];
-        let lbm_f = new Float64Array(LBM_SIZE * Q);
-        let lbm_fTemp = new Float64Array(LBM_SIZE * Q);
-        let lbm_g = new Float64Array(LBM_SIZE * Q);
-        let lbm_gTemp = new Float64Array(LBM_SIZE * Q);
-        let lbm_rho = new Float64Array(LBM_SIZE);
-        let lbm_ux = new Float64Array(LBM_SIZE);
-        let lbm_uy = new Float64Array(LBM_SIZE);
-        let lbm_T = new Float64Array(LBM_SIZE);
-        let lbm_offCanvas = null;
-        let lbm_imageData = null;
-        function idx(x, y) { return y * LBM_NX + x; }
-        function cidx(x, y, i) { return (y * LBM_NX + x) * Q + i; }
-        function feq(i, rho, ux, uy) {
-          const eu = ex[i] * ux + ey[i] * uy;
-          const usq = ux * ux + uy * uy;
-          return w[i] * rho * (1 + 3 * eu + 4.5 * eu * eu - 1.5 * usq);
-        }
-        function geq(i, T, ux, uy) {
-          const eu = ex[i] * ux + ey[i] * uy;
-          const usq = ux * ux + uy * uy;
-          return w[i] * T * (1 + 3 * eu + 4.5 * eu * eu - 1.5 * usq);
-        }
-        function initLBM() {
-          if (!lbm_offCanvas) {
-            lbm_offCanvas = document.createElement('canvas');
-            lbm_offCanvas.width = LBM_NX;
-            lbm_offCanvas.height = LBM_NY;
-            lbm_imageData = lbm_offCanvas.getContext('2d').createImageData(LBM_NX, LBM_NY);
-          }
-          for (let y = 0; y < LBM_NY; y++) {
-            for (let x = 0; x < LBM_NX; x++) {
-              const n = idx(x, y);
-              const T0 = 1.0 - y / (LBM_NY - 1) + (Math.random() - 0.5) * 0.01;
-              lbm_T[n] = T0;
-              lbm_rho[n] = 1.0;
-              lbm_ux[n] = 0;
-              lbm_uy[n] = 0;
-              for (let i = 0; i < Q; i++) {
-                lbm_f[cidx(x, y, i)] = feq(i, 1.0, 0, 0);
-                lbm_g[cidx(x, y, i)] = geq(i, T0, 0, 0);
-              }
-            }
-          }
-        }
-        function lbmStep(tau_f, tau_g, g_beta) {
-          // Macroscopic quantities
-          for (let y = 0; y < LBM_NY; y++) {
-            for (let x = 0; x < LBM_NX; x++) {
-              const n = idx(x, y);
-              let r = 0, vx = 0, vy = 0, t = 0;
-              for (let i = 0; i < Q; i++) {
-                const fi = lbm_f[cidx(x, y, i)];
-                const gi = lbm_g[cidx(x, y, i)];
-                r += fi;
-                vx += fi * ex[i];
-                vy += fi * ey[i];
-                t += gi;
-              }
-              // Guo force correction: add half-force to velocity
-              const Fy = g_beta * (t - 0.5);
-              vx /= r;
-              vy = vy / r + Fy * 0.5 / r;
-              lbm_rho[n] = r;
-              lbm_ux[n] = vx;
-              lbm_uy[n] = vy;
-              lbm_T[n] = t;
-            }
-          }
-          // Collision
-          for (let y = 0; y < LBM_NY; y++) {
-            for (let x = 0; x < LBM_NX; x++) {
-              const n = idx(x, y);
-              const r = lbm_rho[n], vx = lbm_ux[n], vy = lbm_uy[n], t = lbm_T[n];
-              const Fy = g_beta * (t - 0.5);
-              for (let i = 0; i < Q; i++) {
-                const c = cidx(x, y, i);
-                // Guo forcing term
-                const eu = ex[i] * vx + ey[i] * vy;
-                const Si = (1 - 0.5 / tau_f) * w[i] * (3 * (ey[i] - vy) + 9 * eu * ey[i]) * Fy;
-                lbm_fTemp[c] = lbm_f[c] - (lbm_f[c] - feq(i, r, vx, vy)) / tau_f + Si;
-                lbm_gTemp[c] = lbm_g[c] - (lbm_g[c] - geq(i, t, vx, vy)) / tau_g;
-              }
-            }
-          }
-          // Streaming with boundary conditions
-          for (let y = 0; y < LBM_NY; y++) {
-            for (let x = 0; x < LBM_NX; x++) {
-              for (let i = 0; i < Q; i++) {
-                // periodic in x
-                let xn = (x + ex[i] + LBM_NX) % LBM_NX;
-                let yn = y + ey[i];
-                const cDst = cidx(x, y, i);
-                if (yn < 0 || yn >= LBM_NY) {
-                  // Bounce-back for flow
-                  lbm_f[cidx(x, y, opp[i])] = lbm_fTemp[cDst];
-                  // Anti-bounce-back for temperature (Dirichlet)
-                  const Twall = (yn < 0) ? 1.0 : 0.0; // bottom hot, top cold
-                  lbm_g[cidx(x, y, opp[i])] = -lbm_gTemp[cDst] + 2 * w[opp[i]] * Twall;
-                } else {
-                  lbm_f[cidx(xn, yn, i)] = lbm_fTemp[cDst];
-                  lbm_g[cidx(xn, yn, i)] = lbm_gTemp[cDst];
-                }
-              }
-            }
-          }
-        }
-        function tempToColor(t) {
-          // blue -> white -> red
-          t = t < 0 ? 0 : (t > 1 ? 1 : t);
-          let r, g, b;
-          if (t < 0.5) {
-            const s = t * 2;
-            r = Math.floor(s * 255);
-            g = Math.floor(s * 255);
-            b = 255;
-          } else {
-            const s = (t - 0.5) * 2;
-            r = 255;
-            g = Math.floor((1 - s) * 255);
-            b = Math.floor((1 - s) * 255);
-          }
-          return [r, g, b];
-        }
-        // ── SWE on rotating sphere infrastructure ──
-        const SWE_NX = 180, SWE_NY = 90, SWE_SIZE = SWE_NX * SWE_NY;
-        const SWE_DLAM = 2 * Math.PI / SWE_NX;
-        const SWE_DPHI = Math.PI / SWE_NY;
-        let swe_h = new Float64Array(SWE_SIZE);
-        let swe_u = new Float64Array(SWE_SIZE);
-        let swe_v = new Float64Array(SWE_SIZE);
-        let swe_h2 = new Float64Array(SWE_SIZE);
-        let swe_u2 = new Float64Array(SWE_SIZE);
-        let swe_v2 = new Float64Array(SWE_SIZE);
-        let swe_sinLat = new Float64Array(SWE_NY);
-        let swe_cosLat = new Float64Array(SWE_NY);
-        let swe_fcor = new Float64Array(SWE_NY);
-        const SWE_PW = 800, SWE_PH = 450, SWE_PSIZE = SWE_PW * SWE_PH;
-        let swe_projLonIdx = new Int16Array(SWE_PSIZE);
-        let swe_projLatIdx = new Int16Array(SWE_PSIZE);
-        let swe_projMask = new Uint8Array(SWE_PSIZE);
-        let swe_projShade = new Float32Array(SWE_PSIZE);
-        let swe_offCanvas = null;
-        let swe_imageData = null;
-        let swe_viewLon = 0;
-        function swe_idx(i, j) { return j * SWE_NX + i; }
-        function swe_initLatArrays(Omega) {
-          for (let j = 0; j < SWE_NY; j++) {
-            const phi = -Math.PI / 2 + (j + 0.5) * SWE_DPHI;
-            swe_sinLat[j] = Math.sin(phi);
-            swe_cosLat[j] = Math.cos(phi);
-            swe_fcor[j] = 2 * Omega * swe_sinLat[j];
-          }
-        }
-        function swe_initFields(amp, latDeg, lonDeg) {
-          const lat0 = latDeg * Math.PI / 180;
-          const lon0 = lonDeg * Math.PI / 180;
-          const sigma = 0.15;
-          for (let j = 0; j < SWE_NY; j++) {
-            const phi = -Math.PI / 2 + (j + 0.5) * SWE_DPHI;
-            for (let i = 0; i < SWE_NX; i++) {
-              const lam = i * SWE_DLAM;
-              const dlam = lam - lon0;
-              const dphi = phi - lat0;
-              const dist2 = dlam * dlam + dphi * dphi;
-              const n = swe_idx(i, j);
-              swe_h[n] = amp * Math.exp(-dist2 / (2 * sigma * sigma));
-              swe_u[n] = 0;
-              swe_v[n] = 0;
-            }
-          }
-        }
-        function swe_buildProjection(lon0, lat0) {
-          const cosLat0 = Math.cos(lat0);
-          const sinLat0 = Math.sin(lat0);
-          const R = Math.min(SWE_PW, SWE_PH) * 0.47;
-          const cx = SWE_PW / 2, cy = SWE_PH / 2;
-          for (let py = 0; py < SWE_PH; py++) {
-            for (let px = 0; px < SWE_PW; px++) {
-              const pidx = py * SWE_PW + px;
-              const xn = (px - cx) / R;
-              const yn = -(py - cy) / R;
-              const rho2 = xn * xn + yn * yn;
-              if (rho2 > 1) { swe_projMask[pidx] = 0; continue; }
-              swe_projMask[pidx] = 1;
-              const zn = Math.sqrt(1 - rho2);
-              swe_projShade[pidx] = 0.3 + 0.7 * zn;
-              const lat = Math.asin(yn * cosLat0 + zn * sinLat0);
-              const lon = lon0 + Math.atan2(xn, zn * cosLat0 - yn * sinLat0);
-              let lonN = ((lon % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-              let li = Math.floor(lonN / SWE_DLAM);
-              if (li >= SWE_NX) li = 0;
-              let lj = Math.floor((lat + Math.PI / 2) / SWE_DPHI);
-              if (lj < 0) lj = 0; if (lj >= SWE_NY) lj = SWE_NY - 1;
-              swe_projLonIdx[pidx] = li;
-              swe_projLatIdx[pidx] = lj;
-            }
-          }
-        }
-        function swe_step(dt, gH, Omega, friction) {
-          const a = 1.0;
-          // Forward step: update u, v using current h
-          for (let j = 1; j < SWE_NY - 1; j++) {
-            const f = 2 * Omega * swe_sinLat[j];
-            const cosPhi = swe_cosLat[j];
-            const r = friction + (Math.abs(swe_sinLat[j]) > Math.sin(70 * Math.PI / 180) ? 0.5 : 0);
-            for (let i = 0; i < SWE_NX; i++) {
-              const n = swe_idx(i, j);
-              const ip = (i + 1) % SWE_NX;
-              const im = (i - 1 + SWE_NX) % SWE_NX;
-              const dhdlam = (swe_h[swe_idx(ip, j)] - swe_h[swe_idx(im, j)]) / (2 * SWE_DLAM);
-              const dhdphi = (swe_h[swe_idx(i, j + 1)] - swe_h[swe_idx(i, j - 1)]) / (2 * SWE_DPHI);
-              swe_u2[n] = swe_u[n] + dt * (f * swe_v[n] - gH / (a * cosPhi) * dhdlam - r * swe_u[n]);
-              swe_v2[n] = swe_v[n] + dt * (-f * swe_u[n] - gH / a * dhdphi - r * swe_v[n]);
-            }
-          }
-          // Poles: v=0, u=0
-          for (let i = 0; i < SWE_NX; i++) {
-            swe_u2[swe_idx(i, 0)] = 0; swe_v2[swe_idx(i, 0)] = 0;
-            swe_u2[swe_idx(i, SWE_NY - 1)] = 0; swe_v2[swe_idx(i, SWE_NY - 1)] = 0;
-          }
-          // Backward step: update h using new u, v
-          for (let j = 1; j < SWE_NY - 1; j++) {
-            const cosPhi = swe_cosLat[j];
-            const cosPhiP = swe_cosLat[j + 1];
-            const cosPhiM = swe_cosLat[j - 1];
-            for (let i = 0; i < SWE_NX; i++) {
-              const n = swe_idx(i, j);
-              const ip = (i + 1) % SWE_NX;
-              const im = (i - 1 + SWE_NX) % SWE_NX;
-              const dudlam = (swe_u2[swe_idx(ip, j)] - swe_u2[swe_idx(im, j)]) / (2 * SWE_DLAM);
-              const dvcosphi_dphi = (swe_v2[swe_idx(i, j + 1)] * cosPhiP - swe_v2[swe_idx(i, j - 1)] * cosPhiM) / (2 * SWE_DPHI);
-              swe_h2[n] = swe_h[n] - dt / (a * cosPhi) * (dudlam + dvcosphi_dphi);
-            }
-          }
-          // Polar h: average of adjacent ring
-          let hSP = 0, hNP = 0;
-          for (let i = 0; i < SWE_NX; i++) {
-            hSP += swe_h2[swe_idx(i, 1)];
-            hNP += swe_h2[swe_idx(i, SWE_NY - 2)];
-          }
-          hSP /= SWE_NX; hNP /= SWE_NX;
-          for (let i = 0; i < SWE_NX; i++) {
-            swe_h2[swe_idx(i, 0)] = hSP;
-            swe_h2[swe_idx(i, SWE_NY - 1)] = hNP;
-          }
-          // Swap
-          let tmp;
-          tmp = swe_h; swe_h = swe_h2; swe_h2 = tmp;
-          tmp = swe_u; swe_u = swe_u2; swe_u2 = tmp;
-          tmp = swe_v; swe_v = swe_v2; swe_v2 = tmp;
-        }
-        function swe_heightToColor(h, hRange) {
-          const t = hRange > 0 ? h / hRange : 0;
-          const tc = t < -1 ? -1 : (t > 1 ? 1 : t);
-          let r, g, b;
-          if (tc < 0) {
-            const s = 1 + tc;
-            r = Math.floor(s * 255);
-            g = Math.floor(s * 255);
-            b = 255;
-          } else {
-            r = 255;
-            g = Math.floor((1 - tc) * 255);
-            b = Math.floor((1 - tc) * 255);
-          }
-          return [r, g, b];
-        }
-        function initSimState() {
-          const canvas = document.getElementById('gfd-canvas');
-          const width = canvas.width;
-          const height = canvas.height;
-          if (currentModel === 'rayleigh-benard') {
-            initLBM();
-            simState = { frameCount: 0 };
-          } else if (currentModel === 'coriolis') {
-            if (!swe_offCanvas) {
-              swe_offCanvas = document.createElement('canvas');
-              swe_offCanvas.width = SWE_PW;
-              swe_offCanvas.height = SWE_PH;
-              swe_imageData = swe_offCanvas.getContext('2d').createImageData(SWE_PW, SWE_PH);
-            }
-            swe_initLatArrays(params.rotationRate);
-            swe_initFields(params.perturbAmp, 30, 0);
-            swe_viewLon = 0;
-            swe_buildProjection(0, params.viewLat * Math.PI / 180);
-            simState = { frameCount: 0, time: 0 };
-          } else if (currentModel === 'geostrophic') {
-            simState = { time: 0 };
-          } else if (currentModel === 'stratified') {
-            const layers = 5, layerHeight = height / layers, particles = [];
-            for (let layer = 0; layer < layers; layer++) {
-              const density = 1 - (layer / layers) * 0.5;
-              const speed = 0.5 * (1 + layer * 0.2);
-              for (let i = 0; i < 30; i++) {
-                particles.push({ x: Math.random() * width, y: layer * layerHeight + Math.random() * layerHeight, layer, density, speed, baseY: layer * layerHeight + layerHeight / 2 });
-              }
-            }
-            simState = { particles, layers, time: 0 };
-          } else if (currentModel === 'rossby') {
-            if (!swe_offCanvas) {
-              swe_offCanvas = document.createElement('canvas');
-              swe_offCanvas.width = SWE_PW;
-              swe_offCanvas.height = SWE_PH;
-              swe_imageData = swe_offCanvas.getContext('2d').createImageData(SWE_PW, SWE_PH);
-            }
-            swe_initLatArrays(params.rotationRate);
-            swe_initFields(params.perturbAmp, 30, 0);
-            swe_viewLon = 0;
-            swe_buildProjection(0, params.viewLat * Math.PI / 180);
-            simState = { frameCount: 0, time: 0 };
-          }
-        }
-        const _notebookModels = new Set(['geostrophic', 'rayleigh-benard', 'coriolis', 'stratified']);
-        function animate() {
-          if (!_notebookModels.has(currentModel)) {
-            if (isPlaying) update();
-            draw();
-          }
-          animationId = requestAnimationFrame(animate);
-        }
-        function update() {
-          const canvas = document.getElementById('gfd-canvas');
-          const width = canvas.width, height = canvas.height;
-          if (currentModel === 'rayleigh-benard') {
-            const logRa = params.rayleighExp;  // 3 to 13
-            const Pr = params.prandtlNumber;
-            // Map log Ra [3,13] to effective g_beta [1e-5, 1e-3] for stable simulation
-            const nu = 0.1;
-            const kappa = nu / Pr;
-            const tau_f = 3 * nu + 0.5;
-            const tau_g = 3 * kappa + 0.5;
-            const g_beta = 1e-5 * Math.pow(10, (logRa - 10) * 0.2);
-            const steps = Math.round(params.stepsPerFrame);
-            for (let s = 0; s < steps; s++) {
-              lbmStep(tau_f, tau_g, g_beta);
-            }
-            simState.frameCount++;
-          } else if (currentModel === 'coriolis') {
-            swe_initLatArrays(params.rotationRate);
-            const substeps = 8;
-            const dt = 0.003;
-            for (let s = 0; s < substeps; s++) {
-              swe_step(dt, params.waveSpeed, params.rotationRate, 0.01);
-            }
-            swe_viewLon += 0.003;
-            simState.frameCount++;
-            simState.time += substeps * dt;
-          } else if (currentModel === 'geostrophic') {
-            simState.time += 0.02;
-          } else if (currentModel === 'stratified') {
-            simState.time += 0.02;
-            simState.particles.forEach(p => {
-              p.x += p.speed * params.flowSpeed;
-              if (p.x > width) p.x = 0;
-              const waveAmp = 10 * (1 - params.densityDifference);
-              p.y = p.baseY + Math.sin(p.x * 0.02 + simState.time + p.layer) * waveAmp;
-            });
-          } else if (currentModel === 'rossby') {
-            swe_initLatArrays(params.rotationRate);
-            const substeps = 8;
-            const dt = 0.003;
-            for (let s = 0; s < substeps; s++) {
-              swe_step(dt, params.waveSpeed, params.rotationRate, 0.01);
-            }
-            swe_viewLon += 0.003;
-            simState.frameCount++;
-            simState.time += substeps * dt;
-          }
-        }
-        function draw() {
-          const canvas = document.getElementById('gfd-canvas');
-          const ctx = canvas.getContext('2d');
-          const width = canvas.width, height = canvas.height;
-          ctx.fillStyle = '#000';
-          ctx.fillRect(0, 0, width, height);
-          if (currentModel === 'rayleigh-benard') {
-            const data = lbm_imageData.data;
-            for (let y = 0; y < LBM_NY; y++) {
-              for (let x = 0; x < LBM_NX; x++) {
-                const n = idx(x, y);
-                const [r, g, b] = tempToColor(lbm_T[n]);
-                const p = (y * LBM_NX + x) * 4;
-                data[p] = r; data[p + 1] = g; data[p + 2] = b; data[p + 3] = 255;
-              }
-            }
-            const offCtx = lbm_offCanvas.getContext('2d');
-            offCtx.putImageData(lbm_imageData, 0, 0);
-            ctx.imageSmoothingEnabled = true;
-            ctx.drawImage(lbm_offCanvas, 0, 0, width, height);
-            // Velocity vectors every 3rd frame
-            if (simState.frameCount % 3 === 0) {
-              ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-              ctx.lineWidth = 1;
-              const sx = width / LBM_NX, sy = height / LBM_NY;
-              for (let y = 5; y < LBM_NY; y += 10) {
-                for (let x = 5; x < LBM_NX; x += 10) {
-                  const n = idx(x, y);
-                  const vx = lbm_ux[n], vy = lbm_uy[n];
-                  const mag = Math.sqrt(vx * vx + vy * vy);
-                  if (mag < 1e-6) continue;
-                  const scale = 800;
-                  const px = (x + 0.5) * sx, py = (y + 0.5) * sy;
-                  ctx.beginPath();
-                  ctx.moveTo(px, py);
-                  ctx.lineTo(px + vx * scale, py + vy * scale);
-                  ctx.stroke();
-                }
-              }
-            }
-          } else if (currentModel === 'coriolis') {
-            // Rebuild projection for current view
-            swe_buildProjection(swe_viewLon, params.viewLat * Math.PI / 180);
-            // Find symmetric height range
-            let hMax = 0;
-            for (let n = 0; n < SWE_SIZE; n++) {
-              const ah = Math.abs(swe_h[n]);
-              if (ah > hMax) hMax = ah;
-            }
-            if (hMax < 1e-10) hMax = 1e-10;
-            // Fill ImageData
-            const data = swe_imageData.data;
-            for (let py = 0; py < SWE_PH; py++) {
-              for (let px = 0; px < SWE_PW; px++) {
-                const pidx = py * SWE_PW + px;
-                const p4 = pidx * 4;
-                if (!swe_projMask[pidx]) {
-                  data[p4] = 0; data[p4 + 1] = 0; data[p4 + 2] = 0; data[p4 + 3] = 255;
-                  continue;
-                }
-                const li = swe_projLonIdx[pidx];
-                const lj = swe_projLatIdx[pidx];
-                const h = swe_h[swe_idx(li, lj)];
-                const [r, g, b] = swe_heightToColor(h, hMax);
-                const shade = swe_projShade[pidx];
-                data[p4] = Math.floor(r * shade);
-                data[p4 + 1] = Math.floor(g * shade);
-                data[p4 + 2] = Math.floor(b * shade);
-                data[p4 + 3] = 255;
-              }
-            }
-            const offCtx = swe_offCanvas.getContext('2d');
-            offCtx.putImageData(swe_imageData, 0, 0);
-            ctx.imageSmoothingEnabled = true;
-            ctx.drawImage(swe_offCanvas, 0, 0, width, height);
-            // Draw grid lines (30-degree intervals)
-            const R = Math.min(width, height) * 0.47;
-            const cxS = width / 2, cyS = height / 2;
-            const viewLatR = params.viewLat * Math.PI / 180;
-            const cosV = Math.cos(viewLatR), sinV = Math.sin(viewLatR);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-            ctx.lineWidth = 0.5;
-            // Latitude lines
-            for (let latD = -60; latD <= 60; latD += 30) {
-              const phi = latD * Math.PI / 180;
-              ctx.beginPath();
-              let started = false;
-              for (let lonD = 0; lonD <= 360; lonD += 2) {
-                const lam = (lonD * Math.PI / 180) - swe_viewLon;
-                const sinPhi = Math.sin(phi), cosPhi = Math.cos(phi);
-                const cosLam = Math.cos(lam), sinLam = Math.sin(lam);
-                const vis = sinPhi * sinV + cosPhi * cosV * cosLam;
-                if (vis < 0) { started = false; continue; }
-                const sx = cxS + R * cosPhi * sinLam;
-                const sy = cyS - R * (cosPhi * cosLam * sinV - sinPhi * cosV) * (-1);
-                const xp = cosPhi * sinLam;
-                const yp = cosV * sinPhi - sinV * cosPhi * cosLam;
-                const sxP = cxS + R * xp;
-                const syP = cyS - R * yp;
-                if (!started) { ctx.moveTo(sxP, syP); started = true; } else { ctx.lineTo(sxP, syP); }
-              }
-              ctx.stroke();
-            }
-            // Longitude lines
-            for (let lonD = 0; lonD < 360; lonD += 30) {
-              const lam = (lonD * Math.PI / 180) - swe_viewLon;
-              ctx.beginPath();
-              let started = false;
-              for (let latD = -90; latD <= 90; latD += 2) {
-                const phi = latD * Math.PI / 180;
-                const sinPhi = Math.sin(phi), cosPhi = Math.cos(phi);
-                const cosLam = Math.cos(lam), sinLam = Math.sin(lam);
-                const vis = sinPhi * sinV + cosPhi * cosV * cosLam;
-                if (vis < 0) { started = false; continue; }
-                const xp = cosPhi * sinLam;
-                const yp = cosV * sinPhi - sinV * cosPhi * cosLam;
-                const sxP = cxS + R * xp;
-                const syP = cyS - R * yp;
-                if (!started) { ctx.moveTo(sxP, syP); started = true; } else { ctx.lineTo(sxP, syP); }
-              }
-              ctx.stroke();
-            }
-            // Sphere limb
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.arc(cxS, cyS, R, 0, Math.PI * 2);
-            ctx.stroke();
-          } else if (currentModel === 'geostrophic') {
-            const gridSize = 40, cellWidth = width / gridSize, cellHeight = height / gridSize, time = simState.time;
-            for (let y = 0; y < gridSize; y++) {
-              for (let x = 0; x < gridSize; x++) {
-                const pressure = Math.sin(x * 0.3 * params.pressureGradient + time) * Math.cos(y * 0.3 * params.pressureGradient);
-                const intensity = (pressure + 1) / 2;
-                const r = Math.floor(intensity * 200), g = Math.floor(intensity * 100), b = Math.floor((1 - intensity) * 200);
-                ctx.fillStyle = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-                ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
-              }
-            }
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'; ctx.fillStyle = 'white'; ctx.lineWidth = 2;
-            for (let y = 2; y < gridSize - 2; y += 2) {
-              for (let x = 2; x < gridSize - 2; x += 2) {
-                const px = (x + 0.5) * cellWidth, py = (y + 0.5) * cellHeight;
-                const gradX = Math.cos(x * 0.3 * params.pressureGradient + time) * 0.3 * params.pressureGradient;
-                const gradY = -Math.sin(y * 0.3 * params.pressureGradient) * 0.3 * params.pressureGradient;
-                const windX = -gradY * params.coriolisParameter * 20, windY = gradX * params.coriolisParameter * 20;
-                ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + windX, py + windY); ctx.stroke();
-                const angle = Math.atan2(windY, windX);
-                ctx.beginPath();
-                ctx.moveTo(px + windX, py + windY);
-                ctx.lineTo(px + windX - 8 * Math.cos(angle - 0.5), py + windY - 8 * Math.sin(angle - 0.5));
-                ctx.lineTo(px + windX - 8 * Math.cos(angle + 0.5), py + windY - 8 * Math.sin(angle + 0.5));
-                ctx.closePath(); ctx.fill();
-              }
-            }
-          } else if (currentModel === 'stratified') {
-            const { particles, layers, time } = simState, layerHeight = height / layers;
-            for (let layer = 0; layer < layers; layer++) {
-              const density = 1 - (layer / layers) * params.densityDifference;
-              const brightness = Math.floor(density * 150 + 50);
-              ctx.fillStyle = 'rgb(' + (brightness * 0.3) + ', ' + (brightness * 0.5) + ', ' + brightness + ')';
-              ctx.fillRect(0, layer * layerHeight, width, layerHeight);
-            }
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'; ctx.lineWidth = 2;
-            for (let layer = 1; layer < layers; layer++) {
-              ctx.beginPath();
-              for (let x = 0; x < width; x += 5) {
-                const wave = Math.sin(x * 0.02 + time + layer) * 10 * (1 - params.densityDifference);
-                const y = layer * layerHeight + wave;
-                if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-              }
-              ctx.stroke();
-            }
-            particles.forEach(p => {
-              const brightness = Math.floor(p.density * 200 + 55);
-              ctx.fillStyle = 'rgba(' + brightness + ', ' + (brightness + 50) + ', 255, 0.8)';
-              ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2); ctx.fill();
-            });
-            ctx.fillStyle = 'white'; ctx.font = '14px sans-serif';
-            ctx.fillText('Less Dense (lighter)', 10, 25);
-            ctx.fillText('More Dense (heavier)', 10, height - 10);
-          } else if (currentModel === 'rossby') {
-            swe_buildProjection(swe_viewLon, params.viewLat * Math.PI / 180);
-            let hMax = 0;
-            for (let n = 0; n < SWE_SIZE; n++) { const ah = Math.abs(swe_h[n]); if (ah > hMax) hMax = ah; }
-            if (hMax < 1e-10) hMax = 1e-10;
-            const data = swe_imageData.data;
-            for (let py = 0; py < SWE_PH; py++) {
-              for (let px = 0; px < SWE_PW; px++) {
-                const pidx = py * SWE_PW + px;
-                const p4 = pidx * 4;
-                if (!swe_projMask[pidx]) { data[p4] = 0; data[p4+1] = 0; data[p4+2] = 0; data[p4+3] = 255; continue; }
-                const li = swe_projLonIdx[pidx], lj = swe_projLatIdx[pidx];
-                const h = swe_h[swe_idx(li, lj)];
-                const [r, g, b] = swe_heightToColor(h, hMax);
-                const shade = swe_projShade[pidx];
-                data[p4] = Math.floor(r*shade); data[p4+1] = Math.floor(g*shade); data[p4+2] = Math.floor(b*shade); data[p4+3] = 255;
-              }
-            }
-            const offCtx = swe_offCanvas.getContext('2d');
-            offCtx.putImageData(swe_imageData, 0, 0);
-            ctx.imageSmoothingEnabled = true;
-            ctx.drawImage(swe_offCanvas, 0, 0, width, height);
-            const R = Math.min(width, height) * 0.47, cxS = width/2, cyS = height/2;
-            const viewLatR = params.viewLat * Math.PI/180, cosV = Math.cos(viewLatR), sinV = Math.sin(viewLatR);
-            ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 0.5;
-            for (let latD = -60; latD <= 60; latD += 30) {
-              const phi = latD*Math.PI/180; ctx.beginPath(); let started = false;
-              for (let lonD = 0; lonD <= 360; lonD += 2) {
-                const lam = (lonD*Math.PI/180)-swe_viewLon, sinPhi=Math.sin(phi), cosPhi=Math.cos(phi), cosLam=Math.cos(lam), sinLam=Math.sin(lam);
-                if (sinPhi*sinV+cosPhi*cosV*cosLam < 0) { started=false; continue; }
-                const xp=cosPhi*sinLam, yp=cosV*sinPhi-sinV*cosPhi*cosLam;
-                if (!started) { ctx.moveTo(cxS+R*xp, cyS-R*yp); started=true; } else ctx.lineTo(cxS+R*xp, cyS-R*yp);
-              } ctx.stroke();
-            }
-            for (let lonD = 0; lonD < 360; lonD += 30) {
-              const lam = (lonD*Math.PI/180)-swe_viewLon; ctx.beginPath(); let started=false;
-              for (let latD = -90; latD <= 90; latD += 2) {
-                const phi=latD*Math.PI/180, sinPhi=Math.sin(phi), cosPhi=Math.cos(phi), cosLam=Math.cos(lam), sinLam=Math.sin(lam);
-                if (sinPhi*sinV+cosPhi*cosV*cosLam < 0) { started=false; continue; }
-                const xp=cosPhi*sinLam, yp=cosV*sinPhi-sinV*cosPhi*cosLam;
-                if (!started) { ctx.moveTo(cxS+R*xp, cyS-R*yp); started=true; } else ctx.lineTo(cxS+R*xp, cyS-R*yp);
-              } ctx.stroke();
-            }
-            ctx.strokeStyle='rgba(255,255,255,0.3)'; ctx.lineWidth=1.5;
-            ctx.beginPath(); ctx.arc(cxS, cyS, R, 0, Math.PI*2); ctx.stroke();
-          }
-        }
-        document.addEventListener('DOMContentLoaded', init);
-        if (document.readyState !== 'loading') init();
-        </script>
-    design:
-      spacing:
-        padding: ["0", "0", "0", "0"]
----
