@@ -13,6 +13,8 @@ Congratulations to **Lucas (Luke) Howard** on defending his PhD dissertation tod
 
 **Location:** SEEC N128
 
+![Thesis overview](thesis_image.png)
+
 ---
 
 **Abstract**
