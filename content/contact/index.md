@@ -15,7 +15,7 @@ sections:
           - "University of Colorado Boulder"
           - "4001 Discovery Drive, SEEC Building"
           - "Boulder, CO 80303"
-      email: aneesh.subramanian@colorado.edu
+      email: aneeshcs@colorado.edu
       social:
         - icon: "brands/x"
           url: "https://twitter.com/aneeshcs"
