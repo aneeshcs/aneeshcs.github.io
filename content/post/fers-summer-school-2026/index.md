@@ -9,6 +9,10 @@ Applications are now open for the **FERS Summer School on AI and Machine Learnin
 
 This intensive summer school, organized by the CMCC Foundation's Future Earth Research School (FERS), brings together early-career researchers to explore the latest advances in machine learning and artificial intelligence for climate science and Earth system modeling.
 
+**Dates:** 8 – 19 June 2026
+
+**Location:** Bertinoro (FC), Italy
+
 **Application deadline: May 3, 2026**
 
 For full details on the curriculum, dates, location, eligibility, and how to apply, visit the course page:
