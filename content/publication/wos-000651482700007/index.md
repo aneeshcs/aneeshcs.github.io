@@ -37,7 +37,9 @@ publication_types:
 publication: '*NATURE REVIEWS EARTH & ENVIRONMENT*'
 publication_short: ''
 
-doi: 10.1038/s43017-021-00155-x
+hugoblox:
+  ids:
+    doi: 10.1038/s43017-021-00155-x
 
 abstract: 'Initialized climate predictions offer distinct benefits for multiple    stakeholders.
   This Review discusses initialized prediction on subseasonal to seasonal (S2S), seasonal

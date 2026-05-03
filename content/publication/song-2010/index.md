@@ -30,7 +30,9 @@ publication_types:
 publication: '*Monthly Weather Review*'
 publication_short: ''
 
-doi: 10.1175/2010mwr2871.1
+hugoblox:
+  ids:
+    doi: 10.1175/2010mwr2871.1
 
 abstract: A new approach is proposed to address the background covariance limitations
   arising from undersampled ensembles and unaccounted model errors in the ensemble

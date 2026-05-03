@@ -30,7 +30,9 @@ publication_types:
 publication: '*DEEP-SEA RESEARCH PART II-TOPICAL STUDIES IN OCEANOGRAPHY*'
 publication_short: ''
 
-doi: 10.1016/j.dsr2.2019.104721
+hugoblox:
+  ids:
+    doi: 10.1016/j.dsr2.2019.104721
 
 abstract: The upper ocean stratification and circulation in the Bay of Bengal    (BOB)
   plays a key role in the northward propagating monsoon intraseasonal oscillation

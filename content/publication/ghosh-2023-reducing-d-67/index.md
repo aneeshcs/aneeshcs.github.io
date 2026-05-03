@@ -33,7 +33,9 @@ publication: '*I-GUIDE Forum 2023: Harnessing the Geospatial Data Revolution for
   Solutions*'
 publication_short: ''
 
-doi: 10.5703/1288284317665
+hugoblox:
+  ids:
+    doi: 10.5703/1288284317665
 
 abstract: ''
 

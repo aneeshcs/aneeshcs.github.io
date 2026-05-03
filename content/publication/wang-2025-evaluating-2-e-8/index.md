@@ -36,7 +36,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.22541/essoar.174326588.88501819/v1
+hugoblox:
+  ids:
+    doi: 10.22541/essoar.174326588.88501819/v1
 
 abstract: ''
 

@@ -29,7 +29,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2309.00059
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2309.00059
 
 abstract: Supervised and unsupervised techniques have demonstrated the potential for
   temporal interpolation of video data. Nevertheless, most prevailing temporal interpolation

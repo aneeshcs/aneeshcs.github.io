@@ -36,7 +36,9 @@ publication_types:
 publication: '*GEOSCIENTIFIC MODEL DEVELOPMENT*'
 publication_short: ''
 
-doi: 10.5194/gmd-16-3435-2023
+hugoblox:
+  ids:
+    doi: 10.5194/gmd-16-3435-2023
 
 abstract: In this work, we integrated the WAVEWATCH III model into the regional    coupled
   model SKRIPS (Scripps-KAUST Regional Integrated Prediction System). The WAVEWATCH

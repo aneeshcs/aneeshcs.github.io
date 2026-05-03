@@ -29,7 +29,9 @@ publication_types:
 publication: '*BULLETIN OF THE AMERICAN METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1175/bams-d-17-0040.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-17-0040.1
 
 abstract: Numerical weather prediction and climate models comprise a) a dynamical    core
   describing resolved parts of the climate system and b) parameterizations describing

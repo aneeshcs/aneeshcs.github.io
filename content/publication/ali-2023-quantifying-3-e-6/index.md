@@ -33,7 +33,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2303.07122
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2303.07122
 
 abstract: The warming of the Arctic, also known as Arctic amplification, is led by
   several atmospheric and oceanic drivers. However, the details of its underlying

@@ -31,7 +31,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2510.15265
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2510.15265
 
 abstract: Causal modeling offers a principled foundation for uncovering stable, invariant
   relationships in time-series data, thereby improving robustness and generalization

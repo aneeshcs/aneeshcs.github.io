@@ -31,7 +31,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Oceans*'
 publication_short: ''
 
-doi: 10.1002/2015jc011589
+hugoblox:
+  ids:
+    doi: 10.1002/2015jc011589
 
 abstract: The budget of eddy kinetic energy (EKE) in the Red Sea, including the sources,
   redistributions, and sink, is examined using a high'resolution eddy‐resolving ocean

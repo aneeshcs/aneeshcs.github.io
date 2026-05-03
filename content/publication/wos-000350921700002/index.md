@@ -29,7 +29,9 @@ publication_types:
 publication: '*DEEP-SEA RESEARCH PART II-TOPICAL STUDIES IN OCEANOGRAPHY*'
 publication_short: ''
 
-doi: 10.1016/j.dsr2.2014.01.003
+hugoblox:
+  ids:
+    doi: 10.1016/j.dsr2.2014.01.003
 
 abstract: The California Current System (CCS) has been studied by the California    Cooperative
   Oceanic Fisheries Investigations program for many decades. Since 2004, the Southern

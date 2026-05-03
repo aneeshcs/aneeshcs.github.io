@@ -35,7 +35,9 @@ publication_types:
 publication: '*JOURNAL OF CLIMATE*'
 publication_short: ''
 
-doi: 10.1175/jcli-d-18-0555.1
+hugoblox:
+  ids:
+    doi: 10.1175/jcli-d-18-0555.1
 
 abstract: 'The early twentieth-century warming (EW; 1910-45) and the    mid-twentieth-century
   cooling (MC; 1950-80) have been linked to both internal variability of the climate

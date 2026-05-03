@@ -32,7 +32,9 @@ publication_types:
 publication: '*JOURNAL OF CLIMATE*'
 publication_short: ''
 
-doi: 10.1175/jcli-d-20-0391.1
+hugoblox:
+  ids:
+    doi: 10.1175/jcli-d-20-0391.1
 
 abstract: Using a high-resolution atmospheric general circulation model simulation    of
   unprecedented ensemble size, we examine potential predictability of monthly anomalies

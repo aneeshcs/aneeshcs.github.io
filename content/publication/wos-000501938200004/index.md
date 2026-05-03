@@ -30,7 +30,9 @@ publication_types:
 publication: '*DEEP-SEA RESEARCH PART II-TOPICAL STUDIES IN OCEANOGRAPHY*'
 publication_short: ''
 
-doi: 10.1016/j.dsr2.2019.07.005
+hugoblox:
+  ids:
+    doi: 10.1016/j.dsr2.2019.07.005
 
 abstract: This study examines the effect of surface current in the bulk formula    for
   the wind stress, referred to as the relative wind (RW) effect, on the energetics

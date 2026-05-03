@@ -32,7 +32,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-013-1846-1
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-013-1846-1
 
 abstract: The change in Madden-Julian oscillation (MJO) amplitude and variance in    response
   to anthropogenic climate change is assessed in the 1A degrees nominal resolution

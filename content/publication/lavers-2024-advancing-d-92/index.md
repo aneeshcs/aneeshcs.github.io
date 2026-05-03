@@ -37,7 +37,9 @@ publication_types:
 publication: '*Bulletin of the American Meteorological Society*'
 publication_short: ''
 
-doi: 10.1175/bams-d-23-0278.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-23-0278.1
 
 abstract: ''
 

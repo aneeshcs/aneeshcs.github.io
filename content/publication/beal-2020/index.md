@@ -34,7 +34,9 @@ publishDate: '2026-04-01T10:54:28.466030Z'
 publication_types:
 - article-journal
 publication: '*Bulletin of the American Meteorological Society*'
-doi: 10.1175/bams-d-19-0209.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-19-0209.1
 links:
 - name: URL
   url: http://dx.doi.org/10.1175/bams-d-19-0209.1

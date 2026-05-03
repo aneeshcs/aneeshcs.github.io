@@ -29,7 +29,9 @@ publication_types:
 publication: '*GEOPHYSICAL RESEARCH LETTERS*'
 publication_short: ''
 
-doi: 10.1029/2019gl082270
+hugoblox:
+  ids:
+    doi: 10.1029/2019gl082270
 
 abstract: Tropical sea surface temperature (SST) and winds vary on a wide range of    timescales
   and have a substantial impact on weather and climate across the globe. Here we study

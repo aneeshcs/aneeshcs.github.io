@@ -34,7 +34,9 @@ publication_types:
 publication: '*MONTHLY WEATHER REVIEW*'
 publication_short: ''
 
-doi: 10.1175/mwr-d-21-0106.1
+hugoblox:
+  ids:
+    doi: 10.1175/mwr-d-21-0106.1
 
 abstract: Deep-learning (DL) postprocessing methods are examined to obtain    reliable
   and accurate probabilistic forecasts from single-member numerical weather predictions

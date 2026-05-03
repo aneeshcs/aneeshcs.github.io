@@ -35,7 +35,9 @@ publication: '*PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A-MATHEMATICAL PH
   ENGINEERING SCIENCES*'
 publication_short: ''
 
-doi: 10.1098/rsta.2020.0091
+hugoblox:
+  ids:
+    doi: 10.1098/rsta.2020.0091
 
 abstract: "The most mature aspect of applying artificial intelligence (AI)/machine\
   \    learning (ML) to problems in the atmospheric sciences is likely post-processing

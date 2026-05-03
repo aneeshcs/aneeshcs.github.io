@@ -31,7 +31,9 @@ publication_types:
 publication: '*QUARTERLY JOURNAL OF THE ROYAL METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1002/qj.2970
+hugoblox:
+  ids:
+    doi: 10.1002/qj.2970
 
 abstract: Uncertainties in parametrized processes in general circulation models    can
   be represented as stochastic perturbations to the model formulation. The European

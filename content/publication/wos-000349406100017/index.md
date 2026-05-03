@@ -32,7 +32,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-014-2181-x
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-014-2181-x
 
 abstract: A suite of statistical atmosphere-only linear inverse models of varying    complexity
   are used to hindcast recent MJO events from the Year of Tropical Convection and

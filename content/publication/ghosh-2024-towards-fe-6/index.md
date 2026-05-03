@@ -32,7 +32,9 @@ publication: '*Proceedings of the 32nd ACM International Conference on Advances 
   Geographic Information Systems*'
 publication_short: ''
 
-doi: 10.1145/3678717.3691304
+hugoblox:
+  ids:
+    doi: 10.1145/3678717.3691304
 
 abstract: Given coarser-resolution projections from global climate models or satellite
   data, the downscaling problem aims to estimate finer-resolution regional climate

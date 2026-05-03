@@ -41,7 +41,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-022-06361-7
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-022-06361-7
 
 abstract: Floods caused by atmospheric rivers and wildfires fanned by Santa Ana    winds
   are common occurrences in California with devastating societal impacts. In this

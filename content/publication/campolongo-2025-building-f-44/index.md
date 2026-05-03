@@ -175,6 +175,8 @@ abstract: Scientific discoveries are often made by finding a pattern or object t
   challenges that can ultimately lead to scientific discovery.
 featured: false
 publication: '*arXiv*'
-doi: 10.48550/arxiv.2503.02112
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2503.02112
 ---
 

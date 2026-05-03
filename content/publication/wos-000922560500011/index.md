@@ -34,7 +34,9 @@ publication_types:
 publication: '*MONTHLY WEATHER REVIEW*'
 publication_short: ''
 
-doi: 10.1175/mwr-d-22-0124.1
+hugoblox:
+  ids:
+    doi: 10.1175/mwr-d-22-0124.1
 
 abstract: Under the Atmospheric River Reconnaissance (AR Recon) Program, ocean    drifting
   buoys (drifters) that provide surface pressure observations were deployed in the

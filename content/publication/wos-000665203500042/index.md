@@ -32,7 +32,9 @@ publication_types:
 publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-OCEANS*'
 publication_short: ''
 
-doi: 10.1029/2020jc016967
+hugoblox:
+  ids:
+    doi: 10.1029/2020jc016967
 
 abstract: Coupled processes and associated subsurface dynamics near the eastern    edge
   of the Indo/western Pacific (WP) Warm Pool are important for air-sea interactions

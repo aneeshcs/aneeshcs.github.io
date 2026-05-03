@@ -31,7 +31,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2410.05638
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2410.05638
 
 abstract: "The Greenland Ice Sheet (GrIS) has emerged as a significant contributor
   to global sea level rise, primarily due to increased meltwater runoff. Supraglacial

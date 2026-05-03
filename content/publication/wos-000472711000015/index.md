@@ -29,7 +29,9 @@ publication_types:
 publication: '*SUB-SEASONAL TO SEASONAL PREDICTION: THE GAP BETWEEN WEATHER AND CLIMATE    FORECASTING*'
 publication_short: ''
 
-doi: 10.1016/b978-0-12-811714-9.00014-0
+hugoblox:
+  ids:
+    doi: 10.1016/b978-0-12-811714-9.00014-0
 
 abstract: ''
 

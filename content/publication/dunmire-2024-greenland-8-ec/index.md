@@ -33,7 +33,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.31223/x5871p
+hugoblox:
+  ids:
+    doi: 10.31223/x5871p
 
 abstract: 'Supraglacial lakes on the Greenland Ice Sheet (GrIS) can impact both the
   ice sheet surface mass balance and ice dynamics. Thus, understanding the evolution

@@ -35,7 +35,9 @@ publication_types:
 publication: '*GEOSCIENTIFIC MODEL DEVELOPMENT*'
 publication_short: ''
 
-doi: 10.5194/gmd-10-1383-2017
+hugoblox:
+  ids:
+    doi: 10.5194/gmd-10-1383-2017
 
 abstract: The Climate SPHINX (Stochastic Physics HIgh resolutioN eXperiments)    project
   is a comprehensive set of ensemble simulations aimed at evaluating the sensitivity

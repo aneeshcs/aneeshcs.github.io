@@ -29,7 +29,9 @@ publication_types:
 publication: '*Eos*'
 publication_short: ''
 
-doi: 10.1029/2022eo220021
+hugoblox:
+  ids:
+    doi: 10.1029/2022eo220021
 
 abstract: In oceanography, as in any scientific field, the goal is not to eliminate
   uncertainty in data, but instead to better quantify and clearly communicate its

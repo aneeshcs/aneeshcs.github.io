@@ -30,7 +30,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-018-4323-z
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-018-4323-z
 
 abstract: A suite of statistical linear inverse models (LIMs) are used to    understand
   the remote and local SST variability that influences SST predictions over the North

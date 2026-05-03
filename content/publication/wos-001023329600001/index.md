@@ -34,7 +34,9 @@ publication_types:
 publication: '*FRONTIERS IN CLIMATE*'
 publication_short: ''
 
-doi: 10.3389/fclim.2021.670740
+hugoblox:
+  ids:
+    doi: 10.3389/fclim.2021.670740
 
 abstract: 'Uncertainty quantification (UQ) in weather and climate models is    required
   to assess the sensitivity of their outputs to various parameterization schemes and

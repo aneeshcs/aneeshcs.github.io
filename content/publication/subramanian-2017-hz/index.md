@@ -28,7 +28,9 @@ publication_types:
 publication: '*Journal of Advances in Modeling Earth Systems*'
 publication_short: ''
 
-doi: 10.1002/2016ms000857
+hugoblox:
+  ids:
+    doi: 10.1002/2016ms000857
 
 abstract: Stochastic schemes to represent model uncertainty in the European Centre
   for Medium‐Range Weather Forecasts (ECMWF) ensemble prediction system has helped

@@ -12,7 +12,9 @@ publishDate: '2026-04-01T10:54:28.329803Z'
 publication_types:
 - article-journal
 publication: '*Weather and Climate Extremes*'
-doi: 10.1016/j.wace.2025.100771
+hugoblox:
+  ids:
+    doi: 10.1016/j.wace.2025.100771
 links:
 - name: URL
   url: http://dx.doi.org/10.1016/j.wace.2025.100771

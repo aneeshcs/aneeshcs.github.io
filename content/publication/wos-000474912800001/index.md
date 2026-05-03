@@ -63,6 +63,8 @@ publication: '*FRONTIERS IN MARINE SCIENCE*'
 tags:
 - data assimilation; reanalysis; coupled data assimilation; S2S    prediction; decadal
   prediction; ocean observation network; ocean data assimilation; ocean reanalysis
-doi: 10.3389/fmars.2019.00391
+hugoblox:
+  ids:
+    doi: 10.3389/fmars.2019.00391
 ---
 

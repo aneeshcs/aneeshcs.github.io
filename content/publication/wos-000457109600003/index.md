@@ -29,7 +29,9 @@ publication_types:
 publication: '*ADVANCES IN DATA SCIENCE AND ADAPTIVE ANALYSIS*'
 publication_short: ''
 
-doi: 10.1142/s2424922x18500109
+hugoblox:
+  ids:
+    doi: 10.1142/s2424922x18500109
 
 abstract: "This paper studies the statistical characteristics of a unique long-term\
   \    high-resolution precipitable water vapor (PWV) data set at Darwin, Australia,

@@ -28,7 +28,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Atmospheres*'
 publication_short: ''
 
-doi: 10.1002/2013jd021370
+hugoblox:
+  ids:
+    doi: 10.1002/2013jd021370
 
 abstract: This study evaluates the Madden–Julian Oscillation (MJO) hindcast skill
   and investigates the hindcast biases in the dynamic and thermodynamic fields of

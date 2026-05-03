@@ -28,7 +28,9 @@ publication_types:
 publication: '*Eos*'
 publication_short: ''
 
-doi: 10.1029/2017eo086501
+hugoblox:
+  ids:
+    doi: 10.1029/2017eo086501
 
 abstract: As the current funding for climate process teams comes to an end, scientists
   emphasize the continuing need for teams that translate basic research into improved

@@ -34,7 +34,9 @@ publication_types:
 publication: '*GEOPHYSICAL RESEARCH LETTERS*'
 publication_short: ''
 
-doi: 10.1029/2020gl087609
+hugoblox:
+  ids:
+    doi: 10.1029/2020gl087609
 
 abstract: Precipitation in California is highly variable and not well forecasted    on
   subseasonal-to-seasonal (S2S) timescales. Understanding relationships between synoptic-scale

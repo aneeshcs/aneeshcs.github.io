@@ -33,7 +33,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.22541/essoar.170560036.67163458/v1
+hugoblox:
+  ids:
+    doi: 10.22541/essoar.170560036.67163458/v1
 
 abstract: We investigate the impact of ocean data assimilation using the Ensemble
   Adjustment Kalman Filter (EAKF) from the Data Assimilation Research Testbed (DART)

@@ -29,7 +29,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-019-05030-6
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-019-05030-6
 
 abstract: A new prototype coupled ocean-atmosphere Ensemble Kalman Filter    reanalysis
   product, the Community Earth System Model using the Data Assimilation Research Testbed

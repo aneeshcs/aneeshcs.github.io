@@ -30,7 +30,9 @@ publication_types:
 publication: '*Geophysical Research Letters*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

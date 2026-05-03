@@ -30,7 +30,9 @@ publication_types:
 publication: '*JOURNAL OF ADVANCES IN MODELING EARTH SYSTEMS*'
 publication_short: ''
 
-doi: 10.1002/2016ms000862
+hugoblox:
+  ids:
+    doi: 10.1002/2016ms000862
 
 abstract: The use of reduced numerical precision to reduce computing costs for the    cloud
   resolving model of superparameterized simulations of the atmosphere is investigated.

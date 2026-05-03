@@ -39,7 +39,9 @@ publication_types:
 publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES*'
 publication_short: ''
 
-doi: 10.1029/2019jd031200
+hugoblox:
+  ids:
+    doi: 10.1029/2019jd031200
 
 abstract: 'A multimodel evaluation of subseasonal-to-seasonal (S2S) hindcast skill    of
   atmospheric rivers (ARs) out to 4-week lead over the western United States is presented

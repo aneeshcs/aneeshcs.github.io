@@ -55,7 +55,9 @@ publication_types:
 publication: '*FRONTIERS IN MARINE SCIENCE*'
 publication_short: ''
 
-doi: 10.3389/fmars.2019.00427
+hugoblox:
+  ids:
+    doi: 10.3389/fmars.2019.00427
 
 abstract: Subseasonal-to-seasonal (S2S) forecasts have the potential to provide    advance
   information about weather and climate events. The high heat capacity of water means

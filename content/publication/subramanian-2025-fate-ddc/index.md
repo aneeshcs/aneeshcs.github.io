@@ -31,7 +31,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.5194/egusphere-egu24-20925
+hugoblox:
+  ids:
+    doi: 10.5194/egusphere-egu24-20925
 
 abstract: 'Supraglacial lakes form on the surface of the Greenland Ice Sheet during
   the summer months and can directly impact ice sheet mass balance by removing mass

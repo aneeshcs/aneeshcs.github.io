@@ -30,7 +30,9 @@ publication_types:
 publication: '*Monthly Weather Review*'
 publication_short: ''
 
-doi: 10.1175/mwr-d-12-00244.1
+hugoblox:
+  ids:
+    doi: 10.1175/mwr-d-12-00244.1
 
 abstract: A new hybrid ensemble Kalman filter/four-dimensional variational data assimilation
   (EnKF/4D-VAR) approach is introduced to mitigate background covariance limitations

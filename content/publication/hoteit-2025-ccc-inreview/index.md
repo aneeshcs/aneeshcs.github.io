@@ -76,7 +76,9 @@ publication_types:
 publication: "*Earth's Future*"
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

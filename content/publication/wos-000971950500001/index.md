@@ -36,7 +36,9 @@ publication_types:
 publication: '*JOURNAL OF ADVANCES IN MODELING EARTH SYSTEMS*'
 publication_short: ''
 
-doi: 10.1029/2022ms003495
+hugoblox:
+  ids:
+    doi: 10.1029/2022ms003495
 
 abstract: There is currently large uncertainty over the impacts of climate change    on
   precipitation trends over the US west coast. Atmospheric rivers (ARs) are a significant

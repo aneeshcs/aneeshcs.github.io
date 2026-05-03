@@ -33,7 +33,9 @@ publication_types:
 publication: '*JOURNAL OF ADVANCES IN MODELING EARTH SYSTEMS*'
 publication_short: ''
 
-doi: 10.1029/2022ms003044
+hugoblox:
+  ids:
+    doi: 10.1029/2022ms003044
 
 abstract: Despite the well-recognized initial value nature of the subseasonal    forecasts,
   the role of subsurface ocean initialization in subseasonal forecasts remains underexplored.

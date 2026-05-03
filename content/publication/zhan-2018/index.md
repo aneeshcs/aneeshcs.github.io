@@ -30,7 +30,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Oceans*'
 publication_short: ''
 
-doi: 10.1029/2018jc014531
+hugoblox:
+  ids:
+    doi: 10.1029/2018jc014531
 
 abstract: Adjoint sensitivity analysis is applied to a set of eddies in the Red Sea
   using a high‐resolution Massachusetts Institute of Technology general circulation

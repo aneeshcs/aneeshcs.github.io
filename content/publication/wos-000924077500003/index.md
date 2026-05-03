@@ -38,7 +38,9 @@ publication_types:
 publication: '*ISCIENCE*'
 publication_short: ''
 
-doi: 10.1016/j.isci.2022.105512
+hugoblox:
+  ids:
+    doi: 10.1016/j.isci.2022.105512
 
 abstract: Quantifying uncertainty associated with our models is the only way we    can
   express how much we know about any phenomenon. Incomplete consideration of model-based

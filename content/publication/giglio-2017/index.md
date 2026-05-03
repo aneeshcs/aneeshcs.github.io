@@ -29,7 +29,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Oceans*'
 publication_short: ''
 
-doi: 10.1002/2017jc012794
+hugoblox:
+  ids:
+    doi: 10.1002/2017jc012794
 
 abstract: Upper ocean processes play a key role in air‐sea coupling, with variability
   on both short and long time scales. The diurnal cycle associated with diurnal solar

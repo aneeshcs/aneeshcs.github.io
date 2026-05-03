@@ -31,7 +31,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.22541/essoar.169603520.08844041/v1
+hugoblox:
+  ids:
+    doi: 10.22541/essoar.169603520.08844041/v1
 
 abstract: In the tropical Pacific, weak ventilation and intense microbial respiration
   at depth give rise to a low dissolved oxygen (O2) environment that is thought to

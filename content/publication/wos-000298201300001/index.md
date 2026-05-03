@@ -31,7 +31,9 @@ publication_types:
 publication: '*JOURNAL OF CLIMATE*'
 publication_short: ''
 
-doi: 10.1175/jcli-d-11-00031.1
+hugoblox:
+  ids:
+    doi: 10.1175/jcli-d-11-00031.1
 
 abstract: This study assesses the ability of the Community Climate System Model,    version
   4 (CCSM4) to represent the Madden-Julian oscillation (MJO), the dominant mode of

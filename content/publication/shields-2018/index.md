@@ -42,7 +42,9 @@ publishDate: '2026-04-01T10:54:28.458413Z'
 publication_types:
 - article-journal
 publication: '*Copernicus GmbH*'
-doi: 10.5194/gmd-2017-295-supplement
+hugoblox:
+  ids:
+    doi: 10.5194/gmd-2017-295-supplement
 links:
 - name: URL
   url: http://dx.doi.org/10.5194/gmd-2017-295-supplement

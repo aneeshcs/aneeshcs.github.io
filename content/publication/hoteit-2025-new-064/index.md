@@ -76,7 +76,9 @@ publication_types:
 publication: "*Earth's Future*"
 publication_short: ''
 
-doi: 10.1029/2025ef006296
+hugoblox:
+  ids:
+    doi: 10.1029/2025ef006296
 
 abstract: The desert climate of the Arabian Peninsula (AP), marked by sparse rainfall,
   extreme temperatures, and frequent dust events, significantly impacts its 80‐million

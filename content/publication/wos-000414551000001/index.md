@@ -54,7 +54,9 @@ publication_types:
 publication: '*QUARTERLY JOURNAL OF THE ROYAL METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1002/qj.3094
+hugoblox:
+  ids:
+    doi: 10.1002/qj.3094
 
 abstract: Members in ensemble forecasts differ due to the representations of    initial
   uncertainties and model uncertainties. The inclusion of stochastic schemes to represent

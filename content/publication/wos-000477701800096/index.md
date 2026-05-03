@@ -30,7 +30,9 @@ publication_types:
 publication: '*SCIENTIFIC REPORTS*'
 publication_short: ''
 
-doi: 10.1038/s41598-019-47400-4
+hugoblox:
+  ids:
+    doi: 10.1038/s41598-019-47400-4
 
 abstract: The causes of the extreme and persistent warming in the Northeast    Pacific
   from the winter of 2013/14 to that of 2014/15 are still not fully understood. While

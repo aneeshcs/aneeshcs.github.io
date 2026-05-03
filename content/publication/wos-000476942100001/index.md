@@ -38,7 +38,9 @@ publication_types:
 publication: '*FRONTIERS IN MARINE SCIENCE*'
 publication_short: ''
 
-doi: 10.3389/fmars.2019.00425
+hugoblox:
+  ids:
+    doi: 10.3389/fmars.2019.00425
 
 abstract: Ocean surface winds, currents, and waves play a crucial role in    exchanges
   of momentum, energy, heat, freshwater, gases, and other tracers between the ocean,

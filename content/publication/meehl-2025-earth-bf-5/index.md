@@ -36,7 +36,9 @@ publication_types:
 publication: '*Bulletin of the American Meteorological Society*'
 publication_short: ''
 
-doi: 10.1175/bams-d-24-0091.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-24-0091.1
 
 abstract: Abstract A Denver newspaper in 2016 reported that a new Colorado all-time
   record peak wind gust of 148 mph was recorded on 18 February 2016, on Monarch Pass

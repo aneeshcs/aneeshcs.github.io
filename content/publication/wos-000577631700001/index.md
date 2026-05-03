@@ -30,7 +30,9 @@ publication_types:
 publication: '*QUARTERLY JOURNAL OF THE ROYAL METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1002/qj.3916
+hugoblox:
+  ids:
+    doi: 10.1002/qj.3916
 
 abstract: This study investigates the filtering problem with one-way coupled (OWC)    state-space
   systems, for which the joint ensemble Kalman filter (EnKF) is the standard solution.

@@ -62,7 +62,9 @@ publication_types:
 publication: '*Geoscientific Model Development Discussions*'
 publication_short: ''
 
-doi: 10.5194/gmd-2017-295
+hugoblox:
+  ids:
+    doi: 10.5194/gmd-2017-295
 
 abstract: 'The Atmospheric River Tracking Method Intercomparison Project (ARTMIP)
   is an international collaborative effort to understand and quantify the uncertainties

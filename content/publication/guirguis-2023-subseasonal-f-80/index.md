@@ -34,7 +34,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.22541/essoar.168926417.79591517/v1
+hugoblox:
+  ids:
+    doi: 10.22541/essoar.168926417.79591517/v1
 
 abstract: Atmospheric rivers (ARs) and Santa Ana winds (SAWs) are impactful weather
   events for California communities. Emergency planning efforts and resource management

@@ -15,7 +15,9 @@ publishDate: '2026-04-01T10:54:28.320761Z'
 publication_types:
 - article-journal
 publication: '*npj Climate and Atmospheric Science*'
-doi: 10.1038/s41612-025-01316-1
+hugoblox:
+  ids:
+    doi: 10.1038/s41612-025-01316-1
 links:
 - name: URL
   url: http://dx.doi.org/10.1038/s41612-025-01316-1

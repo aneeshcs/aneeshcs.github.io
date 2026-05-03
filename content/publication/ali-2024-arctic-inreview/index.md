@@ -33,7 +33,9 @@ publication_types:
 publication: '*International Conference on Machine Learning and Applications (ICMLA)*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

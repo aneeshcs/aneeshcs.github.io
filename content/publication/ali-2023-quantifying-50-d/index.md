@@ -34,7 +34,9 @@ publication: '*2023 International Conference on Machine Learning and Application
   (ICMLA)*'
 publication_short: ''
 
-doi: 10.1109/icmla58977.2023.00101
+hugoblox:
+  ids:
+    doi: 10.1109/icmla58977.2023.00101
 
 abstract: The warming of the Arctic, also known as Arctic amplification, is led by
   several atmospheric and oceanic drivers. However, the details of its underlying

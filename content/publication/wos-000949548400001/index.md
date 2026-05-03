@@ -37,7 +37,9 @@ publication_types:
 publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES*'
 publication_short: ''
 
-doi: 10.1029/2022jd037360
+hugoblox:
+  ids:
+    doi: 10.1029/2022jd037360
 
 abstract: This paper examines the empirical relationship between the Madden-Julian    oscillation
   (MJO), the quasi-biennial oscillation (QBO), and atmospheric river (AR) activity

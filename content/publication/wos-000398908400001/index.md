@@ -32,7 +32,9 @@ publication_types:
 publication: '*ADVANCES IN DATA SCIENCE AND ADAPTIVE ANALYSIS*'
 publication_short: ''
 
-doi: 10.1142/s2424922x16500066
+hugoblox:
+  ids:
+    doi: 10.1142/s2424922x16500066
 
 abstract: We use a stochastic differential equation (SDE) model with a random    precipitation
   trigger for mass balance to simulate the 20 s temporal resolution column precipitable

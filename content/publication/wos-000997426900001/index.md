@@ -29,7 +29,9 @@ publication_types:
 publication: '*QUARTERLY JOURNAL OF THE ROYAL METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1002/qj.4481
+hugoblox:
+  ids:
+    doi: 10.1002/qj.4481
 
 abstract: Modern climate models use both deterministic and stochastic    parametrization
   schemes to represent uncertainties in their physics and inputs. This work considers

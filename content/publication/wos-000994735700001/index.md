@@ -37,7 +37,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-023-06776-w
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-023-06776-w
 
 abstract: The Sierra Nevada and Southern Cascades-California's snowy mountains-are    primary
   freshwater sources and natural reservoirs for the states of California and Nevada.

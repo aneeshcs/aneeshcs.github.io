@@ -12,7 +12,9 @@ publishDate: '2026-04-01T10:54:28.356871Z'
 publication_types:
 - article-journal
 publication: '*Geophysical Research Letters*'
-doi: 10.1029/2023gl106431
+hugoblox:
+  ids:
+    doi: 10.1029/2023gl106431
 links:
 - name: URL
   url: http://dx.doi.org/10.1029/2023GL106431

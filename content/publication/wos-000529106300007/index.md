@@ -30,7 +30,9 @@ publication_types:
 publication: '*JOURNAL OF ADVANCES IN MODELING EARTH SYSTEMS*'
 publication_short: ''
 
-doi: 10.1029/2019ms001896
+hugoblox:
+  ids:
+    doi: 10.1029/2019ms001896
 
 abstract: Stochastic parameterizations account for uncertainty in the    representation
   of unresolved subgrid processes by sampling from the distribution of possible subgrid

@@ -32,7 +32,9 @@ publication: '*2025 IEEE International Conference on Pervasive Computing and Com
   Workshops and other Affiliated Events (PerCom Workshops)*'
 publication_short: ''
 
-doi: 10.1109/percomworkshops65533.2025.00042
+hugoblox:
+  ids:
+    doi: 10.1109/percomworkshops65533.2025.00042
 
 abstract: Traditional machine learning and deep learning techniques rely on correlation-based
   learning, often failing to distinguish spurious associations from true causal relationships,

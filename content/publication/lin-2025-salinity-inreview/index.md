@@ -32,7 +32,9 @@ publication_types:
 publication: '*Journal of Climate*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

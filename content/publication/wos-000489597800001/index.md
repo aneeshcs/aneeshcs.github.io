@@ -32,7 +32,9 @@ publication_types:
 publication: '*GEOSCIENTIFIC MODEL DEVELOPMENT*'
 publication_short: ''
 
-doi: 10.5194/gmd-12-4221-2019
+hugoblox:
+  ids:
+    doi: 10.5194/gmd-12-4221-2019
 
 abstract: 'A new regional coupled ocean-atmosphere model is developed and its    implementation
   is presented in this paper. The coupled model is based on two open-source community

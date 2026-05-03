@@ -34,7 +34,9 @@ publication: '*Proceedings of the 56th ACM Technical Symposium on Computer Scien
   Education V. 2*'
 publication_short: ''
 
-doi: 10.1145/3641555.3705173
+hugoblox:
+  ids:
+    doi: 10.1145/3641555.3705173
 
 abstract: Due to the climate crisis, summers in Greenland have been rapidly getting
   warmer, causing increasing rates of ice melt on the Greenland ice sheet and speeding

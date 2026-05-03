@@ -30,7 +30,9 @@ publication_types:
 publication: '*GEOPHYSICAL RESEARCH LETTERS*'
 publication_short: ''
 
-doi: 10.1029/2020gl090640
+hugoblox:
+  ids:
+    doi: 10.1029/2020gl090640
 
 abstract: The latest generation of coupled models, the sixth Coupled Models    Intercomparison
   Project (CMIP6), is used to study the changes in the El Nino-Southern Oscillation

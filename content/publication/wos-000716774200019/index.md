@@ -45,6 +45,8 @@ publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES*'
 tags:
 - atmospheric river; atmospheric river reconnaissance; data assimilation;    dropsondes;
   numerical modeling; observational impact
-doi: 10.1029/2021jd034967
+hugoblox:
+  ids:
+    doi: 10.1029/2021jd034967
 ---
 

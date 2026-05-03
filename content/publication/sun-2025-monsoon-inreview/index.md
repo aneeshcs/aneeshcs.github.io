@@ -37,7 +37,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Atmospheres*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

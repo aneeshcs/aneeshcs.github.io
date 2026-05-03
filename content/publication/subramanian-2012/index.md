@@ -31,7 +31,9 @@ publication_types:
 publication: '*Journal of the Atmospheric Sciences*'
 publication_short: ''
 
-doi: 10.1175/jas-d-11-0332.1
+hugoblox:
+  ids:
+    doi: 10.1175/jas-d-11-0332.1
 
 abstract: This paper investigates the role of the linear analysis step of the ensemble
   Kalman filters (EnKF) in disrupting the balanced dynamics in a simple atmospheric

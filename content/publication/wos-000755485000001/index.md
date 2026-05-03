@@ -32,7 +32,9 @@ publication_types:
 publication: '*REMOTE SENSING*'
 publication_short: ''
 
-doi: 10.3390/rs14030459
+hugoblox:
+  ids:
+    doi: 10.3390/rs14030459
 
 abstract: Projections of future climate are sensitive to the representation of    upper-ocean
   diurnal variability, including the diurnal cycle of winds. Two different methods

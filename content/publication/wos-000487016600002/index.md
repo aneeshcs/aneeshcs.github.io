@@ -31,7 +31,9 @@ publication_types:
 publication: '*OCEAN MODELLING*'
 publication_short: ''
 
-doi: 10.1016/j.ocemod.2019.101439
+hugoblox:
+  ids:
+    doi: 10.1016/j.ocemod.2019.101439
 
 abstract: El Nino-Southern Oscillation (ENSO) is recognized as one of the    potentially
   predictable drivers of California Current System (CCS) variability. In this study,

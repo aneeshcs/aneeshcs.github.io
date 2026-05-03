@@ -37,7 +37,9 @@ publication_types:
 publication: '*Geoscientific Model Development*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

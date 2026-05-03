@@ -30,7 +30,9 @@ publication_types:
 publication: '*CLIMATE DYNAMICS*'
 publication_short: ''
 
-doi: 10.1007/s00382-016-3375-1
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-016-3375-1
 
 abstract: Predictability of Atlantic Ocean sea surface temperatures (SST) on    seasonal
   and decadal timescales is investigated using a suite of statistical linear inverse

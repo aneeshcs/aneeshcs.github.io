@@ -38,7 +38,9 @@ publication_types:
 publication: '*FRONTIERS IN MARINE SCIENCE*'
 publication_short: ''
 
-doi: 10.3389/fmars.2019.00623
+hugoblox:
+  ids:
+    doi: 10.3389/fmars.2019.00623
 
 abstract: 'Many coastal areas host rich marine ecosystems and are also centers of    economic
   activities, including fishing, shipping and recreation. Due to the socioeconomic

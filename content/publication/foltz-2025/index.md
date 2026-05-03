@@ -29,7 +29,9 @@ publishDate: '2026-04-01T10:54:28.336460Z'
 publication_types:
 - article-journal
 publication: '*Frontiers in Marine Science*'
-doi: 10.3389/fmars.2025.1539183
+hugoblox:
+  ids:
+    doi: 10.3389/fmars.2025.1539183
 links:
 - name: URL
   url: http://dx.doi.org/10.3389/fmars.2025.1539183

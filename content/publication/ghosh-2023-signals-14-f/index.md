@@ -31,7 +31,9 @@ publication_types:
 publication: '*Climate Dynamics*'
 publication_short: ''
 
-doi: 10.1007/s00382-023-06729-3
+hugoblox:
+  ids:
+    doi: 10.1007/s00382-023-06729-3
 
 abstract: Northward propagating summer monsoon intraseasonal oscillations (MISOs)
   in the Indian Ocean region remain poorly understood and difficult to predict. Here

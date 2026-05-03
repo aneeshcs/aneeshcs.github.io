@@ -31,7 +31,9 @@ publication_types:
 publication: '*JOURNAL OF CLIMATE*'
 publication_short: ''
 
-doi: 10.1175/jcli-d-18-0458.1
+hugoblox:
+  ids:
+    doi: 10.1175/jcli-d-18-0458.1
 
 abstract: The oceanic response to recent tropical eruptions is examined in Large    Ensemble
   (LE) experiments from two fully coupled global climate models, the Community Earth

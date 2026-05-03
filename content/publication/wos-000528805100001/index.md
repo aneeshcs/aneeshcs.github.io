@@ -38,7 +38,9 @@ publication_types:
 publication: '*PROGRESS IN OCEANOGRAPHY*'
 publication_short: ''
 
-doi: 10.1016/j.pocean.2020.102307
+hugoblox:
+  ids:
+    doi: 10.1016/j.pocean.2020.102307
 
 abstract: Marine ecosystem forecasting is an area of active research and rapid    development.
   Promise has been shown for skillful prediction of physical, biogeochemical, and

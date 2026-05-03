@@ -31,7 +31,9 @@ publication_types:
 publication: '*Nature Communications*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

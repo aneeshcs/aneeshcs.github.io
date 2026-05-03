@@ -32,7 +32,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2310.15179
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2310.15179
 
 abstract: Given multi-model ensemble climate projections, the goal is to accurately
   and reliably predict future sea-level rise while lowering the uncertainty. This

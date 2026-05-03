@@ -31,7 +31,9 @@ publication_types:
 publication: '*arXiv*'
 publication_short: ''
 
-doi: 10.48550/arxiv.2503.02093
+hugoblox:
+  ids:
+    doi: 10.48550/arxiv.2503.02093
 
 abstract: Traditional machine learning and deep learning techniques rely on correlation-based
   learning, often failing to distinguish spurious associations from true causal relationships,

@@ -36,7 +36,9 @@ publication_types:
 publication: '*WEATHER AND FORECASTING*'
 publication_short: ''
 
-doi: 10.1175/waf-d-20-0049.1
+hugoblox:
+  ids:
+    doi: 10.1175/waf-d-20-0049.1
 
 abstract: A key aim of observational campaigns is to sample atmosphere-ocean    phenomena
   to improve understanding of these phenomena, and in turn, numerical weather prediction.

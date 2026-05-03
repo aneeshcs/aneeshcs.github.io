@@ -31,7 +31,9 @@ publication_types:
 publication: '*Geophysical Research Letters*'
 publication_short: ''
 
-doi: 10.1029/2018gl079249
+hugoblox:
+  ids:
+    doi: 10.1029/2018gl079249
 
 abstract: Atmospheric rivers (ARs) are mechanisms of strong moisture transport capable
   of bringing heavy precipitation to the West Coast of North America, which drives

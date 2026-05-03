@@ -95,7 +95,9 @@ publishDate: '2026-04-01T10:54:28.485999Z'
 publication_types:
 - chapter
 publication: '*Sub-Seasonal to Seasonal Prediction*'
-doi: 10.1016/b978-0-12-811714-9.09994-0
+hugoblox:
+  ids:
+    doi: 10.1016/b978-0-12-811714-9.09994-0
 links:
 - name: URL
   url: http://dx.doi.org/10.1016/b978-0-12-811714-9.09994-0

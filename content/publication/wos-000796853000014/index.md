@@ -37,7 +37,9 @@ publication_types:
 publication: '*BULLETIN OF THE AMERICAN METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1175/bams-d-21-0259.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-21-0259.1
 
 abstract: ''
 

@@ -29,7 +29,9 @@ publication_types:
 publication: '*MONTHLY WEATHER REVIEW*'
 publication_short: ''
 
-doi: 10.1175/mwr-d-17-0132.1
+hugoblox:
+  ids:
+    doi: 10.1175/mwr-d-17-0132.1
 
 abstract: A new approach for improving the accuracy of data assimilation, by    trading
   numerical precision for ensemble size, is introduced. Data assimilation is inherently

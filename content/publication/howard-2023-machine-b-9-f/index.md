@@ -28,7 +28,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.22541/essoar.168201784.41405555/v1
+hugoblox:
+  ids:
+    doi: 10.22541/essoar.168201784.41405555/v1
 
 abstract: The accuracy of initial conditions is an important driver of the forecast
   skill of numerical weather prediction models. Increases in the quantity of available

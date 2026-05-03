@@ -34,7 +34,9 @@ publication_types:
 publication: '*Weather and Climate Dynamics*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

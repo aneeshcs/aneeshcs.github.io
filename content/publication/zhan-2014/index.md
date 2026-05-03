@@ -29,7 +29,9 @@ publication_types:
 publication: '*Journal of Geophysical Research: Oceans*'
 publication_short: ''
 
-doi: 10.1002/2013jc009563
+hugoblox:
+  ids:
+    doi: 10.1002/2013jc009563
 
 abstract: Sea level anomaly (SLA) data spanning 1992–2012 were analyzed to study the
   statistical properties of eddies in the Red Sea. An algorithm that identifies winding

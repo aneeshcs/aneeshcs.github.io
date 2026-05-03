@@ -12,7 +12,9 @@ publishDate: '2026-04-01T10:54:28.369969Z'
 publication_types:
 - article-journal
 publication: '*The Cryosphere*'
-doi: 10.5194/tc-18-121-2024
+hugoblox:
+  ids:
+    doi: 10.5194/tc-18-121-2024
 links:
 - name: URL
   url: http://dx.doi.org/10.5194/tc-18-121-2024

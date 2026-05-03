@@ -36,7 +36,9 @@ publication_types:
 publication: '*BULLETIN OF THE AMERICAN METEOROLOGICAL SOCIETY*'
 publication_short: ''
 
-doi: 10.1175/bams-d-19-0183.1
+hugoblox:
+  ids:
+    doi: 10.1175/bams-d-19-0183.1
 
 abstract: Water management and flood control are major challenges in the western    United
   States. They are heavily influenced by atmospheric river (AR) storms that produce

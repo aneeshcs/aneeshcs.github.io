@@ -30,7 +30,9 @@ publication_types:
 publication: '*EARTH AND SPACE SCIENCE*'
 publication_short: ''
 
-doi: 10.1029/2021ea002185
+hugoblox:
+  ids:
+    doi: 10.1029/2021ea002185
 
 abstract: The effect of polar sea ice melt on low latitude climate is little    known.
   To understand the response of the Indian summer monsoon (ISM) synoptic activity

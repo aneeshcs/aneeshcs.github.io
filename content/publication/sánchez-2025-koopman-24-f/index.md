@@ -30,7 +30,9 @@ publication_types:
 publication: ''
 publication_short: ''
 
-doi: 10.5194/egusphere-egu24-2554
+hugoblox:
+  ids:
+    doi: 10.5194/egusphere-egu24-2554
 
 abstract: El Ni&#241;o-Southern Oscillation (ENSO) is a complex climatic phenomenon
   with significant impacts on global weather patterns and ecosystems. Improving ENSO

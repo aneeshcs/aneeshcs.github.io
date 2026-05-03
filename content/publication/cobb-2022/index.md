@@ -31,7 +31,9 @@ publishDate: '2026-04-01T10:54:28.404121Z'
 publication_types:
 - article-journal
 publication: '*Weather and Forecasting*'
-doi: 10.1175/waf-d-21-0164.1
+hugoblox:
+  ids:
+    doi: 10.1175/waf-d-21-0164.1
 links:
 - name: URL
   url: http://dx.doi.org/10.1175/waf-d-21-0164.1

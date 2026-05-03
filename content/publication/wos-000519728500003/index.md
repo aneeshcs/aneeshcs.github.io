@@ -28,7 +28,9 @@ publication_types:
 publication: '*JOURNAL OF ADVANCES IN MODELING EARTH SYSTEMS*'
 publication_short: ''
 
-doi: 10.1029/2019ms001678
+hugoblox:
+  ids:
+    doi: 10.1029/2019ms001678
 
 abstract: A reliability budget is used to diagnose potential sources of error    (departure
   from observations) in a new prototype coupled ocean-atmosphere ensemble Kalman filter

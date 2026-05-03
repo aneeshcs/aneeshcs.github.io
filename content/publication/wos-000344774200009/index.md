@@ -30,7 +30,9 @@ publication_types:
 publication: '*JOURNAL OF CLIMATE*'
 publication_short: ''
 
-doi: 10.1175/jcli-d-14-00141.1
+hugoblox:
+  ids:
+    doi: 10.1175/jcli-d-14-00141.1
 
 abstract: This study quantifies, from a systematic set of regional    ocean-atmosphere
   coupled model simulations employing various coupling intervals, the effect of subdaily

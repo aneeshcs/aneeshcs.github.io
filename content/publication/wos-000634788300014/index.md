@@ -34,7 +34,9 @@ publication_types:
 publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES*'
 publication_short: ''
 
-doi: 10.1029/2020jd032885
+hugoblox:
+  ids:
+    doi: 10.1029/2020jd032885
 
 abstract: "Atmospheric rivers (ARs) play a key role in California's water supply \
   \   and are responsible for most of the extreme precipitation and major flooding

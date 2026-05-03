@@ -11,7 +11,9 @@ publishDate: '2026-04-01T10:54:28.383083Z'
 publication_types:
 - article-journal
 publication: '*Journal of Geophysical Research: Oceans*'
-doi: 10.1029/2022jc019576
+hugoblox:
+  ids:
+    doi: 10.1029/2022jc019576
 links:
 - name: URL
   url: http://dx.doi.org/10.1029/2022jc019576

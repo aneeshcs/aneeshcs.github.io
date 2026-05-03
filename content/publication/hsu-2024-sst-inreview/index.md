@@ -35,7 +35,9 @@ publication_types:
 publication: '*Journal of the Atmospheric Sciences*'
 publication_short: ''
 
-doi: ''
+hugoblox:
+  ids:
+    doi: ''
 
 abstract: ''
 

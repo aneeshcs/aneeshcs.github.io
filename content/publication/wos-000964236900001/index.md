@@ -39,7 +39,9 @@ publication_types:
 publication: '*JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES*'
 publication_short: ''
 
-doi: 10.1029/2022jd037608
+hugoblox:
+  ids:
+    doi: 10.1029/2022jd037608
 
 abstract: Subseasonal-to-seasonal (S2S) forecasts of atmospheric rivers (ARs) are    in
   high demand in the water supply management and flood control communities. This study
