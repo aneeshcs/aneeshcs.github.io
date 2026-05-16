@@ -9,6 +9,8 @@ Accurate probabilistic forecasting of extreme weather events is critical for wat
 
 The model — the culmination of the final chapter of Dr. Higgins' dissertation — is now officially live and operational at the **Center for Western Weather and Water Extremes (CW3E)**.
 
+![Diffusion model schematic](featured.jpg)
+
 ---
 
 ## Bridging the Gap in Probabilistic Forecasting
