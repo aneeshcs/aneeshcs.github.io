@@ -11,6 +11,8 @@ We are incredibly proud to announce that **Ziqi Yin** has successfully defended 
 
 **Defense committee:** Dr. Aneesh Subramanian (advisor, CU Boulder), Dr. Alexandra Jahn (CU Boulder), Dr. Rajashree Tri Datta (Delft University of Technology), Dr. Adam Herrington (National Center for Atmospheric Research), and Dr. Jianwu Wang (University of Maryland, Baltimore County).
 
+![Thesis overview](featured.png)
+
 ---
 
 ## Research Overview
