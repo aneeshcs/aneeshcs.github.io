@@ -23,22 +23,37 @@ FIELDS = "title,year,venue,externalIds,authors"
 PUB_BIB = Path("publications.bib")
 
 
+def _get_with_retry(url: str, params: dict, max_retries: int = 5) -> requests.Response:
+    """GET with exponential backoff on 429 rate-limit responses."""
+    delay = 10
+    for attempt in range(max_retries):
+        r = requests.get(url, params=params, timeout=20)
+        if r.status_code != 429:
+            r.raise_for_status()
+            return r
+        retry_after = int(r.headers.get("Retry-After", delay))
+        wait = max(retry_after, delay)
+        print(f"  Rate limited (429); waiting {wait}s before retry {attempt + 1}/{max_retries} ...")
+        time.sleep(wait)
+        delay = min(delay * 2, 120)
+    r.raise_for_status()
+    return r
+
+
 def get_all_papers() -> list[dict]:
     papers: list[dict] = []
     offset = 0
     while True:
-        r = requests.get(
+        r = _get_with_retry(
             SS_PAPERS,
             params={"fields": FIELDS, "limit": 100, "offset": offset},
-            timeout=20,
         )
-        r.raise_for_status()
         data = r.json()
         papers.extend(data["data"])
         if "next" not in data:
             break
         offset = data["next"]
-        time.sleep(0.5)  # be polite to the API
+        time.sleep(2)  # be polite to the API between pages
     return papers
 
 
