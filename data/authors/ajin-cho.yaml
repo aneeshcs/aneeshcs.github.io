@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "ajin-cho"
+name:
+  display: "Ajin Cho"
+  given: "Ajin"
+  family: "Cho"
+role: "Visiting Scholar (Spring 2026 – Spring 2027)"
+bio: "Postdoctoral scholar at the Colorado School of Mines. Research interests include climate modeling and data science applications to Earth system science."
+affiliations:
+  - name: "Colorado School of Mines"
+    url: "https://www.mines.edu"
+links:
+  - icon: "hero/globe-alt"
+    url: "https://sites.google.com/view/ajincho"
+    label: "Website"
+user_groups:
+  - "Visitors"
