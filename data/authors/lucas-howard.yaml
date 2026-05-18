@@ -4,7 +4,7 @@ name:
   display: "Lucas Howard"
   given: "Lucas"
   family: "Howard"
-role: "PhD Student"
+role: "PhD Alumni"
 bio: "Background in Physics and Civil/Environmental Engineering. Interested in machine learning applications to data assimilation."
 affiliations:
   - name: "CU Boulder, Atmospheric and Oceanic Science"
@@ -17,4 +17,4 @@ links:
     url: "https://lucasjhoward.com"
     label: "Website"
 user_groups:
-  - "PhD Students"
+  - "PhD Alumni"
