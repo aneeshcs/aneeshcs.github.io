@@ -7,7 +7,7 @@ name:
   family: "Subramanian"
   pronouns: "he/him"
 role: "Associate Professor"
-bio: "Research interests include weather and climate prediction, data assimilation, and geophysical fluid dynamics."
+bio: "Associate Professor in the Department of Atmospheric and Oceanic Sciences at CU Boulder. Research spans weather and climate prediction, subseasonal-to-seasonal forecasting, atmospheric river dynamics, machine learning for Earth system modeling, and data assimilation in coupled ocean-atmosphere systems."
 affiliations:
   - name: "Department of Atmospheric and Oceanic Sciences, University of Colorado Boulder"
     url: "https://www.colorado.edu/atoc/"
@@ -23,5 +23,8 @@ links:
     url: "https://github.com/aneeshcs"
   - icon: "brands/linkedin"
     url: "https://www.linkedin.com/in/aneeshcs"
+  - icon: "hero/document-text"
+    url: "https://www.dropbox.com/scl/fi/qj902mhbybnmdyo92ezml/Resume_aneesh_LongForm_2025.pdf?rlkey=kfs9czn2bkrpum7xsxemy0cwj&dl=0"
+    label: "Curriculum Vitae"
 user_groups:
   - "Principal Investigator"
