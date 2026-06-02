@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -42,7 +42,7 @@ jobs:
 
       - name: Open pull request
         if: steps.check.outputs.new_count != '0'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           branch: publications/monthly-update
           delete-branch: true
