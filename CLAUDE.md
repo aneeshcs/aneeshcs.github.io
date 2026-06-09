@@ -6,7 +6,7 @@ Hugo Blox academic site deployed to GitHub Pages via GitHub Actions (`master` br
 
 - Source: `content/` (Hugo markdown), `static/` (copied as-is), `notebooks/` (marimo `.py` files)
 - Build: Hugo + marimo WASM export runs in CI (`.github/workflows/deploy.yml`)
-- Live: https://aneeshcs.com (custom domain; `aneeshcs.github.io` redirects here)
+- Live: https://aneeshcs.com (custom domain; `www.aneeshcs.com` and `aneeshcs.github.io` redirect here)
 
 ## Marimo notebooks
 
