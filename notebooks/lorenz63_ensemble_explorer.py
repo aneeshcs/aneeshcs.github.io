@@ -14,7 +14,7 @@ To edit interactively:
 
 import marimo
 
-__generated_with = "0.9.14"
+__generated_with = "0.19.10"
 app = marimo.App(width="full", app_title="Lorenz 63 Ensemble Explorer")
 
 
@@ -172,7 +172,7 @@ def compute_ensemble(ic_choice, lead_time, n_members, np, perturb_exp, solve_ivp
     # "Saturated" spread = typical std of the attractor itself
     attractor_size = float(np.mean(np.std(attractor_ref, axis=1)))
 
-    return T, attractor_ref, attractor_size, n_members, perturbation, rms_spread, t_eval, trajs, x0_base
+    return attractor_ref, attractor_size, rms_spread, t_eval, trajs
 
 
 # ---------------------------------------------------------------------------
