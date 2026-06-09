@@ -15,7 +15,7 @@ To edit interactively:
 import marimo
 
 __generated_with = "0.9.14"
-app = marimo.App(width="wide", app_title="Lorenz 63 Ensemble Explorer")
+app = marimo.App(width="full", app_title="Lorenz 63 Ensemble Explorer")
 
 
 # ---------------------------------------------------------------------------
