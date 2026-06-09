@@ -1,3 +1,12 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "marimo>=0.19.10",
+#   "numpy",
+#   "scipy",
+#   "plotly",
+# ]
+# ///
 """
 Lorenz 63 Ensemble Forecast Explorer
 FERS Summer School 2026 — Weather & Climate Predictability
