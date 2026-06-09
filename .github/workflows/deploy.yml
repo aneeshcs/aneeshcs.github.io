@@ -98,6 +98,9 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/internalwaves.py \
           -o static/gfd/internalwaves.html
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
+          notebooks/lorenz63_ensemble_explorer.py \
+          -o static/butterfly/index.html
 
     - name: Setup Pages
       id: pages
