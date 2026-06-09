@@ -36,8 +36,7 @@ def imports():
     import numpy as np
     from scipy.integrate import solve_ivp
     import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
-    return go, make_subplots, mo, np, solve_ivp
+    return go, mo, np, solve_ivp
 
 
 # ---------------------------------------------------------------------------
@@ -185,122 +184,96 @@ def compute_ensemble(ic_choice, lead_time, n_members, np, perturb_exp, solve_ivp
 
 
 # ---------------------------------------------------------------------------
-# Phase-space + spread plot
+# Phase-space figure (3D)
 # ---------------------------------------------------------------------------
 @app.cell
-def make_plot(
-    attractor_ref, attractor_size, go, lead_time,
-    make_subplots, n_members, np, perturb_exp,
-    rms_spread, t_eval, trajs,
-):
+def make_phase_plot(attractor_ref, go, lead_time, n_members, trajs):
+    _N = n_members.value
+    _T = lead_time.value
+
+    fig3d = go.Figure()
+
+    fig3d.add_trace(go.Scatter3d(
+        x=attractor_ref[0], y=attractor_ref[1], z=attractor_ref[2],
+        mode="lines",
+        line=dict(color="rgba(160,160,160,0.25)", width=1),
+        name="Attractor", showlegend=False, hoverinfo="skip",
+    ))
+
+    for _i in range(_N):
+        _hue = int(200 + 130 * _i / max(_N - 1, 1))
+        _show = _i < 5
+        fig3d.add_trace(go.Scatter3d(
+            x=trajs[_i, 0], y=trajs[_i, 1], z=trajs[_i, 2],
+            mode="lines",
+            line=dict(color=f"hsla({_hue},65%,50%,0.75)", width=1.8),
+            name=f"Member {_i+1}" if _show else "",
+            showlegend=_show, hoverinfo="skip",
+        ))
+
+    fig3d.add_trace(go.Scatter3d(
+        x=trajs[:, 0, 0], y=trajs[:, 1, 0], z=trajs[:, 2, 0],
+        mode="markers",
+        marker=dict(size=5, color="limegreen", opacity=0.9),
+        name="t = 0",
+    ))
+    fig3d.add_trace(go.Scatter3d(
+        x=trajs[:, 0, -1], y=trajs[:, 1, -1], z=trajs[:, 2, -1],
+        mode="markers",
+        marker=dict(size=5, color="crimson", opacity=0.9),
+        name=f"t = {_T} MTU",
+    ))
+
+    fig3d.update_layout(
+        height=520,
+        title=dict(text="Phase Space (Lorenz Attractor)", font_size=13, x=0.5, xanchor="center"),
+        scene=dict(
+            xaxis_title="X", yaxis_title="Y", zaxis_title="Z",
+            camera=dict(eye=dict(x=1.5, y=1.2, z=0.9)),
+            bgcolor="rgba(245,248,255,0.6)",
+        ),
+        margin=dict(l=5, r=5, t=50, b=5),
+        legend=dict(x=0.01, y=0.99, font_size=10, bgcolor="rgba(255,255,255,0.8)"),
+        paper_bgcolor="white",
+    )
+    return fig3d
+
+
+# ---------------------------------------------------------------------------
+# Spread time-series figure (2D)
+# ---------------------------------------------------------------------------
+@app.cell
+def make_spread_plot(attractor_size, go, lead_time, n_members, np, perturb_exp, rms_spread, t_eval):
     _N   = n_members.value
     _T   = lead_time.value
     _exp = perturb_exp.value
 
-    fig = make_subplots(
-        rows=1,
-        cols=2,
-        subplot_titles=(
-            "Phase Space (Lorenz Attractor)",
-            "Ensemble Spread Over Time",
-        ),
-        specs=[[{"type": "scatter3d"}, {"type": "scatter"}]],
-        column_widths=[0.52, 0.48],
-    )
+    fig2d = go.Figure()
 
-    # ---- Left panel: phase space ----
+    fig2d.add_trace(go.Scatter(
+        x=t_eval, y=rms_spread,
+        mode="lines",
+        line=dict(color="#1a3a6e", width=2.5),
+        name="RMS spread",
+        fill="tozeroy",
+        fillcolor="rgba(26,58,110,0.08)",
+    ))
 
-    # Attractor background (faint grey)
-    fig.add_trace(
-        go.Scatter3d(
-            x=attractor_ref[0],
-            y=attractor_ref[1],
-            z=attractor_ref[2],
-            mode="lines",
-            line=dict(color="rgba(160,160,160,0.25)", width=1),
-            name="Attractor",
-            showlegend=False,
-            hoverinfo="skip",
-        ),
-        row=1, col=1,
-    )
-
-    # Ensemble trajectories
-    for _i in range(_N):
-        _hue = int(200 + 130 * _i / max(_N - 1, 1))
-        _show = _i < 5  # only show first 5 in legend to avoid clutter
-        fig.add_trace(
-            go.Scatter3d(
-                x=trajs[_i, 0],
-                y=trajs[_i, 1],
-                z=trajs[_i, 2],
-                mode="lines",
-                line=dict(color=f"hsla({_hue},65%,50%,0.75)", width=1.8),
-                name=f"Member {_i+1}" if _show else "",
-                showlegend=_show,
-                hoverinfo="skip",
-            ),
-            row=1, col=1,
-        )
-
-    # Start-point cloud (green) and end-point cloud (red)
-    fig.add_trace(
-        go.Scatter3d(
-            x=trajs[:, 0, 0],
-            y=trajs[:, 1, 0],
-            z=trajs[:, 2, 0],
-            mode="markers",
-            marker=dict(size=5, color="limegreen", opacity=0.9),
-            name="t = 0",
-        ),
-        row=1, col=1,
-    )
-    fig.add_trace(
-        go.Scatter3d(
-            x=trajs[:, 0, -1],
-            y=trajs[:, 1, -1],
-            z=trajs[:, 2, -1],
-            mode="markers",
-            marker=dict(size=5, color="crimson", opacity=0.9),
-            name=f"t = {_T} MTU",
-        ),
-        row=1, col=1,
-    )
-
-    # ---- Right panel: spread time series ----
-
-    fig.add_trace(
-        go.Scatter(
-            x=t_eval,
-            y=rms_spread,
-            mode="lines",
-            line=dict(color="#1a3a6e", width=2.5),
-            name="RMS spread",
-            fill="tozeroy",
-            fillcolor="rgba(26,58,110,0.08)",
-        ),
-        row=1, col=2,
-    )
-
-    # Reference lines
-    fig.add_hline(
+    fig2d.add_hline(
         y=attractor_size,
         line=dict(color="firebrick", dash="dash", width=1.5),
         annotation_text="Attractor size — fully unpredictable",
         annotation_position="top left",
         annotation_font_size=11,
-        row=1, col=2,
     )
-    fig.add_hline(
+    fig2d.add_hline(
         y=0.1 * attractor_size,
         line=dict(color="darkorange", dash="dot", width=1.5),
         annotation_text="10% saturation",
         annotation_position="bottom right",
         annotation_font_size=11,
-        row=1, col=2,
     )
 
-    # Shade predictable / semi-predictable / unpredictable zones
     _t_max = float(t_eval[-1])
     _idx_10 = np.where(rms_spread >= 0.1 * attractor_size)[0]
     _idx_90 = np.where(rms_spread >= 0.9 * attractor_size)[0]
@@ -308,63 +281,44 @@ def make_plot(
     _t90 = float(t_eval[_idx_90[0]]) if len(_idx_90) else _t_max
 
     for _shade in [
-        dict(x0=0,    x1=_t10, color="rgba(0,180,0,0.07)",  label="Predictable"),
-        dict(x0=_t10, x1=_t90, color="rgba(255,165,0,0.07)", label="Semi-predictable"),
-        dict(x0=_t90, x1=_t_max, color="rgba(220,0,0,0.07)", label="Unpredictable"),
+        dict(x0=0,    x1=_t10,  color="rgba(0,180,0,0.07)",   label="Predictable"),
+        dict(x0=_t10, x1=_t90,  color="rgba(255,165,0,0.07)", label="Semi-predictable"),
+        dict(x0=_t90, x1=_t_max, color="rgba(220,0,0,0.07)",  label="Unpredictable"),
     ]:
         if _shade["x0"] < _shade["x1"]:
-            fig.add_vrect(
-                x0=_shade["x0"],
-                x1=_shade["x1"],
-                fillcolor=_shade["color"],
-                line_width=0,
+            fig2d.add_vrect(
+                x0=_shade["x0"], x1=_shade["x1"],
+                fillcolor=_shade["color"], line_width=0,
                 annotation_text=_shade["label"],
                 annotation_position="top left",
                 annotation_font_size=10,
-                row=1, col=2,
             )
 
-    fig.update_layout(
-        height=580,
+    fig2d.update_layout(
+        height=520,
         title=dict(
             text=(
                 f"Ensemble of <b>{_N}</b> members &nbsp;|&nbsp; "
                 f"perturbation = 10<sup>{_exp:.1f}</sup> &nbsp;|&nbsp; "
                 f"lead time = <b>{_T}</b> MTU"
             ),
-            font_size=13,
-            x=0.5,
-            xanchor="center",
+            font_size=13, x=0.5, xanchor="center",
         ),
-        scene=dict(
-            xaxis_title="X",
-            yaxis_title="Y",
-            zaxis_title="Z",
-            camera=dict(eye=dict(x=1.5, y=1.2, z=0.9)),
-            bgcolor="rgba(245,248,255,0.6)",
-        ),
-        margin=dict(l=5, r=5, t=60, b=5),
-        legend=dict(
-            x=0.01,
-            y=0.99,
-            font_size=10,
-            bgcolor="rgba(255,255,255,0.8)",
-        ),
+        margin=dict(l=5, r=5, t=50, b=5),
         paper_bgcolor="white",
     )
-    fig.update_xaxes(
-        title_text="Lead time (MTU)",
-        gridcolor="#e8e8e8",
-        row=1, col=2,
-    )
-    fig.update_yaxes(
-        title_text="RMS ensemble spread",
-        type="log",
-        gridcolor="#e8e8e8",
-        row=1, col=2,
-    )
+    fig2d.update_xaxes(title_text="Lead time (MTU)", gridcolor="#e8e8e8")
+    fig2d.update_yaxes(title_text="RMS ensemble spread", type="log", gridcolor="#e8e8e8")
 
-    return fig
+    return fig2d
+
+
+# ---------------------------------------------------------------------------
+# Display both panels side by side
+# ---------------------------------------------------------------------------
+@app.cell
+def display_plots(mo, fig3d, fig2d):
+    return mo.hstack([fig3d, fig2d], widths=[1, 1])
 
 
 # ---------------------------------------------------------------------------
