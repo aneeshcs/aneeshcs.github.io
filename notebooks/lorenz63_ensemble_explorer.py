@@ -119,10 +119,23 @@ def display_title(mo):
 
 **FERS Summer School 2026 — Weather & Climate Predictability**
 
-This tutorial accompanies the lecture on chaos and predictability.
+This tutorial accompanies the lecture on chaos and predictability in the atmosphere.
 Scroll from top to bottom and interact with each panel before
 reading the explanation beneath it — building intuition by *doing*
 is more effective than reading first.
+
+---
+
+### Learning objectives
+
+By the end of this notebook you will be able to:
+
+1. **Describe** the Lorenz (1963) system and explain what each variable represents physically
+2. **Demonstrate** sensitive dependence on initial conditions (SDIC) by running your own experiments
+3. **Measure** the leading Lyapunov exponent from the slope of the error-growth curve
+4. **Explain** why ensemble forecasting is the correct operational response to SDIC
+5. **Calculate** the gain in predictable time from a given improvement in observational accuracy
+6. **Distinguish** predictability of the first kind (initial-value) from the second kind (forced response)
 
 ---
 
@@ -135,11 +148,68 @@ is more effective than reading first.
 | 🔬 **Experiment** | Step-by-step activity |
 | 💡 **Observation** | Live readout that updates as you explore |
 
+---
+
+### Tutorial structure
+
+| Section | Topic | Key concept introduced |
+|---------|-------|----------------------|
+| **1** | The Lorenz (1963) system | Strange attractor, deterministic chaos |
+| **2** | Sensitive dependence on initial conditions | Lyapunov exponent, butterfly effect |
+| **3** | Ensemble forecasting | Predictability horizon, ensemble spread |
+| **4** | Connection to the real atmosphere | Error doubling time, 2nd-kind predictability |
+| **📝** | Guided questions | Synthesis and quantitative reasoning |
+
 > **Unit convention:** One *model time unit* (MTU) corresponds to
 > approximately **5 days** in the real atmosphere.  All time axes
 > in this notebook use MTU.
 """),
     ])
+
+
+# ===========================================================================
+# MARKDOWN CELL — Historical context: Lorenz's accidental discovery
+# ===========================================================================
+@app.cell
+def cell_lorenz_story(mo):
+    return mo.md(r"""
+---
+### 🕰️ Historical context: how chaos was discovered by accident
+
+In the winter of 1961, Edward Lorenz was running a primitive numerical weather model on the
+Royal McBee LGP-30 computer at MIT.  He wanted to re-examine a particular simulation from the
+middle, so instead of restarting from the beginning he typed in the intermediate values
+from a printout — but he entered them rounded to three decimal places (0.506) instead of
+the full six-digit precision (0.506127) stored in the computer's memory.
+
+He expected the two runs to agree.  Instead, after a few simulated weeks, the two
+solutions had **diverged completely** — not just a small discrepancy, but an entirely
+different weather pattern.  At first he suspected a hardware fault.  Then the insight
+hit: the tiny rounding error — about one part in a thousand — had grown exponentially
+until it erased all predictive information.
+
+> *"At this point I became rather excited.  It no longer seemed that predicting
+> the weather for two weeks or a month would merely be a question of developing
+> better equations."*
+> — Edward Lorenz, *The Essence of Chaos* (1993)
+
+This accidental discovery led directly to the 1963 paper that founded the mathematical
+study of chaos.  The three-equation model in that paper was a deliberate simplification
+of the full convection equations — a toy designed to be analytically tractable — but
+it captured the essential unpredictability of the real atmosphere.
+
+**The "butterfly effect" name** came a decade later.  At the December 1972 meeting of
+the American Meteorological Society, Lorenz delivered a talk titled:
+
+> *"Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?"*
+
+The title was chosen half-jokingly by the session organiser Philip Merilees, not by
+Lorenz himself.  Lorenz used it to sharpen a point he had been making since 1963:
+in a chaotic system, an *arbitrarily small* perturbation anywhere — even one too small
+to measure — can, in principle, alter the large-scale evolution weeks later.
+This is **not** a statement that butterflies literally cause tornadoes.
+It is a statement about the *structure of deterministic predictability limits*.
+""")
 
 
 # ===========================================================================
@@ -197,19 +267,34 @@ $$\frac{dZ}{dt} = X\,Y - \beta\,Z$$
 
 **What the variables represent:**
 
-| Variable | Physical meaning |
-|----------|-----------------|
-| $X$ | Intensity of the convective overturning circulation |
-| $Y$ | Temperature difference between ascending and descending fluid |
-| $Z$ | Deviation of the vertical temperature profile from linearity |
+| Variable | Physical meaning | Units (non-dimensional) |
+|----------|-----------------|------------------------|
+| $X$ | Intensity of the convective overturning circulation | Proportional to fluid velocity |
+| $Y$ | Temperature difference between ascending and descending fluid | Proportional to horizontal temperature gradient |
+| $Z$ | Deviation of the vertical temperature profile from linearity | Proportional to departure from conductive equilibrium |
 
 **Classic parameter values** that produce chaotic behaviour:
 
 | Parameter | Value | Physical role |
 |-----------|-------|--------------|
-| $\sigma = 10$ | Prandtl number (momentum vs. thermal diffusivity) |
-| $\rho = 28$ | Normalised Rayleigh number (strength of forcing) |
-| $\beta = 8/3$ | Geometric factor (aspect ratio of convection cells) |
+| $\sigma = 10$ | Prandtl number — ratio of momentum diffusivity to thermal diffusivity | Controls how quickly velocity adjusts to temperature |
+| $\rho = 28$ | Normalised Rayleigh number — strength of thermal forcing relative to dissipation | Controls how vigorously convection is driven |
+| $\beta = 8/3$ | Geometric factor — aspect ratio of convection cells | Controls how quickly vertical distortion decays |
+
+### Fixed points and the route to chaos
+
+The system has **three fixed points** (where all derivatives are zero):
+
+- **Origin** $(0, 0, 0)$: the purely conductive state (no convection).
+  Always exists; unstable for $\rho > 1$.
+
+- **Two symmetric points** $C^\pm = (\pm\sqrt{\beta(\rho-1)},\; \pm\sqrt{\beta(\rho-1)},\; \rho-1)$:
+  the steady convective rolls.  For $\sigma = 10$, $\beta = 8/3$, these points become
+  **unstable** (Hopf bifurcation) when $\rho > \rho_H \approx 24.74$.
+
+At $\rho = 28 > 24.74$, *none* of the three fixed points is stable.
+Trajectories cannot settle anywhere — they must wander forever, tracing out the
+**strange attractor** shown below.
 
 ### The strange attractor
 
@@ -220,7 +305,8 @@ The geometric object they trace out is called a **strange attractor**.
 The visualisation below shows 70 MTU of trajectory after transients have decayed.
 The colour encodes the height variable $Z$ — notice how the trajectory alternates
 between the two lobes (the "butterfly wings"), each corresponding to one
-sense of convective overturning.
+sense of convective overturning.  The number of loops on each lobe before switching
+to the other is *unpredictable* — that is the chaotic signature.
 
 > 💡 **Tip:** Click and drag on the plot to rotate it in 3-D.
 > Zoom in to see the fine fractal structure of the attractor.
@@ -230,17 +316,74 @@ sense of convective overturning.
 
         mo.callout(
             mo.md(r"""
-**What makes this attractor "strange"?**  A periodic orbit would be a closed loop.
-A fixed point would be a dot.  This attractor is *neither* — it is a fractal set with
-non-integer dimension (~2.06).  Trajectories wind around the two lobes in an order that
-looks random but is in fact *completely determined* by the initial condition.
-The catch: two trajectories starting from almost identical initial conditions will
+**What makes this attractor "strange"?**
+
+A periodic orbit would be a closed loop.  A fixed point would be a dot.
+This attractor is *neither* — it is a **fractal set** with a non-integer
+(Hausdorff) dimension of approximately **2.06**.
+
+Trajectories wind around the two lobes in an order that looks random but is
+in fact *completely determined* by the initial condition.  The catch is that
+two trajectories starting from almost identical initial conditions will
 eventually end up on opposite lobes with no correlation between them.
-That is precisely what the next section demonstrates.
+That is the content of *sensitive dependence on initial conditions* (SDIC),
+which the next section demonstrates directly.
+
+The fractal structure also means the attractor has **zero volume** in 3-D space —
+the trajectory is confined to a set of measure zero, even though it fills a
+two-dimensional surface.  This is why chaos is sometimes described as having
+"more structure than a surface but less than a volume."
 """),
             kind="info",
         ),
     ])
+
+
+# ===========================================================================
+# MARKDOWN CELL — What is the Lyapunov exponent? (intuition before the math)
+# ===========================================================================
+@app.cell
+def cell_sdic_intuition(mo):
+    return mo.md(r"""
+---
+### 📐 Background: quantifying chaos with the Lyapunov exponent
+
+Before diving into the interactive demonstration, let's build intuition about
+how we *measure* chaos quantitatively.
+
+**The key question:** If I start two trajectories with initial separation $\delta_0$,
+how fast does that separation grow?
+
+In a chaotic system, the answer (on average, over the attractor) is **exponentially**:
+
+$$\delta(t) \approx \delta_0 \, e^{\lambda t}$$
+
+where $\lambda$ is the **leading Lyapunov exponent**.  Its sign determines the system's nature:
+
+| Sign of $\lambda$ | System type | Example |
+|-------------------|-------------|---------|
+| $\lambda < 0$ | Stable fixed point or limit cycle | Damped pendulum |
+| $\lambda = 0$ | Marginally stable (bifurcation point) | Integrable Hamiltonian system |
+| $\lambda > 0$ | **Chaotic** — nearby trajectories diverge exponentially | Lorenz 63, real atmosphere |
+
+**The Lorenz 63 Lyapunov spectrum** consists of three exponents $(\lambda_1, \lambda_2, \lambda_3)$:
+
+| Exponent | Value (MTU⁻¹) | Meaning |
+|----------|--------------|---------|
+| $\lambda_1$ | ≈ +0.906 | Exponential stretching along the most unstable direction |
+| $\lambda_2$ | ≈ 0.000 | Neutral — along the flow direction (neither stretching nor contracting) |
+| $\lambda_3$ | ≈ −14.57 | Strong contraction — the attractor has zero volume |
+
+The sum $\lambda_1 + \lambda_2 + \lambda_3 = \sigma(-1) + (-1) + (-\beta) \approx -13.67$
+is the **divergence** of the vector field, confirming that the system is dissipative (volume-shrinking).
+
+**The Lyapunov time** $\tau_\lambda = 1/\lambda_1 \approx 1.1$ MTU is the characteristic
+e-folding time for error growth.  Beyond about $5\,\tau_\lambda \approx 5.5$ MTU, initial
+errors have amplified by $e^5 \approx 150\times$ — effectively destroying all predictive skill.
+
+In the next section you will estimate $\lambda_1$ directly from the slope of the
+log-separation curve.
+""")
 
 
 # ===========================================================================
@@ -400,6 +543,13 @@ $$\delta(t) \approx \delta_0 \, e^{\,\lambda \, t}$$
 where $\lambda > 0$ is the **leading Lyapunov exponent** — the characteristic rate
 of exponential error growth.  For the Lorenz system, $\lambda \approx 0.9\;\text{MTU}^{-1}$.
 
+Taking the logarithm of both sides:
+
+$$\ln\delta(t) \approx \ln\delta_0 + \lambda\,t$$
+
+This is a straight line on a **log-scale plot of separation vs time** — with slope $\lambda$.
+That is exactly what the right-hand panel below shows.
+
 **Key consequence:** Even if $\delta_0$ is made *infinitesimally* small,
 $\delta(t)$ eventually becomes comparable to the size of the attractor itself.
 At that point the two forecasts share no useful information — knowing trajectory
@@ -412,6 +562,17 @@ A tells you nothing about trajectory B.
 | Both trajectories in 3-D phase space | Separation $|A - B|$ vs time on a **log scale** |
 | Green dot = shared start; coloured squares = positions at lead time $T$ | A straight line on the log-scale = pure exponential growth |
 | When paths overlap they are predictable; when they separate they are not | The orange dotted line shows the fitted $e^{\lambda t}$ slope |
+| Grey cloud = full attractor (for reference) | Dashed red line = attractor diameter (no skill beyond this) |
+
+### How to read the log-separation plot
+
+- **Flat or slowly rising**: the two trajectories are still following each other.
+  Forecast error is growing, but slowly (sub-exponential phase near the start).
+- **Straight line (exponential phase)**: error doubling every $\ln 2/\lambda \approx 0.8$ MTU.
+  This is the classic chaotic regime.
+- **Levelling off at the red dashed line**: the error has saturated.
+  The two trajectories have become statistically independent — completely uncorrelated.
+  The forecast is no better than a random draw from the attractor (climatology).
 """),
 
         mo.callout(
@@ -429,6 +590,8 @@ A tells you nothing about trajectory B.
 4. The slope of the log-separation curve ≈ λ.
    Read off λ from the orange dotted line.
    Compare it to the theoretical value of ≈ 0.9 MTU⁻¹.
+5. Try δ₀ = **10⁻¹** (a large perturbation — 10 % of attractor size).
+   Does the trajectory immediately diverge, or is there still a brief coherent phase?
 """),
             kind="neutral",
         ),
@@ -462,8 +625,109 @@ This means that even a perfect 1-hour analysis error doubles in two days.
 A 10-day forecast must survive five doublings — an amplification factor of $2^5 = 32$.
 No conceivable improvement in observations or models can eliminate this growth,
 because it is a property of the underlying flow, not of our instruments.
+
+**The practical predictability ceiling** in the real atmosphere is approximately
+**2–3 weeks** — beyond which even a perfect initial state cannot yield a useful
+deterministic forecast.  This is not a pessimistic statement about the current
+state of NWP; it is a mathematical consequence of the Lorenz time of the atmosphere.
 """),
     ])
+
+
+# ===========================================================================
+# MARKDOWN CELL — Deeper theory: Lyapunov spectrum and Kaplan-Yorke dimension
+# ===========================================================================
+@app.cell
+def cell_lyapunov_deeper(mo):
+    return mo.md(r"""
+---
+### 📐 Going deeper: the Lyapunov spectrum and attractor geometry
+
+The three Lyapunov exponents of the Lorenz system tell us how a small
+three-dimensional ball of initial conditions evolves:
+
+$$(\lambda_1,\; \lambda_2,\; \lambda_3) \approx (+0.906,\; 0,\; -14.57) \quad \text{MTU}^{-1}$$
+
+Think of the initial ball as having three independent axes.  Over time:
+- The **first axis** (aligned with the most unstable direction) is **stretched** —
+  at rate $e^{\lambda_1 t}$.  This is the source of chaos.
+- The **second axis** is **neutral** (neither stretched nor contracted) —
+  it lies along the direction of the flow itself.
+- The **third axis** is **strongly contracted** — at rate $e^{\lambda_3 t} \approx e^{-14.57 t}$.
+  This rapid collapse is why the attractor is thin and sheet-like.
+
+The overall **volume** of the ball changes as $e^{(\lambda_1+\lambda_2+\lambda_3)t} \approx e^{-13.67 t}$,
+shrinking to zero.  The attractor therefore has **zero volume in 3-D space** — it is a
+set of measure zero, even though it has a complex fractal structure.
+
+**The Kaplan–Yorke (Lyapunov) dimension** estimates the fractal dimension of the attractor
+from the Lyapunov spectrum:
+
+$$D_{KY} = j + \frac{\lambda_1 + \cdots + \lambda_j}{|\lambda_{j+1}|}$$
+
+where $j$ is the largest index such that the cumulative sum is still positive.
+Here $j = 2$ and:
+
+$$D_{KY} = 2 + \frac{0.906 + 0}{14.57} \approx 2.062$$
+
+This non-integer dimension (between 2 and 3) is the hallmark of a **fractal strange attractor**.
+The attractor fills more than a surface but less than a volume.
+
+**Finite-time Lyapunov exponents (FTLEs)** measure the local stretching rate over a
+finite time interval rather than the infinite-time average.  On any given initial condition
+the FTLE can be much larger or smaller than $\lambda_1 \approx 0.906$.  This local variability
+is why the predictability horizon depends on *where* on the attractor you start —
+something you can explore in Section 3 by changing the starting location.
+""")
+
+
+# ===========================================================================
+# MARKDOWN CELL — Brief history of ensemble NWP
+# ===========================================================================
+@app.cell
+def cell_ensemble_history(mo):
+    return mo.md(r"""
+---
+### 🕰️ The operational history of ensemble forecasting
+
+The mathematical case for ensemble NWP was made long before it was computationally
+feasible.  Here is the key timeline:
+
+| Year | Development |
+|------|------------|
+| **1963** | Lorenz shows deterministic chaos implies finite predictability |
+| **1965** | Lorenz introduces the concept of a "predictability limit" for the real atmosphere |
+| **1969** | **Epstein** proposes stochastic-dynamic forecasting — the first ensemble concept |
+| **1974** | **Leith** demonstrates Monte Carlo ensemble forecasting in a simple model |
+| **1992** | ECMWF launches the **Ensemble Prediction System (EPS)** operationally (December 1992) |
+| **1992** | NCEP launches the **Global Ensemble Forecast System (GEFS)** (December 1992) |
+| **2002** | Ensemble Kalman filter (EnKF) applied to NWP by Hamill & Snyder; later by Houtekamer |
+| **2010s** | Hybrid ensemble-variational (En-Var) data assimilation adopted by major centres |
+| **2020s** | Machine-learning ensemble post-processing and diffusion-model ensemble generation |
+
+**How are operational perturbations chosen?**
+
+Simply adding random noise to the initial state (as we do in Section 3) is not
+optimal — it wastes ensemble members on directions that do not grow.  Real NWP centres
+use more sophisticated methods:
+
+| Method | Idea | Used by |
+|--------|------|---------|
+| **Bred vectors** | Evolve a perturbation through the model for a short time, rescale it, repeat — breeds the fast-growing modes | NCEP (1992–) |
+| **Singular vectors** | Linear algebra: find the perturbation that grows the most over a chosen optimisation period | ECMWF (1992–) |
+| **Ensemble Kalman filter (EnKF)** | Use the ensemble itself as the background-error covariance in data assimilation | Many regional centres |
+| **Stochastic physics** | Add random noise to the model tendencies to represent model uncertainty | ECMWF (2009–), most major centres |
+
+**ECMWF EPS at a glance (2024):**
+- **51 members** (1 control + 50 perturbed)
+- **18 km horizontal resolution**, 137 vertical levels
+- **15-day** deterministic-quality medium-range, **46-day** (weekly) extended range
+- Monthly and seasonal long-range ensemble products
+- Serves as the backbone of probabilistic weather warnings worldwide
+
+The next section lets you explore the same core principles with an idealised
+Lorenz-system ensemble.
+""")
 
 
 # ===========================================================================
@@ -636,11 +900,17 @@ analysis uncertainty.
 
 ### What the ensemble tells us
 
-The **ensemble mean** is a better point forecast than any single member.
+The **ensemble mean** $\bar X(t) = \frac{1}{N}\sum_{i=1}^N X_i(t)$ is a better
+point forecast than any single member, because it averages out the component of
+uncertainty that is purely random across members.
+
 The **ensemble spread** — the RMS standard deviation across members — is a
-direct measure of forecast uncertainty.
+direct measure of forecast uncertainty:
 
 $$\sigma_\text{spread}(t) = \sqrt{\frac{1}{N}\sum_{i=1}^{N}\left|X_i(t) - \bar X(t)\right|^2}$$
+
+When the ensemble spread equals the error of the ensemble mean against the truth,
+the ensemble is said to be **reliable** (well-calibrated).
 
 Three regimes are marked on the spread plot:
 
@@ -661,6 +931,17 @@ the forecast has no skill.
 The dashed red line marks the attractor diameter.  The coloured shading shows the
 three predictability regimes.  The x-position of the 🟢→🟠 transition is the
 **predictability horizon**.
+
+### Why starting location matters
+
+The Lorenz attractor is not uniformly chaotic.  Near the **lobe centres**, trajectories
+make several loops on the same lobe before switching — a relatively coherent phase.
+Near the **saddle point** at the origin, the unstable manifold has very large curvature
+and small perturbations grow much faster.  Near **lobe transitions**, trajectories
+are about to switch lobes — which one they go to becomes sensitive to tiny perturbations.
+
+This **flow-dependent predictability** is why modern NWP systems compute a fresh
+ensemble every 6 hours: the predictability horizon changes with the weather pattern.
 """),
 
         mo.callout(
@@ -679,11 +960,15 @@ three predictability regimes.  The x-position of the 🟢→🟠 transition is t
 
 3. Fix lead time = 15.  Slide **perturbation size** from 10⁻⁶ → 10⁻¹.
    Does reducing δ₀ by one decade give you a proportionally longer horizon?
-   (It shouldn't — why not?)
+   (It shouldn't — why not?  Hint: finite-time vs infinite-time Lyapunov exponents.)
 
 4. Fix lead time = 15 and δ₀ = 10⁻⁴.  Compare **N = 5** vs **N = 50**.
    Which gives a smoother, more reliable spread estimate?
-   ECMWF uses 51 members — does that seem justified?
+   At what N does the curve look "trustworthy"?
+
+5. *Bonus:* Set N = 50, δ₀ = 10⁻⁴, location = *Chaotic lobe transition*.
+   Is the predictability horizon shorter or longer than the predictable region?
+   Can you explain this in terms of the local Lyapunov exponent?
 """),
             kind="neutral",
         ),
@@ -701,11 +986,35 @@ three predictability regimes.  The x-position of the 🟢→🟠 transition is t
                 f"δ₀ = 10^{perturb_exp.value:.1f} &nbsp;·&nbsp; "
                 f"T = {_T} MTU  \n"
                 f"Predictability horizon (spread > 10 %): **t ≈ {_t10:.1f} MTU**  \n"
+                f"Full saturation (spread > 90 %): **t ≈ {_t90:.1f} MTU**  \n"
                 f"Final saturation: **{_final_sat:.0%}** of attractor size  \n"
                 f"{_regime}"
             ),
             kind=_ck,
         ),
+
+        mo.md(r"""
+### Ensemble spread vs. ensemble mean error
+
+A fundamental result from ensemble theory is that a **perfectly calibrated** ensemble
+satisfies:
+
+$$\langle \sigma^2_\text{spread} \rangle = \langle \epsilon^2_\text{mean} \rangle$$
+
+where $\epsilon_\text{mean} = |\bar X - X_\text{truth}|$ is the error of the ensemble mean
+and angle brackets denote averages over many forecasts.
+
+In practice, most NWP ensembles are **underdispersive** — spread is smaller than error —
+because:
+
+1. The initial perturbations do not fully sample the true analysis error
+2. Model error is not fully represented
+3. Ensemble size $N$ is finite
+
+Underdispersion means the ensemble is **overconfident**: it claims more certainty than
+it actually has.  Calibration techniques (inflation, rank histogram adjustment) correct
+for this in post-processing.
+"""),
     ])
 
 
@@ -742,10 +1051,31 @@ The extra predictable time gained is
 
 $$\Delta t = \frac{\ln 10}{\lambda} \approx \frac{2.3}{0.35\;\text{day}^{-1}} \approx 6.5\;\text{days}$$
 
-A factor-of-10 improvement in observational accuracy buys only about 6 extra days.
-A factor of 100 improvement (two decades) buys only 13 extra days.
+A factor-of-10 improvement in observational accuracy buys only about **6.5 extra days**.
+A factor of 100 improvement (two decades) buys only **13 extra days**.
 This logarithmic ceiling means that the atmospheric predictability limit of
-≈ 2–3 weeks is fundamental, **not** a consequence of inadequate technology.
+≈ 2–3 weeks is **fundamental, not a consequence of inadequate technology**.
+
+This has major implications for how we invest in observational infrastructure.
+Each successive decade of improvement in $\delta_0$ yields the same fixed bonus $\Delta t$,
+so the return (in days of skill) on a factor-of-10 investment decreases as skill improves.
+
+### Historical skill improvement at ECMWF
+
+ECMWF has tracked forecast skill continuously since 1980.  The 500 hPa geopotential
+anomaly correlation (AC) score measures how well the forecast pattern matches the verifying
+analysis.  A score of 0.6 is a conventional threshold for "useful" forecasting.
+
+| Era | 500 hPa AC = 0.6 reached at... |
+|-----|-------------------------------|
+| 1980 | ≈ 5 days (Northern Hemisphere) |
+| 1990 | ≈ 7 days |
+| 2000 | ≈ 8 days |
+| 2010 | ≈ 9 days |
+| 2020 | ≈ 9–10 days |
+
+The slowing rate of improvement is consistent with the **logarithmic limit** imposed
+by SDIC: each decade of forecast improvement costs an exponentially greater effort.
 
 ### Predictability of the second kind
 
@@ -757,7 +1087,17 @@ greenhouse-gas concentration or sea-surface temperature).
 In the Lorenz system, individual trajectories become unpredictable after ≈ 5–8 MTU,
 but if you change $\rho$ (the forcing parameter), the *time-mean* of $X$ shifts
 systematically — and that shift can be predicted even when individual trajectories
-cannot.  This is the mathematical analogue of the climate-vs-weather distinction:
+cannot.  This is the mathematical analogue of the climate-vs-weather distinction.
+
+**Examples of second-kind predictability in the real atmosphere:**
+
+| Phenomenon | Typical lead time | Mechanism |
+|------------|------------------|-----------|
+| El Niño / La Niña (ENSO) | 6–18 months | Slow ocean-atmosphere coupling |
+| Monsoon onset | 2–4 weeks | Land–sea thermal contrast |
+| Stratospheric sudden warmings | 2–3 weeks | Wave-mean-flow interaction |
+| Arctic Oscillation | 10–20 days | Stratosphere-troposphere coupling |
+| Long-term climate change | Decades–centuries | Radiative forcing from GHGs |
 
 | Predictability type | Question asked | Chaotic limit applies? |
 |---------------------|----------------|----------------------|
@@ -788,6 +1128,12 @@ not from the butterfly effect.
 4. **Improving observations has diminishing returns:**
    Each decade of improvement in $\delta_0$ buys only $\ln(10)/\lambda$ extra days.
    For the atmosphere that is ≈ 6.5 days per decade of observational improvement.
+
+5. **Flow-dependent predictability matters:**
+   Not all weather patterns are equally predictable.  Some synoptic situations
+   (strong blocking, active MJO) are more predictable than others (rapidly developing
+   extratropical cyclones, post-frontal convection).  Ensemble spread is the
+   operational estimate of this situation-dependent uncertainty.
 """),
             kind="info",
         ),
@@ -847,7 +1193,7 @@ Fix lead time = 15 MTU and δ₀ = 10⁻⁴.  Compare N = 5 vs N = 50.
 
 ---
 
-**Q4 — Quantitative connection to the real atmosphere** *(Section 2 & 4)*
+**Q4 — Quantitative connection to the real atmosphere** *(Sections 2 & 4)*
 
 The error e-folding time in L63 is ≈ 0.8 MTU ≈ 4 days.
 ECMWF achieves useful skill to ≈ 10 days.
@@ -885,6 +1231,67 @@ Watch the ensemble saturate — individual trajectories become completely uncorr
 """),
 
     ])
+
+
+# ===========================================================================
+# MARKDOWN CELL — Further reading and references
+# ===========================================================================
+@app.cell
+def cell_further_reading(mo):
+    return mo.md(r"""
+---
+## 📚 Further Reading
+
+### Original papers
+
+- **Lorenz, E. N. (1963)**. *Deterministic nonperiodic flow.*
+  Journal of the Atmospheric Sciences, 20(2), 130–141.
+  The founding paper.  Remarkably readable for a mathematical landmark.
+
+- **Lorenz, E. N. (1965)**. *A study of the predictability of a 28-variable atmospheric model.*
+  Tellus, 17(3), 321–333.
+  First estimate of the atmospheric predictability limit.
+
+- **Lorenz, E. N. (1975)**. *Climatic predictability.*
+  In: *The Physical Basis of Climate and Climate Modelling*, GARP Publication Series No. 16, 132–136.
+  Introduces the distinction between predictability of the first and second kinds.
+
+- **Epstein, E. S. (1969)**. *Stochastic dynamic prediction.*
+  Tellus, 21(6), 739–759.
+  The first formal ensemble forecasting proposal.
+
+- **Palmer, T. N. (2000)**. *Predicting uncertainty in forecasts of weather and climate.*
+  Reports on Progress in Physics, 63(2), 71.
+  Excellent review connecting chaos theory to operational NWP.
+
+### Books
+
+- **Lorenz, E. N. (1993)**. *The Essence of Chaos.*
+  University of Washington Press.
+  Lorenz's own account, written for a general audience.  Highly recommended.
+
+- **Gleick, J. (1987)**. *Chaos: Making a New Science.*
+  Viking Penguin.
+  Popular science account of the chaos revolution; contains the Lorenz story.
+
+- **Palmer, T. N. & Hagedorn, R. (Eds.) (2006)**. *Predictability of Weather and Climate.*
+  Cambridge University Press.
+  Comprehensive graduate-level treatment of ensemble methods and predictability theory.
+
+- **Kalnay, E. (2003)**. *Atmospheric Modelling, Data Assimilation and Predictability.*
+  Cambridge University Press.
+  Standard NWP textbook; Chapter 6 covers ensemble forecasting in depth.
+
+### Online resources
+
+- [ECMWF Ensemble Prediction System documentation](https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model/ensemble-forecasts)
+- [The Lorenz attractor — interactive 3-D (Paul Bourke)](http://paulbourke.net/fractals/lorenz/)
+- [Chaos and Dynamical Systems (Santa Fe Institute, free course)](https://complexity.santa-fe.edu)
+
+---
+*Notebook by Aneesh C. Subramanian — FERS Summer School 2026.*
+*Built with [marimo](https://marimo.io), [NumPy](https://numpy.org), [SciPy](https://scipy.org), [Plotly](https://plotly.com).*
+""")
 
 
 if __name__ == "__main__":
