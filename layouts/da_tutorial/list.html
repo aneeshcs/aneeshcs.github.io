@@ -1,0 +1,249 @@
+{{ define "main" }}
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.da-wrap {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  background: linear-gradient(160deg, #0a1f3a 0%, #0d3348 50%, #061e30 100%);
+  color: #e2e8f0;
+  padding: 3rem 1.5rem 4rem;
+  font-family: "Inter var", "Inter", system-ui, sans-serif;
+}
+.da-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.da-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.da-hero h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #5eead4;
+  margin-bottom: 0.75rem;
+}
+.da-hero p {
+  font-size: 1rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.da-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+.da-card {
+  background: rgba(8, 20, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+.da-card:hover {
+  border-color: #14b8a6;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(20, 184, 166, 0.15);
+}
+.da-tag {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #14b8a6;
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  border-radius: 4px;
+  padding: 2px 9px;
+  display: inline-block;
+  width: fit-content;
+}
+.da-card h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.3;
+  margin: 0;
+}
+.da-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  flex-grow: 1;
+  margin: 0;
+}
+.da-eq {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  color: #5eead4;
+  background: rgba(20, 184, 166, 0.06);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  line-height: 1.5;
+}
+.da-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.da-highlights li {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.5;
+  margin: 0;
+}
+.da-highlights li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #14b8a6;
+  font-size: 0.6rem;
+  top: 0.25rem;
+}
+.da-btn-link {
+  display: inline-block;
+  text-align: center;
+  padding: 0.6rem 1.3rem;
+  background: #0f766e;
+  color: #ccfbf1;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.da-btn-link:hover {
+  background: #14b8a6;
+  color: #fff;
+}
+.da-coming-soon {
+  display: inline-block;
+  text-align: center;
+  padding: 0.6rem 1.3rem;
+  background: rgba(255,255,255,0.05);
+  color: #475569;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-style: italic;
+  align-self: flex-start;
+  margin-top: auto;
+  cursor: default;
+}
+.da-footer-note {
+  margin-top: 3.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.8;
+}
+.da-footer-note a {
+  color: #475569;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.da-footer-note a:hover { color: #5eead4; }
+
+@media (max-width: 820px) {
+  .da-cards { grid-template-columns: 1fr; }
+  .da-hero h1 { font-size: 1.6rem; }
+}
+</style>
+
+<div class="da-wrap">
+  <div class="da-inner">
+
+    <div class="da-hero">
+      <h1>Data Assimilation</h1>
+      <p>Interactive tutorials on combining dynamical models with observations to estimate
+      the true state of a chaotic system. Each notebook is self-contained and runs entirely
+      in your browser via WebAssembly — no installation required.</p>
+    </div>
+
+    <div class="da-cards">
+
+      <div class="da-card">
+        <span class="da-tag">Variational &amp; Ensemble DA</span>
+        <h2>3DVAR, 4DVAR &amp; Ensemble Kalman Filter on Lorenz 63</h2>
+        <p class="da-desc">A twin-experiment walkthrough of three foundational data assimilation
+        algorithms on the chaotic Lorenz 63 system. Starting from a perturbed initial condition,
+        synthetic observations are assimilated to recover the true trajectory — illustrating
+        how each algorithm exploits the model and observations differently.</p>
+        <div class="da-eq">𝒥(x) = ½(x−xᵇ)ᵀ B⁻¹(x−xᵇ) + ½(y−Hx)ᵀ R⁻¹(y−Hx)</div>
+        <ul class="da-highlights">
+          <li>3DVAR: Tikhonov least-squares analysis at a single time</li>
+          <li>4DVAR: time-window variational assimilation (BPTT for physics)</li>
+          <li>EnKF: flow-dependent ensemble Kalman filter with inflation</li>
+          <li>Reliability diagrams: ensemble spread vs. analysis error</li>
+          <li>Observation frequency sensitivity for all three methods</li>
+        </ul>
+        <a href="/da_tutorial/tutorial.html" class="da-btn-link" target="_blank">▶ Open Notebook</a>
+      </div>
+
+      <div class="da-card">
+        <span class="da-tag">Hybrid ML–DA</span>
+        <h2>Neural Network Emulators in the DA Loop</h2>
+        <p class="da-desc">Replacing or augmenting the dynamical forecast model with a neural
+        network emulator trained on ensemble trajectories. Explores how differentiable emulators
+        enable gradient-based 4DVAR without a hand-coded adjoint, and how model error affects
+        the analysis cycle.</p>
+        <div class="da-eq">∂𝒥/∂x₀ = M* [Σₖ Hᵀ R⁻¹(yₖ − Hxₖ)]</div>
+        <ul class="da-highlights">
+          <li>LSTM / MLP surrogate for the Lorenz 96 model</li>
+          <li>Automatic differentiation through the emulator for 4DVAR</li>
+          <li>Hybrid physics + ML covariance estimation</li>
+          <li>Sensitivity to emulator bias and ensemble size</li>
+        </ul>
+        <span class="da-coming-soon">Coming soon</span>
+      </div>
+
+      <div class="da-card">
+        <span class="da-tag">Score-based DA</span>
+        <h2>Diffusion Models as Data Assimilation Priors</h2>
+        <p class="da-desc">Score-based generative models (diffusion / flow-matching) can encode
+        complex, non-Gaussian background error distributions learned from model climatology.
+        This tutorial replaces the Gaussian 𝐁 matrix with a learned score function and
+        samples the posterior via Langevin dynamics.</p>
+        <div class="da-eq">xₜ₋₁ = xₜ + δ∇ₓ log p(xₜ) + √(2δ) ε</div>
+        <ul class="da-highlights">
+          <li>Score matching on Lorenz 96 climatological ensembles</li>
+          <li>Posterior sampling with observation conditioning</li>
+          <li>Comparison with Gaussian EnKF in non-Gaussian regimes</li>
+          <li>Scalability to higher-dimensional state spaces</li>
+        </ul>
+        <span class="da-coming-soon">Coming soon</span>
+      </div>
+
+    </div>
+
+    <div class="da-footer-note">
+      Built with <a href="https://marimo.io" target="_blank">marimo</a> &amp;
+      <a href="https://numpy.org" target="_blank">NumPy</a> ·
+      Runs in-browser via <a href="https://pyodide.org" target="_blank">Pyodide</a> WebAssembly ·
+      Tutorial developed for the
+      <a href="https://fers.uw.edu" target="_blank">FERS Summer School</a>
+      on AI and ML for Earth System Modeling ·
+      <a href="https://github.com/aneeshcs/data-assimilation-tutorial" target="_blank">Source on GitHub</a>
+    </div>
+
+  </div>
+</div>
+{{ end }}
