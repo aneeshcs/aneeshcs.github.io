@@ -100,7 +100,7 @@ def _():
     )
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(np, solve_ivp):
     def lorenz63(t, state, sigma=10.0, rho=28.0, beta=8.0 / 3.0):
         x, y, z = state
@@ -194,7 +194,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(integrate_l63, np, rng):
     # ── Experiment parameters ──────────────────────────────────────────────
     DT_MODEL  = 0.01          # model time step (non-dimensional)
@@ -306,7 +306,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(B, B_inv, DT_MODEL, R_inv, integrate_l63, np, obs_times_idx, observations, t_assim, truth, x_bg):
     def var3d_cost_and_grad(x, xb, B_inv, y_obs, H, R_inv):
         """3DVAR cost function J and its gradient ∇J."""
@@ -467,7 +467,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(B_inv, DT_MODEL, R_inv, integrate_l63, np, obs_times_idx, observations, t_assim, truth, x_bg):
     def _linspace_seg(t_end, dt):
         n = max(2, int(round(t_end / dt)) + 1)
@@ -667,7 +667,7 @@ def _(mo):
     return N_ens, inflation
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     B_diag,
     DT_MODEL,
@@ -926,7 +926,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     B_diag,
     B_inv,
