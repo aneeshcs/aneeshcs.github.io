@@ -444,11 +444,11 @@ def _(mo):
 
         where $\mathbf{x}_k = \mathcal{M}_{0 \to t_k}(\mathbf{x}_0)$.
 
-        **Gradient** requires the **adjoint model** $\mathcal{M}^*$ (backward integration):
+        **Gradient** requires the **adjoint model** $\mathcal{M}^{\ast}$ (backward integration):
 
         $$
-        \nabla_{\mathbf{x}_0}\mathcal{J} = \mathbf{B}^{-1}(\mathbf{x}_0 - \mathbf{x}_0^b)
-        + \mathcal{M}^*_{t_N \to t_0}\left[
+        \nabla_{\mathbf{x}_0}\mathcal{J} = \mathbf{B}^{-1}(\mathbf{x}_0 - \mathbf{x}_0^b) +
+        \mathcal{M}^{\ast}_{t_N \to t_0}\left[
         \sum_k H^T \mathbf{R}^{-1}(\mathbf{y}_k - H\mathbf{x}_k)\delta(t - t_k)
         \right]
         $$
@@ -657,25 +657,13 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    _slider = mo.ui.slider(start=10, stop=100, step=10, value=20, label="Ensemble size N")
-    _inflation = mo.ui.slider(start=1.0, stop=1.5, step=0.05, value=1.05,
-                              label="Inflation factor α")
-    mo.md(f"""
-    **Interactive controls** — change these and the EnKF cell below will rerun:
-
-    {_slider}
-
-    {_inflation}
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
     N_ens = mo.ui.slider(start=10, stop=100, step=10, value=20, label="Ensemble size N")
     inflation = mo.ui.slider(start=1.0, stop=1.5, step=0.05, value=1.05,
                              label="Inflation factor α")
-    mo.hstack([N_ens, inflation])
+    mo.vstack([
+        mo.md("**Interactive controls** — change these and the EnKF results below will update:"),
+        mo.hstack([N_ens, inflation]),
+    ])
     return N_ens, inflation
 
 
@@ -712,7 +700,7 @@ def _(
             # ── Forecast: advance each member from prev_idx to idx ────────
             dt_seg   = t_grid[idx] - t_grid[prev_idx]
             if dt_seg > 0:
-                t_seg = np.arange(0, dt_seg + dt, dt)
+                t_seg = np.linspace(0, dt_seg, max(2, int(round(dt_seg / dt)) + 1))
                 new_ens = np.array([
                     integrate_l63(ensemble[i], (0, dt_seg), t_seg)[-1]
                     for i in range(N)
