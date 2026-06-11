@@ -116,6 +116,13 @@
   font-size: 0.6rem;
   top: 0.25rem;
 }
+.da-btn-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
 .da-btn-link {
   display: inline-block;
   text-align: center;
@@ -127,12 +134,28 @@
   font-size: 0.9rem;
   font-weight: 500;
   transition: background 0.2s ease;
-  align-self: flex-start;
-  margin-top: auto;
 }
 .da-btn-link:hover {
   background: #14b8a6;
   color: #fff;
+}
+.da-btn-edit {
+  display: inline-block;
+  text-align: center;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: #5eead4;
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.da-btn-edit:hover {
+  background: rgba(94, 234, 212, 0.08);
+  border-color: #5eead4;
+  color: #ccfbf1;
 }
 .da-coming-soon {
   display: inline-block;
@@ -195,7 +218,10 @@
           <li>Reliability diagrams: ensemble spread vs. analysis error</li>
           <li>Observation frequency sensitivity for all three methods</li>
         </ul>
-        <a href="/da_tutorial/tutorial.html" class="da-btn-link" target="_blank">▶ Open Notebook</a>
+        <div class="da-btn-row">
+          <a href="/da_tutorial/tutorial.html" class="da-btn-link" target="_blank">▶ View Notebook</a>
+          <a href="/da_tutorial/tutorial_edit.html" class="da-btn-edit" target="_blank">✎ Edit &amp; Run</a>
+        </div>
       </div>
 
       <div class="da-card">
