@@ -10,32 +10,31 @@
     background: #111827;
   }
 
-  /* Group section headers */
+  /* Group section headers — no border */
   .team-group-header {
     margin: 2.5rem 0 1.25rem;
     font-size: 1.3rem;
     font-weight: 700;
     color: #2d3748;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.4rem;
     text-align: center;
   }
   .dark .team-group-header {
     color: #e2e8f0;
-    border-bottom-color: #374151;
   }
 
-  /* Responsive grid — centered so partial rows aren't left-aligned */
+  /* Flexbox row — reliably centers partial rows unlike auto-fill grid */
   .team-people-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 200px));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem 1.5rem;
+    gap: 2rem;
     margin-bottom: 1.5rem;
   }
 
-  /* Person card — no background, no border, no shadow */
+  /* Person card — fixed width so flex centering works */
   .team-person-card {
+    flex: 0 0 190px;
+    width: 190px;
     text-align: center;
   }
 
