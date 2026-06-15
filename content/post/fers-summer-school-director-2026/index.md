@@ -5,7 +5,7 @@ summary: "Prof. Aneesh Subramanian is serving as Co-Director of the FERS Summer 
 tags: []
 ---
 
-**Prof. Aneesh Subramanian** is serving as Co-Director — alongside **Prof. Will Chapman** (National Center for Atmospheric Research) — of the **FERS Summer School on AI and Machine Learning for Earth System Modeling and Prediction**, currently underway June 8–19, 2026 in Bertinoro, Italy. The school is organized by the CMCC Foundation's **Future Earth Research School (FERS)**.
+**Prof. Aneesh Subramanian** is serving as Co-Director — alongside **Prof. Will Chapman** (University of Colorado Boulder) — of the **FERS Summer School on AI and Machine Learning for Earth System Modeling and Prediction**, currently underway June 8–19, 2026 in Bertinoro, Italy. The school is organized by the CMCC Foundation's **Future Earth Research School (FERS)**.
 
 ## About the School
 
@@ -27,7 +27,7 @@ The school brings together an internationally diverse group of scientists and pr
 
 | Faculty Member | Institution |
 |---|---|
-| Will Chapman | National Center for Atmospheric Research (NCAR) |
+| Will Chapman | University of Colorado Boulder |
 | Tom Beucler | University of Lausanne |
 | Annalisa Bracco | CMCC Foundation |
 | Donatello Elia & Marco De Carlo | CMCC Foundation |
