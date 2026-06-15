@@ -1,11 +1,10 @@
 {{/* Hugo Blox: Team Showcase — local override */}}
-{{/* Circular photos + name; full details open in a modal on click. */}}
+{{/* Inline display: circular photo, name, role, social icons, bio. No modal. */}}
 
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 {{ $show_social := $block.design.show_social | default true }}
 {{ $show_role := $block.design.show_role | default true }}
-{{ $show_organizations := $block.design.show_organizations | default false }}
 
 {{ $title := $block.content.title | emojify | $page.RenderString }}
 {{ $subtitle := $block.content.subtitle | emojify | $page.RenderString }}
@@ -14,15 +13,15 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
   {{/* Section header */}}
-  <div class="flex flex-col items-center text-center mb-12">
+  <div class="flex flex-col items-center text-center mb-10">
     {{ with $title }}
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">{{ . }}</h2>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">{{ . }}</h2>
     {{ end }}
     {{ with $subtitle }}
-    <p class="mt-4 text-xl text-gray-600 dark:text-gray-400">{{ . }}</p>
+    <p class="mt-3 text-xl text-gray-600 dark:text-gray-400">{{ . }}</p>
     {{ end }}
     {{ with $text }}
-    <div class="mt-6 prose prose-lg lg:prose-xl dark:prose-invert max-w-3xl">{{ . }}</div>
+    <div class="mt-4 prose prose-lg dark:prose-invert max-w-3xl">{{ . }}</div>
     {{ end }}
   </div>
 
@@ -47,54 +46,64 @@
 
       {{ if $groupProfiles }}
         {{ if gt (len $groups) 1 }}
-        <div class="team-group-header">
-          <h3>{{ $group | markdownify }}</h3>
-        </div>
+        <h2 class="team-group-header">{{ $group | markdownify }}</h2>
         {{ end }}
 
-        <div class="team-circles-row">
+        <div class="team-people-grid">
           {{ range $profile := $groupProfiles }}
             {{ $link := printf "/authors/%s/" $profile.slug }}
-            <div class="team-circle-item" tabindex="0" role="button" aria-label="View details for {{ $profile.title }}">
-              <div class="circle-photo">
-                {{ if $profile.avatar }}
-                  {{ $img := $profile.avatar.Fill "300x300 Center webp" }}
-                  <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy">
-                {{ else }}
-                  <div class="circle-placeholder"></div>
-                {{ end }}
-              </div>
-              <p class="circle-name">{{ $profile.title }}</p>
+            <div class="team-person-card" role="article">
 
-              {{/* Hidden modal payload — rendered at build time, cloned into modal on click */}}
-              <template class="team-modal-data">
-                {{ if $profile.avatar }}
-                  {{ $img := $profile.avatar.Fill "300x300 Center webp" }}
-                  <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" class="modal-avatar">
-                {{ end }}
-                <h3 class="modal-name">{{ $profile.title }}</h3>
-                {{ if $show_role }}{{ with $profile.role }}<p class="modal-role">{{ . }}</p>{{ end }}{{ end }}
-                {{ with $profile.bio }}<p class="modal-bio">{{ . }}</p>{{ end }}
-                {{ if and $show_social $profile.links }}
-                <div class="modal-social">
-                  {{ range $profile.links }}
-                    {{ $l := .url | default .link }}
-                    {{ $scheme := (urls.Parse $l).Scheme }}
-                    {{ $target := "" }}
-                    {{ if not $scheme }}
-                      {{ $l = (.url | default .link) | relLangURL }}
-                      {{ if eq (path.Ext $l) ".pdf" }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
-                    {{ else if in (slice "http" "https") $scheme }}
-                      {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-                    {{ end }}
-                    <a href="{{ $l | safeURL }}" {{ $target | safeHTMLAttr }} aria-label="{{ .icon }}" {{ with .label }}title="{{ . }}"{{ end }} class="modal-social-link">
-                      {{ partial "functions/get_icon" (dict "name" .icon "attributes" "class=\"w-5 h-5\"") }}
-                    </a>
+              {{/* Avatar */}}
+              {{ if $profile.avatar }}
+                {{ $img := $profile.avatar.Fill "320x320 Center webp" }}
+                <a href="{{ $link }}">
+                  <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy" class="team-person-avatar">
+                </a>
+              {{ else }}
+                <a href="{{ $link }}">
+                  <div class="team-person-avatar team-person-avatar--placeholder"></div>
+                </a>
+              {{ end }}
+
+              {{/* Name + optional pronouns */}}
+              <h3 class="team-person-name">
+                <a href="{{ $link }}">{{ $profile.title }}</a>
+                {{ with $profile.pronouns }}<span class="team-person-pronouns">({{ . }})</span>{{ end }}
+              </h3>
+
+              {{/* Role */}}
+              {{ if $show_role }}{{ with $profile.role }}
+              <h4 class="team-person-role">{{ . }}</h4>
+              {{ end }}{{ end }}
+
+              {{/* Social links */}}
+              {{ if and $show_social $profile.links }}
+              <ul class="team-person-links">
+                {{ range $profile.links }}
+                  {{ $l := .url | default .link }}
+                  {{ $scheme := (urls.Parse $l).Scheme }}
+                  {{ $target := "" }}
+                  {{ if not $scheme }}
+                    {{ $l = (.url | default .link) | relLangURL }}
+                    {{ if eq (path.Ext $l) ".pdf" }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+                  {{ else if in (slice "http" "https") $scheme }}
+                    {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
                   {{ end }}
-                </div>
+                  <li>
+                    <a href="{{ $l | safeURL }}" {{ $target | safeHTMLAttr }} aria-label="{{ .icon }}" {{ with .label }}title="{{ . }}"{{ end }} class="team-person-link">
+                      {{ partial "functions/get_icon" (dict "name" .icon "attributes" "class=\"w-4 h-4\"") }}
+                    </a>
+                  </li>
                 {{ end }}
-                <a href="{{ $link }}" class="modal-profile-link">View full profile →</a>
-              </template>
+              </ul>
+              {{ end }}
+
+              {{/* Bio */}}
+              {{ with $profile.bio }}
+              <p class="team-person-bio">{{ . }}</p>
+              {{ end }}
+
             </div>
           {{ end }}
         </div>
@@ -102,60 +111,60 @@
     {{ end }}
   {{ else }}
     {{ $allProfiles = sort $allProfiles "title" }}
-    <div class="team-circles-row">
+    <div class="team-people-grid">
       {{ range $profile := $allProfiles }}
         {{ $link := printf "/authors/%s/" $profile.slug }}
-        <div class="team-circle-item" tabindex="0" role="button" aria-label="View details for {{ $profile.title }}">
-          <div class="circle-photo">
-            {{ if $profile.avatar }}
-              {{ $img := $profile.avatar.Fill "300x300 Center webp" }}
-              <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy">
-            {{ else }}
-              <div class="circle-placeholder"></div>
-            {{ end }}
-          </div>
-          <p class="circle-name">{{ $profile.title }}</p>
+        <div class="team-person-card" role="article">
 
-          <template class="team-modal-data">
-            {{ if $profile.avatar }}
-              {{ $img := $profile.avatar.Fill "300x300 Center webp" }}
-              <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" class="modal-avatar">
-            {{ end }}
-            <h3 class="modal-name">{{ $profile.title }}</h3>
-            {{ if $show_role }}{{ with $profile.role }}<p class="modal-role">{{ . }}</p>{{ end }}{{ end }}
-            {{ with $profile.bio }}<p class="modal-bio">{{ . }}</p>{{ end }}
-            {{ if and $show_social $profile.links }}
-            <div class="modal-social">
-              {{ range $profile.links }}
-                {{ $l := .url | default .link }}
-                {{ $scheme := (urls.Parse $l).Scheme }}
-                {{ $target := "" }}
-                {{ if not $scheme }}
-                  {{ $l = (.url | default .link) | relLangURL }}
-                  {{ if eq (path.Ext $l) ".pdf" }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
-                {{ else if in (slice "http" "https") $scheme }}
-                  {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-                {{ end }}
-                <a href="{{ $l | safeURL }}" {{ $target | safeHTMLAttr }} aria-label="{{ .icon }}" {{ with .label }}title="{{ . }}"{{ end }} class="modal-social-link">
-                  {{ partial "functions/get_icon" (dict "name" .icon "attributes" "class=\"w-5 h-5\"") }}
-                </a>
+          {{ if $profile.avatar }}
+            {{ $img := $profile.avatar.Fill "320x320 Center webp" }}
+            <a href="{{ $link }}">
+              <img src="{{ $img.RelPermalink }}" alt="{{ $profile.title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy" class="team-person-avatar">
+            </a>
+          {{ else }}
+            <a href="{{ $link }}">
+              <div class="team-person-avatar team-person-avatar--placeholder"></div>
+            </a>
+          {{ end }}
+
+          <h3 class="team-person-name">
+            <a href="{{ $link }}">{{ $profile.title }}</a>
+            {{ with $profile.pronouns }}<span class="team-person-pronouns">({{ . }})</span>{{ end }}
+          </h3>
+
+          {{ if $show_role }}{{ with $profile.role }}
+          <h4 class="team-person-role">{{ . }}</h4>
+          {{ end }}{{ end }}
+
+          {{ if and $show_social $profile.links }}
+          <ul class="team-person-links">
+            {{ range $profile.links }}
+              {{ $l := .url | default .link }}
+              {{ $scheme := (urls.Parse $l).Scheme }}
+              {{ $target := "" }}
+              {{ if not $scheme }}
+                {{ $l = (.url | default .link) | relLangURL }}
+                {{ if eq (path.Ext $l) ".pdf" }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+              {{ else if in (slice "http" "https") $scheme }}
+                {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
               {{ end }}
-            </div>
+              <li>
+                <a href="{{ $l | safeURL }}" {{ $target | safeHTMLAttr }} aria-label="{{ .icon }}" {{ with .label }}title="{{ . }}"{{ end }} class="team-person-link">
+                  {{ partial "functions/get_icon" (dict "name" .icon "attributes" "class=\"w-4 h-4\"") }}
+                </a>
+              </li>
             {{ end }}
-            <a href="{{ $link }}" class="modal-profile-link">View full profile →</a>
-          </template>
+          </ul>
+          {{ end }}
+
+          {{ with $profile.bio }}
+          <p class="team-person-bio">{{ . }}</p>
+          {{ end }}
+
         </div>
       {{ end }}
     </div>
   {{ end }}
-
-  {{/* Shared modal — populated via JS on click */}}
-  <div id="team-modal-overlay" role="dialog" aria-modal="true">
-    <div id="team-modal-panel">
-      <button id="team-modal-close" aria-label="Close">&#x2715;</button>
-      <div id="team-modal-content"></div>
-    </div>
-  </div>
 
   {{/* Optional CTA */}}
   {{ with $block.content.cta }}
@@ -168,44 +177,3 @@
   {{ end }}
 
 </div>
-
-<script>
-(function () {
-  var overlay = document.getElementById('team-modal-overlay');
-  var content = document.getElementById('team-modal-content');
-  var closeBtn = document.getElementById('team-modal-close');
-  var lastFocus = null;
-
-  function openModal(item) {
-    var tmpl = item.querySelector('template.team-modal-data');
-    if (!tmpl) return;
-    content.innerHTML = '';
-    content.appendChild(document.importNode(tmpl.content, true));
-    lastFocus = item;
-    overlay.classList.add('open');
-    closeBtn.focus();
-  }
-
-  function closeModal() {
-    overlay.classList.remove('open');
-    content.innerHTML = '';
-    if (lastFocus) lastFocus.focus();
-    lastFocus = null;
-  }
-
-  document.querySelectorAll('.team-circle-item').forEach(function (item) {
-    item.addEventListener('click', function () { openModal(item); });
-    item.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(item); }
-    });
-  });
-
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closeModal();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
-  });
-}());
-</script>
