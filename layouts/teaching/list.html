@@ -1,0 +1,215 @@
+{{ define "main" }}
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.teach-wrap {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  background: linear-gradient(160deg, #0f2744 0%, #0e3d5c 50%, #082f45 100%);
+  color: #e2e8f0;
+  padding: 4rem 1.5rem 5rem;
+  font-family: "Inter var", "Inter", system-ui, sans-serif;
+}
+
+.teach-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.teach-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.teach-hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 0.9rem;
+}
+.teach-hero p {
+  font-size: 1rem;
+  color: #94a3b8;
+  line-height: 1.75;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Bookshelf row */
+.teach-shelf {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Textbook card */
+.teach-book {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 420px;
+  border-radius: 4px 10px 10px 4px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: -4px 6px 20px rgba(0,0,0,0.55), 3px 8px 28px rgba(0,0,0,0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-top: 4px solid var(--accent);
+}
+.teach-book:hover {
+  transform: translateY(-8px);
+  box-shadow: -6px 14px 36px rgba(0,0,0,0.65), 4px 16px 44px rgba(0,0,0,0.5);
+  text-decoration: none;
+}
+
+/* Cover zone */
+.teach-cover {
+  flex: 0 0 230px;
+  background: linear-gradient(160deg, var(--cover-from) 0%, var(--cover-to) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  overflow: hidden;
+  transition: filter 0.25s ease;
+}
+.teach-book:hover .teach-cover {
+  filter: brightness(1.2);
+}
+
+.teach-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.teach-equation {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.2);
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1.55;
+  word-break: break-word;
+  align-self: center;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+/* Info zone */
+.teach-info {
+  flex: 1;
+  background: #0d1f35;
+  padding: 0.9rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.teach-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+.teach-count {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.2rem;
+}
+.teach-topics {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.teach-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.42rem 0;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  border-radius: 5px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.teach-book:hover .teach-btn {
+  background: var(--accent);
+  color: #0d1f35;
+}
+
+@media (max-width: 620px) {
+  .teach-shelf { gap: 2rem; }
+  .teach-book { width: 240px; }
+  .teach-hero h1 { font-size: 1.75rem; }
+}
+</style>
+
+<div class="teach-wrap">
+  <div class="teach-inner">
+
+    <div class="teach-hero">
+      <h1>Teaching</h1>
+      <p>Interactive course modules from the Climate Processes &amp; Predictability group.
+      Each module runs entirely in your browser via WebAssembly — no installation required.</p>
+    </div>
+
+    <div class="teach-shelf">
+
+      <!-- GFD -->
+      <a href="/gfd/"
+         class="teach-book"
+         style="--accent: #7dd3fc; --cover-from: #0f2744; --cover-to: #1a4a6b;"
+         aria-label="Geophysical Fluid Dynamics course">
+        <div class="teach-cover">
+          <span class="teach-badge"
+                style="background: rgba(125,211,252,0.15); color: #7dd3fc; border: 1px solid rgba(125,211,252,0.35);">
+            PHYSICS
+          </span>
+          <div class="teach-equation">∂ω/∂t + (u·∇)ω = ν∇²ω</div>
+        </div>
+        <div class="teach-info">
+          <div>
+            <div class="teach-title">Geophysical Fluid Dynamics</div>
+            <div class="teach-count">4 interactive notebooks</div>
+            <div class="teach-topics">Convection · Turbulence · Waves</div>
+          </div>
+          <div class="teach-btn">Open course →</div>
+        </div>
+      </a>
+
+      <!-- DA Tutorial -->
+      <a href="/da_tutorial/"
+         class="teach-book"
+         style="--accent: #5eead4; --cover-from: #0a3a30; --cover-to: #0d5a48;"
+         aria-label="Data Assimilation Tutorial course">
+        <div class="teach-cover">
+          <span class="teach-badge"
+                style="background: rgba(94,234,212,0.15); color: #5eead4; border: 1px solid rgba(94,234,212,0.35);">
+            MATHEMATICS
+          </span>
+          <div class="teach-equation">x&#x2090; = x&#x1D47; + K(y &#x2212; Hx&#x1D47;)</div>
+        </div>
+        <div class="teach-info">
+          <div>
+            <div class="teach-title">Data Assimilation</div>
+            <div class="teach-count">1 active · 2 coming soon</div>
+            <div class="teach-topics">3DVAR · 4DVAR · EnKF</div>
+          </div>
+          <div class="teach-btn">Open course →</div>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</div>
+{{ end }}
