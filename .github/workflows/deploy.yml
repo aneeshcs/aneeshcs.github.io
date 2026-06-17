@@ -101,6 +101,13 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode run \
           notebooks/lorenz63_ensemble_explorer.py \
           -o static/butterfly/index.html
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
+          notebooks/da_l63_tutorial.py \
+          -o static/da_tutorial/tutorial.html
+        uvx marimo export html-wasm --sandbox --mode edit \
+          notebooks/da_l63_tutorial.py \
+          -o static/da_tutorial/tutorial_edit.html
+        rm -f static/da_tutorial/CLAUDE.md
 
     - name: Setup Pages
       id: pages
