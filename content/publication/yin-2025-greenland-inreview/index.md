@@ -11,7 +11,7 @@ authors:
 - Aneesh C. Subramanian
 - R. Datta
 - A. R. Herrington
-- D. Du
+- Danni Du
 - S. Ali
 - O. Faruque
 - J. Wang
