@@ -14,7 +14,7 @@ jobs:
 
       - name: Check links
         run: |
-          uvx linkchecker https://aneeshcs.github.io \
+          uvx linkchecker https://aneeshcs.com \
             --check-extern \
             --ignore-url "linkedin\." \
             --ignore-url "twitter\." \
