@@ -93,6 +93,9 @@ image:
 #   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
 projects: []
+
+aliases:
+  - /publication/ali-2024-arctic-inreview/
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
