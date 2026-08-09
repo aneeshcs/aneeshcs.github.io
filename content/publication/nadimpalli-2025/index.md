@@ -18,4 +18,6 @@ hugoblox:
 links:
 - name: URL
   url: http://dx.doi.org/10.1016/j.wace.2025.100771
+aliases:
+  - /publication/raju-2024-redsea-inreview/
 ---
