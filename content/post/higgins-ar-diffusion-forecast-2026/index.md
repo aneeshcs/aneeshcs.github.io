@@ -25,7 +25,7 @@ This work began during Dr. Higgins' time in the **Advanced Study Program (ASP) G
 
 ## View the Live Model
 
-While the formal manuscript is currently under peer review, the real-time model outputs are already publicly accessible:
+The formal manuscript describing this system has since been published — see our [publication announcement](/post/higgins-2026-diffusion-ensemble-published/) — and the real-time model outputs are publicly accessible:
 
 **[View the live operational forecasting system on the CW3E website](https://cw3e.ucsd.edu/ml_forecasts/#Diffusion)**
 
