@@ -1,0 +1,18 @@
+schema: "hugoblox/author/v1"
+slug: "helena-soares-barros"
+name:
+  display: "Helena Soares Barros"
+  given: "Helena"
+  family: "Soares Barros"
+  pronouns: "she/her"
+role: "PhD Student"
+bio: "Primary Advisor: Aneesh Subramanian. Incoming PhD student starting Fall 2026. BS in Applied Mathematics and Computer Science from Brown University, where she worked as a research assistant at the Department of Earth, Environmental and Planetary Sciences studying precipitation."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:helena.soaresbarros@colorado.edu"
+    label: "E-mail"
+user_groups:
+  - "PhD Students"
