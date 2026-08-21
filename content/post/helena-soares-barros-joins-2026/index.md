@@ -13,7 +13,7 @@ We are excited to welcome **Helena Soares Barros** to the group as an incoming P
 
 ## Background
 
-Helena joins us from **Brown University**, where she is completing a Bachelor of Science in **Applied Mathematics and Computer Science**. While at Brown, she worked as a research assistant in the **Department of Earth, Environmental and Planetary Sciences (DEEPS)**, contributing to research on precipitation.
+Helena joins us from **Brown University**, where she completed a Bachelor of Science in **Applied Mathematics and Computer Science**. While at Brown, she worked as a research assistant in the **Department of Earth, Environmental and Planetary Sciences (DEEPS)**, contributing to research on precipitation.
 
 Her combined background in applied math, computer science, and atmospheric research gives her a strong foundation for tackling problems at the intersection of data-driven methods and weather and climate prediction.
 
