@@ -98,9 +98,12 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/internalwaves.py \
           -o static/gfd/internalwaves.html
-        uvx marimo export html-wasm --sandbox --mode run \
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/lorenz63_ensemble_explorer.py \
-          -o static/butterfly/index.html
+          -o static/chaos/lorenz63_ensemble_explorer.html
+        uvx marimo export html-wasm --sandbox --mode edit \
+          notebooks/lorenz63_ensemble_explorer.py \
+          -o static/chaos/lorenz63_ensemble_explorer_edit.html
         uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/da_l63_tutorial.py \
           -o static/da_tutorial/tutorial.html
