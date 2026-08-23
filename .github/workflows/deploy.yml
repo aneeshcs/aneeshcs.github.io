@@ -105,6 +105,12 @@ jobs:
           notebooks/lorenz63_ensemble_explorer.py \
           -o static/chaos/lorenz63_ensemble_explorer_edit.html
         uvx marimo export html-wasm --sandbox --mode run --no-show-code \
+          notebooks/pendulum_chaos_explorer.py \
+          -o static/chaos/pendulum_chaos_explorer.html
+        uvx marimo export html-wasm --sandbox --mode edit \
+          notebooks/pendulum_chaos_explorer.py \
+          -o static/chaos/pendulum_chaos_explorer_edit.html
+        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/da_l63_tutorial.py \
           -o static/da_tutorial/tutorial.html
         uvx marimo export html-wasm --sandbox --mode edit \
