@@ -118,6 +118,10 @@ jobs:
           -o static/da_tutorial/tutorial_edit.html
         rm -f static/da_tutorial/CLAUDE.md
 
+    - name: Add chunk-load-error auto-reload handler to marimo pages
+      run: |
+        python3 scripts/patch_chunk_reload.py static/gfd/*.html static/chaos/*.html static/da_tutorial/*.html
+
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v6
