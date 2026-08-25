@@ -7,7 +7,7 @@ tags: []
 
 We are excited to welcome **Helena Soares Barros** to the group as an incoming PhD student in the Department of Atmospheric and Oceanic Sciences at CU Boulder, starting Fall 2026!
 
-![Helena Soares Barros](featured.jpg)
+<img src="featured.jpg" alt="Helena Soares Barros" width="300" style="display: block; margin: 0 auto; border-radius: 8px;">
 
 ---
 
