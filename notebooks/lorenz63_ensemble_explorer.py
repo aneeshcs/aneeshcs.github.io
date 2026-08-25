@@ -9,7 +9,6 @@
 # ///
 """
 Lorenz 63: Chaos, Predictability, and Ensemble Forecasting
-FERS Summer School 2026 — Weather & Climate Predictability
 
 Interactive tutorial notebook.
 
@@ -114,8 +113,6 @@ def ens_controls(mo):
 def display_title(mo):
     mo.md(r"""
 # 🦋 Chaos, Predictability, and Ensemble Forecasting
-
-**FERS Summer School 2026 — Weather & Climate Predictability**
 
 This tutorial accompanies the lecture on chaos and predictability in the atmosphere.
 Scroll from top to bottom and interact with each panel before
@@ -1146,7 +1143,7 @@ def cell_further_reading(mo):
   Cambridge University Press.  Standard NWP textbook; Chapter 6 covers ensembles.
 
 ---
-*Notebook by Aneesh C. Subramanian — FERS Summer School 2026.*
+*Notebook by Aneesh C. Subramanian.*
 *Built with [marimo](https://marimo.io), [NumPy](https://numpy.org), [SciPy](https://scipy.org), [Plotly](https://plotly.com).*
 """)
     return
