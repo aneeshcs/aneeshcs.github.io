@@ -3,6 +3,8 @@ title: "Welcome to the Group: Helena Soares Barros"
 date: 2026-08-21
 summary: "Helena Soares Barros joins the group as a new PhD student in Atmospheric and Oceanic Sciences this Fall, bringing a background in applied mathematics, computer science, and precipitation research from Brown University."
 tags: []
+image:
+  preview_only: true
 ---
 
 We are excited to welcome **Helena Soares Barros** to the group as an incoming PhD student in the Department of Atmospheric and Oceanic Sciences at CU Boulder, starting Fall 2026!
