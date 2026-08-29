@@ -116,7 +116,7 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode edit \
           notebooks/da_l63_tutorial.py \
           -o static/da_tutorial/tutorial_edit.html
-        rm -f static/da_tutorial/CLAUDE.md
+        rm -f static/gfd/CLAUDE.md static/chaos/CLAUDE.md static/da_tutorial/CLAUDE.md
 
     - name: Add chunk-load-error auto-reload handler to marimo pages
       run: |

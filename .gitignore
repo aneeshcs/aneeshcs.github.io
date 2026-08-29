@@ -18,6 +18,9 @@ resources/
 # Hugo stats
 hugo_stats.json
 
+# marimo local session/layout artifacts
+**/__marimo__/
+
 # Auto-generated JS config
 **/assets/jsconfig.json
 
