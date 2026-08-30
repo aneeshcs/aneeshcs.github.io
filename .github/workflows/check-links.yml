@@ -17,10 +17,16 @@ jobs:
           # The default text logger prints each broken link to the job log;
           # "--output failures" would write them to a local data file instead,
           # leaving the log empty when the job fails.
+          # doi.org and journal publishers (AMS, AGU/Wiley) block automated
+          # crawlers, so their links always fail from CI even when valid in a
+          # browser. DOI validity is covered by the monthly publication check.
           uvx linkchecker https://aneeshcs.com \
             --check-extern \
             --no-warnings \
             --ignore-url "linkedin\." \
             --ignore-url "twitter\." \
             --ignore-url "x\.com" \
+            --ignore-url "doi\.org" \
+            --ignore-url "onlinelibrary\.wiley\.com" \
+            --ignore-url "journals\.ametsoc\.org" \
             --output text

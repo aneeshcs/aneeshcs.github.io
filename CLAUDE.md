@@ -70,8 +70,16 @@ uvx linkchecker https://aneeshcs.com --check-extern \
   --ignore-url "linkedin\." \
   --ignore-url "twitter\." \
   --ignore-url "x\.com" \
+  --ignore-url "doi\.org" \
+  --ignore-url "onlinelibrary\.wiley\.com" \
+  --ignore-url "journals\.ametsoc\.org" \
   --output text
 ```
+
+DOI and publisher links (doi.org, AMS, AGU/Wiley) are excluded because those
+hosts block automated crawlers and always fail from scripts even when the
+links work in a browser; DOI validity is covered by the monthly publication
+check instead.
 
 **What to look for:**
 
