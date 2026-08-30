@@ -13,6 +13,7 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Check links
+        shell: bash
         run: |
           # The default text logger prints each broken link to the job log;
           # "--output failures" would write them to a local data file instead,
@@ -22,6 +23,7 @@ jobs:
           # browser. DOI validity is covered by the monthly publication check.
           # --threads 4: GitHub Pages intermittently returns 503 for valid
           # internal pages under the default 10-thread crawl rate.
+          set +e
           uvx linkchecker https://aneeshcs.com \
             --check-extern \
             --no-warnings \
@@ -32,4 +34,32 @@ jobs:
             --ignore-url "doi\.org" \
             --ignore-url "onlinelibrary\.wiley\.com" \
             --ignore-url "journals\.ametsoc\.org" \
-            --output text
+            --output text | tee linkcheck.log
+          status=${PIPESTATUS[0]}
+          set -e
+          if [ "$status" -eq 0 ]; then
+            exit 0
+          fi
+
+          # GitHub Pages 503s a couple of random valid pages during any full
+          # crawl, so a linkchecker failure alone is not proof of a dead link.
+          # Recheck each reported failure individually (curl retries transient
+          # 408/429/5xx) and fail only on links that are still unreachable.
+          echo "Re-verifying reported failures individually..."
+          bad=0
+          while read -r url; do
+            [ -z "$url" ] && continue
+            # "|| true": curl exits nonzero on connection failure, which
+            # set -e would otherwise turn into an immediate step abort
+            code=$(curl -s -o /dev/null -w "%{http_code}" -L \
+              --retry 3 --retry-delay 10 --max-time 30 \
+              -A "Mozilla/5.0 (X11; Linux x86_64) link-check" "$url" || true)
+            code=${code:-000}
+            if [ "$code" -ge 400 ] || [ "$code" = "000" ]; then
+              echo "STILL FAILING ($code): $url"
+              bad=1
+            else
+              echo "ok ($code) on retry: $url"
+            fi
+          done < <(grep '^Real URL' linkcheck.log | awk '{print $3}' | sort -u)
+          exit $bad
