@@ -1,4 +1,4 @@
-# DESIGN.md — Climate Processes & Predictability Website
+# DESIGN.md — CHAOS & Predictability Website
 
 Design reference for **https://aneeshcs.com**. Audience: site owner returning after a long break, or a student/RA making updates. Covers layout boundaries, component rules, academic tone, and maintenance conventions.
 
@@ -8,8 +8,8 @@ Design reference for **https://aneeshcs.com**. Audience: site owner returning af
 
 | Property | Value |
 |---|---|
-| Full name | Climate Processes & Predictability @ CUB |
-| Tagline | Climate Processes and Predictability @ CU Boulder |
+| Full name | CHAOS & Predictability @ CUB |
+| Tagline | CHAOS and Predictability @ CU Boulder |
 | Description | Our group aims to advance the fundamental understanding of climate processes in the earth system in order to improve weather and climate predictions. |
 | Canonical URL | `https://aneeshcs.com` |
 | Redirect | `www.aneeshcs.com` and `aneeshcs.github.io` → `aneeshcs.com` |

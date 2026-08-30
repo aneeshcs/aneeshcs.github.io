@@ -9,6 +9,6 @@ tags: []
 
 Recipients are nominated by students, administrators, faculty, or staff for their outstanding mentoring contributions and commitment to improving graduate education. Graduate School Dean Scott Adler noted that "the support and enhancement of mentoring is a priority initiative of the Graduate School," and praised recipients for serving as trusted mentors for their students.
 
-Prof. Subramanian is affiliated with the Department of Atmospheric and Oceanic Sciences and leads the **Climate Processes and Predictability** group at CU Boulder, where he advises PhD students and postdoctoral researchers working at the intersection of ocean-atmosphere dynamics, data assimilation, and machine learning for weather and climate prediction.
+Prof. Subramanian is affiliated with the Department of Atmospheric and Oceanic Sciences and leads the **CHAOS and Predictability** group at CU Boulder, where he advises PhD students and postdoctoral researchers working at the intersection of ocean-atmosphere dynamics, data assimilation, and machine learning for weather and climate prediction.
 
 **Full announcement**: [CU Boulder Graduate School](https://www.colorado.edu/graduateschool/2026/03/26/twenty-two-faculty-recognized-exceptional-mentors)

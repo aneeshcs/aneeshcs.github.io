@@ -155,7 +155,7 @@ sections:
           <div class="tour-slide slide-3">
             <div class="slide-overlay"></div>
             <div class="slide-content" style="margin-right: 4rem; margin-left: auto; text-align: right;">
-              <h2>Climate Processes and Predictability Lab</h2>
+              <h2>CHAOS and Predictability Lab</h2>
               <a href="/projects" class="btn">Discover our projects</a>
             </div>
           </div>
