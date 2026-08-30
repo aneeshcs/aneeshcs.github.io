@@ -66,10 +66,11 @@ Run a broken-link check against the live site on the first of each month.
 
 ```bash
 uvx linkchecker https://aneeshcs.com --check-extern \
+  --no-warnings \
   --ignore-url "linkedin\." \
   --ignore-url "twitter\." \
   --ignore-url "x\.com" \
-  --output failures
+  --output text
 ```
 
 **What to look for:**
