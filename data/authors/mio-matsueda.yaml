@@ -11,7 +11,11 @@ affiliations:
     url: "https://www.tsukuba.ac.jp/en/"
 links:
   - icon: "hero/globe-alt"
-    url: "https://gpvjma.ccs.hpcc.jp/~mio/"
+    # host has no TLS: https:// times out, only plain http works
+    url: "http://gpvjma.ccs.hpcc.jp/~mio/"
     label: "Website"
+  - icon: "hero/academic-cap"
+    url: "https://researchmap.jp/ensemble?lang=en"
+    label: "researchmap"
 user_groups:
   - "Visitors"
