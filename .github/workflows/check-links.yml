@@ -14,9 +14,13 @@ jobs:
 
       - name: Check links
         run: |
+          # The default text logger prints each broken link to the job log;
+          # "--output failures" would write them to a local data file instead,
+          # leaving the log empty when the job fails.
           uvx linkchecker https://aneeshcs.com \
             --check-extern \
+            --no-warnings \
             --ignore-url "linkedin\." \
             --ignore-url "twitter\." \
             --ignore-url "x\.com" \
-            --output failures
+            --output text
