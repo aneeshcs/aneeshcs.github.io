@@ -20,9 +20,12 @@ jobs:
           # doi.org and journal publishers (AMS, AGU/Wiley) block automated
           # crawlers, so their links always fail from CI even when valid in a
           # browser. DOI validity is covered by the monthly publication check.
+          # --threads 4: GitHub Pages intermittently returns 503 for valid
+          # internal pages under the default 10-thread crawl rate.
           uvx linkchecker https://aneeshcs.com \
             --check-extern \
             --no-warnings \
+            --threads 4 \
             --ignore-url "linkedin\." \
             --ignore-url "twitter\." \
             --ignore-url "x\.com" \
