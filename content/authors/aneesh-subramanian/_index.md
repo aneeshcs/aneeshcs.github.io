@@ -4,7 +4,7 @@ title: "Aneesh Subramanian"
 
 Aneesh C. Subramanian is an Associate Professor in the [Department of Atmospheric and Oceanic Sciences (ATOC)](https://www.colorado.edu/atoc/) at the University of Colorado Boulder. He is also a visiting scientist at the [Center for Western Weather and Water Extremes (CW3E)](https://cw3e.ucsd.edu/) at Scripps Institution of Oceanography, UC San Diego, and an international collaborator in the Geophysical Flows Lab at the Indian Institute of Technology Madras.
 
-His research group — the **Climate Processes and Predictability Group** — works on processes that influence extreme weather and climate variability across multiple timescales, with a focus on developing next-generation forecasting tools that combine physics-based modeling with machine learning and data assimilation.
+His research group — the **CHAOS and Predictability Group** (Computing Hydroclimate, Atmosphere and Ocean Systems) — works on processes that influence extreme weather and climate variability across multiple timescales, with a focus on developing next-generation forecasting tools that combine physics-based modeling with machine learning and data assimilation.
 
 ## Research Interests
 
