@@ -181,6 +181,31 @@
   color: #ede9fe;
 }
 
+.chaos-btn-ipynb {
+  display: inline-block;
+  text-align: center;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px dashed rgba(148, 163, 184, 0.4);
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.chaos-btn-ipynb:hover {
+  color: #c4b5fd;
+  border-color: rgba(196, 181, 253, 0.6);
+}
+.chaos-ipynb-note {
+  width: 100%;
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0.15rem 0 0;
+}
+
 .chaos-textbook {
   display: flex;
   align-items: center;
@@ -305,6 +330,11 @@
           <div class="chaos-btn-row">
             <a href="/chaos/lorenz63_ensemble_explorer.html" class="chaos-btn-link" target="_blank">▶ View Notebook</a>
             <a href="/chaos/lorenz63_ensemble_explorer_edit.html" class="chaos-btn-edit" target="_blank">✎ Edit &amp; Run</a>
+            <a href="/chaos/lorenz63_ensemble_explorer.ipynb" class="chaos-btn-ipynb"
+               download="lorenz63_ensemble_explorer.ipynb">⤓ Jupyter (.ipynb)</a>
+            <p class="chaos-ipynb-note">The download installs its own dependencies in the
+            first cell. Its sliders are static — edit <code>value=</code> and re-run to
+            change a parameter.</p>
           </div>
         </div>
 
@@ -328,6 +358,11 @@
           <div class="chaos-btn-row">
             <a href="/chaos/pendulum_chaos_explorer.html" class="chaos-btn-link" target="_blank">▶ View Notebook</a>
             <a href="/chaos/pendulum_chaos_explorer_edit.html" class="chaos-btn-edit" target="_blank">✎ Edit &amp; Run</a>
+            <a href="/chaos/pendulum_chaos_explorer.ipynb" class="chaos-btn-ipynb"
+               download="pendulum_chaos_explorer.ipynb">⤓ Jupyter (.ipynb)</a>
+            <p class="chaos-ipynb-note">The download installs its own dependencies in the
+            first cell. Its sliders are static — edit <code>value=</code> and re-run to
+            change a parameter.</p>
           </div>
         </div>
 

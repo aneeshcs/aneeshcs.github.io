@@ -122,6 +122,18 @@ jobs:
       run: |
         python3 scripts/patch_chunk_reload.py static/gfd/*.html static/chaos/*.html static/da_tutorial/*.html
 
+    # Downloadable Jupyter versions of the /chaos/ notebooks, linked from that
+    # page. This is marimo's own `export ipynb` plus a dependency cell and a
+    # header -- see scripts/export_ipynb.py. Run inside a uvx environment that
+    # provides marimo and nbformat, which the export requires.
+    - name: Export downloadable Jupyter notebooks
+      run: |
+        uvx --with nbformat --with marimo==0.23.9 python scripts/export_ipynb.py \
+          notebooks/lorenz63_ensemble_explorer.py \
+          notebooks/pendulum_chaos_explorer.py \
+          --outdir static/chaos --page-url "https://www.aneeshcs.com/chaos/"
+        ls -la static/chaos/*.ipynb
+
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v6

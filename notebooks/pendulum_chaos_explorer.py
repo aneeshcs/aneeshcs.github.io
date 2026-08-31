@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11"
 # dependencies = [
-#   "marimo>=0.19.10",
+#   "marimo==0.23.9",   # pinned: the .ipynb download embeds this spec
 #   "numpy",
 #   "scipy",
 #   "plotly",
@@ -22,7 +22,7 @@ To edit:
 
 import marimo
 
-__generated_with = "0.19.10"
+__generated_with = "0.23.9"
 app = marimo.App(width="full", app_title="Single vs. Double Pendulum")
 
 
