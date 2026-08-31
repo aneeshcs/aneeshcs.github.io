@@ -57,19 +57,6 @@
   display: inline-block;
 }
 
-.chaos-placeholder {
-  background: rgba(139, 92, 246, 0.06);
-  border: 1px dashed rgba(196, 181, 253, 0.3);
-  border-radius: 10px;
-  padding: 1.5rem 1.75rem;
-  color: #94a3b8;
-  font-size: 0.9rem;
-  line-height: 1.65;
-}
-.chaos-placeholder strong {
-  color: #c4b5fd;
-}
-
 .chaos-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -193,20 +180,6 @@
   border-color: #c4b5fd;
   color: #ede9fe;
 }
-.chaos-coming-soon {
-  display: inline-block;
-  text-align: center;
-  padding: 0.6rem 1.3rem;
-  background: rgba(255,255,255,0.05);
-  color: #475569;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 7px;
-  font-size: 0.9rem;
-  font-style: italic;
-  align-self: flex-start;
-  margin-top: auto;
-  cursor: default;
-}
 
 .chaos-textbook {
   display: flex;
@@ -287,19 +260,17 @@
       <h1>🦋 Chaos and Predictability</h1>
       <p>Why weather forecasts fail beyond two weeks, why climate projections don't — and
       what deterministic chaos teaches us about the limits of prediction in the atmosphere
-      and ocean. Notes, schedule, and interactive notebooks for the course.</p>
+      and ocean. An interactive textbook, with every chapter runnable in the browser.</p>
     </div>
 
     <!-- Standalone interactive textbook (separate site: anichaospred.github.io) -->
     <div class="chaos-textbook">
       <div class="chaos-textbook-body">
         <h2>📖 An Interactive Chaos and Predictability Textbook</h2>
-        <p>The course notebooks now live inside a full textbook — 31 chapters spanning
-        error growth, Lyapunov exponents, adjoint models, data assimilation, and the
-        predictability of everything from next Tuesday to the next century. Every chapter
-        runs Python in your browser; nothing to install. A
-        <a href="https://anichaospred.github.io/course/">lecture-by-lecture mapping</a>
-        shows which chapter goes with which class.</p>
+        <p>Thirty-one chapters spanning error growth, Lyapunov exponents, adjoint
+        models, data assimilation, and the predictability of everything from next Tuesday
+        to the next century. Every chapter runs Python in your browser — nothing to
+        install, no account, no server. Free and open, for anyone.</p>
       </div>
       <a class="chaos-textbook-cta" href="https://anichaospred.github.io/">
         Open the textbook →
@@ -307,28 +278,11 @@
     </div>
 
     <div class="chaos-section">
-      <h2>Syllabus</h2>
-      <div class="chaos-placeholder">
-        <strong>Syllabus coming soon.</strong> Course description, learning objectives,
-        grading, and readings will be posted here.
-      </div>
-    </div>
-
-    <div class="chaos-section">
-      <h2>Schedule</h2>
-      <div class="chaos-placeholder">
-        <strong>Schedule coming soon.</strong> Weekly topics and readings will be listed
-        here as the semester is finalized.
-      </div>
-    </div>
-
-    <div class="chaos-section">
       <h2>Notebooks</h2>
       <p style="font-size:0.92rem; color:#94a3b8; line-height:1.7; margin:-0.5rem 0 1.5rem;">
-      The two notebooks below are the chapters that are furthest along. They are also
-      chapters 4 and 6 of the
+      The two notebooks below are chapters 4 and 6 of the
       <a href="https://anichaospred.github.io/" style="color:#c4b5fd;">interactive
-      textbook</a>, where they sit alongside the full table of contents.</p>
+      textbook</a>, reproduced here. Open the book for the full table of contents.</p>
       <div class="chaos-cards">
 
         <div class="chaos-card">
@@ -346,7 +300,7 @@
             <li>Sensitive dependence on initial conditions &amp; the Lyapunov exponent</li>
             <li>Ensemble forecasting and the predictability horizon</li>
             <li>Predictability of the 1st kind (weather) vs. 2nd kind (climate)</li>
-            <li>Guided questions for in-class discussion</li>
+            <li>Guided questions to work through</li>
           </ul>
           <div class="chaos-btn-row">
             <a href="/chaos/lorenz63_ensemble_explorer.html" class="chaos-btn-link" target="_blank">▶ View Notebook</a>
