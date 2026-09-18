@@ -81,7 +81,11 @@ jobs:
       - name: Create Pull Request
         # Set ID for `Check outputs` stage
         id: cpr
-        uses: peter-evans/create-pull-request@v6
+        # v7 or later is required: against actions/checkout@v6, v6 of this
+        # action re-adds an Authorization header that checkout already
+        # persists, and every git call fails with `Duplicate header:
+        # "Authorization"` -> HTTP 400. check-publications.yml already runs v7.
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: 'feat(publications): import latest publications from bibtex'
           title: 'HugoBlox Kit - Import latest publications from Bibtex'
