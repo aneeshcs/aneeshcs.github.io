@@ -70,3 +70,6 @@ Desktop.ini
 
 *.log
 npm-debug.log*
+
+# Claude Code local working directory (agent worktrees, settings)
+.claude/
