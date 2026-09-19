@@ -48,7 +48,7 @@ Prof. Aneesh Subramanian is a principal investigator on a NOAA CVP award under t
 
 ## A Collaborative Effort
 
-The study was coauthored by **Dr. Yuan-Jen Lin** (University of Colorado Boulder), **Dr. Aneesh C. Subramanian** (University of Colorado Boulder), **Dr. Kristopher B. Karnauskas** (University of Colorado Boulder), **Dr. Charlotte A. DeMott** (Colorado State University), **Dr. Janet Sprintall** (Scripps Institution of Oceanography), and **Dr. Rui Sun**.
+The study was coauthored by **Dr. Yuan-Jen Lin** (University of Colorado Boulder), **Dr. Aneesh C. Subramanian** (University of Colorado Boulder), **Dr. Kristopher B. Karnauskas** (University of Colorado Boulder), **Dr. Charlotte A. DeMott** (Colorado State University), **Dr. Janet Sprintall** (Scripps Institution of Oceanography), and **Dr. Rui Sun** (Scripps Institution of Oceanography).
 
 Congratulations to Yuan-Jen and the entire team on this well-earned publication!
 
