@@ -41,7 +41,10 @@ enableEmoji: true
 enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
-disableAliases: true
+# Aliases must render as redirect pages: this deploys to GitHub Pages, which
+# ignores the Netlify-style `_redirects` file that `disableAliases: true`
+# leaves as the only redirect mechanism.
+disableAliases: false
 outputs:
   home: [HTML, RSS, headers, redirects, backlinks]
   section: [HTML, RSS]
