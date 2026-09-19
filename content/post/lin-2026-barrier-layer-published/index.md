@@ -1,11 +1,11 @@
 ---
 title: "New Paper Published: Salinity-Driven Barrier Layer Dynamics in the Equatorial Pacific"
 date: 2026-09-18
-summary: "A new study in the Journal of Climate led by Yuan-Jen Lin shows that salinity-driven stratification governs barrier layer variability in the equatorial Pacific, identifies a persistent thin-barrier-layer bias in coupled climate models, and traces a freshening signal that precedes warm pool expansion by 10 to 13 months."
+summary: "A new study in the Journal of Climate led by group postdoctoral researcher Yuan-Jen Lin shows that salinity-driven stratification governs barrier layer variability in the equatorial Pacific, identifies a persistent thin-barrier-layer bias in coupled climate models, and traces a freshening signal that precedes warm pool expansion by 10 to 13 months."
 tags: []
 ---
 
-We are delighted to share that a new paper led by **Yuan-Jen Lin** has been published in the American Meteorological Society journal *[Journal of Climate](https://doi.org/10.1175/JCLI-D-25-0398.1)*. The study shows that salinity, not temperature alone, sets the structure and variability of the upper equatorial Pacific — with consequences for how well climate models represent the onset of El Niño.
+We are delighted to share that a new paper led by **Yuan-Jen Lin** — a postdoctoral researcher in the group, co-mentored by Aneesh Subramanian and Kristopher Karnauskas — has been published in the American Meteorological Society journal *[Journal of Climate](https://doi.org/10.1175/JCLI-D-25-0398.1)*. The study shows that salinity, not temperature alone, sets the structure and variability of the upper equatorial Pacific — with consequences for how well climate models represent the onset of El Niño.
 
 ---
 
@@ -35,7 +35,7 @@ Prof. Aneesh Subramanian is a principal investigator on a NOAA CVP award under t
 
 ## A Collaborative Effort
 
-The study was coauthored by **Yuan-Jen Lin**, **Dr. Aneesh C. Subramanian** (University of Colorado Boulder), **Dr. Kristopher B. Karnauskas** (University of Colorado Boulder), **Dr. Charlotte A. DeMott** (Colorado State University), **Dr. Janet Sprintall** (Scripps Institution of Oceanography), and **Dr. Rui Sun**.
+The study was coauthored by **Dr. Yuan-Jen Lin** (University of Colorado Boulder), **Dr. Aneesh C. Subramanian** (University of Colorado Boulder), **Dr. Kristopher B. Karnauskas** (University of Colorado Boulder), **Dr. Charlotte A. DeMott** (Colorado State University), **Dr. Janet Sprintall** (Scripps Institution of Oceanography), and **Dr. Rui Sun**.
 
 Congratulations to Yuan-Jen and the entire team on this well-earned publication!
 
