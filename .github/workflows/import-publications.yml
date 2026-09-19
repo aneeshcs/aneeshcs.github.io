@@ -35,6 +35,12 @@ jobs:
         with:
           # Only need recent history for publication import
           fetch-depth: 1
+          # Don't leave checkout's token in the git config: v6 persists it via
+          # an `includeIf` credentials file that create-pull-request cannot
+          # see, so the action adds a second Authorization header and every
+          # git call fails with `Duplicate header: "Authorization"` -> HTTP 400.
+          # create-pull-request configures its own credential from `token`.
+          persist-credentials: false
 
       - name: Set up Python 3.13
         uses: actions/setup-python@v5
