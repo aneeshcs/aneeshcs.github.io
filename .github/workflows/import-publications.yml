@@ -87,10 +87,13 @@ jobs:
       - name: Create Pull Request
         # Set ID for `Check outputs` stage
         id: cpr
-        # v7 or later is required: against actions/checkout@v6, v6 of this
-        # action re-adds an Authorization header that checkout already
-        # persists, and every git call fails with `Duplicate header:
-        # "Authorization"` -> HTTP 400. check-publications.yml already runs v7.
+        # v7 or later is required: v6 probes only .git/config for a
+        # persisted credential, misses the `includeIf` file actions/checkout@v6
+        # writes, and adds a second Authorization header -- every git call then
+        # fails with `Duplicate header: "Authorization"` -> HTTP 400.
+        # See peter-evans/create-pull-request#4272. The `persist-credentials:
+        # false` on the checkout step above closes the same hole from the
+        # other side.
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: 'feat(publications): import latest publications from bibtex'
