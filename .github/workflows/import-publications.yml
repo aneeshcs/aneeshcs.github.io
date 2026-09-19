@@ -84,6 +84,14 @@ jobs:
             echo "⚠️ No publications were imported"
           fi
         continue-on-error: false
+
+      - name: Migrate deprecated top-level `doi:` fields
+        # `academic` emits `doi:` at the top level, which Hugo Blox deprecated and
+        # b6c8c4d migrated out of every page. Rewrite it before the PR is opened so
+        # generated pages match the rest of the site.
+        if: ${{ hashFiles('publications.bib') != '' }}
+        run: .github/scripts/migrate_doi_fields.sh
+
       - name: Create Pull Request
         # Set ID for `Check outputs` stage
         id: cpr
