@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-labelledby="ptTitle ptDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="ptTitle">The salinity precursor to warm pool expansion, 10 to 13 months ahead</title>
+  <desc id="ptDesc">A timeline in months relative to the peak eastward extent of the warm pool eastern edge. Anomalous westerly winds, increased precipitation and upper-ocean freshening all emerge 10 to 13 months before the peak, rise together, peak with the eastward shift, and persist for a further nine to ten months. Because eastward displacement of the warm pool is a hallmark of El Nino onset, this is a prediction-relevant lead time.</desc>
+  <defs>
+    <marker id="ptA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="500" rx="14" fill="#fcfcfb" stroke="#e2e8f0"/>
+
+  <!-- shaded phases -->
+  <rect x="277" y="70" width="70" height="330" fill="#0f172a" opacity="0.06"/>
+  <rect x="580" y="70" width="233" height="330" fill="#d97706" opacity="0.10"/>
+
+  <text x="312" y="62" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">anomalies emerge</text>
+  <text x="312" y="78" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">10–13 months ahead</text>
+  <text x="696" y="62" font-size="11.5" font-weight="700" fill="#7c3d05" text-anchor="middle">and persist another</text>
+  <text x="696" y="78" font-size="11.5" font-weight="700" fill="#7c3d05" text-anchor="middle">nine to 10 months</text>
+
+  <!-- the peak -->
+  <line x1="580" y1="70" x2="580" y2="418" stroke="#0f172a" stroke-width="2.4"/>
+  <text x="580" y="436" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">month 0</text>
+
+  <!-- tracks -->
+  <g>
+    <text x="40" y="126" font-size="12.5" font-weight="700" fill="#9f1239">Westerly wind</text>
+    <text x="40" y="142" font-size="12.5" font-weight="700" fill="#9f1239">anomalies</text>
+    <line x1="230" y1="150" x2="860" y2="150" stroke="#e2e8f0" stroke-width="1.4"/>
+    <path d="M230 150 L277 150 C 380 150, 470 108, 580 108 C 690 108, 780 150, 813 150 L860 150"
+          fill="none" stroke="#be123c" stroke-width="3.2"/>
+  </g>
+  <g>
+    <text x="40" y="206" font-size="12.5" font-weight="700" fill="#0e7490">Precipitation</text>
+    <line x1="230" y1="230" x2="860" y2="230" stroke="#e2e8f0" stroke-width="1.4"/>
+    <path d="M230 230 L277 230 C 380 230, 470 188, 580 188 C 690 188, 780 230, 813 230 L860 230"
+          fill="none" stroke="#0891b2" stroke-width="3.2"/>
+  </g>
+  <g>
+    <text x="40" y="286" font-size="12.5" font-weight="700" fill="#5b21b6">Upper-ocean</text>
+    <text x="40" y="302" font-size="12.5" font-weight="700" fill="#5b21b6">freshening</text>
+    <line x1="230" y1="310" x2="860" y2="310" stroke="#e2e8f0" stroke-width="1.4"/>
+    <path d="M230 310 L277 310 C 380 310, 470 268, 580 268 C 690 268, 780 310, 813 310 L860 310"
+          fill="none" stroke="#6d28d9" stroke-width="3.2"/>
+  </g>
+  <g>
+    <text x="40" y="366" font-size="12.5" font-weight="700" fill="#0f172a">Warm pool</text>
+    <text x="40" y="382" font-size="12.5" font-weight="700" fill="#0f172a">eastern edge</text>
+    <text x="40" y="398" font-size="11" fill="#64748b">(the outcome)</text>
+    <line x1="230" y1="390" x2="860" y2="390" stroke="#e2e8f0" stroke-width="1.4"/>
+    <path d="M230 390 L400 390 C 490 390, 520 344, 580 344 C 660 344, 760 390, 813 390 L860 390"
+          fill="none" stroke="#0f172a" stroke-width="3.6"/>
+    <circle cx="580" cy="344" r="6.5" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+    <text x="596" y="336" font-size="12" font-weight="700" fill="#0f172a">peak eastward extent</text>
+  </g>
+
+  <!-- lead-time arrow -->
+  <line x1="312" y1="410" x2="570" y2="410" stroke="#334155" stroke-width="2" marker-end="url(#ptA)" marker-start="url(#ptA)"/>
+  <rect x="368" y="398" width="150" height="22" rx="11" fill="#fcfcfb"/>
+  <text x="443" y="414" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">10–13 month lead</text>
+
+  <!-- axis -->
+  <line x1="230" y1="418" x2="860" y2="418" stroke="#94a3b8" stroke-width="1.6"/>
+  <g font-size="11" fill="#64748b" text-anchor="middle">
+    <text x="230" y="436">−15</text><text x="347" y="436">−10</text>
+    <text x="463" y="436">−5</text><text x="696" y="436">+5</text><text x="813" y="436">+10</text>
+  </g>
+  <text x="545" y="458" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="middle">months relative to peak eastward extent of the warm pool edge</text>
+
+  <text x="40" y="480" font-size="12" font-weight="700" fill="#7c3d05">Eastward displacement of the warm pool is a hallmark of El Niño onset — so this sequence is a prediction-relevant lead time.</text>
+  <text x="860" y="36" font-size="11" fill="#94a3b8" text-anchor="end">Schematic of the lead–lag relationship; curves are illustrative.</text>
+</svg>

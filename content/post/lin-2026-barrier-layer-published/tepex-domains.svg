@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450" role="img" aria-labelledby="txTitle txDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="txTitle">The two TEPEX field campaign domains in the tropical Pacific</title>
+  <desc id="txDesc">A map of the tropical Pacific from 120 degrees east to 80 degrees west. The warm pool occupies the west and the cold tongue the east along the equator. Two campaign domains are marked: TEPEX-Central over the middle of the basin, targeting the ocean mixed and barrier layers, the warm pool edge and the surface jets that move it; and TEPEX-East over the eastern basin, targeting the cold tongue and its exchange of momentum, heat and moisture. Field campaigns run between 2026 and 2028 with support from the NOAA Climate Program Office.</desc>
+  <defs>
+    <linearGradient id="txPool" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#be123c" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#be123c" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="txTongue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0891b2" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0.62"/>
+    </linearGradient>
+    <clipPath id="txBasin"><rect x="60" y="86" width="800" height="244"/></clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="450" rx="14" fill="#fcfcfb" stroke="#e2e8f0"/>
+
+  <!-- ocean basin -->
+  <rect x="60" y="86" width="800" height="244" fill="#eaf4f9" stroke="#cbd5e1"/>
+
+  <!-- warm pool + cold tongue -->
+  <g clip-path="url(#txBasin)">
+    <ellipse cx="180" cy="208" rx="170" ry="96" fill="url(#txPool)"/>
+    <path d="M430 178 Q640 160 860 172 L860 244 Q640 256 430 238 Z" fill="url(#txTongue)"/>
+  </g>
+
+  <!-- land -->
+  <path d="M60 86 L128 86 L142 140 L112 186 L138 236 L96 292 L60 300 Z" fill="#cbd5e1" stroke="#94a3b8"/>
+  <path d="M812 86 L860 86 L860 330 L826 330 L840 250 L816 180 Z" fill="#cbd5e1" stroke="#94a3b8"/>
+  <text x="84" y="116" font-size="11" font-weight="600" fill="#475569">Asia /</text>
+  <text x="84" y="130" font-size="11" font-weight="600" fill="#475569">Maritime</text>
+  <text x="84" y="144" font-size="11" font-weight="600" fill="#475569">Continent</text>
+  <text x="854" y="116" font-size="11" font-weight="600" fill="#475569" text-anchor="end">Americas</text>
+
+  <!-- equator -->
+  <line x1="60" y1="208" x2="860" y2="208" stroke="#0f172a" stroke-width="1.6" stroke-dasharray="8 5"/>
+  <text x="66" y="203" font-size="10.5" fill="#334155">equator</text>
+
+  <text x="180" y="248" font-size="13" font-weight="700" fill="#9f1239" text-anchor="middle">WARM POOL</text>
+  <text x="742" y="248" font-size="13" font-weight="700" fill="#0e7490" text-anchor="middle">COLD TONGUE</text>
+
+  <!-- TEPEX-C -->
+  <rect x="264" y="140" width="250" height="136" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3" rx="6"/>
+  <rect x="264" y="112" width="106" height="24" rx="6" fill="#d97706"/>
+  <text x="317" y="129" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">TEPEX-C</text>
+
+  <!-- TEPEX-E -->
+  <rect x="566" y="140" width="244" height="136" fill="#6d28d9" fill-opacity="0.10" stroke="#6d28d9" stroke-width="3" rx="6"/>
+  <rect x="566" y="112" width="106" height="24" rx="6" fill="#6d28d9"/>
+  <text x="619" y="129" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">TEPEX-E</text>
+
+  <!-- longitude axis -->
+  <line x1="60" y1="330" x2="860" y2="330" stroke="#94a3b8" stroke-width="1.4"/>
+  <g font-size="10.5" fill="#64748b" text-anchor="middle">
+    <text x="60" y="346">120°E</text><text x="260" y="346">160°E</text>
+    <text x="460" y="346">160°W</text><text x="660" y="346">120°W</text><text x="856" y="346">80°W</text>
+  </g>
+
+  <!-- focus notes -->
+  <g>
+    <rect x="60" y="366" width="386" height="62" rx="8" fill="#fff8ed" stroke="#f3d2a0"/>
+    <text x="76" y="386" font-size="12" font-weight="700" fill="#7c3d05">TEPEX-C — central Pacific</text>
+    <text x="76" y="404" font-size="11.5" fill="#334155">Coupling of the troposphere with the ocean mixed and</text>
+    <text x="76" y="419" font-size="11.5" fill="#334155">barrier layers, and the jets that move the warm pool edge.</text>
+  </g>
+  <g>
+    <rect x="474" y="366" width="386" height="62" rx="8" fill="#f6f2fe" stroke="#d3c4f6"/>
+    <text x="490" y="386" font-size="12" font-weight="700" fill="#5b21b6">TEPEX-E — eastern Pacific</text>
+    <text x="490" y="404" font-size="11.5" fill="#334155">How the coupled cold tongue system regulates momentum,</text>
+    <text x="490" y="419" font-size="11.5" fill="#334155">heat and moisture across and above the Pacific.</text>
+  </g>
+
+  <text x="60" y="66" font-size="12.5" font-weight="700" fill="#334155">Field campaigns 2026–2028, supported by the NOAA Climate Program Office</text>
+  <text x="860" y="66" font-size="11" fill="#94a3b8" text-anchor="end">Domains indicative.</text>
+</svg>
