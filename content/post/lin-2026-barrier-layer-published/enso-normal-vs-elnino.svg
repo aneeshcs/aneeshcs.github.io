@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="ecTitle ecDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 562" width="1200" height="562" role="img" aria-labelledby="ecTitle ecDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
   <title id="ecTitle">Salinity-driven barrier layers and the warm pool's eastward shift</title>
   <desc id="ecDesc">Two equatorial Pacific cross-sections. Under normal conditions strong easterly trade winds pile warm water in the west, deep convection sits over the western warm pool, and the thermocline is deep in the west and shallow in the east. During El Niño the trades weaken, warm water and convection shift east, and the thermocline flattens. A salinity-stratified barrier layer sits beneath the surface, confined to the west under normal conditions and reaching further east during El Niño as the warm pool spreads. A diverging colour strip below shows sea surface temperature anomalies from cool to warm.</desc>
   <defs>
@@ -28,8 +28,8 @@
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="1200" height="630" fill="#fcfcfb"/>
-  <text x="40" y="52" font-size="28" font-weight="700" fill="#0f172a">Salinity-driven barrier layers precede the warm pool's eastward shift</text>
+  <rect x="0" y="0" width="1200" height="562" fill="#fcfcfb"/>
+  <g transform="translate(0,-42)">
 
   <!-- ===================== NORMAL ===================== -->
   <g>
@@ -70,8 +70,8 @@
     <ellipse cx="880" cy="150" rx="84" ry="30" fill="#94a3b8" opacity="0.55"/>
     <text x="880" y="157" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">convection shifts east</text>
 
-    <line x1="1010" y1="200" x2="890" y2="200" stroke="#0f172a" stroke-width="2.5" marker-end="url(#ecA)"/>
-    <text x="950" y="185" font-size="18" font-weight="700" fill="#9f1239" text-anchor="middle">trades weaken</text>
+    <line x1="1146" y1="200" x2="1036" y2="200" stroke="#0f172a" stroke-width="2.5" marker-end="url(#ecA)"/>
+    <text x="1091" y="185" font-size="18" font-weight="700" fill="#9f1239" text-anchor="middle">trades weaken</text>
 
     <text x="700" y="268" font-size="18" font-weight="700" fill="#ffffff">warm water spreads east</text>
     <text x="1146" y="330" font-size="16" font-weight="700" fill="#ffffff" text-anchor="end">thermocline flattens</text>
@@ -94,5 +94,5 @@
     <text x="600" y="580" text-anchor="middle" font-weight="600">near normal</text>
     <text x="1160" y="580" text-anchor="end" font-weight="600">warmer than normal</text>
   </g>
-  <text x="40" y="608" font-size="14" fill="#94a3b8">Conceptual schematic — not to scale.</text>
+  </g>
 </svg>

@@ -3,9 +3,14 @@ title: "New Paper Published: Salinity-Driven Barrier Layer Dynamics in the Equat
 date: 2026-09-18
 summary: "A new study in the Journal of Climate led by group postdoctoral researcher Yuan-Jen Lin shows that salinity-driven stratification governs barrier layer variability in the equatorial Pacific, identifies a persistent thin-barrier-layer bias in coupled climate models, and traces a freshening signal that precedes warm pool expansion by 10 to 13 months."
 tags: []
+image:
+  alt_text: "An ensō — a circle drawn in a single sweep of a sumi brush — heavy and wet through the western arc, breaking into dry-brush streaks as it comes round to the east, where it stops just short of closing."
+  caption: "ENSO / ensō (円相) — the circle drawn in a single breath, which closes only approximately, and never the same way twice."
 ---
 
 We are delighted to share that a new paper led by **Yuan-Jen Lin** — a postdoctoral researcher in the group, co-mentored by Aneesh Subramanian and Kristopher Karnauskas — has been published in the American Meteorological Society journal *[Journal of Climate](https://doi.org/10.1175/JCLI-D-25-0398.1)*. The study shows that salinity, not temperature alone, sets the structure and variability of the upper equatorial Pacific — with consequences for how well climate models represent the onset of El Niño.
+
+![Two equatorial Pacific cross-sections side by side. Under normal conditions strong easterly trade winds pile warm water in the west, convection sits over the western warm pool, and the thermocline is deep in the west and shallow in the east. During El Niño the trades weaken, the warm water and its convection spread east, the thermocline flattens, and the amber barrier layer reaches much further east.](enso-normal-vs-elnino.svg "Under El Niño the warm pool and its convection shift east, the thermocline flattens, and the barrier layer extends east with them — the displacement this paper traces back to a salinity signal arriving a year earlier. Conceptual schematic, not to scale.")
 
 ---
 
