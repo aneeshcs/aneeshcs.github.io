@@ -40,6 +40,13 @@ jobs:
           academic import publications.bib content/publication/ --compact
         continue-on-error: true   # don't fail if academic has parse issues
 
+      - name: Migrate deprecated top-level `doi:` fields
+        # `academic` emits `doi:` at the top level, which Hugo Blox deprecated and
+        # b6c8c4d migrated out of every page. Rewrite it before the PR is opened so
+        # generated pages match the rest of the site.
+        if: steps.check.outputs.new_count != '0'
+        run: .github/scripts/migrate_doi_fields.sh
+
       - name: Open pull request
         if: steps.check.outputs.new_count != '0'
         uses: peter-evans/create-pull-request@v7
