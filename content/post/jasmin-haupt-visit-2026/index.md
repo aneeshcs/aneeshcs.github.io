@@ -3,9 +3,13 @@ title: "Welcome, Visiting Graduate Student Jasmin Haupt"
 date: 2026-09-18
 summary: "Jasmin Haupt, a doctoral student in the Meteorological Data Science group at the Karlsruhe Institute of Technology, is visiting the group at CU Boulder along with Maria Gehne and Juliana Dias in the Atmosphere-Ocean Processes and Predictability Lab at NOAA PSL."
 tags: []
+image:
+  preview_only: true
 ---
 
 We are delighted to welcome **Jasmin Haupt** to Boulder as a visiting graduate student. Jasmin is a doctoral researcher in the **Meteorological Data Science** Young Investigator Group, led by Julian Quinting, at the **Institute of Meteorology and Climate Research (IMKTRO), Karlsruhe Institute of Technology (KIT)**. During her stay she is hosted jointly by our group at CU Boulder and by **Maria Gehne** and **Juliana Dias** in the **Atmosphere-Ocean Processes and Predictability Lab** at the **NOAA Physical Sciences Laboratory (PSL)**.
+
+<img src="featured.jpg" alt="Jasmin Haupt" width="300" style="display: block; margin: 0 auto; border-radius: 8px;">
 
 ---
 
