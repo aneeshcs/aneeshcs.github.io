@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="ecTitle ecDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="ecTitle">Normal conditions and El Niño in the equatorial Pacific</title>
+  <desc id="ecDesc">Two equatorial Pacific cross-sections. Under normal conditions strong easterly trade winds pile warm water in the west, deep convection sits over the western warm pool, and the thermocline is deep in the west and shallow in the east. During El Niño the trades weaken, warm water and convection shift east, and the thermocline flattens. A diverging colour strip below shows sea surface temperature anomalies from cool to warm.</desc>
+  <defs>
+    <linearGradient id="ecSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef6fb"/><stop offset="1" stop-color="#dcecf6"/>
+    </linearGradient>
+    <linearGradient id="ecWarmN" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#be123c" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#be123c" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="ecWarmE" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#be123c" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#be123c" stop-opacity="0.52"/>
+    </linearGradient>
+    <linearGradient id="ecDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fc8dc"/><stop offset="1" stop-color="#0b5f77"/>
+    </linearGradient>
+    <linearGradient id="ecStrip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#2166ac"/>
+      <stop offset="0.25" stop-color="#8fb9d8"/>
+      <stop offset="0.5"  stop-color="#e8e8e8"/>
+      <stop offset="0.75" stop-color="#e08a74"/>
+      <stop offset="1"    stop-color="#b2182b"/>
+    </linearGradient>
+    <marker id="ecA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="630" fill="#fcfcfb"/>
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">El Niño reshapes the equatorial Pacific</text>
+
+  <!-- ===================== NORMAL ===================== -->
+  <g>
+    <rect x="40" y="82" width="548" height="348" fill="url(#ecSky)" stroke="#cbd5e1"/>
+    <rect x="40" y="228" width="548" height="202" fill="url(#ecDeep)"/>
+    <path d="M40 228 H470 L40 300 Z" fill="url(#ecWarmN)"/>
+    <path d="M40 302 C 180 296, 360 258, 588 238" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <line x1="40" y1="228" x2="588" y2="228" stroke="#0f172a" stroke-width="2.5"/>
+
+    <rect x="40" y="82" width="180" height="34" fill="#0f172a"/>
+    <text x="130" y="107" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">NORMAL</text>
+
+    <ellipse cx="150" cy="150" rx="74" ry="30" fill="#94a3b8" opacity="0.55"/>
+    <text x="150" y="157" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">convection</text>
+
+    <line x1="520" y1="196" x2="220" y2="196" stroke="#0f172a" stroke-width="5" marker-end="url(#ecA)"/>
+    <text x="392" y="186" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">strong trade winds</text>
+
+    <text x="128" y="268" font-size="18" font-weight="700" fill="#ffffff">warm pool</text>
+    <text x="566" y="330" font-size="16" font-weight="700" fill="#ffffff" text-anchor="end">shallow thermocline,</text>
+    <text x="566" y="350" font-size="16" font-weight="700" fill="#ffffff" text-anchor="end">cool surface</text>
+    <text x="54" y="330" font-size="15" font-weight="600" fill="#e2f3f9">deep thermocline</text>
+  </g>
+
+  <!-- ===================== EL NIÑO ===================== -->
+  <g>
+    <rect x="612" y="82" width="548" height="348" fill="url(#ecSky)" stroke="#cbd5e1"/>
+    <rect x="612" y="228" width="548" height="202" fill="url(#ecDeep)"/>
+    <path d="M612 228 H1160 L1160 286 L612 300 Z" fill="url(#ecWarmE)"/>
+    <path d="M612 300 C 760 296, 1000 288, 1160 282" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <line x1="612" y1="228" x2="1160" y2="228" stroke="#0f172a" stroke-width="2.5"/>
+
+    <rect x="612" y="82" width="180" height="34" fill="#be123c"/>
+    <text x="702" y="107" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">EL NIÑO</text>
+
+    <ellipse cx="880" cy="150" rx="84" ry="30" fill="#94a3b8" opacity="0.55"/>
+    <text x="880" y="157" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">convection shifts east</text>
+
+    <line x1="1010" y1="200" x2="890" y2="200" stroke="#0f172a" stroke-width="2.5" marker-end="url(#ecA)"/>
+    <text x="950" y="185" font-size="18" font-weight="700" fill="#9f1239" text-anchor="middle">trades weaken</text>
+
+    <text x="700" y="268" font-size="18" font-weight="700" fill="#ffffff">warm water spreads east</text>
+    <text x="1146" y="330" font-size="16" font-weight="700" fill="#ffffff" text-anchor="end">thermocline flattens</text>
+    <text x="1146" y="350" font-size="16" font-weight="700" fill="#ffffff" text-anchor="end">— eastern Pacific warms</text>
+  </g>
+
+  <!-- west / east -->
+  <text x="40" y="452" font-size="15" font-weight="600" fill="#64748b">west</text>
+  <text x="588" y="452" font-size="15" font-weight="600" fill="#64748b" text-anchor="end">east</text>
+  <text x="612" y="452" font-size="15" font-weight="600" fill="#64748b">west</text>
+  <text x="1160" y="452" font-size="15" font-weight="600" fill="#64748b" text-anchor="end">east</text>
+
+  <!-- diverging SST anomaly strip -->
+  <text x="40" y="510" font-size="17" font-weight="700" fill="#334155">Sea surface temperature anomaly</text>
+  <rect x="40" y="524" width="1120" height="30" rx="4" fill="url(#ecStrip)" stroke="#cbd5e1"/>
+  <g font-size="15" fill="#475569">
+    <text x="40" y="578" font-weight="600">cooler than normal</text>
+    <text x="600" y="578" text-anchor="middle" font-weight="600">near normal</text>
+    <text x="1160" y="578" text-anchor="end" font-weight="600">warmer than normal</text>
+  </g>
+  <text x="40" y="608" font-size="14" fill="#94a3b8">Conceptual schematic — not to scale.</text>
+</svg>

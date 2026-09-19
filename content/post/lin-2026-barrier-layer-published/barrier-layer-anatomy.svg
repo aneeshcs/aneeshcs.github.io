@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-labelledby="blTitle blDesc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="blTitle">Anatomy of a barrier layer in the western Pacific warm pool</title>
+  <desc id="blDesc">Left: a cross-section of the upper ocean. Rainfall freshens a thin surface cap, making the density-mixed layer shallower than the top of the thermocline. The salinity-stratified water between them is the barrier layer, which blocks cold thermocline water from being entrained upward and traps heat and momentum near the surface. Right: the same column as temperature and salinity profiles, where temperature stays uniform down to the thermocline but salinity increases at a shallower depth; the gap between those two depths is the barrier layer.</desc>
+  <defs>
+    <linearGradient id="blSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf4f9"/><stop offset="1" stop-color="#f7fbfd"/>
+    </linearGradient>
+    <linearGradient id="blWarm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde4e7"/><stop offset="1" stop-color="#fbd2d8"/>
+    </linearGradient>
+    <linearGradient id="blBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcd9a4"/><stop offset="1" stop-color="#f3b45a"/>
+    </linearGradient>
+    <linearGradient id="blDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fc8dc"/><stop offset="1" stop-color="#0e7490"/>
+    </linearGradient>
+    <marker id="blArrUp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0e7490"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="470" rx="14" fill="#fcfcfb" stroke="#e2e8f0"/>
+
+  <!-- ============ left: ocean column ============ -->
+  <rect x="56" y="52" width="492" height="66" fill="url(#blSky)"/>
+  <text x="70" y="80" font-size="13.5" font-weight="600" fill="#334155">Heavy rainfall over the warm pool</text>
+  <g stroke="#0891b2" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="332" y1="60" x2="328" y2="76"/><line x1="358" y1="66" x2="354" y2="84"/>
+    <line x1="384" y1="58" x2="380" y2="76"/><line x1="410" y1="68" x2="406" y2="86"/>
+    <line x1="436" y1="60" x2="432" y2="78"/><line x1="462" y1="66" x2="458" y2="84"/>
+    <line x1="488" y1="58" x2="484" y2="74"/><line x1="514" y1="68" x2="510" y2="86"/>
+  </g>
+
+  <rect x="56" y="118" width="492" height="40" fill="#cdeaf4"/>
+  <rect x="56" y="158" width="492" height="52" fill="url(#blWarm)"/>
+  <rect x="56" y="210" width="492" height="66" fill="url(#blBar)"/>
+  <rect x="56" y="276" width="492" height="130" fill="url(#blDeep)"/>
+
+  <line x1="56" y1="118" x2="548" y2="118" stroke="#0f172a" stroke-width="2"/>
+  <line x1="56" y1="210" x2="548" y2="210" stroke="#0f172a" stroke-width="2" stroke-dasharray="7 4"/>
+  <line x1="56" y1="276" x2="548" y2="276" stroke="#0f172a" stroke-width="2"/>
+
+  <text x="70" y="143" font-size="13" font-weight="600" fill="#0f172a">Thin fresh cap — low salinity, buoyant</text>
+  <text x="70" y="179" font-size="13" font-weight="600" fill="#0f172a">Mixed layer — warm, uniform density</text>
+  <text x="70" y="199" font-size="12" font-weight="700" fill="#9f1239">heat + momentum stay trapped up here</text>
+  <text x="70" y="237" font-size="15" font-weight="700" fill="#7c3d05">BARRIER LAYER</text>
+  <text x="70" y="257" font-size="12" fill="#7c3d05">salinity-stratified, still warm</text>
+  <text x="70" y="302" font-size="13" font-weight="600" fill="#ffffff">Thermocline — cold water below</text>
+
+  <line x1="470" y1="340" x2="470" y2="232" stroke="#0e7490" stroke-width="3.5" marker-end="url(#blArrUp)"/>
+  <g transform="translate(470,222)">
+    <circle r="13" fill="#ffffff" stroke="#be123c" stroke-width="3"/>
+    <line x1="-7" y1="-7" x2="7" y2="7" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+    <line x1="7" y1="-7" x2="-7" y2="7" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="456" y="362" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">cold water cannot mix upward</text>
+
+  <line x1="56" y1="118" x2="56" y2="406" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="48" y="114" font-size="11" fill="#64748b" text-anchor="end">0 m</text>
+  <text x="48" y="404" font-size="11" fill="#64748b" text-anchor="end">deeper</text>
+
+  <!-- ============ right: profiles ============ -->
+  <text x="596" y="70" font-size="13" font-weight="700" fill="#334155">The same column, as profiles</text>
+  <text x="663" y="96" font-size="11.5" font-weight="600" fill="#475569" text-anchor="middle">Temperature</text>
+  <text x="815" y="96" font-size="11.5" font-weight="600" fill="#475569" text-anchor="middle">Salinity</text>
+
+  <!-- shared barrier-layer band across both profiles -->
+  <rect x="600" y="158" width="272" height="52" fill="#d97706" opacity="0.18"/>
+
+  <g>
+    <line x1="612" y1="108" x2="612" y2="300" stroke="#94a3b8" stroke-width="1.4"/>
+    <line x1="612" y1="300" x2="716" y2="300" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M698 108 L698 210 L624 286" fill="none" stroke="#be123c" stroke-width="3"/>
+    <text x="663" y="318" font-size="11" fill="#64748b" text-anchor="middle">warmer →</text>
+  </g>
+
+  <g>
+    <line x1="764" y1="108" x2="764" y2="300" stroke="#94a3b8" stroke-width="1.4"/>
+    <line x1="764" y1="300" x2="868" y2="300" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M780 108 L780 158 L846 210 L850 286" fill="none" stroke="#6d28d9" stroke-width="3"/>
+    <text x="815" y="318" font-size="11" fill="#64748b" text-anchor="middle">saltier →</text>
+  </g>
+
+  <line x1="600" y1="158" x2="872" y2="158" stroke="#6d28d9" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <line x1="600" y1="210" x2="872" y2="210" stroke="#be123c" stroke-width="1.8" stroke-dasharray="5 3"/>
+
+  <!-- legend: identity never by colour alone -->
+  <g font-size="11.5" fill="#334155">
+    <line x1="600" y1="350" x2="624" y2="350" stroke="#be123c" stroke-width="3"/>
+    <text x="632" y="354">Temperature is uniform down to the thermocline</text>
+    <line x1="600" y1="374" x2="624" y2="374" stroke="#6d28d9" stroke-width="3"/>
+    <text x="632" y="378">Salinity rises at a shallower depth</text>
+    <rect x="600" y="392" width="24" height="12" fill="#d97706" opacity="0.5"/>
+    <text x="632" y="402" font-weight="700" fill="#7c3d05">The gap between them is the barrier layer</text>
+  </g>
+
+  <text x="56" y="446" font-size="11.5" fill="#64748b">Conceptual schematic — not to scale.</text>
+</svg>
