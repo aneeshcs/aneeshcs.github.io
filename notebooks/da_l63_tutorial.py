@@ -1,3 +1,12 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "marimo==0.23.9",   # pinned: marimo's version sets the Pyodide build readers get
+#   "numpy",
+#   "scipy",
+#   "matplotlib",
+# ]
+# ///
 import marimo
 
 __generated_with = "0.23.9"
