@@ -48,6 +48,14 @@ node_modules/
 pagefind/
 static/pagefind/
 
+# marimo WASM exports — deploy.yml regenerates these from notebooks/ on every
+# push, so committing them stored a second, immediately-stale copy (~56 MB, and
+# every re-export rewrites all of it because the JS chunk names are content
+# hashes). Run `uvx marimo export html-wasm ...` locally if you need them in a
+# local preview; see the "Export marimo notebooks" step in deploy.yml.
+static/chaos/
+static/da_tutorial/
+
 # ============================================================================
 # Operating System
 # ============================================================================

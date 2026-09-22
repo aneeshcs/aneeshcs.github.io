@@ -10,18 +10,45 @@ Hugo Blox academic site deployed to GitHub Pages via GitHub Actions (`master` br
 
 ## Marimo notebooks
 
-Notebook sources live in `notebooks/`. The deploy workflow exports them to `static/gfd/` using:
+Notebook sources live in `notebooks/`. Three are live, feeding two sections:
+
+| notebook | exported to | page |
+|---|---|---|
+| `lorenz63_ensemble_explorer.py` | `static/chaos/` | `/chaos/` |
+| `pendulum_chaos_explorer.py` | `static/chaos/` | `/chaos/` |
+| `da_l63_tutorial.py` | `static/da_tutorial/` | `/da_tutorial/` |
+
+Each is exported twice, `--mode run --no-show-code` and `--mode edit`; the two chaos
+notebooks also get a downloadable `.ipynb` via `scripts/export_ipynb.py`.
+
+**`static/chaos/` and `static/da_tutorial/` are git-ignored.** The deploy workflow
+regenerates them from `notebooks/` on every push, so committing them would store a second,
+immediately-stale copy — and because marimo's JS chunk filenames are content hashes, every
+re-export rewrites all ~1,400 files. The exact commands are the "Export marimo notebooks"
+step in `.github/workflows/deploy.yml`; run them locally if a preview needs the exports:
 
 ```bash
-uvx marimo export html-wasm --sandbox --mode edit notebooks/<name>.py -o static/gfd/<name>.html
+uvx marimo export html-wasm --sandbox --mode run --no-show-code \
+  notebooks/pendulum_chaos_explorer.py -o static/chaos/pendulum_chaos_explorer.html
 ```
 
-To preview a notebook locally:
+To edit a notebook interactively:
 
 ```bash
-cd /Users/ansu6268/github/GeophysicalFluidDynamics
-marimo edit twodnavierstokes.py
+marimo edit notebooks/pendulum_chaos_explorer.py
 ```
+
+Two things the workflow does after exporting, both load-bearing:
+
+- `rm -f static/*/CLAUDE.md` — `marimo export` drops a stray copy of this file into every
+  output directory, which would otherwise be published.
+- `scripts/patch_chunk_reload.py` — with fresh chunk hashes on every deploy, a reader
+  holding a stale cache gets "Failed to fetch dynamically imported module". The script
+  injects a reload-once handler.
+
+The GFD notebooks that used to export to `static/gfd/` were the prototypes of the textbook
+now at <https://anigfd.github.io/> (repo `anigfd/anigfd.github.io`); `/gfd/` is a landing
+page pointing there.
 
 ## Monthly: new publication check
 
