@@ -87,18 +87,6 @@ jobs:
     - name: Export marimo notebooks
       run: |
         uvx marimo export html-wasm --sandbox --mode run --no-show-code \
-          notebooks/twodnavierstokes.py \
-          -o static/gfd/twodnavierstokes.html
-        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
-          notebooks/rayleighbenard.py \
-          -o static/gfd/rayleighbenard.html
-        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
-          notebooks/shallowwater.py \
-          -o static/gfd/shallowwater.html
-        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
-          notebooks/internalwaves.py \
-          -o static/gfd/internalwaves.html
-        uvx marimo export html-wasm --sandbox --mode run --no-show-code \
           notebooks/lorenz63_ensemble_explorer.py \
           -o static/chaos/lorenz63_ensemble_explorer.html
         uvx marimo export html-wasm --sandbox --mode edit \
@@ -116,11 +104,11 @@ jobs:
         uvx marimo export html-wasm --sandbox --mode edit \
           notebooks/da_l63_tutorial.py \
           -o static/da_tutorial/tutorial_edit.html
-        rm -f static/gfd/CLAUDE.md static/chaos/CLAUDE.md static/da_tutorial/CLAUDE.md
+        rm -f static/chaos/CLAUDE.md static/da_tutorial/CLAUDE.md
 
     - name: Add chunk-load-error auto-reload handler to marimo pages
       run: |
-        python3 scripts/patch_chunk_reload.py static/gfd/*.html static/chaos/*.html static/da_tutorial/*.html
+        python3 scripts/patch_chunk_reload.py static/chaos/*.html static/da_tutorial/*.html
 
     # Downloadable Jupyter versions of the /chaos/ notebooks, linked from that
     # page. This is marimo's own `export ipynb` plus a dependency cell and a
