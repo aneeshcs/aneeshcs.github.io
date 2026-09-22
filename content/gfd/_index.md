@@ -1,3 +1,3 @@
 ---
-title: GFD Portal
+title: Geophysical Fluid Dynamics
 ---

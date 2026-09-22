@@ -21,6 +21,10 @@ hugo_stats.json
 # marimo local session/layout artifacts
 **/__marimo__/
 
+# Python bytecode, left behind by local notebook exports
+__pycache__/
+*.pyc
+
 # Auto-generated JS config
 **/assets/jsconfig.json
 
