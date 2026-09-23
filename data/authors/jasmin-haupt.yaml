@@ -1,0 +1,17 @@
+schema: "hugoblox/author/v1"
+slug: "jasmin-haupt"
+name:
+  display: "Jasmin Haupt"
+  given: "Jasmin"
+  family: "Haupt"
+role: "Visiting Graduate Student (Fall 2026)"
+bio: "Doctoral researcher in the Meteorological Data Science group at the Karlsruhe Institute of Technology, working on tropical atmospheric dynamics through a combination of process-based modelling and machine learning. Her master's thesis examined the influence of sea surface temperature on the land-sea breeze along the Guinea Coast using sensitivity experiments with the ICON model. During her visit she is hosted jointly by the group at CU Boulder and by the Atmosphere-Ocean Processes and Predictability Lab at NOAA PSL."
+affiliations:
+  - name: "Institute of Meteorology and Climate Research (IMKTRO), Karlsruhe Institute of Technology"
+    url: "https://www.imktro.kit.edu/"
+links:
+  - icon: "hero/globe-alt"
+    url: "https://www.imktro.kit.edu/14_12944.php"
+    label: "KIT Profile"
+user_groups:
+  - "Visitors"
