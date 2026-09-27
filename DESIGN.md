@@ -10,7 +10,7 @@ Design reference for **https://aneeshcs.com**. Audience: site owner returning af
 |---|---|
 | Full name | CHAOS & Predictability @ CUB |
 | Tagline | CHAOS and Predictability @ CU Boulder |
-| Description | Our group aims to advance the fundamental understanding of climate processes in the earth system in order to improve weather and climate predictions. |
+| Description | Our group advances fundamental understanding of hydroclimate, atmosphere, and ocean processes and their interactions to understand Earth system predictability and improve predictions across timescales. |
 | Canonical URL | `https://aneeshcs.com` |
 | Redirect | `www.aneeshcs.com` and `aneeshcs.github.io` → `aneeshcs.com` |
 | Build stack | Hugo + Hugo Blox Kit, deployed via GitHub Actions on push to `master` |
