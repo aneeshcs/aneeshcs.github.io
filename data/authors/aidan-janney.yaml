@@ -5,9 +5,9 @@ name:
   given: "Aidan"
   family: "Janney"
 role: "Undergraduate Researcher"
-bio: "Major in Physics, minoring in Computer Science and Art. Interests include oceanography, ocean modeling, and nonlinear dynamics."
+bio: "Majored in Physics at CU Boulder, with minors in Computer Science and Art. Interests include oceanography, ocean modeling, and nonlinear dynamics. Currently a scientist at the National Center for Atmospheric Research (NCAR)."
 affiliations:
-  - name: "CU Boulder"
-    url: "https://www.colorado.edu/"
+  - name: "National Center for Atmospheric Research (NCAR)"
+    url: "https://ncar.ucar.edu/"
 user_groups:
   - "Undergraduate Alumni"
