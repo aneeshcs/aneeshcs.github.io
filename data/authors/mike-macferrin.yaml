@@ -5,9 +5,13 @@ name:
   given: "Mike"
   family: "MacFerrin"
 role: "Research Associate (Alumni)"
-bio: "Specializes in Greenland ice sheet meltwater interactions and machine learning applications to satellite/airborne remote sensing. Discovered new meltwater runoff mechanism in Greenland (published in Nature). Also teaches Remote Sensing and Introduction to Climate Change at CU Boulder."
+bio: "Specialized in Greenland ice sheet meltwater interactions and machine learning applications to satellite/airborne remote sensing. Discovered new meltwater runoff mechanism in Greenland (published in Nature). Also taught Remote Sensing and Introduction to Climate Change at CU Boulder. Currently a research scientist at CIRES, CU Boulder."
 affiliations:
   - name: "Cooperative Institute for Research in Environmental Sciences (CIRES), CU Boulder"
     url: "https://cires.colorado.edu/"
+links:
+  - icon: "hero/globe-alt"
+    url: "https://cires.colorado.edu/people/michael-macferrin"
+    label: "Website"
 user_groups:
   - "Research Scientists Alumni"
