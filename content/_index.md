@@ -20,7 +20,7 @@ sections:
           <div style="position: relative; z-index: 1; max-width: 650px; padding: 3rem; background: rgba(0,0,0,0.6); border-radius: 16px; text-align: center; backdrop-filter: blur(8px);">
             <h1 style="font-size: 2.8rem; font-weight: 400; margin-bottom: 12px; line-height: 1.2; color: white;">CHAOS &amp; Predictability Research Group</h1>
             <p style="font-size: 0.95rem; color: #bbb; letter-spacing: 0.04em; margin-bottom: 24px;">Computing Hydroclimate, Atmosphere and Ocean Systems</p>
-            <p style="font-size: 1.15rem; color: #ddd; line-height: 1.7;">Our group aims to advance the fundamental understanding of climate processes in the earth system in order to improve weather and climate predictions.</p>
+            <p style="font-size: 1.15rem; color: #ddd; line-height: 1.7;">Our group advances fundamental understanding of hydroclimate, atmosphere, and ocean processes and their interactions to understand Earth system predictability and improve predictions across timescales.</p>
           </div>
         </div>
     design:
