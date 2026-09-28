@@ -5,7 +5,7 @@ name:
   given: "Sean"
   family: "Heslin"
 role: "PhD Student"
-bio: "Primary Advisor: Will Chapman; Co-advisor: Aneesh Subramanian. Evaluates predictive skill of extreme atmospheric rivers in machine-learning weather models."
+bio: "Co-advised with Prof. Will Chapman. Evaluates predictive skill of extreme atmospheric rivers in machine-learning weather models."
 affiliations:
   - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
     url: "https://www.colorado.edu/atoc/"
