@@ -11,8 +11,8 @@ Design reference for **https://aneeshcs.com**. Audience: site owner returning af
 | Full name | CHAOS & Predictability @ CUB |
 | Tagline | CHAOS and Predictability @ CU Boulder |
 | Description | Our group advances fundamental understanding of hydroclimate, atmosphere, and ocean processes and their interactions to understand Earth system predictability and improve predictions across timescales. |
-| Canonical URL | `https://aneeshcs.com` |
-| Redirect | `www.aneeshcs.com` and `aneeshcs.github.io` → `aneeshcs.com` |
+| Canonical URL | `https://www.aneeshcs.com` |
+| Redirect | `aneeshcs.com` and `aneeshcs.github.io` → `www.aneeshcs.com` (HTTP 301) |
 | Build stack | Hugo + Hugo Blox Kit, deployed via GitHub Actions on push to `master` |
 
 ---
@@ -252,7 +252,7 @@ Use the standard type codes from Hugo Blox: `article-journal`, `paper-conference
 
 ## 11. SEO & Metadata
 
-- Canonical domain is `https://aneeshcs.com`. The `baseURL` in `hugo.yaml` is set to `aneeshcs.github.io` — the CNAME file and GitHub Pages settings handle the redirect.
+- Canonical domain is `https://www.aneeshcs.com`. The `baseURL` in `hugo.yaml` is left at `aneeshcs.github.io` and is **not** what ships: the deploy workflow overrides it with `--baseURL "${{ steps.pages.outputs.base_url }}/"`, which resolves to the custom domain recorded in the GitHub Pages settings. The `CNAME` file at the repository root is vestigial — Hugo does not copy it into `public/`, so it is not published and changing it has no effect.
 - Each non-auto-generated page should have a `description:` in its front matter.
 - Publication pages automatically get `schema.org` structured data via Hugo Blox.
 - Sitemap is auto-generated at `/sitemap.xml`. Robots.txt is auto-generated.
