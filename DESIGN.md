@@ -114,8 +114,13 @@ To add or reorder groups, edit the `user_groups` list in that file and update `u
 ## 6. Author Profiles
 
 ### Files
-- **Data**: `data/authors/{slug}.yaml` — all structured metadata.
-- **Content**: `content/authors/{slug}/_index.md` — extended bio in Markdown (shown on the individual author page, not the people page).
+- **Data**: `data/authors/{slug}.yaml` — every field that renders, on both the people page and the individual author page.
+- **Content**: `content/authors/{slug}/_index.md` — a title-only stub, and optional (`ajin-cho` has none; the page builds anyway).
+
+**The stub's body renders nowhere.** The theme builds `/authors/{slug}/` from the YAML alone,
+so Markdown written below the front matter is invisible — it will not appear on the author
+page, the people page, or anywhere else. Keep stubs to front matter, and put prose meant to
+be read on a real page under `content/`. To lengthen a profile, extend the YAML `bio`.
 
 ### Required YAML fields
 ```yaml
@@ -289,7 +294,7 @@ config/_default/       Hugo & Hugo Blox config (params, menus, modules)
 content/               Hugo Markdown source pages (edit freely)
   _index.md            Homepage (video hero block)
   people/index.md      People page (group ordering here)
-  authors/{slug}/      Per-author Markdown bio
+  authors/{slug}/      Title-only author stub (body does not render — see §6)
   publication/{slug}/  Publication pages (auto-generated — see §8)
 data/authors/          Author YAML profiles (edit freely — see §6)
 assets/
