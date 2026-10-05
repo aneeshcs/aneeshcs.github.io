@@ -6,7 +6,7 @@ Hugo Blox academic site deployed to GitHub Pages via GitHub Actions (`master` br
 
 - Source: `content/` (Hugo markdown), `static/` (copied as-is), `notebooks/` (marimo `.py` files)
 - Build: Hugo + marimo WASM export runs in CI (`.github/workflows/deploy.yml`)
-- Live: https://aneeshcs.com (custom domain; `www.aneeshcs.com` and `aneeshcs.github.io` redirect here)
+- Live: https://www.aneeshcs.com (custom domain; `aneeshcs.com` and `aneeshcs.github.io` answer 301 to it)
 
 ## Marimo notebooks
 
@@ -92,7 +92,7 @@ Run a broken-link check against the live site on the first of each month.
 **Command:**
 
 ```bash
-uvx linkchecker https://aneeshcs.com --check-extern \
+uvx linkchecker https://www.aneeshcs.com --check-extern \
   --no-warnings \
   --ignore-url "linkedin\." \
   --ignore-url "twitter\." \
