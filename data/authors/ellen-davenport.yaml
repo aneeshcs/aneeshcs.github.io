@@ -1,0 +1,27 @@
+schema: "hugoblox/author/v1"
+slug: "ellen-davenport"
+name:
+  display: "Ellen Davenport"
+  given: "Ellen"
+  family: "Davenport"
+role: "Postdoctoral Researcher"
+bio: "PhD in Oceanography from Scripps Institution of Oceanography, UC San Diego (2026), with an MS in Electrical and Computer Engineering from UC San Diego and four years as an embedded software engineer at Sarcos Robotics between a Dartmouth College engineering degree and graduate school. Works on the ONR SAFARI project, using machine learning to understand the ocean's role in the development of North Pacific atmospheric rivers; research spans ocean data assimilation, inverse problems, tropical Pacific dynamics, and differentiable Earth system modeling."
+affiliations:
+  - name: "Department of Atmospheric and Oceanic Sciences, CU Boulder"
+    url: "https://www.colorado.edu/atoc/"
+links:
+  - icon: "at-symbol"
+    url: "mailto:Ellen.Davenport@colorado.edu"
+    label: "E-mail"
+  - icon: "hero/academic-cap"
+    url: "https://scholar.google.com/citations?user=lvqdagwAAAAJ"
+    label: "Google Scholar"
+  - icon: "brands/github"
+    url: "https://github.com/eldavenport"
+  - icon: "brands/linkedin"
+    url: "https://www.linkedin.com/in/ellen-davenport-137a71110/"
+  - icon: "hero/globe-alt"
+    url: "https://sites.google.com/view/ellendavenport"
+    label: "Website"
+user_groups:
+  - "Postdoctoral Researchers"
