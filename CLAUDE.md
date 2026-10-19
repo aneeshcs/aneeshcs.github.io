@@ -54,15 +54,8 @@ page pointing there.
 
 A GitHub Actions cron job runs on the 1st of each month (`.github/workflows/check-publications.yml`).
 It queries **Semantic Scholar author ID `47680095`** (Aneesh C. Subramanian) for papers not yet
-in `content/publication/` or `publications.bib`, fetches their bibtex from doi.org, and opens
-a PR titled **"📚 N new publication(s) found — please review"** on the `publications/monthly-update` branch.
-
-The script never proposes a DOI listed in `.github/scripts/ignored_dois.txt`, and it
-skips preprint and grey-literature DOIs automatically (`NON_JOURNAL_DOI` in
-`.github/scripts/check_publications.py`: arXiv, ESSOAr, Research Square, Copernicus
-discussion papers, EGUsphere abstracts, Zenodo, figshare, UCAR/NCAR, DTIC). Skipped papers
-are listed in a collapsed section of the PR body, or in the Actions log if nothing else was
-found, so check that list for a preprint you do want.
+in `content/publication/`, `publications.bib` or `.github/scripts/ignored_dois.txt`, fetches
+their bibtex from doi.org, and opens a PR titled **"📚 N new publication(s) found — please review"** on the `publications/monthly-update` branch.
 
 **To review the PR:**
 
