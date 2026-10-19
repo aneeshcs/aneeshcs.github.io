@@ -57,12 +57,22 @@ It queries **Semantic Scholar author ID `47680095`** (Aneesh C. Subramanian) for
 in `content/publication/` or `publications.bib`, fetches their bibtex from doi.org, and opens
 a PR titled **"📚 N new publication(s) found — please review"** on the `publications/monthly-update` branch.
 
+The script never proposes a DOI listed in `.github/scripts/ignored_dois.txt`, and it
+skips preprint and grey-literature DOIs automatically (`NON_JOURNAL_DOI` in
+`.github/scripts/check_publications.py`: arXiv, ESSOAr, Research Square, Copernicus
+discussion papers, EGUsphere abstracts, Zenodo, figshare, UCAR/NCAR, DTIC). Skipped papers
+are listed in a collapsed section of the PR body, or in the Actions log if nothing else was
+found, so check that list for a preprint you do want.
+
 **To review the PR:**
 
 1. Open the PR — the body lists every new paper with title, venue, year, and DOI
 2. Edit `publications.bib` in the PR branch to correct or remove any entries
-3. **Merge** to add the papers to the site (triggers Hugo page generation automatically)
-4. **Close without merging** to skip all papers this month
+3. Add every DOI you reject to `.github/scripts/ignored_dois.txt` — the check only knows
+   what is already on the site, so a rejected paper is otherwise proposed again next month
+4. **Merge** to add the papers to `publications.bib`; the push triggers
+   `import-publications.yml`, which opens a second PR with the generated Hugo pages
+5. **Close without merging** to skip all papers this month (still update the ignore list)
 
 **To manually trigger the check:**
 

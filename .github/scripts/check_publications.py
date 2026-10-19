@@ -3,6 +3,8 @@ Monthly publication check against Semantic Scholar.
 
 Finds papers not yet in content/publication/ or publications.bib,
 fetches their bibtex from doi.org, and appends them to publications.bib.
+DOIs listed in ignored_dois.txt, and DOIs from preprint servers and
+grey-literature repositories (NON_JOURNAL_DOI), are never proposed.
 Writes a human-readable summary to $GITHUB_OUTPUT for the PR body.
 """
 
@@ -21,6 +23,27 @@ SS_PAPERS = (
 )
 FIELDS = "title,year,venue,externalIds,authors"
 PUB_BIB = Path("publications.bib")
+IGNORED_DOIS = Path(__file__).with_name("ignored_dois.txt")
+
+# DOI registrants and patterns that are never peer-reviewed journal articles:
+# preprints (arXiv, ESSOAr, Research Square, Copernicus discussion papers such
+# as gmd-2018-252, whose published versions are gmd-12-1-2019), conference
+# abstracts (EGUsphere), and repositories/report series (Zenodo, figshare,
+# UCAR/NCAR, DTIC).
+NON_JOURNAL_DOI = re.compile(
+    r"""^10\.(
+        48550/arxiv\.
+      | 1002/essoar\.
+      | 21203/rs\.
+      | 5194/[a-z]+-\d{4}-\d+$
+      | 5194/egusphere
+      | 5281/zenodo\.
+      | 6084/m9\.figshare\.
+      | 5065/
+      | 21236/
+    )""",
+    re.IGNORECASE | re.VERBOSE,
+)
 
 
 def _get_with_retry(url: str, params: dict, max_retries: int = 5) -> requests.Response:
@@ -58,7 +81,7 @@ def get_all_papers() -> list[dict]:
 
 
 def get_known_dois() -> set[str]:
-    """Collect DOIs already present in content/publication/ and publications.bib."""
+    """Collect DOIs already in content/publication/, publications.bib, or the ignore list."""
     dois: set[str] = set()
     pattern = re.compile(r"doi\s*=\s*\{([^}]+)\}", re.IGNORECASE)
 
@@ -69,6 +92,11 @@ def get_known_dois() -> set[str]:
     if PUB_BIB.exists():
         for m in pattern.finditer(PUB_BIB.read_text(errors="ignore")):
             dois.add(m.group(1).strip().lower())
+
+    if IGNORED_DOIS.exists():
+        for line in IGNORED_DOIS.read_text().splitlines():
+            if doi := line.split("#", 1)[0].strip():
+                dois.add(doi.lower())
 
     return dois
 
@@ -98,11 +126,18 @@ def main() -> int:
     known_dois = get_known_dois()
     print(f"  DOIs already in repo: {len(known_dois)}")
 
-    new_papers = [
+    unseen = [
         p for p in papers
         if (doi := (p.get("externalIds") or {}).get("DOI"))
         and doi.lower() not in known_dois
     ]
+    skipped = [p for p in unseen if NON_JOURNAL_DOI.match(p["externalIds"]["DOI"])]
+    new_papers = [p for p in unseen if p not in skipped]
+
+    if skipped:
+        print(f"\nSkipped {len(skipped)} preprint/grey-literature DOI(s):")
+        for p in skipped:
+            print(f"  · {p['externalIds']['DOI']}  {p.get('title', '')}")
 
     if not new_papers:
         print("No new papers found — nothing to do.")
@@ -150,6 +185,10 @@ def main() -> int:
     with PUB_BIB.open("a") as f:
         f.write("\n\n" + "\n\n".join(bibtex_blocks) + "\n")
 
+    skipped_rows = "\n".join(
+        f"| {p.get('title', '')} | {p.get('year') or '?'} | `{p['externalIds']['DOI']}` |"
+        for p in skipped
+    )
     summary = textwrap.dedent(f"""\
         ## {len(new_papers)} new paper(s) found on Semantic Scholar
 
@@ -163,7 +202,16 @@ def main() -> int:
         - ✏️ Edit `publications.bib` in this PR to correct any entries
         - 🗑️ Delete entries from `publications.bib` you don't want to add
         - ❌ Close without merging to skip all of them
+        - 🚫 Add every DOI you reject to `.github/scripts/ignored_dois.txt`
+          so it is not proposed again next month
     """)
+    if skipped:
+        summary += (
+            f"\n<details><summary>{len(skipped)} preprint/grey-literature DOI(s) "
+            "skipped automatically</summary>\n\n"
+            "| Title | Year | DOI |\n|-------|------|-----|\n"
+            f"{skipped_rows}\n</details>\n"
+        )
 
     _set_output("new_count", str(len(new_papers)))
     _set_output("summary", summary)
