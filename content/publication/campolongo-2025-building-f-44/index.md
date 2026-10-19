@@ -155,7 +155,7 @@ authors:
 - Ying Zhao
 - Yibo Zhong
 publication_types:
-- '2'
+- article
 abstract: Scientific discoveries are often made by finding a pattern or object that
   was not predicted by the known rules of science. Oftentimes, these anomalous events
   or objects that do not conform to the norms are an indication that the rules of
