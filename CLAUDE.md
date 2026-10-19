@@ -54,15 +54,18 @@ page pointing there.
 
 A GitHub Actions cron job runs on the 1st of each month (`.github/workflows/check-publications.yml`).
 It queries **Semantic Scholar author ID `47680095`** (Aneesh C. Subramanian) for papers not yet
-in `content/publication/` or `publications.bib`, fetches their bibtex from doi.org, and opens
-a PR titled **"📚 N new publication(s) found — please review"** on the `publications/monthly-update` branch.
+in `content/publication/`, `publications.bib` or `.github/scripts/ignored_dois.txt`, fetches
+their bibtex from doi.org, and opens a PR titled **"📚 N new publication(s) found — please review"** on the `publications/monthly-update` branch.
 
 **To review the PR:**
 
 1. Open the PR — the body lists every new paper with title, venue, year, and DOI
 2. Edit `publications.bib` in the PR branch to correct or remove any entries
-3. **Merge** to add the papers to the site (triggers Hugo page generation automatically)
-4. **Close without merging** to skip all papers this month
+3. Add every DOI you reject to `.github/scripts/ignored_dois.txt` — the check only knows
+   what is already on the site, so a rejected paper is otherwise proposed again next month
+4. **Merge** to add the papers to `publications.bib`; the push triggers
+   `import-publications.yml`, which opens a second PR with the generated Hugo pages
+5. **Close without merging** to skip all papers this month (still update the ignore list)
 
 **To manually trigger the check:**
 

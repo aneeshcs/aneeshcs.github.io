@@ -1,0 +1,24 @@
+# DOIs the monthly publication check should never propose again.
+# One DOI per line (case-insensitive); text after '#' is a comment.
+# Add a paper here when you reject it from a "new publication(s)" PR,
+# otherwise Semantic Scholar will surface it again the next month.
+
+# Rejected from PR #71 (2026-10). Preprints of papers already on the site:
+10.48550/arXiv.2206.12179         # Simmonds et al. 2022, arXiv
+10.1002/essoar.10507949.1         # Eddebbar et al., ESSOAr
+10.1002/ESSOAR.10506709.1         # Sun et al., TC waves, ESSOAr
+10.1002/essoar.10508346.1         # Chandra et al., ESSOAr
+10.5194/gmd-2018-252              # Sun et al., MITgcm-WRF, GMD Discussions
+10.5194/GMD-2016-115              # Davini et al., Climate SPHINX, GMD Discussions
+10.21203/rs.3.rs-887885/v1        # Guirguis et al., Research Square
+10.1002/essoar.10503516.1         # Neena et al. 2020, ESSOAr
+
+# Grey literature and non-papers:
+10.5281/ZENODO.5120586            # Butterfly mission proposal, Zenodo
+10.3289/scor_wg_162_2021          # OASIS / SCOR WG 162 event report
+10.5194/EGUSPHERE-EGU21-3813      # Lee et al., EGU21 abstract
+10.5065/15KW-EP41                 # US CLIVAR/OCB ENSO workshop report
+10.1016/b978-0-12-811714-9.09994-0  # "Contributors", S2S book front matter
+10.6084/M9.FIGSHARE.10271450.V1   # Moroni et al., figshare poster
+10.5065/D63X851Q                  # Translating Process Understanding, UCAR report
+10.21236/ada546730                # Hoteit et al., DTIC technical report

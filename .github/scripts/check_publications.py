@@ -3,6 +3,8 @@ Monthly publication check against Semantic Scholar.
 
 Finds papers not yet in content/publication/ or publications.bib,
 fetches their bibtex from doi.org, and appends them to publications.bib.
+DOIs listed in ignored_dois.txt (papers rejected from earlier PRs) are
+never proposed again.
 Writes a human-readable summary to $GITHUB_OUTPUT for the PR body.
 """
 
@@ -21,6 +23,7 @@ SS_PAPERS = (
 )
 FIELDS = "title,year,venue,externalIds,authors"
 PUB_BIB = Path("publications.bib")
+IGNORED_DOIS = Path(__file__).with_name("ignored_dois.txt")
 
 
 def _get_with_retry(url: str, params: dict, max_retries: int = 5) -> requests.Response:
@@ -58,7 +61,7 @@ def get_all_papers() -> list[dict]:
 
 
 def get_known_dois() -> set[str]:
-    """Collect DOIs already present in content/publication/ and publications.bib."""
+    """Collect DOIs already in content/publication/, publications.bib, or the ignore list."""
     dois: set[str] = set()
     pattern = re.compile(r"doi\s*=\s*\{([^}]+)\}", re.IGNORECASE)
 
@@ -69,6 +72,11 @@ def get_known_dois() -> set[str]:
     if PUB_BIB.exists():
         for m in pattern.finditer(PUB_BIB.read_text(errors="ignore")):
             dois.add(m.group(1).strip().lower())
+
+    if IGNORED_DOIS.exists():
+        for line in IGNORED_DOIS.read_text().splitlines():
+            if doi := line.split("#", 1)[0].strip():
+                dois.add(doi.lower())
 
     return dois
 
@@ -163,6 +171,8 @@ def main() -> int:
         - ✏️ Edit `publications.bib` in this PR to correct any entries
         - 🗑️ Delete entries from `publications.bib` you don't want to add
         - ❌ Close without merging to skip all of them
+        - 🚫 Add every DOI you reject to `.github/scripts/ignored_dois.txt`
+          so it is not proposed again next month
     """)
 
     _set_output("new_count", str(len(new_papers)))
