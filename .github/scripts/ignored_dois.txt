@@ -27,3 +27,8 @@
 # published GMD article (10.5194/gmd-11-2455-2018) is content/publication/shields-2018.
 10.5194/gmd-2017-295              # GMD Discussions version
 10.5194/gmd-2017-295-supplement   # supplementary material
+
+# Removed 2026-11 as duplicates: arXiv preprints of papers already on the site.
+10.48550/arXiv.2303.07122         # Ali et al. 2023 -> ICMLA 2023
+10.48550/arXiv.2503.02093         # Hossain et al. 2025 -> PerCom Workshops 2025
+10.48550/arXiv.2310.15179         # Ghosh et al. 2023 -> I-GUIDE Forum 2023

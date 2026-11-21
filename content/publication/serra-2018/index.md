@@ -36,4 +36,6 @@ hugoblox:
 links:
 - name: URL
   url: http://dx.doi.org/10.1175/BAMS-D-18-0034.1
+aliases:
+  - /publication/wos-000437277400003/
 ---

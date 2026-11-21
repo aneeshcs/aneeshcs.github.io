@@ -10,9 +10,19 @@
 {{- $authorStr = delimit $item.Params.authors ", " -}}
 {{- end -}}
 
-<div class="pub-list-item view-citation" style="margin-bottom: 1rem" data-year="{{ $displayYear }}"
-  data-authors="{{ $authorStr | htmlEscape }}">
+{{/* Chronological number: 1 = earliest publication, highest = latest. */}}
+{{- $pubNum := "" -}}
+{{- if eq $item.Section "publication" -}}
+{{- $pubNum = index (partialCached "functions/pub_numbers" "pub_numbers") $item.RelPermalink -}}
+{{- end -}}
+
+<div class="pub-list-item view-citation{{ with $pubNum }} pub-numbered{{ end }}" style="margin-bottom: 1rem"
+  data-year="{{ $displayYear }}" data-authors="{{ $authorStr | htmlEscape }}">
+  {{ with $pubNum }}
+  <span class="pub-num">[{{ . }}]</span>
+  {{ else }}
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+  {{ end }}
 
   {{/* APA Style */}}
   {{ if eq (site.Params.hugoblox.content.citations.style | default "apa") "apa" }}
