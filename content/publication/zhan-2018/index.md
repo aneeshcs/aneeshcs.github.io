@@ -16,7 +16,7 @@ authors:
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2018-01-01'
+date: '2018-11-19'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
 publishDate: '2026-02-08T16:26:33.560380Z'
@@ -97,6 +97,8 @@ image:
 #   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
 projects: []
+aliases:
+  - /publication/wos-000453907000036/
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

@@ -1,6 +1,6 @@
 ---
 title: Building Machine Learning Challenges for Anomaly Detection in Science
-date: '2025-01-01'
+date: '2025-03-03'
 draft: false
 publishDate: '2026-02-01T16:51:59.443576Z'
 authors:

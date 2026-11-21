@@ -1,7 +1,7 @@
 ---
 title: Improved Forecast Skill Through the Assimilation of Dropsonde    Observations
   From the Atmospheric River Reconnaissance Program
-date: '2021-01-01'
+date: '2021-11-08'
 draft: false
 publishDate: '2026-02-01T16:50:45.961521Z'
 authors:

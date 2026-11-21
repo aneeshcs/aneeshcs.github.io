@@ -1,5 +1,28 @@
 <style>
   /* ========================================
+   Publications — chronological numbers [n]
+   Number sits in a right-aligned gutter; the
+   citation text keeps a hanging indent.
+   ======================================== */
+
+  .pub-list-item.pub-numbered {
+    position: relative;
+    padding-left: 3.25rem;
+  }
+  .pub-num {
+    position: absolute;
+    left: 0;
+    width: 2.75rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: #4a5568;
+  }
+  .dark .pub-num {
+    color: #a0aec0;
+  }
+
+  /* ========================================
    People Page — Zanna-style inline grid
    ======================================== */
 

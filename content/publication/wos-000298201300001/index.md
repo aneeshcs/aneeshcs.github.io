@@ -17,7 +17,7 @@ authors:
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2011-01-01'
+date: '2011-12-15'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
 publishDate: '2026-02-08T16:26:34.326166Z'

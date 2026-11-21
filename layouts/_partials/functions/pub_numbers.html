@@ -1,0 +1,18 @@
+{{/*
+  Map of publication RelPermalink -> chronological number (1 = earliest).
+
+  Replicates the publications collection block's query and sort exactly
+  (site.Pages, Kind "page", Section "publication", Date descending), so
+  papers sharing a date are numbered in the order the list shows them.
+  A paper's number is fixed: filtering the list or listing it on an
+  author page shows the same number.
+
+  Call with partialCached "functions/pub_numbers" "pub_numbers".
+*/}}
+{{ $pubs := sort (where (where site.Pages "Kind" "page") "Section" "publication") "Date" "desc" }}
+{{ $n := len $pubs }}
+{{ $numbers := dict }}
+{{ range $i, $p := $pubs }}
+  {{ $numbers = merge $numbers (dict $p.RelPermalink (sub $n $i)) }}
+{{ end }}
+{{ return $numbers }}

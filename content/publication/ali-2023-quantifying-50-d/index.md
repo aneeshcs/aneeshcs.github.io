@@ -19,7 +19,7 @@ authors:
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2023-01-01'
+date: '2023-12-15'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
 publishDate: '2026-02-08T16:26:33.234309Z'
@@ -95,6 +95,7 @@ image:
 projects: []
 
 aliases:
+  - /publication/ali-2023-quantifying-3-e-6/
   - /publication/ali-2024-arctic-inreview/
 ---
 
